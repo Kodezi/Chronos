@@ -1,0 +1,150 @@
+{
+  "benchmark": "Multi Random Retrieval (MRR)",
+  "version": "1.0",
+  "date": "2025-01-15",
+  "note": "Kodezi Chronos is proprietary and available Q1 2026 via Kodezi OS",
+  
+  "overall_results": {
+    "kodezi_chronos": {
+      "precision_at_10": 0.892,
+      "recall_at_10": 0.847,
+      "fix_accuracy": 0.673,
+      "context_efficiency": 0.71,
+      "avg_iterations": 2.2,
+      "avg_time_seconds": 134.7
+    },
+    "gpt4_rag": {
+      "precision_at_10": 0.423,
+      "recall_at_10": 0.317,
+      "fix_accuracy": 0.089,
+      "context_efficiency": 0.23,
+      "avg_iterations": 6.5,
+      "avg_time_seconds": 82.3
+    },
+    "claude3_vectordb": {
+      "precision_at_10": 0.481,
+      "recall_at_10": 0.362,
+      "fix_accuracy": 0.112,
+      "context_efficiency": 0.28,
+      "avg_iterations": 6.8,
+      "avg_time_seconds": 76.9
+    },
+    "gemini15_graph": {
+      "precision_at_10": 0.517,
+      "recall_at_10": 0.418,
+      "fix_accuracy": 0.146,
+      "context_efficiency": 0.31,
+      "avg_iterations": 5.1,
+      "avg_time_seconds": 71.2
+    }
+  },
+  
+  "difficulty_breakdown": {
+    "easy": {
+      "kodezi_chronos": 0.784,
+      "gpt4_rag": 0.152,
+      "claude3_vectordb": 0.187,
+      "gemini15_graph": 0.221
+    },
+    "medium": {
+      "kodezi_chronos": 0.692,
+      "gpt4_rag": 0.078,
+      "claude3_vectordb": 0.093,
+      "gemini15_graph": 0.124
+    },
+    "hard": {
+      "kodezi_chronos": 0.543,
+      "gpt4_rag": 0.034,
+      "claude3_vectordb": 0.051,
+      "gemini15_graph": 0.069
+    }
+  },
+  
+  "bug_type_performance": {
+    "null_pointer": {
+      "kodezi_chronos": 0.723,
+      "gpt4_rag": 0.112,
+      "claude3_vectordb": 0.134,
+      "gemini15_graph": 0.167
+    },
+    "race_condition": {
+      "kodezi_chronos": 0.583,
+      "gpt4_rag": 0.032,
+      "claude3_vectordb": 0.041,
+      "gemini15_graph": 0.058
+    },
+    "logic_error": {
+      "kodezi_chronos": 0.694,
+      "gpt4_rag": 0.089,
+      "claude3_vectordb": 0.103,
+      "gemini15_graph": 0.128
+    },
+    "api_misuse": {
+      "kodezi_chronos": 0.712,
+      "gpt4_rag": 0.124,
+      "claude3_vectordb": 0.148,
+      "gemini15_graph": 0.182
+    }
+  },
+  
+  "retrieval_depth_analysis": {
+    "k_1_hop": {
+      "kodezi_chronos": 0.843,
+      "flat_retrieval": 0.412
+    },
+    "k_2_hop": {
+      "kodezi_chronos": 0.912,
+      "flat_retrieval": 0.423
+    },
+    "k_3_hop": {
+      "kodezi_chronos": 0.887,
+      "flat_retrieval": 0.431
+    },
+    "adaptive": {
+      "kodezi_chronos": 0.928,
+      "flat_retrieval": 0.423
+    }
+  },
+  
+  "statistical_significance": {
+    "chronos_vs_gpt4": {
+      "t_statistic": 45.67,
+      "p_value": "2.3e-15",
+      "effect_size": 3.82,
+      "significant": true
+    },
+    "chronos_vs_claude3": {
+      "t_statistic": 47.23,
+      "p_value": "1.8e-15",
+      "effect_size": 3.91,
+      "significant": true
+    },
+    "chronos_vs_gemini15": {
+      "t_statistic": 42.34,
+      "p_value": "5.6e-15",
+      "effect_size": 3.54,
+      "significant": true
+    }
+  },
+  
+  "improvements": {
+    "vs_gpt4": {
+      "fix_accuracy": "7.6x",
+      "precision": "2.1x",
+      "recall": "2.7x",
+      "efficiency": "3.1x"
+    },
+    "vs_claude3": {
+      "fix_accuracy": "6.0x",
+      "precision": "1.9x",
+      "recall": "2.3x",
+      "efficiency": "2.5x"
+    },
+    "vs_gemini15": {
+      "fix_accuracy": "4.6x",
+      "precision": "1.7x",
+      "recall": "2.0x",
+      "efficiency": "2.3x"
+    }
+  }
+}

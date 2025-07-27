@@ -1,0 +1,132 @@
+{
+  "tasks": [
+    {
+      "task_id": "SYNTAX_001",
+      "category": "syntax",
+      "difficulty": "easy",
+      "bug_description": "SyntaxError: unexpected EOF while parsing",
+      "code_context": {
+        "file": "data_processor.py",
+        "function": "process_data",
+        "line_range": [12, 18],
+        "code": "def process_data(items):\n    result = []\n    for item in items:\n        if item > 0:\n            result.append(item * 2\n    return result"
+      },
+      "error_message": "SyntaxError: unexpected EOF while parsing (line 16)",
+      "test_case": {
+        "input": "[1, 2, 3, -1, 4]",
+        "expected": "[2, 4, 6, 8]",
+        "actual": "SyntaxError"
+      },
+      "ground_truth": {
+        "root_cause": "Missing closing parenthesis on line 16",
+        "fix": "Add closing parenthesis: result.append(item * 2)",
+        "fixed_code": "result.append(item * 2)"
+      }
+    },
+    {
+      "task_id": "LOGIC_042",
+      "category": "logic",
+      "difficulty": "medium",
+      "bug_description": "Binary search returns incorrect index for edge cases",
+      "code_context": {
+        "file": "search_utils.py",
+        "function": "binary_search",
+        "line_range": [23, 35],
+        "code": "def binary_search(arr, target):\n    left, right = 0, len(arr)\n    while left < right:\n        mid = (left + right) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1"
+      },
+      "test_case": {
+        "input": "arr=[1, 3, 5, 7, 9], target=5",
+        "expected": "2",
+        "actual": "-1 (sometimes)"
+      },
+      "ground_truth": {
+        "root_cause": "Off-by-one error: right should be len(arr) - 1, and condition should be left <= right",
+        "fix": "Initialize right = len(arr) - 1 and change while condition to left <= right",
+        "fixed_code": "def binary_search(arr, target):\n    left, right = 0, len(arr) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1"
+      }
+    },
+    {
+      "task_id": "NULL_PTR_087",
+      "category": "memory",
+      "difficulty": "medium",
+      "bug_description": "NullPointerException when processing user data after authentication refactor",
+      "code_context": {
+        "files": {
+          "auth_service.py": {
+            "old_code": "def get_user_token(user_id):\n    token = cache.get(user_id)\n    if not token:\n        token = generate_token(user_id)\n        cache.set(user_id, token)\n    return token",
+            "new_code": "def refresh_token(user_id):\n    token = cache.get(user_id)\n    if not token or token.is_expired():\n        token = auth_provider.generate_token(user_id)\n    return token"
+          },
+          "data_export.py": {
+            "code": "def export_user_data(user_id):\n    token = auth_service.refresh_token(user_id)\n    headers = {'Authorization': f'Bearer {token.value}'}\n    return fetch_data(user_id, headers)"
+          }
+        }
+      },
+      "error_message": "AttributeError: 'NoneType' object has no attribute 'value'",
+      "ground_truth": {
+        "root_cause": "refresh_token can return None when token generation fails, but export_user_data doesn't check for None",
+        "fix": "Add null check in both refresh_token and export_user_data",
+        "fixed_code": {
+          "auth_service.py": "def refresh_token(user_id):\n    token = cache.get(user_id)\n    if not token or token.is_expired():\n        token = auth_provider.generate_token(user_id)\n        if token:\n            cache.set(user_id, token)\n    return token",
+          "data_export.py": "def export_user_data(user_id):\n    token = auth_service.refresh_token(user_id)\n    if not token:\n        raise AuthenticationError(f'Failed to authenticate user {user_id}')\n    headers = {'Authorization': f'Bearer {token.value}'}\n    return fetch_data(user_id, headers)"
+        }
+      }
+    },
+    {
+      "task_id": "RACE_COND_156",
+      "category": "concurrency",
+      "difficulty": "hard",
+      "bug_description": "Intermittent data corruption in concurrent file writes",
+      "code_context": {
+        "file": "file_manager.py",
+        "function": "append_to_log",
+        "code": "import threading\n\nclass FileManager:\n    def __init__(self, filename):\n        self.filename = filename\n        self.file = open(filename, 'a')\n    \n    def append_to_log(self, message):\n        timestamp = datetime.now().isoformat()\n        self.file.write(f'{timestamp}: {message}\\n')\n        self.file.flush()"
+      },
+      "symptoms": [
+        "Corrupted log entries with mixed timestamps",
+        "Missing log entries under high load",
+        "Occasional IOError"
+      ],
+      "ground_truth": {
+        "root_cause": "Multiple threads writing to the same file without synchronization",
+        "fix": "Add thread lock for file operations",
+        "fixed_code": "import threading\n\nclass FileManager:\n    def __init__(self, filename):\n        self.filename = filename\n        self.file = open(filename, 'a')\n        self.lock = threading.Lock()\n    \n    def append_to_log(self, message):\n        with self.lock:\n            timestamp = datetime.now().isoformat()\n            self.file.write(f'{timestamp}: {message}\\n')\n            self.file.flush()"
+      }
+    },
+    {
+      "task_id": "API_203",
+      "category": "api",
+      "difficulty": "medium",
+      "bug_description": "Breaking change in third-party API upgrade",
+      "code_context": {
+        "file": "payment_processor.py",
+        "old_api_version": "2.x",
+        "new_api_version": "3.x",
+        "code": "from payment_sdk import PaymentClient\n\nclient = PaymentClient(api_key=API_KEY)\n\ndef process_payment(amount, currency, customer_id):\n    response = client.charge(\n        amount=amount,\n        currency=currency,\n        customer=customer_id,\n        capture=True\n    )\n    return response.id"
+      },
+      "error_message": "TypeError: charge() got an unexpected keyword argument 'capture'",
+      "api_change": "In v3.x, 'capture' parameter moved to separate capture() method",
+      "ground_truth": {
+        "root_cause": "API v3.x changed charge() signature - capture is now a separate method call",
+        "fix": "Update to use new API pattern with separate charge and capture",
+        "fixed_code": "from payment_sdk import PaymentClient\n\nclient = PaymentClient(api_key=API_KEY)\n\ndef process_payment(amount, currency, customer_id):\n    # Create charge first\n    charge = client.charge(\n        amount=amount,\n        currency=currency,\n        customer=customer_id\n    )\n    # Then capture it\n    response = client.capture(charge.id)\n    return response.id"
+      }
+    },
+    {
+      "task_id": "PERF_089",
+      "category": "performance",
+      "difficulty": "hard",
+      "bug_description": "Query performance degradation after adding new feature",
+      "code_context": {
+        "file": "user_analytics.py",
+        "function": "get_user_stats",
+        "code": "def get_user_stats(user_id):\n    user = db.users.find_one({'_id': user_id})\n    stats = {\n        'total_posts': 0,\n        'total_likes': 0,\n        'followers': len(user.get('followers', [])),\n        'following': len(user.get('following', []))\n    }\n    \n    # New feature: calculate engagement metrics\n    for post_id in user.get('posts', []):\n        post = db.posts.find_one({'_id': post_id})\n        if post:\n            stats['total_posts'] += 1\n            stats['total_likes'] += len(post.get('likes', []))\n    \n    return stats"
+      },
+      "performance_issue": "Function takes 5+ seconds for users with many posts",
+      "ground_truth": {
+        "root_cause": "N+1 query problem - fetching each post individually in a loop",
+        "fix": "Use aggregation pipeline or batch fetch posts",
+        "fixed_code": "def get_user_stats(user_id):\n    user = db.users.find_one({'_id': user_id})\n    stats = {\n        'total_posts': 0,\n        'total_likes': 0,\n        'followers': len(user.get('followers', [])),\n        'following': len(user.get('following', []))\n    }\n    \n    # Batch fetch all posts\n    post_ids = user.get('posts', [])\n    if post_ids:\n        posts = list(db.posts.find({'_id': {'$in': post_ids}}))\n        stats['total_posts'] = len(posts)\n        stats['total_likes'] = sum(len(post.get('likes', [])) for post in posts)\n    \n    return stats"
+      }
+    }
+  ]
+}

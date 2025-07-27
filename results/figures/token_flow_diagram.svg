@@ -1,0 +1,63 @@
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666" />
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" font-size="22" font-weight="bold">Debugging Token Flow: Input vs Output</text>
+  <text x="400" y="50" text-anchor="middle" font-size="14" fill="#666">The Output-Heavy Nature of Debugging</text>
+  
+  <!-- Input side -->
+  <rect x="50" y="80" width="300" height="300" rx="10" fill="#E3F2FD" stroke="#2196F3" stroke-width="2"/>
+  <text x="200" y="110" text-anchor="middle" font-size="18" font-weight="bold">Input (Sparse)</text>
+  
+  <rect x="70" y="130" width="260" height="40" rx="5" fill="#BBDEFB" stroke="#1976D2"/>
+  <text x="200" y="155" text-anchor="middle" font-size="14">Stack Trace: 300 tokens</text>
+  
+  <rect x="70" y="180" width="260" height="40" rx="5" fill="#BBDEFB" stroke="#1976D2"/>
+  <text x="200" y="205" text-anchor="middle" font-size="14">Code Context: 2K tokens</text>
+  
+  <rect x="70" y="230" width="260" height="40" rx="5" fill="#BBDEFB" stroke="#1976D2"/>
+  <text x="200" y="255" text-anchor="middle" font-size="14">Logs/Tests: 800 tokens</text>
+  
+  <rect x="70" y="280" width="260" height="40" rx="5" fill="#BBDEFB" stroke="#1976D2"/>
+  <text x="200" y="305" text-anchor="middle" font-size="14">History: 500 tokens</text>
+  
+  <text x="200" y="350" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565C0">Total: ~3.6K tokens</text>
+  
+  <!-- Output side -->
+  <rect x="450" y="80" width="300" height="300" rx="10" fill="#FFF3E0" stroke="#FF9800" stroke-width="2"/>
+  <text x="600" y="110" text-anchor="middle" font-size="18" font-weight="bold">Output (Dense)</text>
+  
+  <rect x="470" y="130" width="260" height="40" rx="5" fill="#FFE0B2" stroke="#F57C00"/>
+  <text x="600" y="155" text-anchor="middle" font-size="14">Bug Fix: 1.2K tokens</text>
+  
+  <rect x="470" y="180" width="260" height="40" rx="5" fill="#FFE0B2" stroke="#F57C00"/>
+  <text x="600" y="205" text-anchor="middle" font-size="14">Explanation: 500 tokens</text>
+  
+  <rect x="470" y="230" width="260" height="40" rx="5" fill="#FFE0B2" stroke="#F57C00"/>
+  <text x="600" y="255" text-anchor="middle" font-size="14">Tests: 600 tokens</text>
+  
+  <rect x="470" y="280" width="260" height="40" rx="5" fill="#FFE0B2" stroke="#F57C00"/>
+  <text x="600" y="305" text-anchor="middle" font-size="14">Docs/PR: 400 tokens</text>
+  
+  <text x="600" y="350" text-anchor="middle" font-size="16" font-weight="bold" fill="#E65100">Total: ~3K tokens</text>
+  
+  <!-- Center arrow -->
+  <line x1="360" y1="230" x2="440" y2="230" stroke="#666" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="400" y="220" text-anchor="middle" font-size="14" fill="#666">Process</text>
+  
+  <!-- Key insight box -->
+  <rect x="150" y="400" width="500" height="70" rx="10" fill="#FFF9C4" stroke="#F9A825" stroke-width="2"/>
+  <text x="400" y="425" text-anchor="middle" font-size="16" font-weight="bold">Key Insight: Output ≈ Input in debugging</text>
+  <text x="400" y="445" text-anchor="middle" font-size="14">Unlike typical LLM tasks, debugging requires substantial output generation</text>
+  <text x="400" y="460" text-anchor="middle" font-size="12" fill="#666">Quality matters more than quantity</text>
+  
+  <!-- Comparison with other tasks -->
+  <g transform="translate(50, 480)">
+    <text x="0" y="0" font-size="12" fill="#666">Typical LLM tasks: 10K+ input → 100 output</text>
+    <text x="400" y="0" font-size="12" fill="#666">Debugging: 3.6K input → 3K output</text>
+  </g>
+</svg>

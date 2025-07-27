@@ -1,0 +1,59 @@
+<svg viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Title -->
+  <text x="350" y="30" text-anchor="middle" font-size="20" font-weight="bold">Ablation Analysis: Component Importance</text>
+  <text x="350" y="50" text-anchor="middle" font-size="14" fill="#666">Debug Success Rate with Components Removed</text>
+  
+  <!-- Y-axis -->
+  <line x1="80" y1="80" x2="80" y2="320" stroke="#333" stroke-width="2"/>
+  <text x="30" y="85" text-anchor="middle" font-size="12">100%</text>
+  <text x="30" y="125" text-anchor="middle" font-size="12">80%</text>
+  <text x="30" y="165" text-anchor="middle" font-size="12">60%</text>
+  <text x="30" y="205" text-anchor="middle" font-size="12">40%</text>
+  <text x="30" y="245" text-anchor="middle" font-size="12">20%</text>
+  <text x="30" y="285" text-anchor="middle" font-size="12">0%</text>
+  
+  <!-- X-axis -->
+  <line x1="80" y1="320" x2="650" y2="320" stroke="#333" stroke-width="2"/>
+  
+  <!-- Grid lines -->
+  <line x1="80" y1="120" x2="650" y2="120" stroke="#ddd" stroke-width="1" stroke-dasharray="2,2"/>
+  <line x1="80" y1="160" x2="650" y2="160" stroke="#ddd" stroke-width="1" stroke-dasharray="2,2"/>
+  <line x1="80" y1="200" x2="650" y2="200" stroke="#ddd" stroke-width="1" stroke-dasharray="2,2"/>
+  <line x1="80" y1="240" x2="650" y2="240" stroke="#ddd" stroke-width="1" stroke-dasharray="2,2"/>
+  <line x1="80" y1="280" x2="650" y2="280" stroke="#ddd" stroke-width="1" stroke-dasharray="2,2"/>
+  
+  <!-- Bars -->
+  <!-- Full Model: 65.3% -->
+  <rect x="100" y="165" width="100" height="155" fill="#3B82F6" stroke="#2563EB" stroke-width="2"/>
+  <text x="150" y="160" text-anchor="middle" font-size="14" font-weight="bold">65.3%</text>
+  <text x="150" y="340" text-anchor="middle" font-size="12">Full Model</text>
+  
+  <!-- No MCA: 35.9% (45% drop) -->
+  <rect x="230" y="223" width="100" height="97" fill="#EF4444" stroke="#DC2626" stroke-width="1"/>
+  <text x="280" y="218" text-anchor="middle" font-size="14" font-weight="bold">35.9%</text>
+  <text x="280" y="340" text-anchor="middle" font-size="12">No Multi-Code</text>
+  <text x="280" y="355" text-anchor="middle" font-size="12">Association</text>
+  <text x="280" y="370" text-anchor="middle" font-size="11" fill="#DC2626">-45% drop</text>
+  
+  <!-- Static Memory: 40.5% -->
+  <rect x="360" y="208" width="100" height="112" fill="#F59E0B" stroke="#D97706" stroke-width="1"/>
+  <text x="410" y="203" text-anchor="middle" font-size="14" font-weight="bold">40.5%</text>
+  <text x="410" y="340" text-anchor="middle" font-size="12">Static Memory</text>
+  <text x="410" y="355" text-anchor="middle" font-size="12">Only</text>
+  <text x="410" y="370" text-anchor="middle" font-size="11" fill="#D97706">-38% drop</text>
+  
+  <!-- No Orchestration: 35.9% -->
+  <rect x="490" y="223" width="100" height="97" fill="#EF4444" stroke="#DC2626" stroke-width="1"/>
+  <text x="540" y="218" text-anchor="middle" font-size="14" font-weight="bold">35.9%</text>
+  <text x="540" y="340" text-anchor="middle" font-size="12">No Debug</text>
+  <text x="540" y="355" text-anchor="middle" font-size="12">Loop</text>
+  <text x="540" y="370" text-anchor="middle" font-size="11" fill="#DC2626">-45% drop</text>
+  
+  <!-- Y-axis label -->
+  <text x="20" y="200" text-anchor="middle" font-size="14" transform="rotate(-90 20 200)">Debug Success Rate</text>
+  
+  <!-- Key findings box -->
+  <rect x="100" y="380" width="500" height="60" rx="5" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1"/>
+  <text x="350" y="400" text-anchor="middle" font-size="13" font-weight="bold">Key Finding: All components are essential</text>
+  <text x="350" y="420" text-anchor="middle" font-size="12">Multi-Code Association and Debug Loop show largest impact when removed</text>
+</svg>

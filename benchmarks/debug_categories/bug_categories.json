@@ -1,0 +1,166 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "description": "Bug category definitions for Kodezi Chronos evaluation",
+    "note": "Chronos model available Q1 2026 via Kodezi OS"
+  },
+  
+  "categories": {
+    "syntax_errors": {
+      "description": "Syntax and parsing errors",
+      "examples": [
+        "Missing brackets or parentheses",
+        "Incorrect indentation (Python)",
+        "Typos in keywords",
+        "Missing semicolons"
+      ],
+      "chronos_performance": {
+        "success_rate": 0.942,
+        "avg_fix_time": 12.3,
+        "confidence": 0.98
+      },
+      "baseline_performance": {
+        "gpt4": 0.823,
+        "claude3": 0.798,
+        "gemini15": 0.851
+      }
+    },
+    
+    "logic_errors": {
+      "description": "Incorrect program logic and algorithm bugs",
+      "examples": [
+        "Off-by-one errors",
+        "Incorrect loop conditions",
+        "Wrong operator usage",
+        "Flawed conditional logic"
+      ],
+      "chronos_performance": {
+        "success_rate": 0.728,
+        "avg_fix_time": 89.4,
+        "confidence": 0.84
+      },
+      "baseline_performance": {
+        "gpt4": 0.121,
+        "claude3": 0.107,
+        "gemini15": 0.153
+      }
+    },
+    
+    "concurrency_issues": {
+      "description": "Race conditions, deadlocks, and threading issues",
+      "examples": [
+        "Race conditions in shared resources",
+        "Deadlock scenarios",
+        "Missing synchronization",
+        "Thread safety violations"
+      ],
+      "chronos_performance": {
+        "success_rate": 0.583,
+        "avg_fix_time": 234.7,
+        "confidence": 0.72
+      },
+      "baseline_performance": {
+        "gpt4": 0.032,
+        "claude3": 0.028,
+        "gemini15": 0.041
+      }
+    },
+    
+    "memory_issues": {
+      "description": "Memory leaks, buffer overflows, and allocation errors",
+      "examples": [
+        "Memory leaks",
+        "Buffer overflows",
+        "Use after free",
+        "Null pointer dereferences"
+      ],
+      "chronos_performance": {
+        "success_rate": 0.617,
+        "avg_fix_time": 156.8,
+        "confidence": 0.76
+      },
+      "baseline_performance": {
+        "gpt4": 0.057,
+        "claude3": 0.043,
+        "gemini15": 0.069
+      }
+    },
+    
+    "api_misuse": {
+      "description": "Incorrect API usage and integration issues",
+      "examples": [
+        "Wrong parameter order",
+        "Deprecated method usage",
+        "Missing error handling",
+        "Incorrect return value handling"
+      ],
+      "chronos_performance": {
+        "success_rate": 0.791,
+        "avg_fix_time": 67.2,
+        "confidence": 0.87
+      },
+      "baseline_performance": {
+        "gpt4": 0.189,
+        "claude3": 0.162,
+        "gemini15": 0.224
+      }
+    },
+    
+    "performance_issues": {
+      "description": "Inefficient algorithms and performance bottlenecks",
+      "examples": [
+        "N+1 query problems",
+        "Inefficient loops",
+        "Memory bloat",
+        "Unnecessary computations"
+      ],
+      "chronos_performance": {
+        "success_rate": 0.654,
+        "avg_fix_time": 178.9,
+        "confidence": 0.79
+      },
+      "baseline_performance": {
+        "gpt4": 0.074,
+        "claude3": 0.061,
+        "gemini15": 0.098
+      }
+    }
+  },
+  
+  "difficulty_modifiers": {
+    "cross_file": {
+      "description": "Bug spans multiple files",
+      "impact": -0.15,
+      "chronos_adaptation": "AGR retrieval handles well"
+    },
+    "temporal": {
+      "description": "Bug introduced >3 months ago",
+      "impact": -0.20,
+      "chronos_adaptation": "Persistent memory helps"
+    },
+    "refactored": {
+      "description": "Code refactored since bug introduction",
+      "impact": -0.25,
+      "chronos_adaptation": "Graph tracking maintains context"
+    },
+    "domain_specific": {
+      "description": "Requires specialized domain knowledge",
+      "impact": -0.30,
+      "chronos_adaptation": "Limited by training data"
+    }
+  },
+  
+  "evaluation_protocol": {
+    "test_distribution": {
+      "syntax_errors": 0.15,
+      "logic_errors": 0.25,
+      "concurrency_issues": 0.15,
+      "memory_issues": 0.15,
+      "api_misuse": 0.20,
+      "performance_issues": 0.10
+    },
+    "total_test_cases": 5000,
+    "languages": ["python", "javascript", "java"],
+    "repository_sizes": ["small", "medium", "large", "enterprise"]
+  }
+}

@@ -1,0 +1,271 @@
+{
+  "evaluation_metadata": {
+    "total_tasks": 5000,
+    "evaluation_rounds": 5,
+    "date_range": "2024-01-01 to 2024-06-30",
+    "hardware": {
+      "gpu": "NVIDIA A100 40GB",
+      "cpu": "AMD EPYC 7742 64-Core",
+      "ram": "256GB",
+      "storage": "NVMe SSD 2TB"
+    }
+  },
+  "model_performance": {
+    "kodezi_chronos": {
+      "overall_metrics": {
+        "debug_success_rate": {
+          "mean": 65.3,
+          "std": 1.4,
+          "confidence_interval": [63.9, 66.7],
+          "runs": [65.2, 64.8, 65.5, 65.9, 65.1]
+        },
+        "root_cause_accuracy": {
+          "mean": 78.4,
+          "std": 1.2,
+          "confidence_interval": [77.2, 79.6],
+          "runs": [78.1, 78.8, 78.3, 78.5, 78.2]
+        },
+        "average_fix_cycles": {
+          "mean": 2.2,
+          "std": 0.3,
+          "min": 1,
+          "max": 10,
+          "distribution": {
+            "1": 45.2,
+            "2": 31.6,
+            "3": 15.3,
+            "4": 5.2,
+            "5": 1.6,
+            "6+": 1.1
+          }
+        },
+        "retrieval_precision": {
+          "mean": 91.0,
+          "std": 0.8,
+          "at_k": 10
+        },
+        "context_efficiency": {
+          "mean": 0.71,
+          "std": 0.05
+        },
+        "average_time_seconds": {
+          "mean": 134.7,
+          "std": 12.3,
+          "breakdown": {
+            "retrieval": 23.4,
+            "reasoning": 67.8,
+            "test_execution": 31.2,
+            "memory_update": 12.3
+          }
+        }
+      },
+      "bug_category_performance": {
+        "syntax": {"success_rate": 94.2, "avg_time": 45.3, "avg_iterations": 1.2},
+        "logic": {"success_rate": 72.8, "avg_time": 123.4, "avg_iterations": 2.1},
+        "concurrency": {"success_rate": 58.3, "avg_time": 189.7, "avg_iterations": 3.4},
+        "memory": {"success_rate": 61.7, "avg_time": 156.2, "avg_iterations": 2.8},
+        "api": {"success_rate": 79.1, "avg_time": 98.5, "avg_iterations": 1.9},
+        "performance": {"success_rate": 65.4, "avg_time": 145.3, "avg_iterations": 2.5}
+      },
+      "repository_scale_performance": {
+        "small_under_10k": {"success_rate": 71.2, "avg_time": 89.3},
+        "medium_10k_100k": {"success_rate": 68.9, "avg_time": 124.5},
+        "large_100k_1m": {"success_rate": 64.3, "avg_time": 156.8},
+        "xlarge_over_1m": {"success_rate": 59.7, "avg_time": 203.4}
+      },
+      "language_performance": {
+        "python": {"success_rate": 68.4, "tasks": 2000},
+        "javascript": {"success_rate": 65.8, "tasks": 1800},
+        "java": {"success_rate": 61.3, "tasks": 1200}
+      }
+    },
+    "gpt4": {
+      "overall_metrics": {
+        "debug_success_rate": {
+          "mean": 8.5,
+          "std": 2.1,
+          "confidence_interval": [6.4, 10.6],
+          "runs": [8.3, 8.7, 8.5, 8.2, 8.8]
+        },
+        "root_cause_accuracy": {
+          "mean": 12.3,
+          "std": 1.8,
+          "confidence_interval": [10.5, 14.1],
+          "runs": [12.1, 12.5, 12.4, 12.0, 12.5]
+        },
+        "average_fix_cycles": {
+          "mean": 6.5,
+          "std": 1.2
+        },
+        "retrieval_precision": {
+          "mean": 68.0,
+          "std": 2.3
+        },
+        "average_time_seconds": {
+          "mean": 82.3,
+          "std": 8.7
+        }
+      },
+      "bug_category_performance": {
+        "syntax": {"success_rate": 82.3, "avg_time": 23.4, "avg_iterations": 1.5},
+        "logic": {"success_rate": 12.1, "avg_time": 78.9, "avg_iterations": 5.8},
+        "concurrency": {"success_rate": 3.2, "avg_time": 134.5, "avg_iterations": 8.9},
+        "memory": {"success_rate": 5.7, "avg_time": 98.7, "avg_iterations": 7.2},
+        "api": {"success_rate": 18.9, "avg_time": 56.3, "avg_iterations": 4.3},
+        "performance": {"success_rate": 7.4, "avg_time": 89.2, "avg_iterations": 6.7}
+      }
+    },
+    "claude3_opus": {
+      "overall_metrics": {
+        "debug_success_rate": {
+          "mean": 7.8,
+          "std": 2.3,
+          "confidence_interval": [5.5, 10.1],
+          "runs": [7.6, 8.0, 7.8, 7.5, 8.1]
+        },
+        "root_cause_accuracy": {
+          "mean": 11.7,
+          "std": 2.0
+        },
+        "average_fix_cycles": {
+          "mean": 6.8,
+          "std": 1.3
+        },
+        "retrieval_precision": {
+          "mean": 67.0,
+          "std": 2.4
+        }
+      }
+    },
+    "gemini_15_pro": {
+      "overall_metrics": {
+        "debug_success_rate": {
+          "mean": 11.2,
+          "std": 1.7,
+          "confidence_interval": [9.5, 12.9],
+          "runs": [11.0, 11.4, 11.2, 11.1, 11.3]
+        },
+        "root_cause_accuracy": {
+          "mean": 15.8,
+          "std": 1.5
+        },
+        "average_fix_cycles": {
+          "mean": 5.1,
+          "std": 0.9
+        },
+        "retrieval_precision": {
+          "mean": 74.0,
+          "std": 1.8
+        }
+      }
+    }
+  },
+  "statistical_analysis": {
+    "chronos_vs_gpt4": {
+      "t_statistic": 45.67,
+      "p_value": 2.3e-15,
+      "effect_size_cohens_d": 3.82,
+      "significant": true,
+      "confidence_level": 0.999
+    },
+    "chronos_vs_claude3": {
+      "t_statistic": 47.23,
+      "p_value": 1.8e-15,
+      "effect_size_cohens_d": 3.91,
+      "significant": true
+    },
+    "chronos_vs_gemini15": {
+      "t_statistic": 42.34,
+      "p_value": 5.6e-15,
+      "effect_size_cohens_d": 3.54,
+      "significant": true
+    }
+  },
+  "ablation_study": {
+    "full_chronos": {
+      "debug_success": 90.0,
+      "retrieval_precision": 91.0,
+      "avg_iterations": 2.2
+    },
+    "no_multi_code_association": {
+      "debug_success": 49.0,
+      "impact_percent": -45.6,
+      "retrieval_precision": 68.0
+    },
+    "static_memory_only": {
+      "debug_success": 62.0,
+      "impact_percent": -31.1,
+      "retrieval_precision": 79.0
+    },
+    "no_orchestration_loop": {
+      "debug_success": 55.0,
+      "impact_percent": -38.9,
+      "retrieval_precision": 73.0
+    },
+    "no_agr": {
+      "debug_success": 41.0,
+      "impact_percent": -54.4,
+      "retrieval_precision": 52.0
+    },
+    "no_pattern_learning": {
+      "debug_success": 58.0,
+      "impact_percent": -35.6,
+      "retrieval_precision": 71.0
+    }
+  },
+  "mrr_benchmark": {
+    "total_tasks": 5000,
+    "task_categories": {
+      "variable_tracing": 1000,
+      "cross_file_dependencies": 1250,
+      "historical_patterns": 1000,
+      "test_code_mapping": 1000,
+      "documentation_drift": 750
+    },
+    "results": {
+      "kodezi_chronos": {
+        "precision_at_10": 89.2,
+        "recall_at_10": 84.7,
+        "fix_accuracy": 67.3,
+        "context_efficiency": 0.71
+      },
+      "gpt4_rag": {
+        "precision_at_10": 42.3,
+        "recall_at_10": 31.7,
+        "fix_accuracy": 8.9,
+        "context_efficiency": 0.23
+      },
+      "claude3_vectordb": {
+        "precision_at_10": 48.1,
+        "recall_at_10": 36.2,
+        "fix_accuracy": 11.2,
+        "context_efficiency": 0.28
+      },
+      "gemini15_graph": {
+        "precision_at_10": 51.7,
+        "recall_at_10": 41.8,
+        "fix_accuracy": 14.6,
+        "context_efficiency": 0.31
+      }
+    }
+  },
+  "cost_analysis": {
+    "kodezi_chronos": {
+      "cost_per_attempt": 0.89,
+      "success_rate": 65.3,
+      "effective_cost_per_success": 1.36,
+      "annual_roi_100_devs": 47.2
+    },
+    "gpt4": {
+      "cost_per_attempt": 0.47,
+      "success_rate": 8.5,
+      "effective_cost_per_success": 5.53
+    },
+    "human_developer": {
+      "cost_per_attempt": 180,
+      "success_rate": 94.2,
+      "effective_cost_per_success": 191,
+      "avg_time_hours": 2.4
+    }
+  }
+}

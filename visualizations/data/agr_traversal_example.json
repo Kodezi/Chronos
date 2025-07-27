@@ -1,0 +1,138 @@
+{
+  "title": "Adaptive Graph-Guided Retrieval Example",
+  "description": "Example of AGR traversing code graph to find debugging context",
+  "scenario": "NullPointerException in authentication module",
+  "steps": [
+    {
+      "hop": 0,
+      "label": "Initial Error Location",
+      "nodes": [
+        {
+          "id": "export_service",
+          "type": "error_location",
+          "file": "ExportService.java:142",
+          "description": "NullPointerException thrown here"
+        }
+      ],
+      "confidence": 0.2,
+      "action": "Start from error location"
+    },
+    {
+      "hop": 1,
+      "label": "Direct Dependencies (k=1)",
+      "nodes": [
+        {
+          "id": "auth_service",
+          "type": "dependency",
+          "file": "AuthService.java",
+          "description": "Authentication service called"
+        },
+        {
+          "id": "user_repository",
+          "type": "dependency",
+          "file": "UserRepository.java",
+          "description": "User data access"
+        },
+        {
+          "id": "stack_trace",
+          "type": "error_context",
+          "description": "Stack trace analysis"
+        }
+      ],
+      "edges": [
+        {"from": "export_service", "to": "auth_service", "type": "calls", "weight": 1.0},
+        {"from": "export_service", "to": "user_repository", "type": "uses", "weight": 0.8}
+      ],
+      "confidence": 0.45,
+      "action": "Expand to direct dependencies"
+    },
+    {
+      "hop": 2,
+      "label": "Extended Context (k=2)",
+      "nodes": [
+        {
+          "id": "auth_refactor_commit",
+          "type": "historical",
+          "commit": "a3f42b1",
+          "description": "Recent auth token refresh refactor"
+        },
+        {
+          "id": "token_cache",
+          "type": "implementation",
+          "file": "TokenCache.java",
+          "description": "Token caching implementation"
+        },
+        {
+          "id": "auth_config",
+          "type": "configuration",
+          "file": "auth.yaml",
+          "description": "Authentication configuration"
+        }
+      ],
+      "edges": [
+        {"from": "auth_service", "to": "auth_refactor_commit", "type": "modified_by", "weight": 0.9},
+        {"from": "auth_service", "to": "token_cache", "type": "uses", "weight": 0.85},
+        {"from": "token_cache", "to": "auth_config", "type": "configured_by", "weight": 0.6}
+      ],
+      "confidence": 0.72,
+      "action": "Retrieve recent changes and implementations"
+    },
+    {
+      "hop": 3,
+      "label": "Deep Pattern Analysis (k=3)",
+      "nodes": [
+        {
+          "id": "similar_bug_1",
+          "type": "pattern",
+          "description": "Similar null pointer in NotificationService"
+        },
+        {
+          "id": "similar_bug_2",
+          "type": "pattern",
+          "description": "Similar issue in ReportService"
+        },
+        {
+          "id": "test_case",
+          "type": "test",
+          "file": "AuthServiceTest.java",
+          "description": "Failing test case"
+        },
+        {
+          "id": "fix_pattern",
+          "type": "solution",
+          "description": "Common fix: Add null check after async refresh"
+        }
+      ],
+      "edges": [
+        {"from": "auth_service", "to": "similar_bug_1", "type": "similar_to", "weight": 0.7},
+        {"from": "auth_service", "to": "similar_bug_2", "type": "similar_to", "weight": 0.7},
+        {"from": "similar_bug_1", "to": "fix_pattern", "type": "fixed_by", "weight": 0.85}
+      ],
+      "confidence": 0.92,
+      "action": "Pattern matching reveals root cause"
+    }
+  ],
+  "result": {
+    "root_cause": "Missing null check in token refresh after async provider changes",
+    "confidence": 0.92,
+    "nodes_explored": 12,
+    "relevant_nodes": 10,
+    "precision": 0.833,
+    "time_ms": 127
+  },
+  "visualization_hints": {
+    "node_colors": {
+      "error_location": "#ff4444",
+      "dependency": "#4444ff",
+      "historical": "#44ff44",
+      "pattern": "#ffaa44",
+      "solution": "#44ffaa"
+    },
+    "edge_styles": {
+      "calls": "solid",
+      "uses": "dashed",
+      "modified_by": "dotted",
+      "similar_to": "dashdot"
+    }
+  }
+}

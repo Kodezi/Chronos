@@ -1,0 +1,81 @@
+{
+  "bug_id": "mrr_python_001",
+  "language": "python",
+  "difficulty": "medium",
+  "bug_type": "null_pointer",
+  "repository_size": "~50K LOC",
+  "file_count": 28,
+  "time_span_months": 7,
+  "description": "Application crashes with AttributeError when processing user exports after recent authentication refactor",
+  "symptoms": [
+    "AttributeError: 'NoneType' object has no attribute 'name'",
+    "Occurs in production but not in development",
+    "Started after commit a1b2c3d (3 months ago)",
+    "Affects 5% of export operations"
+  ],
+  "scattered_context": {
+    "auth_service.py": {
+      "relevance": "critical",
+      "description": "Contains refactored authentication logic",
+      "key_changes": "Method 'get_token' renamed to 'refresh_token', null check removed"
+    },
+    "export_handler.py": {
+      "relevance": "critical", 
+      "description": "Export logic still using old method name",
+      "line": 142
+    },
+    "tests/test_auth.py": {
+      "relevance": "high",
+      "description": "Contains test for null token case, but not in CI",
+      "issue": "Test exists but excluded from CI pipeline"
+    },
+    "commits/a1b2c3d": {
+      "relevance": "high",
+      "description": "Authentication refactoring commit",
+      "date": "3 months ago"
+    },
+    "docs/api.md": {
+      "relevance": "medium",
+      "description": "Still documents old 'get_token' method"
+    }
+  },
+  "ground_truth": {
+    "root_cause": "Missing null check after authentication token refresh refactoring",
+    "files_involved": [
+      "auth_service.py",
+      "export_handler.py",
+      "models/user.py"
+    ],
+    "commits_relevant": [
+      "a1b2c3d",
+      "d4e5f6g",
+      "789abcd"
+    ],
+    "fix_location": {
+      "file": "export_handler.py",
+      "line": 142,
+      "function": "process_user_export",
+      "fix_type": "add_null_check"
+    },
+    "correct_fix": "if token is None: raise AuthenticationException('Failed to authenticate user for export')"
+  },
+  "test_suite": "tests/test_export.py",
+  "validation_criteria": {
+    "must_pass": [
+      "test_export_with_valid_auth",
+      "test_export_with_null_token",
+      "test_export_with_expired_token"
+    ],
+    "total_tests": 47,
+    "regression_tests": [
+      "test_concurrent_exports",
+      "test_large_data_export"
+    ]
+  },
+  "evaluation_metrics": {
+    "files_to_find": 5,
+    "commits_to_trace": 3,
+    "cross_file_dependencies": 4,
+    "temporal_span_days": 210
+  }
+}

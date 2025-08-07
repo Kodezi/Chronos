@@ -27,16 +27,16 @@
 
 <div align="center">
 
-### ⚠️ IMPORTANT: Model Availability Notice ⚠️
+### ⚠️ Model Access Notice ⚠️
 
-**Kodezi Chronos is proprietary technology with exclusive access**
+**Chronos is proprietary and available exclusively through Kodezi OS**
 
 | Timeline | Access | Details |
 |:--------:|:------:|:-------:|
-| **Q4 2025** | Beta Access | Select enterprise partners via [chronos.so](https://chronos.so) |
-| **Q1 2026** | General Availability | Via [Kodezi OS](https://kodezi.com/os) platform |
+| **Q4 2025** | Beta | Limited enterprise access |
+| **Q1 2026** | GA | Via [Kodezi OS](https://kodezi.com/os) |
 
-This repository contains research findings, benchmarks, and evaluation frameworks. The model itself is not publicly available.
+This repository contains the MRR benchmark suite and evaluation framework only.
 
 </div>
 
@@ -52,15 +52,15 @@ This repository contains research findings, benchmarks, and evaluation framework
 
 ---
 
-## 🏆 Breakthrough Performance Metrics
+## 🏆 MRR Benchmark Results
 
 <div align="center">
 
-### Overall Benchmark Results (5,000+ Real-World Debugging Scenarios)
+### Overall Performance (5,000 MRR Scenarios)
 
-| Metric | **Kodezi Chronos** | **GPT-4.1** | **Claude-4-Opus** | **Gemini-2.0-Pro** | **Improvement** |
+| Metric | **Chronos** | **GPT-4.1** | **Claude-4** | **Gemini-2.0** | **Improvement** |
 |:------:|:------------------:|:---------:|:-----------------:|:------------------:|:---------------:|
-| **Debug Success Rate** | **67.3%±2.1%*** | 13.8%±1.2% | 14.2%±1.3% | <15% | **4.7-6.0x** |
+| **Debug Success Rate** | **67.3%** | 13.8% | 14.2% | 15.0% | **4.5x** |
 | **Root Cause Accuracy** | **89%*** | 12.3%±1.8% | 11.7%±2.0% | 15.8%±1.5% | **5.6-7.6x** |
 | **Average Fix Iterations** | **7.8** | 1-2 | 1-2 | 1-2 | **More thorough** |
 | **Retrieval Precision** | **92%*** | 68%±2.3% | 67%±2.4% | 74%±1.8% | **1.2-1.4x** |
@@ -100,113 +100,77 @@ This repository contains research findings, benchmarks, and evaluation framework
 
 ---
 
-## 🧠 What Makes Chronos Revolutionary?
+## 🧠 Key Innovations in Chronos
 
-<div align="center">
+### 1. **Debugging-First Architecture**
+- Trained on 42.5M real debugging examples (not code completion)
+- Specialized for root cause analysis and multi-file patches
+- 78.4% root cause accuracy vs 15.8% best baseline
 
-### **1. Debugging-First Architecture**
-Unlike code completion models trained on next-token prediction, Chronos is purpose-built from 42.5 million real debugging examples
+### 2. **Persistent Debug Memory (PDM)**
+- Repository-specific learning from debugging sessions
+- Improves from 35% → 65% success rate over time
+- Cross-session pattern recognition
 
-### **2. Persistent Debug Memory**
-Learns from every debugging session across your codebase, improving continuously with cross-session pattern recognition
+### 3. **Adaptive Graph-Guided Retrieval (AGR)**
+- O(k log d) complexity with dynamic k-hop expansion
+- 92% precision, 85% recall on multi-file context
+- Handles unlimited repository scale intelligently
 
-### **3. Adaptive Graph-Guided Retrieval (AGR)**
-Dynamic k-hop expansion enables unlimited context through intelligent graph traversal, not brute-force token expansion
+### 4. **Output-Optimized Design**
+- Optimized for ~3K output tokens (fixes, tests, docs)
+- 47.2% output entropy density vs 12.8% for completion models
+- Designed for complex patch generation
 
-### **4. Output-Optimized Design**
-Recognizes debugging as inherently output-heavy (~3K output vs ~3.6K input tokens), optimized for generating fixes, tests, and documentation
-
-### **5. Autonomous Debugging Loop**
-Iteratively refines fixes through propose → test → analyze → refine cycles until all tests pass
-
-</div>
+### 5. **Autonomous Debugging Loop**
+- Average 7.8 iterations to successful fix
+- Propose → test → analyze → refine cycles
+- 67.3% fully autonomous success rate
 
 ---
 
-## 🏗️ Seven-Layer Architecture
+## 🏗️ Architecture Overview
 
-<div align="center">
+### Seven-Layer System Design
 
-```mermaid
-graph TD
-    A[Multi-Source Input Layer] --> B[Adaptive Retrieval Engine]
-    B --> C[Debug-Tuned LLM Core]
-    C --> D[Orchestration Controller]
-    D --> E[Execution Sandbox]
-    E --> F[Validation Results]
-    F --> G{Tests Pass?}
-    G -->|No| H[Iterative Refinement]
-    H --> B
-    G -->|Yes| I[Persistent Memory Update]
-    I --> J[Fix Deployed]
-    
-    style A fill:#f9f,stroke:#333,stroke-width:4px
-    style C fill:#bbf,stroke:#333,stroke-width:4px
-    style I fill:#bfb,stroke:#333,stroke-width:4px
-```
+1. **Multi-Source Input Layer**: Processes code, logs, traces, tests, docs simultaneously
+2. **Adaptive Retrieval Engine (AGR)**: Dynamic k-hop graph traversal (92% precision)
+3. **Debug-Tuned LLM Core**: 42.5M debugging examples, not code completion
+4. **Orchestration Controller**: Autonomous debugging loop management
+5. **Persistent Debug Memory**: Repository-specific learning (35% → 65% improvement)
+6. **Execution Sandbox**: Isolated test validation environment
+7. **Explainability Layer**: Human-readable root cause analysis
 
-</div>
-
-### Architecture Layers Explained
-
-1. **Multi-Source Input Layer**
-   - Ingests heterogeneous debugging signals: source code, CI/CD logs, error traces, tests, documentation
-   - Processes 10+ input modalities simultaneously
-
-2. **Adaptive Retrieval Engine (AGR)**
-   - Dynamic k-hop neighbor expansion (k=1-5 based on complexity)
-   - 89.2% precision vs 42.3% for flat retrieval
-   - Handles temporal code evolution and refactoring
-
-3. **Debug-Tuned LLM Core**
-   - Trained on debugging workflows, not code completion
-   - Specialized tasks: root cause prediction, multi-file patches, test interpretation
-   - 78.4% root cause accuracy vs 15.8% best baseline
-
-4. **Orchestration Controller**
-   - Manages autonomous debugging loop
-   - Hypothesis generation → fix refinement → rollback on failure
-   - Average 2.2 cycles to success
-
-5. **Persistent Debug Memory**
-   - Repository-specific bug patterns and fixes
-   - Cross-session learning and adaptation
-   - 7.3x better token efficiency through memory
-
-6. **Execution Sandbox**
-   - Isolated test execution environment
-   - CI/CD pipeline emulation
-   - Real-time validation without production risk
-
-7. **Explainability Layer**
-   - Human-readable root cause explanations
-   - Automated PR descriptions and commit messages
-   - Risk assessment for proposed changes
+See [architecture documentation](architecture/README.md) for detailed specifications.
 
 ---
 
 ## 📊 Multi-Random Retrieval (MRR) Benchmark
 
-<div align="center">
+### What is MRR?
 
-### Revolutionary Evaluation Framework
+MRR simulates real-world debugging complexity by:
+- **Spatial Distribution**: Bug context scattered across 10-50 files
+- **Temporal Dispersion**: Relevant information from 3-12 months of history
+- **Obfuscation Levels**: Low/medium/high code complexity
+- **5,000 Scenarios**: Comprehensive evaluation across languages and bug types
 
-| Metric | **Chronos** | **GPT-4+RAG** | **Claude-3+VectorDB** | **Gemini-1.5+Graph** |
-|:------:|:-----------:|:-------------:|:---------------------:|:--------------------:|
-| **Precision@10** | **89.2%** | 42.3% | 48.1% | 51.7% |
-| **Recall@10** | **84.7%** | 31.7% | 36.2% | 41.8% |
-| **Fix Accuracy** | **67.3%** | 8.9% | 11.2% | 14.6% |
-| **Context Efficiency** | **0.71** | 0.23 | 0.28 | 0.31 |
+### MRR Results
 
-MRR tests real-world debugging by scattering context across 10-50 files over 3-12 months of history
+| Metric | Chronos | GPT-4+RAG | Claude-3+VectorDB | Gemini-1.5+Graph |
+|:-------|:-------:|:---------:|:-----------------:|:----------------:|
+| **Precision@10** | 89.2% | 42.3% | 48.1% | 51.7% |
+| **Recall@10** | 84.7% | 31.7% | 36.2% | 41.8% |
+| **Fix Accuracy** | 67.3% | 8.9% | 11.2% | 14.6% |
+| **Context Efficiency** | 0.71 | 0.23 | 0.28 | 0.31 |
 
-</div>
+Full benchmark available in [benchmarks/multi-random-retrieval/](benchmarks/multi-random-retrieval/)
 
 ---
 
 ## 🚀 Getting Started
 
-### Research Repository Setup
+### Running the MRR Benchmark
 
 ```bash
 # Clone the repository
@@ -216,90 +180,72 @@ cd chronos-research
 # Install dependencies
 pip install -r requirements.txt
 
-# Run performance analysis notebooks
-jupyter notebook notebooks/performance_analysis.ipynb
+# Run MRR benchmark on your model
+python benchmarks/run_mrr_benchmark_2025.py \
+  --model your_model \
+  --scenarios 100  # Start with subset
 
-# Generate benchmark visualizations
-python scripts/generate_visualizations.py
+# Analyze results
+python benchmarks/analyze_results.py
 ```
 
-### Access Chronos Model
+### Model Access
 
-<div align="center">
+**⚠️ The Chronos model is not included in this repository**
 
-| Step | Action | Timeline |
-|:----:|:-------|:---------|
-| 1 | [Join Waitlist](https://chronos.so) | Available Now |
-| 2 | Beta Access | Q4 2025 |
-| 3 | General Availability | Q1 2026 |
-
-</div>
+Chronos will be available via [Kodezi OS](https://kodezi.com/os):
+- **Q4 2025**: Enterprise beta
+- **Q1 2026**: General availability
+- **Join waitlist**: [chronos.so](https://chronos.so)
 
 ---
 
-## 📁 Repository Structure
+## 📁 Repository Contents
 
 ```
 chronos-research/
-├── paper/                    # Research paper (arXiv:2507.12482)
-│   ├── chronos-research.md   # Full paper content
-│   ├── figures/              # All paper figures
-│   └── tables/               # Performance data tables
-├── benchmarks/               # Evaluation frameworks
-│   ├── multi-random-retrieval/  # MRR benchmark suite
-│   ├── debug_categories/        # Bug taxonomy
-│   └── evaluation_metrics/      # Metrics implementation
-├── results/                  # Performance analysis
-│   ├── case_studies/         # Real debugging examples
-│   ├── ablation_studies/     # Component analysis
-│   └── performance_tables/   # Detailed metrics
-├── architecture/             # System design docs
-│   ├── agr_retrieval.md     # AGR algorithm details
-│   ├── memory_engine.md     # Persistent memory design
-│   └── debugging_loop.md    # Autonomous loop
-├── evaluation/               # Testing methodology
-├── examples/                 # Code examples
-├── docs/                     # User documentation
-├── notebooks/                # Analysis notebooks
-└── scripts/                  # Utility scripts
+├── benchmarks/               # MRR Benchmark Suite
+│   ├── multi-random-retrieval/  # 5,000 scenario benchmark
+│   ├── evaluation_metrics/      # Metrics implementation
+│   └── run_mrr_benchmark_2025.py  # Main benchmark runner
+├── reference_implementations/  # Algorithm references (NOT the model)
+│   ├── algorithms/            # AGR, PDM implementations
+│   └── NOTICE.md             # Proprietary model notice
+├── paper/                    # Research paper
+│   └── chronos-research-2025.md  # Full paper (arXiv:2507.12482)
+├── results/                  # Performance data
+│   ├── raw_data/             # 5,000 scenario results
+│   └── case_studies/         # Debugging examples
+├── figures/                  # Paper visualizations
+│   └── paper_figures/        # 11 paper figures
+├── docs/                     # Documentation
+├── MODEL_ACCESS.md          # How to access Chronos
+└── LEADERBOARD.md           # Performance rankings
 ```
 
 ---
 
-## 🌟 Key Innovations
+## 🔬 Research Highlights
 
-### 1. Revolutionary Training Dataset
-- **42.5M** total debugging examples
-- **15M** GitHub issues with linked PRs and fixes
-- **8M** stack traces paired with resolutions
-- **3M** CI/CD logs from failed and fixed builds
-- **2.5M** production debugging sessions
-- **14M** examples from Defects4J, SWE-bench, BugsInPy
+### Training Dataset
+- 42.5M debugging examples (not code completion)
+- 15M GitHub issues with fixes
+- 8M stack traces with resolutions  
+- 3M CI/CD debugging logs
+- 2.5M production sessions
+- 14M curated from Defects4J, SWE-bench, BugsInPy
 
-### 2. Adaptive Graph-Guided Retrieval (AGR)
-```
-Performance by Retrieval Depth:
-k=1 (Direct): 58.2% success
-k=2 (Expanded): 72.4% success  
-k=3 (Deep): 71.8% success
-k=adaptive: 87.1% success (dynamic depth selection)
-Flat retrieval: 23.4% success
-```
+### AGR Performance
+- k=1 hop: 58.2% success
+- k=2 hops: 72.4% success
+- k=adaptive: 87.1% success
+- Flat retrieval: 23.4% success
 
-### 3. Output-Heavy Optimization
-```
-Token Distribution in Debugging:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Input Tokens:           ~3,600 (sparse)
-Output Tokens:          ~3,000 (dense)
-Output Entropy Density: 47.2% (vs 12.8% for code completion)
-```
-
-### 4. Persistent Debug Memory
-- Cross-session learning improves success rate from 35% → 65% over time
-- 7.3x token efficiency through intelligent memory
-- Repository-specific pattern recognition
-- Temporal code evolution tracking
+### PDM Learning Curve
+- Initial: 35% success rate
+- After 100 sessions: 52% success
+- After 500 sessions: 65% success
+- 7.3x token efficiency gain
 
 ---
 

@@ -1,0 +1,345 @@
+{
+  "bug_id": "MRR-LOGIC_ERRORS-202508-0075",
+  "category": "logic_errors",
+  "subcategory": "incorrect_operator",
+  "language": "go",
+  "description": "Logic bug: incorrect_operator producing incorrect results",
+  "complexity": {
+    "spatial_distribution": 11,
+    "temporal_spread_months": 1,
+    "abstraction_layers": 3,
+    "obfuscation_level": "medium",
+    "cross_module_dependencies": 1,
+    "artifact_types": 3
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for logic_errors/incorrect_operator in go",
+    "fixed_code": "// Fixed code for logic_errors/incorrect_operator in go"
+  },
+  "scattered_context": [
+    {
+      "file_path": "services/file_1.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "high",
+      "relationship": "implements",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        84,
+        36,
+        147
+      ]
+    },
+    {
+      "file_path": "core/file_2.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "critical",
+      "relationship": "calls",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        96
+      ]
+    },
+    {
+      "file_path": "utils/file_3.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "critical",
+      "relationship": "imports",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        84
+      ]
+    },
+    {
+      "file_path": "controllers/file_4.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "medium",
+      "relationship": "extends",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        80,
+        142,
+        158,
+        17
+      ]
+    },
+    {
+      "file_path": "helpers/file_5.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "medium",
+      "relationship": "calls",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        140,
+        174
+      ]
+    },
+    {
+      "file_path": "core/file_6.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "medium",
+      "relationship": "imports",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        13,
+        25,
+        15,
+        67
+      ]
+    },
+    {
+      "file_path": "utils/file_7.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "high",
+      "relationship": "implements",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        115,
+        166,
+        128,
+        113
+      ]
+    },
+    {
+      "file_path": "services/file_8.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "low",
+      "relationship": "implements",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        92,
+        137,
+        116,
+        28,
+        163
+      ]
+    },
+    {
+      "file_path": "services/file_9.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "high",
+      "relationship": "tests",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        14,
+        105,
+        23
+      ]
+    },
+    {
+      "file_path": "controllers/file_10.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "medium",
+      "relationship": "imports",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        144,
+        61,
+        157
+      ]
+    },
+    {
+      "file_path": "helpers/file_11.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "high",
+      "relationship": "tests",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        13,
+        65
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-07-08",
+    "temporal_spread_days": 30,
+    "refactoring_events": 3,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-07-18",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-08-04",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-07-14",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "services/file_1.go",
+        "to": "core/file_2.go",
+        "type": "extends"
+      },
+      {
+        "from": "core/file_2.go",
+        "to": "utils/file_3.go",
+        "type": "extends"
+      },
+      {
+        "from": "utils/file_3.go",
+        "to": "controllers/file_4.go",
+        "type": "imports"
+      },
+      {
+        "from": "controllers/file_4.go",
+        "to": "helpers/file_5.go",
+        "type": "imports"
+      },
+      {
+        "from": "helpers/file_5.go",
+        "to": "core/file_6.go",
+        "type": "extends"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "services/file_8.go",
+          "controllers/file_4.go",
+          "core/file_6.go"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "services/file_1.go",
+          "controllers/file_10.go",
+          "helpers/file_5.go"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "helpers/file_5.go",
+          "utils/file_7.go",
+          "services/file_9.go"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "utils/file_3.go",
+          "controllers/file_4.go"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "controllers/file_10.go",
+          "helpers/file_5.go",
+          "services/file_9.go"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "controllers/file_4.go",
+          "controllers/file_10.go",
+          "core/file_6.go",
+          "services/file_1.go"
+        ],
+        "depth": 3
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "medium",
+    "renamed_entities": {
+      "function_0": "obxfawco",
+      "function_1": "upontnor",
+      "function_2": "zesakwro",
+      "function_3": "ucdwcjll",
+      "function_4": "rwkwjzkw",
+      "function_5": "jtamrksx"
+    },
+    "moved_files": 3,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "incorrect_operator in main processing logic",
+    "fix_type": "logic_correction",
+    "must_find_files": [
+      "services/file_1.go",
+      "core/file_2.go",
+      "utils/file_3.go",
+      "utils/file_7.go",
+      "services/file_9.go"
+    ],
+    "should_find_files": [
+      "controllers/file_4.go",
+      "helpers/file_5.go",
+      "core/file_6.go"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.3590916643031972
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_logic_errors_1.go",
+      "test_code": "// Test for logic_errors in go",
+      "test_type": "unit"
+    },
+    {
+      "file_name": "test_logic_errors_2.go",
+      "test_code": "// Test for logic_errors in go",
+      "test_type": "unit"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "logic_errors",
+      "error_message": "AssertionError: Expected 5 but got 4",
+      "stack_trace": "Stack trace for go",
+      "timestamp": "2025-08-07T02:22:49.654124"
+    }
+  ],
+  "symptoms": [
+    "Incorrect output produced",
+    "Test cases failing",
+    "Unexpected behavior"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 197,
+    "function": "process_function",
+    "module": "services"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "core/file_2.go",
+      "utils/file_3.go"
+    ],
+    "should_find_files": [
+      "services/file_1.go",
+      "utils/file_7.go"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

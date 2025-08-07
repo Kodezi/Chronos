@@ -1,0 +1,543 @@
+{
+  "bug_id": "MRR-CONCURRENCY_ISSUES-202508-0272",
+  "category": "concurrency_issues",
+  "subcategory": "lock_ordering",
+  "language": "python",
+  "description": "Concurrency bug: lock_ordering in multi-threaded code",
+  "complexity": {
+    "spatial_distribution": 24,
+    "temporal_spread_months": 6,
+    "abstraction_layers": 5,
+    "obfuscation_level": "high",
+    "cross_module_dependencies": 9,
+    "artifact_types": 4
+  },
+  "code_snippets": {
+    "buggy_code": "def buggy_function_lock_ordering(data):\n    # Bug: lock_ordering\n    result = []\n    for item in data:\n        # Buggy logic here\n        if item > 0:\n            result.append(item)\n    return result",
+    "fixed_code": "def fixed_function_lock_ordering(data):\n    # Fixed: lock_ordering\n    result = []\n    for item in data:\n        # Fixed logic here\n        if item >= 0:\n            result.append(item)\n    return result"
+  },
+  "scattered_context": [
+    {
+      "file_path": "utils/file_1.py",
+      "content": "# Helper code for concurrency_issues\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "imports",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        90
+      ]
+    },
+    {
+      "file_path": "core/file_2.py",
+      "content": "# Helper code for concurrency_issues\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "tests",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        35,
+        147,
+        199,
+        65,
+        152
+      ]
+    },
+    {
+      "file_path": "models/file_3.py",
+      "content": "# Helper code for concurrency_issues\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "calls",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        59
+      ]
+    },
+    {
+      "file_path": "utils/file_4.py",
+      "content": "# Helper code for concurrency_issues\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "tests",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        139,
+        28,
+        137,
+        195,
+        197
+      ]
+    },
+    {
+      "file_path": "utils/file_5.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to concurrency_issues\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "uses",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        123,
+        36
+      ]
+    },
+    {
+      "file_path": "services/file_6.py",
+      "content": "# Helper code for concurrency_issues\ndef helper(): pass",
+      "relevance": "medium",
+      "relationship": "calls",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        132
+      ]
+    },
+    {
+      "file_path": "models/file_7.py",
+      "content": "def important_function(param):\n    # Important logic for concurrency_issues\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "calls",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        90,
+        190,
+        146
+      ]
+    },
+    {
+      "file_path": "controllers/file_8.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to concurrency_issues\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        175
+      ]
+    },
+    {
+      "file_path": "models/file_9.py",
+      "content": "# Helper code for concurrency_issues\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "imports",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        94
+      ]
+    },
+    {
+      "file_path": "core/file_10.py",
+      "content": "def important_function(param):\n    # Important logic for concurrency_issues\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "imports",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        130,
+        54
+      ]
+    },
+    {
+      "file_path": "utils/file_11.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to concurrency_issues\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        75,
+        188,
+        158
+      ]
+    },
+    {
+      "file_path": "core/file_12.py",
+      "content": "def important_function(param):\n    # Important logic for concurrency_issues\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "implements",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        132,
+        52,
+        32
+      ]
+    },
+    {
+      "file_path": "models/file_13.py",
+      "content": "# Helper code for concurrency_issues\ndef helper(): pass",
+      "relevance": "medium",
+      "relationship": "tests",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        55,
+        20,
+        180
+      ]
+    },
+    {
+      "file_path": "core/file_14.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to concurrency_issues\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "imports",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        119,
+        149,
+        60,
+        121,
+        170
+      ]
+    },
+    {
+      "file_path": "models/file_15.py",
+      "content": "def important_function(param):\n    # Important logic for concurrency_issues\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "uses",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        103,
+        166
+      ]
+    },
+    {
+      "file_path": "helpers/file_16.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to concurrency_issues\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        46,
+        198,
+        63,
+        73
+      ]
+    },
+    {
+      "file_path": "helpers/file_17.py",
+      "content": "# Helper code for concurrency_issues\ndef helper(): pass",
+      "relevance": "medium",
+      "relationship": "implements",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        84,
+        104,
+        13
+      ]
+    },
+    {
+      "file_path": "utils/file_18.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to concurrency_issues\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        36,
+        153,
+        69,
+        21,
+        143
+      ]
+    },
+    {
+      "file_path": "core/file_19.py",
+      "content": "def important_function(param):\n    # Important logic for concurrency_issues\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "imports",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        143,
+        147
+      ]
+    },
+    {
+      "file_path": "services/file_20.py",
+      "content": "# Helper code for concurrency_issues\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "uses",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        22
+      ]
+    },
+    {
+      "file_path": "utils/file_21.py",
+      "content": "# Helper code for concurrency_issues\ndef helper(): pass",
+      "relevance": "medium",
+      "relationship": "implements",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        199,
+        55,
+        104,
+        17,
+        170
+      ]
+    },
+    {
+      "file_path": "helpers/file_22.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to concurrency_issues\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        79,
+        178
+      ]
+    },
+    {
+      "file_path": "controllers/file_23.py",
+      "content": "# Helper code for concurrency_issues\ndef helper(): pass",
+      "relevance": "medium",
+      "relationship": "calls",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        61,
+        165,
+        126
+      ]
+    },
+    {
+      "file_path": "models/file_24.py",
+      "content": "# Helper code for concurrency_issues\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "tests",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        137,
+        34
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-02-08",
+    "temporal_spread_days": 180,
+    "refactoring_events": 0,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-06-18",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-07-27",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-04-16",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-07-16",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "8416941f",
+        "date": "2025-03-08",
+        "message": "Refactored module 4",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "edd0a651",
+        "date": "2025-03-18",
+        "message": "Refactored module 5",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "utils/file_1.py",
+        "to": "core/file_2.py",
+        "type": "calls"
+      },
+      {
+        "from": "core/file_2.py",
+        "to": "models/file_3.py",
+        "type": "calls"
+      },
+      {
+        "from": "models/file_3.py",
+        "to": "utils/file_4.py",
+        "type": "calls"
+      },
+      {
+        "from": "utils/file_4.py",
+        "to": "utils/file_5.py",
+        "type": "extends"
+      },
+      {
+        "from": "utils/file_5.py",
+        "to": "services/file_6.py",
+        "type": "extends"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "controllers/file_8.py",
+          "models/file_9.py",
+          "utils/file_1.py"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "models/file_13.py",
+          "helpers/file_17.py",
+          "core/file_14.py"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "utils/file_5.py",
+          "helpers/file_16.py",
+          "helpers/file_22.py"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "controllers/file_8.py",
+          "core/file_12.py"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "utils/file_1.py",
+          "services/file_20.py",
+          "models/file_3.py"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "core/file_10.py",
+          "helpers/file_17.py",
+          "services/file_20.py",
+          "core/file_14.py"
+        ],
+        "depth": 3
+      },
+      {
+        "path": [
+          "helpers/file_17.py",
+          "utils/file_4.py",
+          "core/file_19.py",
+          "models/file_24.py",
+          "core/file_12.py"
+        ],
+        "depth": 4
+      },
+      {
+        "path": [
+          "models/file_15.py",
+          "models/file_9.py",
+          "controllers/file_8.py",
+          "models/file_24.py",
+          "services/file_6.py",
+          "models/file_3.py"
+        ],
+        "depth": 5
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "high",
+    "renamed_entities": {
+      "entity_0": "bbDyIQNSBb",
+      "entity_1": "cmMbVQfsFi",
+      "entity_2": "epiFuqRTDb",
+      "entity_3": "mresufzbWi",
+      "entity_4": "pvWRrrnZlC"
+    },
+    "moved_files": 2,
+    "refactored_modules": 3
+  },
+  "ground_truth": {
+    "root_cause": "lock_ordering in main processing logic",
+    "fix_type": "synchronization",
+    "must_find_files": [
+      "utils/file_5.py",
+      "models/file_7.py",
+      "controllers/file_8.py",
+      "core/file_10.py",
+      "utils/file_11.py"
+    ],
+    "should_find_files": [
+      "services/file_6.py",
+      "models/file_13.py",
+      "helpers/file_17.py"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.6783627303015007
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_concurrency_issues_1.python",
+      "test_code": "import unittest\n\nclass TestConcurrency_Issues(unittest.TestCase):\n    def test_scenario_1(self):\n        # Test for concurrency_issues\n        result = function_under_test(test_data)\n        self.assertEqual(result, expected_result)\n",
+      "test_type": "integration"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "concurrency_issues",
+      "error_message": "DeadlockError: Thread deadlock detected",
+      "stack_trace": "Traceback (most recent call last):\n  File \"main.py\", line 42, in <module>\n    result = process_data(input_data)\n  File \"processor.py\", line 15, in process_data\n    return transform(validate(data))\n  File \"validator.py\", line 8, in validate\n    raise ValueError(\"Invalid data\")\nValueError: Invalid data",
+      "timestamp": "2025-08-07T02:22:51.064653"
+    }
+  ],
+  "symptoms": [
+    "Intermittent failures",
+    "Race condition symptoms",
+    "Deadlock occurs"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 196,
+    "function": "process_function",
+    "module": "services"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "utils/file_5.py",
+      "controllers/file_8.py",
+      "utils/file_11.py"
+    ],
+    "should_find_files": [
+      "models/file_7.py",
+      "core/file_10.py"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

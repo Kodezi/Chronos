@@ -1,0 +1,447 @@
+{
+  "bug_id": "MRR-PERFORMANCE_BUGS-202508-0099",
+  "category": "performance_bugs",
+  "subcategory": "excessive_allocation",
+  "language": "javascript",
+  "description": "Performance issue: excessive_allocation causing slowdown",
+  "complexity": {
+    "spatial_distribution": 20,
+    "temporal_spread_months": 9,
+    "abstraction_layers": 2,
+    "obfuscation_level": "medium",
+    "cross_module_dependencies": 6,
+    "artifact_types": 5
+  },
+  "code_snippets": {
+    "buggy_code": "function buggyFunction_excessive_allocation(data) {\n    // Bug: excessive_allocation\n    let result = [];\n    data.forEach(item => {\n        // Buggy logic here\n        if (item > 0) {\n            result.push(item);\n        }\n    });\n    return result;\n}",
+    "fixed_code": "function fixedFunction_excessive_allocation(data) {\n    // Fixed: excessive_allocation\n    let result = [];\n    data.forEach(item => {\n        // Fixed logic here\n        if (item >= 0) {\n            result.push(item);\n        }\n    });\n    return result;\n}"
+  },
+  "scattered_context": [
+    {
+      "file_path": "models/file_1.js",
+      "content": "// Context code for performance_bugs in javascript",
+      "relevance": "medium",
+      "relationship": "extends",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        143,
+        109
+      ]
+    },
+    {
+      "file_path": "helpers/file_2.js",
+      "content": "// Context code for performance_bugs in javascript",
+      "relevance": "high",
+      "relationship": "imports",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        140,
+        174,
+        62
+      ]
+    },
+    {
+      "file_path": "services/file_3.js",
+      "content": "// Context code for performance_bugs in javascript",
+      "relevance": "medium",
+      "relationship": "tests",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        142,
+        100
+      ]
+    },
+    {
+      "file_path": "controllers/file_4.js",
+      "content": "// Context code for performance_bugs in javascript",
+      "relevance": "low",
+      "relationship": "imports",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        47
+      ]
+    },
+    {
+      "file_path": "utils/file_5.js",
+      "content": "// Context code for performance_bugs in javascript",
+      "relevance": "low",
+      "relationship": "imports",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        78
+      ]
+    },
+    {
+      "file_path": "helpers/file_6.js",
+      "content": "// Context code for performance_bugs in javascript",
+      "relevance": "high",
+      "relationship": "tests",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        114
+      ]
+    },
+    {
+      "file_path": "controllers/file_7.js",
+      "content": "// Context code for performance_bugs in javascript",
+      "relevance": "medium",
+      "relationship": "imports",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        58,
+        53,
+        96,
+        102,
+        22
+      ]
+    },
+    {
+      "file_path": "models/file_8.js",
+      "content": "// Context code for performance_bugs in javascript",
+      "relevance": "critical",
+      "relationship": "implements",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        37,
+        126,
+        160
+      ]
+    },
+    {
+      "file_path": "utils/file_9.js",
+      "content": "// Context code for performance_bugs in javascript",
+      "relevance": "critical",
+      "relationship": "extends",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        150,
+        170,
+        44
+      ]
+    },
+    {
+      "file_path": "services/file_10.js",
+      "content": "// Context code for performance_bugs in javascript",
+      "relevance": "critical",
+      "relationship": "implements",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        88,
+        62
+      ]
+    },
+    {
+      "file_path": "models/file_11.js",
+      "content": "// Context code for performance_bugs in javascript",
+      "relevance": "critical",
+      "relationship": "imports",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        161
+      ]
+    },
+    {
+      "file_path": "services/file_12.js",
+      "content": "// Context code for performance_bugs in javascript",
+      "relevance": "high",
+      "relationship": "tests",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        179,
+        23,
+        172
+      ]
+    },
+    {
+      "file_path": "models/file_13.js",
+      "content": "// Context code for performance_bugs in javascript",
+      "relevance": "high",
+      "relationship": "extends",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        129,
+        43,
+        30
+      ]
+    },
+    {
+      "file_path": "services/file_14.js",
+      "content": "// Context code for performance_bugs in javascript",
+      "relevance": "high",
+      "relationship": "uses",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        86,
+        62,
+        175,
+        40,
+        20
+      ]
+    },
+    {
+      "file_path": "core/file_15.js",
+      "content": "// Context code for performance_bugs in javascript",
+      "relevance": "high",
+      "relationship": "tests",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        104
+      ]
+    },
+    {
+      "file_path": "models/file_16.js",
+      "content": "// Context code for performance_bugs in javascript",
+      "relevance": "critical",
+      "relationship": "extends",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        12,
+        34,
+        175,
+        49,
+        185
+      ]
+    },
+    {
+      "file_path": "core/file_17.js",
+      "content": "// Context code for performance_bugs in javascript",
+      "relevance": "critical",
+      "relationship": "implements",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        82,
+        31,
+        118,
+        113,
+        76
+      ]
+    },
+    {
+      "file_path": "controllers/file_18.js",
+      "content": "// Context code for performance_bugs in javascript",
+      "relevance": "high",
+      "relationship": "uses",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        62,
+        48,
+        141,
+        31,
+        181
+      ]
+    },
+    {
+      "file_path": "helpers/file_19.js",
+      "content": "// Context code for performance_bugs in javascript",
+      "relevance": "low",
+      "relationship": "calls",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        118,
+        66,
+        144
+      ]
+    },
+    {
+      "file_path": "core/file_20.js",
+      "content": "// Context code for performance_bugs in javascript",
+      "relevance": "high",
+      "relationship": "tests",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        186,
+        191,
+        165,
+        191,
+        17
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2024-11-10",
+    "temporal_spread_days": 270,
+    "refactoring_events": 2,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-05-19",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-04-29",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-07-08",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-04-17",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "models/file_1.js",
+        "to": "helpers/file_2.js",
+        "type": "imports"
+      },
+      {
+        "from": "helpers/file_2.js",
+        "to": "services/file_3.js",
+        "type": "extends"
+      },
+      {
+        "from": "services/file_3.js",
+        "to": "controllers/file_4.js",
+        "type": "calls"
+      },
+      {
+        "from": "controllers/file_4.js",
+        "to": "utils/file_5.js",
+        "type": "calls"
+      },
+      {
+        "from": "utils/file_5.js",
+        "to": "helpers/file_6.js",
+        "type": "calls"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "services/file_12.js",
+          "services/file_3.js",
+          "services/file_10.js"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "helpers/file_6.js",
+          "core/file_15.js",
+          "models/file_13.js"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "helpers/file_19.js",
+          "models/file_11.js",
+          "controllers/file_7.js"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "models/file_13.js",
+          "models/file_16.js"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "utils/file_9.js",
+          "controllers/file_7.js",
+          "helpers/file_6.js"
+        ],
+        "depth": 2
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "medium",
+    "renamed_entities": {
+      "function_0": "lbybzmbp",
+      "function_1": "cvtqpmed",
+      "function_2": "wutxgetr",
+      "function_3": "mcvzuofa"
+    },
+    "moved_files": 3,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "excessive_allocation in main processing logic",
+    "fix_type": "optimization",
+    "must_find_files": [
+      "helpers/file_2.js",
+      "helpers/file_6.js",
+      "models/file_8.js",
+      "utils/file_9.js",
+      "services/file_10.js"
+    ],
+    "should_find_files": [
+      "models/file_1.js",
+      "services/file_3.js",
+      "controllers/file_7.js"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 0.7610393264294325
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_performance_bugs_1.javascript",
+      "test_code": "// Test for performance_bugs in javascript",
+      "test_type": "integration"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "performance_bugs",
+      "error_message": "TimeoutError: Operation timed out after 30s",
+      "stack_trace": "Stack trace for javascript",
+      "timestamp": "2025-08-07T02:22:51.429272"
+    }
+  ],
+  "symptoms": [
+    "Generic symptom"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 14,
+    "function": "process_function",
+    "module": "utils"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "models/file_8.js",
+      "utils/file_9.js",
+      "services/file_10.js"
+    ],
+    "should_find_files": [
+      "helpers/file_2.js",
+      "helpers/file_6.js"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

@@ -1,0 +1,672 @@
+{
+  "bug_id": "MRR-CONCURRENCY_ISSUES-202508-0087",
+  "category": "concurrency_issues",
+  "subcategory": "data_race",
+  "language": "javascript",
+  "description": "Concurrency bug: data_race in multi-threaded code",
+  "complexity": {
+    "spatial_distribution": 29,
+    "temporal_spread_months": 5,
+    "abstraction_layers": 4,
+    "obfuscation_level": "high",
+    "cross_module_dependencies": 12,
+    "artifact_types": 4
+  },
+  "code_snippets": {
+    "buggy_code": "function buggyFunction_data_race(data) {\n    // Bug: data_race\n    let result = [];\n    data.forEach(item => {\n        // Buggy logic here\n        if (item > 0) {\n            result.push(item);\n        }\n    });\n    return result;\n}",
+    "fixed_code": "function fixedFunction_data_race(data) {\n    // Fixed: data_race\n    let result = [];\n    data.forEach(item => {\n        // Fixed logic here\n        if (item >= 0) {\n            result.push(item);\n        }\n    });\n    return result;\n}"
+  },
+  "scattered_context": [
+    {
+      "file_path": "models/file_1.js",
+      "content": "// Context code for concurrency_issues in javascript",
+      "relevance": "high",
+      "relationship": "imports",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        119,
+        198,
+        162,
+        12,
+        107
+      ]
+    },
+    {
+      "file_path": "models/file_2.js",
+      "content": "// Context code for concurrency_issues in javascript",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        61,
+        111,
+        135,
+        196
+      ]
+    },
+    {
+      "file_path": "controllers/file_3.js",
+      "content": "// Context code for concurrency_issues in javascript",
+      "relevance": "medium",
+      "relationship": "tests",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        96,
+        81,
+        61
+      ]
+    },
+    {
+      "file_path": "helpers/file_4.js",
+      "content": "// Context code for concurrency_issues in javascript",
+      "relevance": "medium",
+      "relationship": "implements",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        123,
+        121,
+        46
+      ]
+    },
+    {
+      "file_path": "services/file_5.js",
+      "content": "// Context code for concurrency_issues in javascript",
+      "relevance": "critical",
+      "relationship": "extends",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        77,
+        137,
+        72,
+        103,
+        146
+      ]
+    },
+    {
+      "file_path": "services/file_6.js",
+      "content": "// Context code for concurrency_issues in javascript",
+      "relevance": "high",
+      "relationship": "tests",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        154,
+        35,
+        153,
+        200,
+        113
+      ]
+    },
+    {
+      "file_path": "models/file_7.js",
+      "content": "// Context code for concurrency_issues in javascript",
+      "relevance": "medium",
+      "relationship": "calls",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        99,
+        84,
+        171,
+        112
+      ]
+    },
+    {
+      "file_path": "core/file_8.js",
+      "content": "// Context code for concurrency_issues in javascript",
+      "relevance": "low",
+      "relationship": "imports",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        48,
+        54,
+        33,
+        32
+      ]
+    },
+    {
+      "file_path": "models/file_9.js",
+      "content": "// Context code for concurrency_issues in javascript",
+      "relevance": "medium",
+      "relationship": "extends",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        176,
+        129,
+        37,
+        144,
+        10
+      ]
+    },
+    {
+      "file_path": "helpers/file_10.js",
+      "content": "// Context code for concurrency_issues in javascript",
+      "relevance": "high",
+      "relationship": "calls",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        15,
+        171
+      ]
+    },
+    {
+      "file_path": "utils/file_11.js",
+      "content": "// Context code for concurrency_issues in javascript",
+      "relevance": "medium",
+      "relationship": "implements",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        195,
+        78,
+        87
+      ]
+    },
+    {
+      "file_path": "services/file_12.js",
+      "content": "// Context code for concurrency_issues in javascript",
+      "relevance": "medium",
+      "relationship": "uses",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        24
+      ]
+    },
+    {
+      "file_path": "helpers/file_13.js",
+      "content": "// Context code for concurrency_issues in javascript",
+      "relevance": "medium",
+      "relationship": "implements",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        28,
+        90
+      ]
+    },
+    {
+      "file_path": "helpers/file_14.js",
+      "content": "// Context code for concurrency_issues in javascript",
+      "relevance": "medium",
+      "relationship": "uses",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        152,
+        114,
+        139,
+        180,
+        149
+      ]
+    },
+    {
+      "file_path": "core/file_15.js",
+      "content": "// Context code for concurrency_issues in javascript",
+      "relevance": "critical",
+      "relationship": "calls",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        57,
+        133,
+        10,
+        119,
+        196
+      ]
+    },
+    {
+      "file_path": "services/file_16.js",
+      "content": "// Context code for concurrency_issues in javascript",
+      "relevance": "high",
+      "relationship": "implements",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        63,
+        81
+      ]
+    },
+    {
+      "file_path": "core/file_17.js",
+      "content": "// Context code for concurrency_issues in javascript",
+      "relevance": "critical",
+      "relationship": "extends",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        113,
+        145,
+        147,
+        151
+      ]
+    },
+    {
+      "file_path": "models/file_18.js",
+      "content": "// Context code for concurrency_issues in javascript",
+      "relevance": "critical",
+      "relationship": "uses",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        10,
+        112,
+        54,
+        100,
+        156
+      ]
+    },
+    {
+      "file_path": "core/file_19.js",
+      "content": "// Context code for concurrency_issues in javascript",
+      "relevance": "high",
+      "relationship": "uses",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        190,
+        107,
+        76,
+        187
+      ]
+    },
+    {
+      "file_path": "models/file_20.js",
+      "content": "// Context code for concurrency_issues in javascript",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        141
+      ]
+    },
+    {
+      "file_path": "services/file_21.js",
+      "content": "// Context code for concurrency_issues in javascript",
+      "relevance": "high",
+      "relationship": "implements",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        122,
+        152
+      ]
+    },
+    {
+      "file_path": "utils/file_22.js",
+      "content": "// Context code for concurrency_issues in javascript",
+      "relevance": "high",
+      "relationship": "imports",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        54,
+        125
+      ]
+    },
+    {
+      "file_path": "helpers/file_23.js",
+      "content": "// Context code for concurrency_issues in javascript",
+      "relevance": "critical",
+      "relationship": "implements",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        83,
+        40,
+        24,
+        190,
+        60
+      ]
+    },
+    {
+      "file_path": "services/file_24.js",
+      "content": "// Context code for concurrency_issues in javascript",
+      "relevance": "medium",
+      "relationship": "extends",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        153,
+        71,
+        56,
+        119
+      ]
+    },
+    {
+      "file_path": "utils/file_25.js",
+      "content": "// Context code for concurrency_issues in javascript",
+      "relevance": "high",
+      "relationship": "implements",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        42,
+        62
+      ]
+    },
+    {
+      "file_path": "utils/file_26.js",
+      "content": "// Context code for concurrency_issues in javascript",
+      "relevance": "high",
+      "relationship": "implements",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        169,
+        33
+      ]
+    },
+    {
+      "file_path": "services/file_27.js",
+      "content": "// Context code for concurrency_issues in javascript",
+      "relevance": "low",
+      "relationship": "calls",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        70,
+        32,
+        19,
+        60
+      ]
+    },
+    {
+      "file_path": "core/file_28.js",
+      "content": "// Context code for concurrency_issues in javascript",
+      "relevance": "high",
+      "relationship": "uses",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        30,
+        39,
+        132
+      ]
+    },
+    {
+      "file_path": "controllers/file_29.js",
+      "content": "// Context code for concurrency_issues in javascript",
+      "relevance": "low",
+      "relationship": "extends",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        136,
+        107,
+        58,
+        92
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-03-10",
+    "temporal_spread_days": 150,
+    "refactoring_events": 3,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-03-14",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-06-03",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-04-02",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-06-02",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      },
+      {
+        "hash": "8416941f",
+        "date": "2025-04-13",
+        "message": "Refactored module 4",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "edd0a651",
+        "date": "2025-04-30",
+        "message": "Refactored module 5",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "a67f5b4e",
+        "date": "2025-07-08",
+        "message": "Refactored module 6",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "e32a385c",
+        "date": "2025-07-01",
+        "message": "Refactored module 7",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "740b3cf2",
+        "date": "2025-03-10",
+        "message": "Refactored module 8",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "models/file_1.js",
+        "to": "models/file_2.js",
+        "type": "calls"
+      },
+      {
+        "from": "models/file_2.js",
+        "to": "controllers/file_3.js",
+        "type": "extends"
+      },
+      {
+        "from": "controllers/file_3.js",
+        "to": "helpers/file_4.js",
+        "type": "extends"
+      },
+      {
+        "from": "helpers/file_4.js",
+        "to": "services/file_5.js",
+        "type": "extends"
+      },
+      {
+        "from": "services/file_5.js",
+        "to": "services/file_6.js",
+        "type": "calls"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "core/file_19.js",
+          "services/file_5.js",
+          "core/file_8.js"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "models/file_2.js",
+          "utils/file_11.js",
+          "helpers/file_13.js"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "utils/file_22.js",
+          "services/file_21.js",
+          "services/file_16.js"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "helpers/file_10.js",
+          "helpers/file_13.js"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "utils/file_26.js",
+          "core/file_8.js",
+          "controllers/file_3.js"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "core/file_15.js",
+          "utils/file_11.js",
+          "core/file_17.js",
+          "models/file_2.js"
+        ],
+        "depth": 3
+      },
+      {
+        "path": [
+          "services/file_6.js",
+          "helpers/file_13.js",
+          "services/file_21.js",
+          "helpers/file_23.js",
+          "helpers/file_10.js"
+        ],
+        "depth": 4
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "high",
+    "renamed_entities": {
+      "entity_0": "RaVdXRsDNV",
+      "entity_1": "ySJBDzrUvL",
+      "entity_2": "qtJlWGInzo",
+      "entity_3": "IcEsQOinRk",
+      "entity_4": "fAjREEMLKK",
+      "entity_5": "dluoDFaBhb",
+      "entity_6": "GbTPEGPYXk",
+      "entity_7": "QPDgNlCdNi",
+      "entity_8": "JSIgpsCapJ",
+      "entity_9": "mnxoqRMdNd",
+      "entity_10": "XEeWvQpuCn"
+    },
+    "moved_files": 3,
+    "refactored_modules": 3
+  },
+  "ground_truth": {
+    "root_cause": "data_race in main processing logic",
+    "fix_type": "synchronization",
+    "must_find_files": [
+      "models/file_1.js",
+      "models/file_2.js",
+      "services/file_5.js",
+      "services/file_6.js",
+      "helpers/file_10.js"
+    ],
+    "should_find_files": [
+      "controllers/file_3.js",
+      "helpers/file_4.js",
+      "models/file_7.js"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.6677711221251499
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_concurrency_issues_1.javascript",
+      "test_code": "// Test for concurrency_issues in javascript",
+      "test_type": "unit"
+    },
+    {
+      "file_name": "test_concurrency_issues_2.javascript",
+      "test_code": "// Test for concurrency_issues in javascript",
+      "test_type": "unit"
+    },
+    {
+      "file_name": "test_concurrency_issues_3.javascript",
+      "test_code": "// Test for concurrency_issues in javascript",
+      "test_type": "e2e"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "concurrency_issues",
+      "error_message": "DeadlockError: Thread deadlock detected",
+      "stack_trace": "Stack trace for javascript",
+      "timestamp": "2025-08-07T02:22:50.961062"
+    },
+    {
+      "error_type": "concurrency_issues",
+      "error_message": "DeadlockError: Thread deadlock detected",
+      "stack_trace": "Stack trace for javascript",
+      "timestamp": "2025-08-07T02:22:50.961063"
+    }
+  ],
+  "symptoms": [
+    "Intermittent failures",
+    "Race condition symptoms",
+    "Deadlock occurs"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 173,
+    "function": "process_function",
+    "module": "services"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "models/file_2.js",
+      "services/file_5.js",
+      "core/file_15.js"
+    ],
+    "should_find_files": [
+      "models/file_1.js",
+      "services/file_6.js"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

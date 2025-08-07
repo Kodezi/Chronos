@@ -1,0 +1,205 @@
+{
+  "bug_id": "MRR-SYNTAX_ERRORS-202508-0243",
+  "category": "syntax_errors",
+  "subcategory": "missing_semicolon",
+  "language": "java",
+  "description": "Syntax error: missing_semicolon causing compilation failure",
+  "complexity": {
+    "spatial_distribution": 2,
+    "temporal_spread_months": 3,
+    "abstraction_layers": 2,
+    "obfuscation_level": "low",
+    "cross_module_dependencies": 0,
+    "artifact_types": 2
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for syntax_errors/missing_semicolon in java",
+    "fixed_code": "// Fixed code for syntax_errors/missing_semicolon in java"
+  },
+  "scattered_context": [
+    {
+      "file_path": "helpers/file_1.java",
+      "content": "// Context code for syntax_errors in java",
+      "relevance": "high",
+      "relationship": "tests",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        150,
+        41,
+        97,
+        61,
+        37
+      ]
+    },
+    {
+      "file_path": "core/file_2.java",
+      "content": "// Context code for syntax_errors in java",
+      "relevance": "low",
+      "relationship": "imports",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        122,
+        75,
+        141,
+        179
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-05-09",
+    "temporal_spread_days": 90,
+    "refactoring_events": 0,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-07-08",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-07-26",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-07-22",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-05-24",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "8416941f",
+        "date": "2025-05-30",
+        "message": "Refactored module 4",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "helpers/file_1.java",
+        "to": "core/file_2.java",
+        "type": "calls"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "core/file_2.java",
+          "helpers/file_1.java"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "core/file_2.java",
+          "helpers/file_1.java"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "helpers/file_1.java",
+          "core/file_2.java"
+        ],
+        "depth": 2
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "low",
+    "renamed_entities": {
+      "variable_0": "var_0"
+    },
+    "moved_files": 0,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "missing_semicolon in main processing logic",
+    "fix_type": "syntax_correction",
+    "must_find_files": [
+      "helpers/file_1.java"
+    ],
+    "should_find_files": [],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.236800954591617
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_syntax_errors_1.java",
+      "test_code": "// Test for syntax_errors in java",
+      "test_type": "integration"
+    },
+    {
+      "file_name": "test_syntax_errors_2.java",
+      "test_code": "// Test for syntax_errors in java",
+      "test_type": "unit"
+    },
+    {
+      "file_name": "test_syntax_errors_3.java",
+      "test_code": "// Test for syntax_errors in java",
+      "test_type": "integration"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "syntax_errors",
+      "error_message": "SyntaxError: invalid syntax at line 55",
+      "stack_trace": "Stack trace for java",
+      "timestamp": "2025-08-07T02:22:49.533610"
+    },
+    {
+      "error_type": "syntax_errors",
+      "error_message": "SyntaxError: invalid syntax at line 86",
+      "stack_trace": "Stack trace for java",
+      "timestamp": "2025-08-07T02:22:49.533611"
+    }
+  ],
+  "symptoms": [
+    "Code fails to compile/run",
+    "Syntax error message displayed",
+    "IDE highlights error"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 164,
+    "function": "process_function",
+    "module": "utils"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [],
+    "should_find_files": [
+      "helpers/file_1.java"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

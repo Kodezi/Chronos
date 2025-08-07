@@ -1,0 +1,1 @@
+// Code snippet for src/test/spec_18.js

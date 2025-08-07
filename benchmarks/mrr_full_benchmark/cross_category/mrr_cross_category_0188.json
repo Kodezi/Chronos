@@ -1,0 +1,605 @@
+{
+  "bug_id": "MRR-CROSS_CATEGORY-202508-0188",
+  "category": "cross_category",
+  "subcategory": "cascading_failures",
+  "language": "python",
+  "description": "Complex bug: cascading_failures with multiple issues",
+  "complexity": {
+    "spatial_distribution": 25,
+    "temporal_spread_months": 6,
+    "abstraction_layers": 5,
+    "obfuscation_level": "high",
+    "cross_module_dependencies": 10,
+    "artifact_types": 5
+  },
+  "code_snippets": {
+    "buggy_code": "def buggy_function_cascading_failures(data):\n    # Bug: cascading_failures\n    result = []\n    for item in data:\n        # Buggy logic here\n        if item > 0:\n            result.append(item)\n    return result",
+    "fixed_code": "def fixed_function_cascading_failures(data):\n    # Fixed: cascading_failures\n    result = []\n    for item in data:\n        # Fixed logic here\n        if item >= 0:\n            result.append(item)\n    return result"
+  },
+  "scattered_context": [
+    {
+      "file_path": "utils/file_1.py",
+      "content": "def important_function(param):\n    # Important logic for cross_category\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "extends",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        110,
+        149
+      ]
+    },
+    {
+      "file_path": "core/file_2.py",
+      "content": "# Helper code for cross_category\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "uses",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        109,
+        23,
+        138,
+        41,
+        104
+      ]
+    },
+    {
+      "file_path": "controllers/file_3.py",
+      "content": "# Helper code for cross_category\ndef helper(): pass",
+      "relevance": "medium",
+      "relationship": "implements",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        22,
+        31
+      ]
+    },
+    {
+      "file_path": "controllers/file_4.py",
+      "content": "# Helper code for cross_category\ndef helper(): pass",
+      "relevance": "medium",
+      "relationship": "tests",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        184,
+        73,
+        111,
+        194
+      ]
+    },
+    {
+      "file_path": "models/file_5.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to cross_category\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "imports",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        10,
+        174
+      ]
+    },
+    {
+      "file_path": "core/file_6.py",
+      "content": "# Helper code for cross_category\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "imports",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        90,
+        150,
+        88,
+        111
+      ]
+    },
+    {
+      "file_path": "core/file_7.py",
+      "content": "# Helper code for cross_category\ndef helper(): pass",
+      "relevance": "medium",
+      "relationship": "extends",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        120
+      ]
+    },
+    {
+      "file_path": "helpers/file_8.py",
+      "content": "def important_function(param):\n    # Important logic for cross_category\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "uses",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        86,
+        163,
+        79
+      ]
+    },
+    {
+      "file_path": "models/file_9.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to cross_category\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "calls",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        155
+      ]
+    },
+    {
+      "file_path": "models/file_10.py",
+      "content": "# Helper code for cross_category\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "uses",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        159,
+        79
+      ]
+    },
+    {
+      "file_path": "models/file_11.py",
+      "content": "# Helper code for cross_category\ndef helper(): pass",
+      "relevance": "medium",
+      "relationship": "tests",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        128,
+        191,
+        112,
+        84
+      ]
+    },
+    {
+      "file_path": "helpers/file_12.py",
+      "content": "# Helper code for cross_category\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "implements",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        120,
+        60,
+        50,
+        102
+      ]
+    },
+    {
+      "file_path": "utils/file_13.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to cross_category\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "imports",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        14,
+        37,
+        29,
+        139
+      ]
+    },
+    {
+      "file_path": "helpers/file_14.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to cross_category\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "uses",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        133,
+        194,
+        96,
+        170
+      ]
+    },
+    {
+      "file_path": "helpers/file_15.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to cross_category\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "implements",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        183,
+        115,
+        152,
+        148,
+        100
+      ]
+    },
+    {
+      "file_path": "services/file_16.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to cross_category\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "uses",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        198,
+        105,
+        79
+      ]
+    },
+    {
+      "file_path": "services/file_17.py",
+      "content": "# Helper code for cross_category\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "tests",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        112,
+        14
+      ]
+    },
+    {
+      "file_path": "services/file_18.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to cross_category\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "imports",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        37
+      ]
+    },
+    {
+      "file_path": "services/file_19.py",
+      "content": "# Helper code for cross_category\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "implements",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        199,
+        167
+      ]
+    },
+    {
+      "file_path": "helpers/file_20.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to cross_category\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "imports",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        44,
+        115,
+        122
+      ]
+    },
+    {
+      "file_path": "helpers/file_21.py",
+      "content": "# Helper code for cross_category\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "uses",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        16,
+        131,
+        91
+      ]
+    },
+    {
+      "file_path": "core/file_22.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to cross_category\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "uses",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        68,
+        100,
+        197,
+        138,
+        123
+      ]
+    },
+    {
+      "file_path": "models/file_23.py",
+      "content": "def important_function(param):\n    # Important logic for cross_category\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "uses",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        66,
+        33,
+        12,
+        109
+      ]
+    },
+    {
+      "file_path": "services/file_24.py",
+      "content": "def important_function(param):\n    # Important logic for cross_category\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "uses",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        99,
+        22,
+        28,
+        60
+      ]
+    },
+    {
+      "file_path": "models/file_25.py",
+      "content": "# Helper code for cross_category\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "tests",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        121,
+        50
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-02-08",
+    "temporal_spread_days": 180,
+    "refactoring_events": 1,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-03-29",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-05-29",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-07-26",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-03-29",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "8416941f",
+        "date": "2025-08-02",
+        "message": "Refactored module 4",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "edd0a651",
+        "date": "2025-03-06",
+        "message": "Refactored module 5",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "a67f5b4e",
+        "date": "2025-02-09",
+        "message": "Refactored module 6",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "e32a385c",
+        "date": "2025-07-02",
+        "message": "Refactored module 7",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "utils/file_1.py",
+        "to": "core/file_2.py",
+        "type": "calls"
+      },
+      {
+        "from": "core/file_2.py",
+        "to": "controllers/file_3.py",
+        "type": "extends"
+      },
+      {
+        "from": "controllers/file_3.py",
+        "to": "controllers/file_4.py",
+        "type": "extends"
+      },
+      {
+        "from": "controllers/file_4.py",
+        "to": "models/file_5.py",
+        "type": "imports"
+      },
+      {
+        "from": "models/file_5.py",
+        "to": "core/file_6.py",
+        "type": "imports"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "core/file_22.py",
+          "services/file_24.py",
+          "helpers/file_14.py"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "services/file_18.py",
+          "utils/file_1.py",
+          "models/file_5.py"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "models/file_11.py",
+          "core/file_22.py",
+          "helpers/file_8.py"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "core/file_6.py",
+          "models/file_9.py"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "services/file_18.py",
+          "core/file_6.py",
+          "helpers/file_21.py"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "services/file_17.py",
+          "utils/file_1.py",
+          "services/file_16.py",
+          "core/file_7.py"
+        ],
+        "depth": 3
+      },
+      {
+        "path": [
+          "utils/file_1.py",
+          "services/file_19.py",
+          "helpers/file_12.py",
+          "core/file_2.py",
+          "models/file_10.py"
+        ],
+        "depth": 4
+      },
+      {
+        "path": [
+          "models/file_23.py",
+          "utils/file_13.py",
+          "helpers/file_20.py",
+          "core/file_2.py",
+          "utils/file_1.py",
+          "helpers/file_14.py"
+        ],
+        "depth": 5
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "high",
+    "renamed_entities": {
+      "entity_0": "UTGVqXXDUu",
+      "entity_1": "IhipwbfKFs",
+      "entity_2": "wHCkTxxZAw",
+      "entity_3": "sOKRsRfFXO",
+      "entity_4": "AUJYFBQIYA",
+      "entity_5": "FeWlOMyuQP",
+      "entity_6": "hWhFhFXBPW",
+      "entity_7": "vFxLOtJwPC",
+      "entity_8": "eIfUTbXPjC",
+      "entity_9": "JVooBYLKOv",
+      "entity_10": "cMbSIBuahi",
+      "entity_11": "mWgGmXHiqu",
+      "entity_12": "CyQwNelgNb",
+      "entity_13": "ITogikGIKJ",
+      "entity_14": "DPHjZCNAOk"
+    },
+    "moved_files": 4,
+    "refactored_modules": 3
+  },
+  "ground_truth": {
+    "root_cause": "cascading_failures in main processing logic",
+    "fix_type": "multiple_fixes",
+    "must_find_files": [
+      "utils/file_1.py",
+      "models/file_5.py",
+      "helpers/file_8.py",
+      "models/file_9.py",
+      "utils/file_13.py"
+    ],
+    "should_find_files": [
+      "controllers/file_3.py",
+      "controllers/file_4.py",
+      "core/file_7.py"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.0658319362121393
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_cross_category_1.python",
+      "test_code": "import unittest\n\nclass TestCross_Category(unittest.TestCase):\n    def test_scenario_1(self):\n        # Test for cross_category\n        result = function_under_test(test_data)\n        self.assertEqual(result, expected_result)\n",
+      "test_type": "unit"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "cross_category",
+      "error_message": "SystemError: Multiple failures detected",
+      "stack_trace": "Traceback (most recent call last):\n  File \"main.py\", line 42, in <module>\n    result = process_data(input_data)\n  File \"processor.py\", line 15, in process_data\n    return transform(validate(data))\n  File \"validator.py\", line 8, in validate\n    raise ValueError(\"Invalid data\")\nValueError: Invalid data",
+      "timestamp": "2025-08-07T02:22:51.704580"
+    },
+    {
+      "error_type": "cross_category",
+      "error_message": "SystemError: Multiple failures detected",
+      "stack_trace": "Traceback (most recent call last):\n  File \"main.py\", line 42, in <module>\n    result = process_data(input_data)\n  File \"processor.py\", line 15, in process_data\n    return transform(validate(data))\n  File \"validator.py\", line 8, in validate\n    raise ValueError(\"Invalid data\")\nValueError: Invalid data",
+      "timestamp": "2025-08-07T02:22:51.704582"
+    }
+  ],
+  "symptoms": [
+    "Generic symptom"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 55,
+    "function": "process_function",
+    "module": "core"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "models/file_5.py",
+      "models/file_9.py",
+      "utils/file_13.py"
+    ],
+    "should_find_files": [
+      "utils/file_1.py",
+      "helpers/file_8.py"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

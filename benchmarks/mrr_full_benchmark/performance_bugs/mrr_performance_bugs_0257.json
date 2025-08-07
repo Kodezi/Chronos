@@ -1,0 +1,430 @@
+{
+  "bug_id": "MRR-PERFORMANCE_BUGS-202508-0257",
+  "category": "performance_bugs",
+  "subcategory": "memory_bloat",
+  "language": "python",
+  "description": "Performance issue: memory_bloat causing slowdown",
+  "complexity": {
+    "spatial_distribution": 16,
+    "temporal_spread_months": 6,
+    "abstraction_layers": 4,
+    "obfuscation_level": "high",
+    "cross_module_dependencies": 3,
+    "artifact_types": 4
+  },
+  "code_snippets": {
+    "buggy_code": "def buggy_function_memory_bloat(data):\n    # Bug: memory_bloat\n    result = []\n    for item in data:\n        # Buggy logic here\n        if item > 0:\n            result.append(item)\n    return result",
+    "fixed_code": "def fixed_function_memory_bloat(data):\n    # Fixed: memory_bloat\n    result = []\n    for item in data:\n        # Fixed logic here\n        if item >= 0:\n            result.append(item)\n    return result"
+  },
+  "scattered_context": [
+    {
+      "file_path": "helpers/file_1.py",
+      "content": "def important_function(param):\n    # Important logic for performance_bugs\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "uses",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        46,
+        158,
+        181,
+        156
+      ]
+    },
+    {
+      "file_path": "core/file_2.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to performance_bugs\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "extends",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        93,
+        81,
+        61,
+        107
+      ]
+    },
+    {
+      "file_path": "controllers/file_3.py",
+      "content": "def important_function(param):\n    # Important logic for performance_bugs\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "imports",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        179,
+        14,
+        191
+      ]
+    },
+    {
+      "file_path": "controllers/file_4.py",
+      "content": "# Helper code for performance_bugs\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "implements",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        140,
+        165,
+        29,
+        13
+      ]
+    },
+    {
+      "file_path": "helpers/file_5.py",
+      "content": "# Helper code for performance_bugs\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "tests",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        159,
+        161,
+        88,
+        154
+      ]
+    },
+    {
+      "file_path": "helpers/file_6.py",
+      "content": "def important_function(param):\n    # Important logic for performance_bugs\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "calls",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        33
+      ]
+    },
+    {
+      "file_path": "helpers/file_7.py",
+      "content": "def important_function(param):\n    # Important logic for performance_bugs\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "uses",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        191,
+        88,
+        56,
+        168
+      ]
+    },
+    {
+      "file_path": "utils/file_8.py",
+      "content": "def important_function(param):\n    # Important logic for performance_bugs\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "imports",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        37,
+        57,
+        22
+      ]
+    },
+    {
+      "file_path": "controllers/file_9.py",
+      "content": "def important_function(param):\n    # Important logic for performance_bugs\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "tests",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        75,
+        188,
+        61,
+        49
+      ]
+    },
+    {
+      "file_path": "models/file_10.py",
+      "content": "# Helper code for performance_bugs\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "tests",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        55,
+        160,
+        86,
+        196,
+        39
+      ]
+    },
+    {
+      "file_path": "helpers/file_11.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to performance_bugs\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "uses",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        82,
+        178,
+        49
+      ]
+    },
+    {
+      "file_path": "core/file_12.py",
+      "content": "# Helper code for performance_bugs\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "imports",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        151
+      ]
+    },
+    {
+      "file_path": "core/file_13.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to performance_bugs\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "calls",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        35
+      ]
+    },
+    {
+      "file_path": "utils/file_14.py",
+      "content": "# Helper code for performance_bugs\ndef helper(): pass",
+      "relevance": "medium",
+      "relationship": "implements",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        11,
+        73,
+        114,
+        41,
+        109
+      ]
+    },
+    {
+      "file_path": "services/file_15.py",
+      "content": "def important_function(param):\n    # Important logic for performance_bugs\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "uses",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        139
+      ]
+    },
+    {
+      "file_path": "helpers/file_16.py",
+      "content": "# Helper code for performance_bugs\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "tests",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        177,
+        150,
+        23,
+        93
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-02-08",
+    "temporal_spread_days": 180,
+    "refactoring_events": 1,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-04-04",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-06-07",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-02-16",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-07-08",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "helpers/file_1.py",
+        "to": "core/file_2.py",
+        "type": "imports"
+      },
+      {
+        "from": "core/file_2.py",
+        "to": "controllers/file_3.py",
+        "type": "extends"
+      },
+      {
+        "from": "controllers/file_3.py",
+        "to": "controllers/file_4.py",
+        "type": "calls"
+      },
+      {
+        "from": "controllers/file_4.py",
+        "to": "helpers/file_5.py",
+        "type": "imports"
+      },
+      {
+        "from": "helpers/file_5.py",
+        "to": "helpers/file_6.py",
+        "type": "calls"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "utils/file_8.py",
+          "core/file_13.py",
+          "helpers/file_1.py"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "core/file_2.py",
+          "helpers/file_7.py",
+          "models/file_10.py"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "core/file_13.py",
+          "controllers/file_3.py",
+          "helpers/file_11.py"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "core/file_13.py",
+          "helpers/file_11.py"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "utils/file_8.py",
+          "controllers/file_4.py",
+          "services/file_15.py"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "helpers/file_1.py",
+          "services/file_15.py",
+          "core/file_12.py",
+          "core/file_13.py"
+        ],
+        "depth": 3
+      },
+      {
+        "path": [
+          "controllers/file_9.py",
+          "utils/file_8.py",
+          "core/file_12.py",
+          "helpers/file_16.py",
+          "controllers/file_3.py"
+        ],
+        "depth": 4
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "high",
+    "renamed_entities": {
+      "entity_0": "nMfWvbCTLP",
+      "entity_1": "AToNrnlnpO",
+      "entity_2": "ulsiTrgpyp",
+      "entity_3": "xeplOmcEnz",
+      "entity_4": "tacShIOxWN",
+      "entity_5": "bsrotHhnsr",
+      "entity_6": "NwelazmHws",
+      "entity_7": "sJoYydkqTz",
+      "entity_8": "MSIOcDSCRp",
+      "entity_9": "WryxoqDqAF",
+      "entity_10": "sgNzrXalwi",
+      "entity_11": "vkqjeYKcEK",
+      "entity_12": "VxeFLmygjc"
+    },
+    "moved_files": 5,
+    "refactored_modules": 1
+  },
+  "ground_truth": {
+    "root_cause": "memory_bloat in main processing logic",
+    "fix_type": "optimization",
+    "must_find_files": [
+      "helpers/file_1.py",
+      "core/file_2.py",
+      "controllers/file_3.py",
+      "helpers/file_6.py",
+      "helpers/file_7.py"
+    ],
+    "should_find_files": [
+      "utils/file_14.py"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 0.7842817831273133
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_performance_bugs_1.python",
+      "test_code": "import unittest\n\nclass TestPerformance_Bugs(unittest.TestCase):\n    def test_scenario_1(self):\n        # Test for performance_bugs\n        result = function_under_test(test_data)\n        self.assertEqual(result, expected_result)\n",
+      "test_type": "integration"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "performance_bugs",
+      "error_message": "TimeoutError: Operation timed out after 30s",
+      "stack_trace": "Traceback (most recent call last):\n  File \"main.py\", line 42, in <module>\n    result = process_data(input_data)\n  File \"processor.py\", line 15, in process_data\n    return transform(validate(data))\n  File \"validator.py\", line 8, in validate\n    raise ValueError(\"Invalid data\")\nValueError: Invalid data",
+      "timestamp": "2025-08-07T02:22:51.509425"
+    }
+  ],
+  "symptoms": [
+    "Generic symptom"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 12,
+    "function": "process_function",
+    "module": "core"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "core/file_2.py",
+      "helpers/file_11.py",
+      "core/file_13.py"
+    ],
+    "should_find_files": [
+      "helpers/file_1.py",
+      "controllers/file_3.py"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

@@ -1,0 +1,326 @@
+{
+  "bug_id": "MRR-API_MISUSE-202508-0723",
+  "category": "api_misuse",
+  "subcategory": "incorrect_params",
+  "language": "go",
+  "description": "API misuse: incorrect_params violating API contract",
+  "complexity": {
+    "spatial_distribution": 7,
+    "temporal_spread_months": 9,
+    "abstraction_layers": 3,
+    "obfuscation_level": "medium",
+    "cross_module_dependencies": 4,
+    "artifact_types": 4
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for api_misuse/incorrect_params in go",
+    "fixed_code": "// Fixed code for api_misuse/incorrect_params in go"
+  },
+  "scattered_context": [
+    {
+      "file_path": "utils/file_1.go",
+      "content": "// Context code for api_misuse in go",
+      "relevance": "low",
+      "relationship": "extends",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        129,
+        139,
+        29,
+        46
+      ]
+    },
+    {
+      "file_path": "services/file_2.go",
+      "content": "// Context code for api_misuse in go",
+      "relevance": "medium",
+      "relationship": "implements",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        188,
+        186,
+        128
+      ]
+    },
+    {
+      "file_path": "controllers/file_3.go",
+      "content": "// Context code for api_misuse in go",
+      "relevance": "high",
+      "relationship": "tests",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        114,
+        74,
+        127
+      ]
+    },
+    {
+      "file_path": "services/file_4.go",
+      "content": "// Context code for api_misuse in go",
+      "relevance": "medium",
+      "relationship": "tests",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        169
+      ]
+    },
+    {
+      "file_path": "models/file_5.go",
+      "content": "// Context code for api_misuse in go",
+      "relevance": "low",
+      "relationship": "tests",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        103,
+        141,
+        97,
+        127
+      ]
+    },
+    {
+      "file_path": "services/file_6.go",
+      "content": "// Context code for api_misuse in go",
+      "relevance": "critical",
+      "relationship": "imports",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        71,
+        11,
+        34,
+        31,
+        125
+      ]
+    },
+    {
+      "file_path": "services/file_7.go",
+      "content": "// Context code for api_misuse in go",
+      "relevance": "low",
+      "relationship": "imports",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        176,
+        70,
+        93,
+        147,
+        167
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2024-11-10",
+    "temporal_spread_days": 270,
+    "refactoring_events": 1,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-07-30",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-02-22",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-03-26",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-02-04",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "8416941f",
+        "date": "2025-06-23",
+        "message": "Refactored module 4",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "utils/file_1.go",
+        "to": "services/file_2.go",
+        "type": "calls"
+      },
+      {
+        "from": "services/file_2.go",
+        "to": "controllers/file_3.go",
+        "type": "imports"
+      },
+      {
+        "from": "controllers/file_3.go",
+        "to": "services/file_4.go",
+        "type": "extends"
+      },
+      {
+        "from": "services/file_4.go",
+        "to": "models/file_5.go",
+        "type": "extends"
+      },
+      {
+        "from": "models/file_5.go",
+        "to": "services/file_6.go",
+        "type": "extends"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "services/file_7.go",
+          "services/file_4.go",
+          "services/file_2.go"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "services/file_6.go",
+          "services/file_7.go",
+          "controllers/file_3.go"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "services/file_7.go",
+          "utils/file_1.go",
+          "services/file_6.go"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "controllers/file_3.go",
+          "models/file_5.go"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "utils/file_1.go",
+          "models/file_5.go",
+          "controllers/file_3.go"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "services/file_7.go",
+          "services/file_6.go",
+          "controllers/file_3.go",
+          "services/file_4.go"
+        ],
+        "depth": 3
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "medium",
+    "renamed_entities": {
+      "function_0": "uuuazcmi",
+      "function_1": "rncpnbku",
+      "function_2": "ergljoqt",
+      "function_3": "tutwidga",
+      "function_4": "dnqpmoya",
+      "function_5": "cqiexgjr",
+      "function_6": "uofzpocd"
+    },
+    "moved_files": 5,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "incorrect_params in main processing logic",
+    "fix_type": "api_correction",
+    "must_find_files": [
+      "controllers/file_3.go",
+      "services/file_6.go"
+    ],
+    "should_find_files": [
+      "services/file_2.go",
+      "services/file_4.go"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.3536957790362858
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_api_misuse_1.go",
+      "test_code": "// Test for api_misuse in go",
+      "test_type": "unit"
+    },
+    {
+      "file_name": "test_api_misuse_2.go",
+      "test_code": "// Test for api_misuse in go",
+      "test_type": "integration"
+    },
+    {
+      "file_name": "test_api_misuse_3.go",
+      "test_code": "// Test for api_misuse in go",
+      "test_type": "unit"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "api_misuse",
+      "error_message": "TypeError: Invalid argument type for API call",
+      "stack_trace": "Stack trace for go",
+      "timestamp": "2025-08-07T02:22:50.488455"
+    },
+    {
+      "error_type": "api_misuse",
+      "error_message": "TypeError: Invalid argument type for API call",
+      "stack_trace": "Stack trace for go",
+      "timestamp": "2025-08-07T02:22:50.488457"
+    }
+  ],
+  "symptoms": [
+    "Generic symptom"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 147,
+    "function": "process_function",
+    "module": "core"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "services/file_6.go"
+    ],
+    "should_find_files": [
+      "controllers/file_3.go"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

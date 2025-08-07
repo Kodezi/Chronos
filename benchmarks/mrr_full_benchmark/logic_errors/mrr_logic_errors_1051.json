@@ -1,0 +1,313 @@
+{
+  "bug_id": "MRR-LOGIC_ERRORS-202508-1051",
+  "category": "logic_errors",
+  "subcategory": "algorithmic_error",
+  "language": "javascript",
+  "description": "Logic bug: algorithmic_error producing incorrect results",
+  "complexity": {
+    "spatial_distribution": 9,
+    "temporal_spread_months": 5,
+    "abstraction_layers": 3,
+    "obfuscation_level": "low",
+    "cross_module_dependencies": 1,
+    "artifact_types": 2
+  },
+  "code_snippets": {
+    "buggy_code": "function buggyFunction_algorithmic_error(data) {\n    // Bug: algorithmic_error\n    let result = [];\n    data.forEach(item => {\n        // Buggy logic here\n        if (item > 0) {\n            result.push(item);\n        }\n    });\n    return result;\n}",
+    "fixed_code": "function fixedFunction_algorithmic_error(data) {\n    // Fixed: algorithmic_error\n    let result = [];\n    data.forEach(item => {\n        // Fixed logic here\n        if (item >= 0) {\n            result.push(item);\n        }\n    });\n    return result;\n}"
+  },
+  "scattered_context": [
+    {
+      "file_path": "helpers/file_1.js",
+      "content": "// Context code for logic_errors in javascript",
+      "relevance": "critical",
+      "relationship": "extends",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        101,
+        122,
+        43
+      ]
+    },
+    {
+      "file_path": "services/file_2.js",
+      "content": "// Context code for logic_errors in javascript",
+      "relevance": "medium",
+      "relationship": "tests",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        136,
+        18,
+        169,
+        77,
+        89
+      ]
+    },
+    {
+      "file_path": "models/file_3.js",
+      "content": "// Context code for logic_errors in javascript",
+      "relevance": "critical",
+      "relationship": "uses",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        104,
+        120,
+        189
+      ]
+    },
+    {
+      "file_path": "core/file_4.js",
+      "content": "// Context code for logic_errors in javascript",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        179
+      ]
+    },
+    {
+      "file_path": "models/file_5.js",
+      "content": "// Context code for logic_errors in javascript",
+      "relevance": "medium",
+      "relationship": "calls",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        52,
+        143
+      ]
+    },
+    {
+      "file_path": "controllers/file_6.js",
+      "content": "// Context code for logic_errors in javascript",
+      "relevance": "high",
+      "relationship": "implements",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        136,
+        94,
+        25,
+        130,
+        98
+      ]
+    },
+    {
+      "file_path": "services/file_7.js",
+      "content": "// Context code for logic_errors in javascript",
+      "relevance": "critical",
+      "relationship": "extends",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        11,
+        173
+      ]
+    },
+    {
+      "file_path": "helpers/file_8.js",
+      "content": "// Context code for logic_errors in javascript",
+      "relevance": "critical",
+      "relationship": "uses",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        50,
+        198,
+        191,
+        114,
+        10
+      ]
+    },
+    {
+      "file_path": "helpers/file_9.js",
+      "content": "// Context code for logic_errors in javascript",
+      "relevance": "critical",
+      "relationship": "calls",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        14
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-03-10",
+    "temporal_spread_days": 150,
+    "refactoring_events": 2,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-03-23",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-06-19",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-03-16",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "helpers/file_1.js",
+        "to": "services/file_2.js",
+        "type": "extends"
+      },
+      {
+        "from": "services/file_2.js",
+        "to": "models/file_3.js",
+        "type": "imports"
+      },
+      {
+        "from": "models/file_3.js",
+        "to": "core/file_4.js",
+        "type": "extends"
+      },
+      {
+        "from": "core/file_4.js",
+        "to": "models/file_5.js",
+        "type": "calls"
+      },
+      {
+        "from": "models/file_5.js",
+        "to": "controllers/file_6.js",
+        "type": "imports"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "services/file_2.js",
+          "helpers/file_8.js",
+          "core/file_4.js"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "services/file_7.js",
+          "models/file_5.js",
+          "core/file_4.js"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "helpers/file_9.js",
+          "services/file_7.js",
+          "core/file_4.js"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "services/file_7.js",
+          "helpers/file_1.js"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "controllers/file_6.js",
+          "helpers/file_1.js",
+          "models/file_5.js"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "controllers/file_6.js",
+          "services/file_7.js",
+          "helpers/file_9.js",
+          "models/file_3.js"
+        ],
+        "depth": 3
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "low",
+    "renamed_entities": {
+      "variable_0": "var_0",
+      "variable_1": "var_1"
+    },
+    "moved_files": 0,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "algorithmic_error in main processing logic",
+    "fix_type": "logic_correction",
+    "must_find_files": [
+      "helpers/file_1.js",
+      "models/file_3.js",
+      "core/file_4.js",
+      "controllers/file_6.js",
+      "services/file_7.js"
+    ],
+    "should_find_files": [
+      "services/file_2.js",
+      "models/file_5.js"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 0.5105489797340298
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_logic_errors_1.javascript",
+      "test_code": "// Test for logic_errors in javascript",
+      "test_type": "integration"
+    },
+    {
+      "file_name": "test_logic_errors_2.javascript",
+      "test_code": "// Test for logic_errors in javascript",
+      "test_type": "e2e"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "logic_errors",
+      "error_message": "AssertionError: Expected 5 but got 4",
+      "stack_trace": "Stack trace for javascript",
+      "timestamp": "2025-08-07T02:22:50.085755"
+    }
+  ],
+  "symptoms": [
+    "Incorrect output produced",
+    "Test cases failing",
+    "Unexpected behavior"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 67,
+    "function": "process_function",
+    "module": "services"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "helpers/file_1.js",
+      "models/file_3.js",
+      "core/file_4.js"
+    ],
+    "should_find_files": [
+      "controllers/file_6.js"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

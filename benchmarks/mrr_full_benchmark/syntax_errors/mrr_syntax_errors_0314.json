@@ -1,0 +1,261 @@
+{
+  "bug_id": "MRR-SYNTAX_ERRORS-202508-0314",
+  "category": "syntax_errors",
+  "subcategory": "missing_bracket",
+  "language": "javascript",
+  "description": "Syntax error: missing_bracket causing compilation failure",
+  "complexity": {
+    "spatial_distribution": 5,
+    "temporal_spread_months": 2,
+    "abstraction_layers": 2,
+    "obfuscation_level": "medium",
+    "cross_module_dependencies": 0,
+    "artifact_types": 3
+  },
+  "code_snippets": {
+    "buggy_code": "function buggyFunction_missing_bracket(data) {\n    // Bug: missing_bracket\n    let result = [];\n    data.forEach(item => {\n        // Buggy logic here\n        if (item > 0) {\n            result.push(item);\n        }\n    });\n    return result;\n}",
+    "fixed_code": "function fixedFunction_missing_bracket(data) {\n    // Fixed: missing_bracket\n    let result = [];\n    data.forEach(item => {\n        // Fixed logic here\n        if (item >= 0) {\n            result.push(item);\n        }\n    });\n    return result;\n}"
+  },
+  "scattered_context": [
+    {
+      "file_path": "utils/file_1.js",
+      "content": "// Context code for syntax_errors in javascript",
+      "relevance": "low",
+      "relationship": "tests",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        115,
+        14,
+        190,
+        30,
+        133
+      ]
+    },
+    {
+      "file_path": "models/file_2.js",
+      "content": "// Context code for syntax_errors in javascript",
+      "relevance": "low",
+      "relationship": "uses",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        194,
+        133
+      ]
+    },
+    {
+      "file_path": "utils/file_3.js",
+      "content": "// Context code for syntax_errors in javascript",
+      "relevance": "high",
+      "relationship": "calls",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        53,
+        162,
+        189,
+        93
+      ]
+    },
+    {
+      "file_path": "utils/file_4.js",
+      "content": "// Context code for syntax_errors in javascript",
+      "relevance": "critical",
+      "relationship": "implements",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        131,
+        196,
+        50,
+        33
+      ]
+    },
+    {
+      "file_path": "controllers/file_5.js",
+      "content": "// Context code for syntax_errors in javascript",
+      "relevance": "high",
+      "relationship": "extends",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        194
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-06-08",
+    "temporal_spread_days": 60,
+    "refactoring_events": 2,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-07-10",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-06-12",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-07-31",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-07-16",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "8416941f",
+        "date": "2025-07-13",
+        "message": "Refactored module 4",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "utils/file_1.js",
+        "to": "models/file_2.js",
+        "type": "extends"
+      },
+      {
+        "from": "models/file_2.js",
+        "to": "utils/file_3.js",
+        "type": "extends"
+      },
+      {
+        "from": "utils/file_3.js",
+        "to": "utils/file_4.js",
+        "type": "extends"
+      },
+      {
+        "from": "utils/file_4.js",
+        "to": "controllers/file_5.js",
+        "type": "extends"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "utils/file_3.js",
+          "utils/file_1.js",
+          "controllers/file_5.js"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "utils/file_4.js",
+          "utils/file_1.js",
+          "utils/file_3.js"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "utils/file_3.js",
+          "utils/file_1.js"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "models/file_2.js",
+          "utils/file_1.js",
+          "utils/file_3.js"
+        ],
+        "depth": 2
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "medium",
+    "renamed_entities": {
+      "function_0": "xbinzlbt",
+      "function_1": "oyqvtpmq",
+      "function_2": "khzrlzak"
+    },
+    "moved_files": 1,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "missing_bracket in main processing logic",
+    "fix_type": "syntax_correction",
+    "must_find_files": [
+      "utils/file_3.js",
+      "utils/file_4.js",
+      "controllers/file_5.js"
+    ],
+    "should_find_files": [],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.0821662508160999
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_syntax_errors_1.javascript",
+      "test_code": "// Test for syntax_errors in javascript",
+      "test_type": "e2e"
+    },
+    {
+      "file_name": "test_syntax_errors_2.javascript",
+      "test_code": "// Test for syntax_errors in javascript",
+      "test_type": "integration"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "syntax_errors",
+      "error_message": "SyntaxError: invalid syntax at line 40",
+      "stack_trace": "Stack trace for javascript",
+      "timestamp": "2025-08-07T02:22:49.556325"
+    }
+  ],
+  "symptoms": [
+    "Code fails to compile/run",
+    "Syntax error message displayed",
+    "IDE highlights error"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 38,
+    "function": "process_function",
+    "module": "utils"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "utils/file_4.js"
+    ],
+    "should_find_files": [
+      "utils/file_3.js",
+      "controllers/file_5.js"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

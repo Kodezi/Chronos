@@ -1,0 +1,444 @@
+{
+  "bug_id": "MRR-MEMORY_ISSUES-202508-0531",
+  "category": "memory_issues",
+  "subcategory": "dangling_pointer",
+  "language": "python",
+  "description": "Memory issue: dangling_pointer causing memory problems",
+  "complexity": {
+    "spatial_distribution": 19,
+    "temporal_spread_months": 11,
+    "abstraction_layers": 4,
+    "obfuscation_level": "high",
+    "cross_module_dependencies": 10,
+    "artifact_types": 4
+  },
+  "code_snippets": {
+    "buggy_code": "def buggy_function_dangling_pointer(data):\n    # Bug: dangling_pointer\n    result = []\n    for item in data:\n        # Buggy logic here\n        if item > 0:\n            result.append(item)\n    return result",
+    "fixed_code": "def fixed_function_dangling_pointer(data):\n    # Fixed: dangling_pointer\n    result = []\n    for item in data:\n        # Fixed logic here\n        if item >= 0:\n            result.append(item)\n    return result"
+  },
+  "scattered_context": [
+    {
+      "file_path": "controllers/file_1.py",
+      "content": "# Helper code for memory_issues\ndef helper(): pass",
+      "relevance": "medium",
+      "relationship": "implements",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        200,
+        31,
+        125
+      ]
+    },
+    {
+      "file_path": "utils/file_2.py",
+      "content": "# Helper code for memory_issues\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "calls",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        123,
+        171,
+        121
+      ]
+    },
+    {
+      "file_path": "helpers/file_3.py",
+      "content": "# Helper code for memory_issues\ndef helper(): pass",
+      "relevance": "medium",
+      "relationship": "imports",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        149,
+        120,
+        89,
+        149,
+        93
+      ]
+    },
+    {
+      "file_path": "utils/file_4.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to memory_issues\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "calls",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        74,
+        81
+      ]
+    },
+    {
+      "file_path": "utils/file_5.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to memory_issues\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "extends",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        57,
+        192
+      ]
+    },
+    {
+      "file_path": "helpers/file_6.py",
+      "content": "# Helper code for memory_issues\ndef helper(): pass",
+      "relevance": "medium",
+      "relationship": "imports",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        61,
+        177,
+        128,
+        70
+      ]
+    },
+    {
+      "file_path": "services/file_7.py",
+      "content": "def important_function(param):\n    # Important logic for memory_issues\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "imports",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        41
+      ]
+    },
+    {
+      "file_path": "core/file_8.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to memory_issues\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "extends",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        153
+      ]
+    },
+    {
+      "file_path": "models/file_9.py",
+      "content": "# Helper code for memory_issues\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "extends",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        106
+      ]
+    },
+    {
+      "file_path": "core/file_10.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to memory_issues\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "extends",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        116,
+        12,
+        16,
+        110
+      ]
+    },
+    {
+      "file_path": "controllers/file_11.py",
+      "content": "def important_function(param):\n    # Important logic for memory_issues\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "tests",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        148,
+        36
+      ]
+    },
+    {
+      "file_path": "models/file_12.py",
+      "content": "def important_function(param):\n    # Important logic for memory_issues\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "calls",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        184
+      ]
+    },
+    {
+      "file_path": "core/file_13.py",
+      "content": "def important_function(param):\n    # Important logic for memory_issues\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "implements",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        137
+      ]
+    },
+    {
+      "file_path": "helpers/file_14.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to memory_issues\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "implements",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        168,
+        56
+      ]
+    },
+    {
+      "file_path": "controllers/file_15.py",
+      "content": "def important_function(param):\n    # Important logic for memory_issues\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "calls",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        91,
+        95,
+        167
+      ]
+    },
+    {
+      "file_path": "services/file_16.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to memory_issues\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "calls",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        41
+      ]
+    },
+    {
+      "file_path": "models/file_17.py",
+      "content": "# Helper code for memory_issues\ndef helper(): pass",
+      "relevance": "medium",
+      "relationship": "uses",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        11,
+        122,
+        190
+      ]
+    },
+    {
+      "file_path": "utils/file_18.py",
+      "content": "def important_function(param):\n    # Important logic for memory_issues\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "extends",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        115,
+        86,
+        153,
+        25
+      ]
+    },
+    {
+      "file_path": "services/file_19.py",
+      "content": "def important_function(param):\n    # Important logic for memory_issues\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "uses",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        92,
+        67
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2024-09-11",
+    "temporal_spread_days": 330,
+    "refactoring_events": 2,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2024-11-08",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2024-10-25",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2024-09-23",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-05-05",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "controllers/file_1.py",
+        "to": "utils/file_2.py",
+        "type": "calls"
+      },
+      {
+        "from": "utils/file_2.py",
+        "to": "helpers/file_3.py",
+        "type": "extends"
+      },
+      {
+        "from": "helpers/file_3.py",
+        "to": "utils/file_4.py",
+        "type": "calls"
+      },
+      {
+        "from": "utils/file_4.py",
+        "to": "utils/file_5.py",
+        "type": "calls"
+      },
+      {
+        "from": "utils/file_5.py",
+        "to": "helpers/file_6.py",
+        "type": "imports"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "controllers/file_1.py",
+          "helpers/file_3.py",
+          "core/file_13.py"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "helpers/file_6.py",
+          "core/file_13.py",
+          "services/file_19.py"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "helpers/file_3.py",
+          "utils/file_4.py",
+          "helpers/file_14.py"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "helpers/file_6.py",
+          "models/file_17.py"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "core/file_10.py",
+          "models/file_12.py",
+          "services/file_16.py"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "models/file_9.py",
+          "utils/file_5.py",
+          "core/file_10.py",
+          "core/file_13.py"
+        ],
+        "depth": 3
+      },
+      {
+        "path": [
+          "core/file_13.py",
+          "models/file_12.py",
+          "utils/file_2.py",
+          "utils/file_18.py",
+          "controllers/file_15.py"
+        ],
+        "depth": 4
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "high",
+    "renamed_entities": {
+      "entity_0": "sRAnrMAcxl",
+      "entity_1": "spwkpDAFRV",
+      "entity_2": "WnjJHQVJFR",
+      "entity_3": "bPHBHfKfgg",
+      "entity_4": "jLWKenBdFM",
+      "entity_5": "lGmzcwLiNV",
+      "entity_6": "EBMeFjkhlz"
+    },
+    "moved_files": 2,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "dangling_pointer in main processing logic",
+    "fix_type": "memory_management",
+    "must_find_files": [
+      "utils/file_4.py",
+      "utils/file_5.py",
+      "services/file_7.py",
+      "core/file_8.py",
+      "core/file_10.py"
+    ],
+    "should_find_files": [
+      "controllers/file_1.py",
+      "helpers/file_3.py",
+      "helpers/file_6.py"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.3438272720705335
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_memory_issues_1.python",
+      "test_code": "import unittest\n\nclass TestMemory_Issues(unittest.TestCase):\n    def test_scenario_1(self):\n        # Test for memory_issues\n        result = function_under_test(test_data)\n        self.assertEqual(result, expected_result)\n",
+      "test_type": "e2e"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "memory_issues",
+      "error_message": "MemoryError: Out of memory",
+      "stack_trace": "Traceback (most recent call last):\n  File \"main.py\", line 42, in <module>\n    result = process_data(input_data)\n  File \"processor.py\", line 15, in process_data\n    return transform(validate(data))\n  File \"validator.py\", line 8, in validate\n    raise ValueError(\"Invalid data\")\nValueError: Invalid data",
+      "timestamp": "2025-08-07T02:22:50.877805"
+    }
+  ],
+  "symptoms": [
+    "Generic symptom"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 17,
+    "function": "process_function",
+    "module": "utils"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "utils/file_4.py",
+      "utils/file_5.py",
+      "core/file_8.py"
+    ],
+    "should_find_files": [
+      "services/file_7.py",
+      "controllers/file_11.py"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

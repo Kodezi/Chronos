@@ -1,0 +1,290 @@
+{
+  "bug_id": "MRR-SYNTAX_ERRORS-202508-0380",
+  "category": "syntax_errors",
+  "subcategory": "incorrect_syntax",
+  "language": "go",
+  "description": "Syntax error: incorrect_syntax causing compilation failure",
+  "complexity": {
+    "spatial_distribution": 5,
+    "temporal_spread_months": 0,
+    "abstraction_layers": 1,
+    "obfuscation_level": "low",
+    "cross_module_dependencies": 1,
+    "artifact_types": 4
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for syntax_errors/incorrect_syntax in go",
+    "fixed_code": "// Fixed code for syntax_errors/incorrect_syntax in go"
+  },
+  "scattered_context": [
+    {
+      "file_path": "helpers/file_1.go",
+      "content": "// Context code for syntax_errors in go",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        155,
+        15,
+        140,
+        163,
+        83
+      ]
+    },
+    {
+      "file_path": "controllers/file_2.go",
+      "content": "// Context code for syntax_errors in go",
+      "relevance": "critical",
+      "relationship": "calls",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        139,
+        28
+      ]
+    },
+    {
+      "file_path": "core/file_3.go",
+      "content": "// Context code for syntax_errors in go",
+      "relevance": "low",
+      "relationship": "calls",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        101,
+        14,
+        45,
+        138
+      ]
+    },
+    {
+      "file_path": "utils/file_4.go",
+      "content": "// Context code for syntax_errors in go",
+      "relevance": "high",
+      "relationship": "calls",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        16,
+        23,
+        106,
+        112
+      ]
+    },
+    {
+      "file_path": "core/file_5.go",
+      "content": "// Context code for syntax_errors in go",
+      "relevance": "high",
+      "relationship": "extends",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        16,
+        147,
+        131
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-08-07",
+    "temporal_spread_days": 0,
+    "refactoring_events": 2,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-08-07",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-08-07",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-08-07",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-08-07",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      },
+      {
+        "hash": "8416941f",
+        "date": "2025-08-07",
+        "message": "Refactored module 4",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      },
+      {
+        "hash": "edd0a651",
+        "date": "2025-08-07",
+        "message": "Refactored module 5",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      },
+      {
+        "hash": "a67f5b4e",
+        "date": "2025-08-07",
+        "message": "Refactored module 6",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "e32a385c",
+        "date": "2025-08-07",
+        "message": "Refactored module 7",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "helpers/file_1.go",
+        "to": "controllers/file_2.go",
+        "type": "imports"
+      },
+      {
+        "from": "controllers/file_2.go",
+        "to": "core/file_3.go",
+        "type": "extends"
+      },
+      {
+        "from": "core/file_3.go",
+        "to": "utils/file_4.go",
+        "type": "imports"
+      },
+      {
+        "from": "utils/file_4.go",
+        "to": "core/file_5.go",
+        "type": "extends"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "core/file_5.go",
+          "controllers/file_2.go",
+          "core/file_3.go"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "utils/file_4.go",
+          "controllers/file_2.go",
+          "core/file_5.go"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "core/file_3.go",
+          "helpers/file_1.go"
+        ],
+        "depth": 1
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "low",
+    "renamed_entities": {
+      "variable_0": "var_0",
+      "variable_1": "var_1"
+    },
+    "moved_files": 0,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "incorrect_syntax in main processing logic",
+    "fix_type": "syntax_correction",
+    "must_find_files": [
+      "helpers/file_1.go",
+      "controllers/file_2.go",
+      "utils/file_4.go",
+      "core/file_5.go"
+    ],
+    "should_find_files": [],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.5431045835379265
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_syntax_errors_1.go",
+      "test_code": "// Test for syntax_errors in go",
+      "test_type": "e2e"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "syntax_errors",
+      "error_message": "SyntaxError: invalid syntax at line 80",
+      "stack_trace": "Stack trace for go",
+      "timestamp": "2025-08-07T02:22:49.578730"
+    }
+  ],
+  "symptoms": [
+    "Code fails to compile/run",
+    "Syntax error message displayed",
+    "IDE highlights error"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 56,
+    "function": "process_function",
+    "module": "services"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "helpers/file_1.go",
+      "controllers/file_2.go"
+    ],
+    "should_find_files": [
+      "utils/file_4.go",
+      "core/file_5.go"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

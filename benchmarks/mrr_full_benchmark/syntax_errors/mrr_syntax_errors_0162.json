@@ -1,0 +1,226 @@
+{
+  "bug_id": "MRR-SYNTAX_ERRORS-202508-0162",
+  "category": "syntax_errors",
+  "subcategory": "missing_bracket",
+  "language": "javascript",
+  "description": "Syntax error: missing_bracket causing compilation failure",
+  "complexity": {
+    "spatial_distribution": 3,
+    "temporal_spread_months": 1,
+    "abstraction_layers": 2,
+    "obfuscation_level": "medium",
+    "cross_module_dependencies": 1,
+    "artifact_types": 3
+  },
+  "code_snippets": {
+    "buggy_code": "function buggyFunction_missing_bracket(data) {\n    // Bug: missing_bracket\n    let result = [];\n    data.forEach(item => {\n        // Buggy logic here\n        if (item > 0) {\n            result.push(item);\n        }\n    });\n    return result;\n}",
+    "fixed_code": "function fixedFunction_missing_bracket(data) {\n    // Fixed: missing_bracket\n    let result = [];\n    data.forEach(item => {\n        // Fixed logic here\n        if (item >= 0) {\n            result.push(item);\n        }\n    });\n    return result;\n}"
+  },
+  "scattered_context": [
+    {
+      "file_path": "models/file_1.js",
+      "content": "// Context code for syntax_errors in javascript",
+      "relevance": "high",
+      "relationship": "extends",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        130,
+        87,
+        142
+      ]
+    },
+    {
+      "file_path": "models/file_2.js",
+      "content": "// Context code for syntax_errors in javascript",
+      "relevance": "high",
+      "relationship": "imports",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        33,
+        118
+      ]
+    },
+    {
+      "file_path": "models/file_3.js",
+      "content": "// Context code for syntax_errors in javascript",
+      "relevance": "low",
+      "relationship": "uses",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        40,
+        178
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-07-08",
+    "temporal_spread_days": 30,
+    "refactoring_events": 3,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-07-27",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-08-01",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-07-11",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-07-19",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "models/file_1.js",
+        "to": "models/file_2.js",
+        "type": "extends"
+      },
+      {
+        "from": "models/file_2.js",
+        "to": "models/file_3.js",
+        "type": "imports"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "models/file_3.js",
+          "models/file_1.js",
+          "models/file_2.js"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "models/file_1.js",
+          "models/file_2.js"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "models/file_1.js",
+          "models/file_2.js",
+          "models/file_3.js"
+        ],
+        "depth": 2
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "medium",
+    "renamed_entities": {
+      "function_0": "cbpgaiod",
+      "function_1": "qkxrekav",
+      "function_2": "qcxqutve",
+      "function_3": "areynilf",
+      "function_4": "jsbzebaz",
+      "function_5": "wpgktrvx",
+      "function_6": "wxzixdeg"
+    },
+    "moved_files": 0,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "missing_bracket in main processing logic",
+    "fix_type": "syntax_correction",
+    "must_find_files": [
+      "models/file_1.js",
+      "models/file_2.js"
+    ],
+    "should_find_files": [],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 0.8788386368284935
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_syntax_errors_1.javascript",
+      "test_code": "// Test for syntax_errors in javascript",
+      "test_type": "e2e"
+    },
+    {
+      "file_name": "test_syntax_errors_2.javascript",
+      "test_code": "// Test for syntax_errors in javascript",
+      "test_type": "unit"
+    },
+    {
+      "file_name": "test_syntax_errors_3.javascript",
+      "test_code": "// Test for syntax_errors in javascript",
+      "test_type": "e2e"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "syntax_errors",
+      "error_message": "SyntaxError: invalid syntax at line 49",
+      "stack_trace": "Stack trace for javascript",
+      "timestamp": "2025-08-07T02:22:49.509113"
+    },
+    {
+      "error_type": "syntax_errors",
+      "error_message": "SyntaxError: invalid syntax at line 92",
+      "stack_trace": "Stack trace for javascript",
+      "timestamp": "2025-08-07T02:22:49.509115"
+    }
+  ],
+  "symptoms": [
+    "Code fails to compile/run",
+    "Syntax error message displayed",
+    "IDE highlights error"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 127,
+    "function": "process_function",
+    "module": "services"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [],
+    "should_find_files": [
+      "models/file_1.js",
+      "models/file_2.js"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

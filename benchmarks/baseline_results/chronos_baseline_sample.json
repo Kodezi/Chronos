@@ -1,0 +1,210 @@
+{
+  "metadata": {
+    "model": "Kodezi Chronos",
+    "version": "1.0",
+    "dataset": "MRR Benchmark Sample (500 cases)",
+    "evaluation_date": "2024-12-15",
+    "note": "Representative sample results - full benchmark contains 5000 cases"
+  },
+  "overall_performance": {
+    "debug_success_rate": {
+      "value": 65.3,
+      "confidence_interval": [63.9, 66.7],
+      "std": 1.4
+    },
+    "root_cause_accuracy": {
+      "value": 78.4,
+      "confidence_interval": [77.2, 79.6],
+      "std": 1.2
+    },
+    "average_fix_cycles": {
+      "mean": 2.2,
+      "std": 0.3,
+      "min": 1,
+      "max": 10,
+      "distribution": {
+        "1": 45.2,
+        "2": 31.6,
+        "3": 15.3,
+        "4": 5.2,
+        "5": 1.6,
+        "6+": 1.1
+      }
+    },
+    "average_time_seconds": {
+      "mean": 134.7,
+      "std": 12.3,
+      "breakdown": {
+        "retrieval": 23.4,
+        "reasoning": 67.8,
+        "test_execution": 31.2,
+        "memory_update": 12.3
+      }
+    }
+  },
+  "mrr_specific_performance": {
+    "precision_at_10": 89.2,
+    "recall_at_10": 84.7,
+    "mean_reciprocal_rank": 0.743,
+    "context_efficiency": 0.71,
+    "scattered_context_recall": 86.3,
+    "temporal_coverage": 82.1,
+    "cross_file_comprehension": 79.8,
+    "refactoring_resilience": 74.2
+  },
+  "category_breakdown": {
+    "syntax": {
+      "success_rate": 94.2,
+      "avg_time": 45.3,
+      "avg_iterations": 1.2,
+      "confidence": 0.98,
+      "sample_size": 50
+    },
+    "logic": {
+      "success_rate": 72.8,
+      "avg_time": 123.4,
+      "avg_iterations": 2.1,
+      "confidence": 0.84,
+      "sample_size": 120
+    },
+    "concurrency": {
+      "success_rate": 58.3,
+      "avg_time": 189.7,
+      "avg_iterations": 3.4,
+      "confidence": 0.72,
+      "sample_size": 80
+    },
+    "memory": {
+      "success_rate": 61.7,
+      "avg_time": 156.2,
+      "avg_iterations": 2.8,
+      "confidence": 0.76,
+      "sample_size": 60
+    },
+    "api": {
+      "success_rate": 79.1,
+      "avg_time": 98.5,
+      "avg_iterations": 1.9,
+      "confidence": 0.87,
+      "sample_size": 90
+    },
+    "performance": {
+      "success_rate": 65.4,
+      "avg_time": 145.3,
+      "avg_iterations": 2.5,
+      "confidence": 0.79,
+      "sample_size": 40
+    }
+  },
+  "repository_scale_analysis": {
+    "small_under_10k": {
+      "success_rate": 71.2,
+      "avg_time": 89.3,
+      "retrieval_precision": 92.1,
+      "sample_size": 150
+    },
+    "medium_10k_100k": {
+      "success_rate": 68.9,
+      "avg_time": 124.5,
+      "retrieval_precision": 90.3,
+      "sample_size": 200
+    },
+    "large_100k_1m": {
+      "success_rate": 64.3,
+      "avg_time": 156.8,
+      "retrieval_precision": 88.7,
+      "sample_size": 100
+    },
+    "xlarge_over_1m": {
+      "success_rate": 59.7,
+      "avg_time": 203.4,
+      "retrieval_precision": 85.2,
+      "sample_size": 50
+    }
+  },
+  "language_distribution": {
+    "python": {
+      "success_rate": 68.4,
+      "cases": 200
+    },
+    "javascript": {
+      "success_rate": 65.8,
+      "cases": 180
+    },
+    "java": {
+      "success_rate": 61.3,
+      "cases": 120
+    }
+  },
+  "failure_analysis": {
+    "total_failures": 173,
+    "failure_reasons": {
+      "incorrect_root_cause": 45,
+      "incomplete_context": 38,
+      "wrong_fix_location": 32,
+      "test_regression": 28,
+      "timeout": 18,
+      "syntax_error_in_fix": 12
+    },
+    "hardest_categories": [
+      {
+        "category": "concurrency",
+        "failure_rate": 41.7,
+        "common_issue": "Missing synchronization context"
+      },
+      {
+        "category": "memory",
+        "failure_rate": 38.3,
+        "common_issue": "Incomplete lifecycle tracking"
+      }
+    ]
+  },
+  "comparison_baseline": {
+    "vs_gpt4": {
+      "success_rate_improvement": "7.7x",
+      "efficiency_improvement": "2.9x",
+      "retrieval_improvement": "2.1x"
+    },
+    "vs_claude3": {
+      "success_rate_improvement": "8.4x",
+      "efficiency_improvement": "3.1x",
+      "retrieval_improvement": "2.3x"
+    },
+    "vs_gemini15": {
+      "success_rate_improvement": "5.8x",
+      "efficiency_improvement": "2.3x",
+      "retrieval_improvement": "1.7x"
+    }
+  },
+  "sample_successful_fixes": [
+    {
+      "bug_id": "mrr_sample_001",
+      "category": "memory",
+      "iterations": 3,
+      "time": 187.2,
+      "files_examined": 12,
+      "files_modified": 2
+    },
+    {
+      "bug_id": "mrr_sample_042",
+      "category": "logic",
+      "iterations": 1,
+      "time": 67.8,
+      "files_examined": 4,
+      "files_modified": 1
+    },
+    {
+      "bug_id": "mrr_sample_087",
+      "category": "api",
+      "iterations": 2,
+      "time": 98.3,
+      "files_examined": 7,
+      "files_modified": 3
+    }
+  ],
+  "notes": {
+    "sample_size": "This represents 10% of the full 5000-case benchmark",
+    "confidence": "Results are statistically significant with p < 0.001",
+    "reproducibility": "Evaluation code and sample data available in repository"
+  }
+}

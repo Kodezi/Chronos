@@ -1,0 +1,787 @@
+{
+  "bug_id": "MRR-CROSS_CATEGORY-202508-0128",
+  "category": "cross_category",
+  "subcategory": "cascading_failures",
+  "language": "javascript",
+  "description": "Complex bug: cascading_failures with multiple issues",
+  "complexity": {
+    "spatial_distribution": 40,
+    "temporal_spread_months": 10,
+    "abstraction_layers": 5,
+    "obfuscation_level": "high",
+    "cross_module_dependencies": 16,
+    "artifact_types": 5
+  },
+  "code_snippets": {
+    "buggy_code": "function buggyFunction_cascading_failures(data) {\n    // Bug: cascading_failures\n    let result = [];\n    data.forEach(item => {\n        // Buggy logic here\n        if (item > 0) {\n            result.push(item);\n        }\n    });\n    return result;\n}",
+    "fixed_code": "function fixedFunction_cascading_failures(data) {\n    // Fixed: cascading_failures\n    let result = [];\n    data.forEach(item => {\n        // Fixed logic here\n        if (item >= 0) {\n            result.push(item);\n        }\n    });\n    return result;\n}"
+  },
+  "scattered_context": [
+    {
+      "file_path": "models/file_1.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "critical",
+      "relationship": "calls",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        85
+      ]
+    },
+    {
+      "file_path": "core/file_2.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "low",
+      "relationship": "implements",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        93
+      ]
+    },
+    {
+      "file_path": "helpers/file_3.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "critical",
+      "relationship": "imports",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        200,
+        157,
+        161,
+        69,
+        190
+      ]
+    },
+    {
+      "file_path": "core/file_4.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "medium",
+      "relationship": "extends",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        62
+      ]
+    },
+    {
+      "file_path": "helpers/file_5.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "medium",
+      "relationship": "implements",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        15,
+        200,
+        151,
+        41
+      ]
+    },
+    {
+      "file_path": "services/file_6.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "high",
+      "relationship": "implements",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        138,
+        160,
+        192,
+        60
+      ]
+    },
+    {
+      "file_path": "models/file_7.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "high",
+      "relationship": "uses",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        180,
+        111,
+        66
+      ]
+    },
+    {
+      "file_path": "helpers/file_8.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "high",
+      "relationship": "extends",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        173,
+        138,
+        171,
+        99,
+        192
+      ]
+    },
+    {
+      "file_path": "models/file_9.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "medium",
+      "relationship": "calls",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        103,
+        10
+      ]
+    },
+    {
+      "file_path": "helpers/file_10.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "critical",
+      "relationship": "calls",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        34,
+        130,
+        185,
+        126
+      ]
+    },
+    {
+      "file_path": "utils/file_11.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "medium",
+      "relationship": "uses",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        84,
+        69,
+        145,
+        119,
+        67
+      ]
+    },
+    {
+      "file_path": "core/file_12.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "low",
+      "relationship": "tests",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        163,
+        134,
+        166,
+        116
+      ]
+    },
+    {
+      "file_path": "controllers/file_13.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "high",
+      "relationship": "extends",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        137,
+        42,
+        21
+      ]
+    },
+    {
+      "file_path": "services/file_14.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "critical",
+      "relationship": "calls",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        16,
+        59,
+        100,
+        30,
+        13
+      ]
+    },
+    {
+      "file_path": "helpers/file_15.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "high",
+      "relationship": "imports",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        59,
+        53
+      ]
+    },
+    {
+      "file_path": "utils/file_16.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        189,
+        91
+      ]
+    },
+    {
+      "file_path": "controllers/file_17.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "critical",
+      "relationship": "calls",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        111,
+        37
+      ]
+    },
+    {
+      "file_path": "core/file_18.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "high",
+      "relationship": "calls",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        51,
+        100
+      ]
+    },
+    {
+      "file_path": "core/file_19.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "critical",
+      "relationship": "uses",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        56,
+        185,
+        27,
+        161
+      ]
+    },
+    {
+      "file_path": "models/file_20.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "medium",
+      "relationship": "uses",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        170
+      ]
+    },
+    {
+      "file_path": "controllers/file_21.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "low",
+      "relationship": "imports",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        56,
+        167
+      ]
+    },
+    {
+      "file_path": "controllers/file_22.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "medium",
+      "relationship": "uses",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        56,
+        114,
+        105
+      ]
+    },
+    {
+      "file_path": "core/file_23.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "high",
+      "relationship": "tests",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        26,
+        136
+      ]
+    },
+    {
+      "file_path": "models/file_24.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "high",
+      "relationship": "tests",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        48,
+        175,
+        181
+      ]
+    },
+    {
+      "file_path": "utils/file_25.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "medium",
+      "relationship": "uses",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        182
+      ]
+    },
+    {
+      "file_path": "models/file_26.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "critical",
+      "relationship": "calls",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        77,
+        89,
+        196,
+        99,
+        113
+      ]
+    },
+    {
+      "file_path": "services/file_27.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "critical",
+      "relationship": "uses",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        70,
+        166,
+        67,
+        30,
+        193
+      ]
+    },
+    {
+      "file_path": "utils/file_28.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "low",
+      "relationship": "extends",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        157,
+        20
+      ]
+    },
+    {
+      "file_path": "utils/file_29.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "medium",
+      "relationship": "calls",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        57
+      ]
+    },
+    {
+      "file_path": "services/file_30.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "low",
+      "relationship": "tests",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        191,
+        159,
+        46,
+        82
+      ]
+    },
+    {
+      "file_path": "controllers/file_31.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "high",
+      "relationship": "tests",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        124,
+        111,
+        20,
+        45
+      ]
+    },
+    {
+      "file_path": "models/file_32.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "medium",
+      "relationship": "tests",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        109,
+        126,
+        91,
+        79,
+        118
+      ]
+    },
+    {
+      "file_path": "core/file_33.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "high",
+      "relationship": "tests",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        22,
+        12,
+        194
+      ]
+    },
+    {
+      "file_path": "services/file_34.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "high",
+      "relationship": "uses",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        141,
+        16,
+        171
+      ]
+    },
+    {
+      "file_path": "core/file_35.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "high",
+      "relationship": "tests",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        55,
+        193,
+        178,
+        119,
+        126
+      ]
+    },
+    {
+      "file_path": "controllers/file_36.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "high",
+      "relationship": "tests",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        76,
+        155
+      ]
+    },
+    {
+      "file_path": "controllers/file_37.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "medium",
+      "relationship": "tests",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        199,
+        18,
+        78,
+        52,
+        85
+      ]
+    },
+    {
+      "file_path": "models/file_38.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "low",
+      "relationship": "tests",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        17,
+        155
+      ]
+    },
+    {
+      "file_path": "controllers/file_39.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "low",
+      "relationship": "implements",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        19,
+        67,
+        198,
+        112
+      ]
+    },
+    {
+      "file_path": "services/file_40.js",
+      "content": "// Context code for cross_category in javascript",
+      "relevance": "low",
+      "relationship": "tests",
+      "specific_issue": "Related to cross_category issue",
+      "line_numbers": [
+        139,
+        196,
+        139
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2024-10-11",
+    "temporal_spread_days": 300,
+    "refactoring_events": 2,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-03-16",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-05-19",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-04-25",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-01-23",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "8416941f",
+        "date": "2025-06-02",
+        "message": "Refactored module 4",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      },
+      {
+        "hash": "edd0a651",
+        "date": "2025-02-22",
+        "message": "Refactored module 5",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "a67f5b4e",
+        "date": "2025-05-03",
+        "message": "Refactored module 6",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "e32a385c",
+        "date": "2025-02-27",
+        "message": "Refactored module 7",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "740b3cf2",
+        "date": "2024-12-03",
+        "message": "Refactored module 8",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "models/file_1.js",
+        "to": "core/file_2.js",
+        "type": "imports"
+      },
+      {
+        "from": "core/file_2.js",
+        "to": "helpers/file_3.js",
+        "type": "extends"
+      },
+      {
+        "from": "helpers/file_3.js",
+        "to": "core/file_4.js",
+        "type": "extends"
+      },
+      {
+        "from": "core/file_4.js",
+        "to": "helpers/file_5.js",
+        "type": "extends"
+      },
+      {
+        "from": "helpers/file_5.js",
+        "to": "services/file_6.js",
+        "type": "extends"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "controllers/file_21.js",
+          "helpers/file_5.js",
+          "helpers/file_3.js"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "helpers/file_10.js",
+          "services/file_30.js",
+          "helpers/file_5.js"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "models/file_9.js",
+          "utils/file_28.js",
+          "controllers/file_17.js"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "services/file_14.js",
+          "controllers/file_37.js"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "services/file_14.js",
+          "models/file_9.js",
+          "services/file_40.js"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "core/file_33.js",
+          "controllers/file_17.js",
+          "models/file_7.js",
+          "controllers/file_21.js"
+        ],
+        "depth": 3
+      },
+      {
+        "path": [
+          "helpers/file_8.js",
+          "helpers/file_10.js",
+          "models/file_1.js",
+          "controllers/file_37.js",
+          "controllers/file_21.js"
+        ],
+        "depth": 4
+      },
+      {
+        "path": [
+          "controllers/file_36.js",
+          "models/file_38.js",
+          "models/file_26.js",
+          "helpers/file_8.js",
+          "models/file_9.js",
+          "controllers/file_37.js"
+        ],
+        "depth": 5
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "high",
+    "renamed_entities": {
+      "entity_0": "CGlfkZLyYs",
+      "entity_1": "MvQdlqlXww",
+      "entity_2": "TblGPnImER",
+      "entity_3": "wVEeVYEMYv",
+      "entity_4": "iBCzBlAeDJ",
+      "entity_5": "aSKjETXfeD",
+      "entity_6": "EVkIfDnWpb",
+      "entity_7": "FImxhgHSgo",
+      "entity_8": "IogSNZBawZ"
+    },
+    "moved_files": 3,
+    "refactored_modules": 2
+  },
+  "ground_truth": {
+    "root_cause": "cascading_failures in main processing logic",
+    "fix_type": "multiple_fixes",
+    "must_find_files": [
+      "models/file_1.js",
+      "helpers/file_3.js",
+      "services/file_6.js",
+      "models/file_7.js",
+      "helpers/file_8.js"
+    ],
+    "should_find_files": [
+      "core/file_4.js",
+      "helpers/file_5.js",
+      "models/file_9.js"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 0.6023156486751862
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_cross_category_1.javascript",
+      "test_code": "// Test for cross_category in javascript",
+      "test_type": "e2e"
+    },
+    {
+      "file_name": "test_cross_category_2.javascript",
+      "test_code": "// Test for cross_category in javascript",
+      "test_type": "e2e"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "cross_category",
+      "error_message": "SystemError: Multiple failures detected",
+      "stack_trace": "Stack trace for javascript",
+      "timestamp": "2025-08-07T02:22:51.668443"
+    }
+  ],
+  "symptoms": [
+    "Generic symptom"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 185,
+    "function": "process_function",
+    "module": "utils"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "models/file_1.js",
+      "helpers/file_3.js",
+      "helpers/file_10.js"
+    ],
+    "should_find_files": [
+      "services/file_6.js",
+      "models/file_7.js"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

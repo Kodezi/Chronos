@@ -1,0 +1,724 @@
+{
+  "bug_id": "MRR-CONCURRENCY_ISSUES-202508-0643",
+  "category": "concurrency_issues",
+  "subcategory": "livelock",
+  "language": "go",
+  "description": "Concurrency bug: livelock in multi-threaded code",
+  "complexity": {
+    "spatial_distribution": 35,
+    "temporal_spread_months": 12,
+    "abstraction_layers": 3,
+    "obfuscation_level": "high",
+    "cross_module_dependencies": 5,
+    "artifact_types": 3
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for concurrency_issues/livelock in go",
+    "fixed_code": "// Fixed code for concurrency_issues/livelock in go"
+  },
+  "scattered_context": [
+    {
+      "file_path": "models/file_1.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "medium",
+      "relationship": "uses",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        152
+      ]
+    },
+    {
+      "file_path": "models/file_2.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "low",
+      "relationship": "imports",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        47,
+        118,
+        165,
+        180
+      ]
+    },
+    {
+      "file_path": "helpers/file_3.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "low",
+      "relationship": "extends",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        23,
+        142
+      ]
+    },
+    {
+      "file_path": "controllers/file_4.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "high",
+      "relationship": "implements",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        181,
+        196
+      ]
+    },
+    {
+      "file_path": "models/file_5.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "high",
+      "relationship": "extends",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        11,
+        190,
+        120,
+        180,
+        68
+      ]
+    },
+    {
+      "file_path": "services/file_6.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "critical",
+      "relationship": "calls",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        161,
+        170,
+        82,
+        198
+      ]
+    },
+    {
+      "file_path": "helpers/file_7.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "medium",
+      "relationship": "calls",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        181,
+        74,
+        50,
+        183,
+        179
+      ]
+    },
+    {
+      "file_path": "core/file_8.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "medium",
+      "relationship": "imports",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        181
+      ]
+    },
+    {
+      "file_path": "core/file_9.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "medium",
+      "relationship": "implements",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        154,
+        146,
+        65,
+        95,
+        101
+      ]
+    },
+    {
+      "file_path": "models/file_10.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "critical",
+      "relationship": "uses",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        156,
+        50
+      ]
+    },
+    {
+      "file_path": "controllers/file_11.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "low",
+      "relationship": "tests",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        155,
+        115,
+        182,
+        136
+      ]
+    },
+    {
+      "file_path": "services/file_12.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "low",
+      "relationship": "imports",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        167,
+        178
+      ]
+    },
+    {
+      "file_path": "models/file_13.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "medium",
+      "relationship": "imports",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        188,
+        70
+      ]
+    },
+    {
+      "file_path": "core/file_14.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        34,
+        48,
+        115,
+        118,
+        15
+      ]
+    },
+    {
+      "file_path": "helpers/file_15.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "medium",
+      "relationship": "uses",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        199,
+        79,
+        173,
+        59,
+        53
+      ]
+    },
+    {
+      "file_path": "services/file_16.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "high",
+      "relationship": "calls",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        120,
+        65,
+        116,
+        25,
+        152
+      ]
+    },
+    {
+      "file_path": "utils/file_17.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        50,
+        31
+      ]
+    },
+    {
+      "file_path": "core/file_18.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "low",
+      "relationship": "tests",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        113,
+        112,
+        172
+      ]
+    },
+    {
+      "file_path": "models/file_19.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "medium",
+      "relationship": "calls",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        60,
+        169,
+        183,
+        109,
+        16
+      ]
+    },
+    {
+      "file_path": "controllers/file_20.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "medium",
+      "relationship": "implements",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        73,
+        10,
+        119,
+        108
+      ]
+    },
+    {
+      "file_path": "utils/file_21.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "critical",
+      "relationship": "implements",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        74,
+        80
+      ]
+    },
+    {
+      "file_path": "core/file_22.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "critical",
+      "relationship": "imports",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        14,
+        87,
+        121,
+        113,
+        45
+      ]
+    },
+    {
+      "file_path": "services/file_23.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "high",
+      "relationship": "uses",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        139,
+        196,
+        158,
+        123,
+        190
+      ]
+    },
+    {
+      "file_path": "utils/file_24.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "low",
+      "relationship": "calls",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        54
+      ]
+    },
+    {
+      "file_path": "models/file_25.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "low",
+      "relationship": "implements",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        13,
+        58,
+        91
+      ]
+    },
+    {
+      "file_path": "controllers/file_26.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "low",
+      "relationship": "extends",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        88,
+        46,
+        125,
+        159,
+        20
+      ]
+    },
+    {
+      "file_path": "helpers/file_27.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "medium",
+      "relationship": "uses",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        154,
+        65
+      ]
+    },
+    {
+      "file_path": "core/file_28.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "low",
+      "relationship": "imports",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        30
+      ]
+    },
+    {
+      "file_path": "controllers/file_29.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "low",
+      "relationship": "uses",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        108,
+        120,
+        12
+      ]
+    },
+    {
+      "file_path": "core/file_30.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "critical",
+      "relationship": "extends",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        158,
+        157,
+        99,
+        100
+      ]
+    },
+    {
+      "file_path": "controllers/file_31.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "medium",
+      "relationship": "extends",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        188,
+        188,
+        84,
+        119,
+        160
+      ]
+    },
+    {
+      "file_path": "helpers/file_32.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "critical",
+      "relationship": "uses",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        27,
+        164,
+        168,
+        195
+      ]
+    },
+    {
+      "file_path": "helpers/file_33.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "medium",
+      "relationship": "extends",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        193,
+        46,
+        156,
+        88
+      ]
+    },
+    {
+      "file_path": "services/file_34.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "critical",
+      "relationship": "uses",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        190,
+        130
+      ]
+    },
+    {
+      "file_path": "models/file_35.go",
+      "content": "// Context code for concurrency_issues in go",
+      "relevance": "medium",
+      "relationship": "imports",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        189
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2024-08-12",
+    "temporal_spread_days": 360,
+    "refactoring_events": 0,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-03-18",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-02-22",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2024-12-02",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2024-12-12",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "8416941f",
+        "date": "2025-07-02",
+        "message": "Refactored module 4",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "edd0a651",
+        "date": "2024-11-16",
+        "message": "Refactored module 5",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "a67f5b4e",
+        "date": "2024-10-09",
+        "message": "Refactored module 6",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "e32a385c",
+        "date": "2025-02-17",
+        "message": "Refactored module 7",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "740b3cf2",
+        "date": "2025-03-25",
+        "message": "Refactored module 8",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "f74293d6",
+        "date": "2024-08-16",
+        "message": "Refactored module 9",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "models/file_1.go",
+        "to": "models/file_2.go",
+        "type": "imports"
+      },
+      {
+        "from": "models/file_2.go",
+        "to": "helpers/file_3.go",
+        "type": "imports"
+      },
+      {
+        "from": "helpers/file_3.go",
+        "to": "controllers/file_4.go",
+        "type": "imports"
+      },
+      {
+        "from": "controllers/file_4.go",
+        "to": "models/file_5.go",
+        "type": "calls"
+      },
+      {
+        "from": "models/file_5.go",
+        "to": "services/file_6.go",
+        "type": "imports"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "helpers/file_7.go",
+          "core/file_9.go",
+          "utils/file_21.go"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "controllers/file_26.go",
+          "controllers/file_29.go",
+          "core/file_9.go"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "models/file_1.go",
+          "core/file_14.go",
+          "core/file_30.go"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "helpers/file_27.go",
+          "models/file_2.go"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "core/file_14.go",
+          "helpers/file_3.go",
+          "core/file_28.go"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "models/file_19.go",
+          "controllers/file_11.go",
+          "utils/file_21.go",
+          "core/file_30.go"
+        ],
+        "depth": 3
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "high",
+    "renamed_entities": {
+      "entity_0": "pHWLsWtRwk",
+      "entity_1": "ojwbMQzmwz",
+      "entity_2": "paVcnEMeoB",
+      "entity_3": "uSybXSyEYC",
+      "entity_4": "GXwZdAmelE",
+      "entity_5": "FKcMusbzHC",
+      "entity_6": "DLeTXXZZCq",
+      "entity_7": "ljBQbJJXHu",
+      "entity_8": "OwnmVPcxlE"
+    },
+    "moved_files": 1,
+    "refactored_modules": 3
+  },
+  "ground_truth": {
+    "root_cause": "livelock in main processing logic",
+    "fix_type": "synchronization",
+    "must_find_files": [
+      "controllers/file_4.go",
+      "models/file_5.go",
+      "services/file_6.go",
+      "models/file_10.go",
+      "core/file_14.go"
+    ],
+    "should_find_files": [
+      "models/file_1.go",
+      "helpers/file_7.go",
+      "core/file_8.go"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.6739825010787956
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_concurrency_issues_1.go",
+      "test_code": "// Test for concurrency_issues in go",
+      "test_type": "e2e"
+    },
+    {
+      "file_name": "test_concurrency_issues_2.go",
+      "test_code": "// Test for concurrency_issues in go",
+      "test_type": "e2e"
+    },
+    {
+      "file_name": "test_concurrency_issues_3.go",
+      "test_code": "// Test for concurrency_issues in go",
+      "test_type": "integration"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "concurrency_issues",
+      "error_message": "DeadlockError: Thread deadlock detected",
+      "stack_trace": "Stack trace for go",
+      "timestamp": "2025-08-07T02:22:51.285645"
+    },
+    {
+      "error_type": "concurrency_issues",
+      "error_message": "DeadlockError: Thread deadlock detected",
+      "stack_trace": "Stack trace for go",
+      "timestamp": "2025-08-07T02:22:51.285647"
+    }
+  ],
+  "symptoms": [
+    "Intermittent failures",
+    "Race condition symptoms",
+    "Deadlock occurs"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 157,
+    "function": "process_function",
+    "module": "services"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "services/file_6.go",
+      "models/file_10.go",
+      "core/file_14.go"
+    ],
+    "should_find_files": [
+      "controllers/file_4.go",
+      "models/file_5.go"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

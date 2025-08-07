@@ -1,0 +1,1 @@
+// Code snippet for src/test/mock_79.js

@@ -1,0 +1,1 @@
+// Code snippet for src/test/test_48.java

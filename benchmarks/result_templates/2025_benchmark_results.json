@@ -1,0 +1,159 @@
+{
+  "evaluation_summary": {
+    "date": "2025-06-30",
+    "benchmark": "Multi Random Retrieval (MRR) v2.0",
+    "total_scenarios": 5000,
+    "total_bugs": 12500,
+    "models_evaluated": 5
+  },
+  "model_results": {
+    "kodezi_chronos_2025": {
+      "overall_performance": {
+        "debug_success_rate": 67.3,
+        "precision_at_10": 92.0,
+        "recall_at_10": 85.0,
+        "mean_reciprocal_rank": 0.89,
+        "avg_fix_iterations": 7.8,
+        "avg_context_efficiency": 0.71,
+        "avg_time_seconds": 134.7,
+        "avg_tokens_used": 187000
+      },
+      "category_breakdown": {
+        "syntax_errors": {"success_rate": 94.2, "avg_iterations": 1.2, "improvement": 1.1},
+        "logic_bugs": {"success_rate": 72.8, "avg_iterations": 6.1, "improvement": 6.0},
+        "concurrency_issues": {"success_rate": 58.3, "avg_iterations": 11.4, "improvement": 18.2},
+        "memory_problems": {"success_rate": 61.7, "avg_iterations": 9.8, "improvement": 10.8},
+        "api_misuse": {"success_rate": 79.1, "avg_iterations": 4.9, "improvement": 4.2},
+        "performance_bugs": {"success_rate": 65.4, "avg_iterations": 8.5, "improvement": 8.8}
+      },
+      "retrieval_performance": {
+        "precision_curve": {
+          "k_1": 94.2,
+          "k_5": 93.1,
+          "k_10": 92.0,
+          "k_20": 88.4,
+          "k_50": 81.3
+        },
+        "recall_curve": {
+          "k_1": 67.3,
+          "k_5": 78.9,
+          "k_10": 85.0,
+          "k_20": 91.2,
+          "k_50": 96.7
+        }
+      },
+      "complexity_analysis": {
+        "low_complexity": {"success_rate": 89.2, "avg_time": 45.3},
+        "medium_complexity": {"success_rate": 71.8, "avg_time": 124.5},
+        "high_complexity": {"success_rate": 56.4, "avg_time": 189.7},
+        "extreme_complexity": {"success_rate": 41.7, "avg_time": 267.3}
+      }
+    },
+    "claude_4_opus": {
+      "overall_performance": {
+        "debug_success_rate": 14.2,
+        "precision_at_10": 62.1,
+        "recall_at_10": 48.7,
+        "mean_reciprocal_rank": 0.54,
+        "avg_fix_iterations": 2.3,
+        "avg_context_efficiency": 0.38,
+        "avg_time_seconds": 89.3,
+        "avg_tokens_used": 793000
+      },
+      "category_breakdown": {
+        "syntax_errors": {"success_rate": 85.6, "avg_iterations": 1.5},
+        "logic_bugs": {"success_rate": 12.1, "avg_iterations": 2.8},
+        "concurrency_issues": {"success_rate": 3.2, "avg_iterations": 3.1},
+        "memory_problems": {"success_rate": 5.7, "avg_iterations": 2.9},
+        "api_misuse": {"success_rate": 18.8, "avg_iterations": 2.2},
+        "performance_bugs": {"success_rate": 7.4, "avg_iterations": 2.6}
+      }
+    },
+    "gpt_4_1": {
+      "overall_performance": {
+        "debug_success_rate": 13.8,
+        "precision_at_10": 55.2,
+        "recall_at_10": 42.3,
+        "mean_reciprocal_rank": 0.49,
+        "avg_fix_iterations": 1.8,
+        "avg_context_efficiency": 0.33,
+        "avg_time_seconds": 78.5,
+        "avg_tokens_used": 824000
+      },
+      "category_breakdown": {
+        "syntax_errors": {"success_rate": 83.4, "avg_iterations": 1.4},
+        "logic_bugs": {"success_rate": 11.7, "avg_iterations": 2.1},
+        "concurrency_issues": {"success_rate": 2.9, "avg_iterations": 2.4},
+        "memory_problems": {"success_rate": 5.3, "avg_iterations": 2.2},
+        "api_misuse": {"success_rate": 17.9, "avg_iterations": 1.9},
+        "performance_bugs": {"success_rate": 6.8, "avg_iterations": 2.1}
+      }
+    },
+    "deepseek_v3": {
+      "overall_performance": {
+        "debug_success_rate": 12.0,
+        "precision_at_10": 44.2,
+        "recall_at_10": 34.8,
+        "mean_reciprocal_rank": 0.41,
+        "avg_fix_iterations": 1.4,
+        "avg_context_efficiency": 0.25,
+        "avg_time_seconds": 65.3,
+        "avg_tokens_used": 687000
+      }
+    },
+    "gemini_2_0_pro": {
+      "overall_performance": {
+        "debug_success_rate": 14.0,
+        "precision_at_10": 51.7,
+        "recall_at_10": 40.1,
+        "mean_reciprocal_rank": 0.46,
+        "avg_fix_iterations": 2.0,
+        "avg_context_efficiency": 0.31,
+        "avg_time_seconds": 82.7,
+        "avg_tokens_used": 782000
+      }
+    }
+  },
+  "statistical_analysis": {
+    "chronos_vs_claude4": {
+      "debug_success_difference": 53.1,
+      "relative_improvement": 4.74,
+      "p_value": 1.8e-15,
+      "cohens_d": 3.87,
+      "confidence_interval_95": [51.7, 54.5]
+    },
+    "chronos_vs_gpt41": {
+      "debug_success_difference": 53.5,
+      "relative_improvement": 4.88,
+      "p_value": 1.5e-15,
+      "cohens_d": 3.91
+    },
+    "human_preference_study": {
+      "prefer_chronos": 89,
+      "prefer_baseline": 11,
+      "n_evaluators": 50,
+      "agreement_rate": 0.87
+    }
+  },
+  "key_findings": {
+    "breakthrough_performance": "Chronos achieves 67.3% debug success rate, 4.87x better than best competitor",
+    "retrieval_excellence": "92% precision at 85% recall demonstrates superior context understanding",
+    "complexity_handling": "O(k log d) complexity enables efficient processing of large repositories",
+    "learning_effect": "87% cache hit rate shows effective cross-session learning",
+    "iteration_strategy": "Average 7.8 iterations shows thorough debugging approach"
+  },
+  "limitations_identified": {
+    "hardware_dependent": {
+      "success_rate": 23.4,
+      "primary_challenge": "Cannot access physical hardware state"
+    },
+    "dynamic_languages": {
+      "success_rate": 41.2,
+      "primary_challenge": "Runtime type information unavailable"
+    },
+    "distributed_systems": {
+      "success_rate": 30.0,
+      "primary_challenge": "Multi-service coordination complexity"
+    }
+  }
+}

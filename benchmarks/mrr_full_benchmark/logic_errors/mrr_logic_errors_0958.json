@@ -1,0 +1,365 @@
+{
+  "bug_id": "MRR-LOGIC_ERRORS-202508-0958",
+  "category": "logic_errors",
+  "subcategory": "incorrect_operator",
+  "language": "python",
+  "description": "Logic bug: incorrect_operator producing incorrect results",
+  "complexity": {
+    "spatial_distribution": 7,
+    "temporal_spread_months": 3,
+    "abstraction_layers": 3,
+    "obfuscation_level": "medium",
+    "cross_module_dependencies": 5,
+    "artifact_types": 3
+  },
+  "code_snippets": {
+    "buggy_code": "def is_even(n):\n    return n / 2 == 0",
+    "fixed_code": "def is_even(n):\n    return n % 2 == 0"
+  },
+  "scattered_context": [
+    {
+      "file_path": "controllers/file_1.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to logic_errors\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        26
+      ]
+    },
+    {
+      "file_path": "helpers/file_2.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to logic_errors\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        175,
+        49,
+        89,
+        98,
+        160
+      ]
+    },
+    {
+      "file_path": "services/file_3.py",
+      "content": "# Helper code for logic_errors\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "imports",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        52,
+        51
+      ]
+    },
+    {
+      "file_path": "utils/file_4.py",
+      "content": "# Helper code for logic_errors\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "implements",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        69,
+        182,
+        181,
+        183
+      ]
+    },
+    {
+      "file_path": "models/file_5.py",
+      "content": "# Helper code for logic_errors\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "calls",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        129,
+        65
+      ]
+    },
+    {
+      "file_path": "models/file_6.py",
+      "content": "def important_function(param):\n    # Important logic for logic_errors\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "extends",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        104,
+        125,
+        54,
+        129
+      ]
+    },
+    {
+      "file_path": "controllers/file_7.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to logic_errors\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        82
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-05-09",
+    "temporal_spread_days": 90,
+    "refactoring_events": 3,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-05-26",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-06-23",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-06-10",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-07-10",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "8416941f",
+        "date": "2025-05-21",
+        "message": "Refactored module 4",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "edd0a651",
+        "date": "2025-07-22",
+        "message": "Refactored module 5",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "a67f5b4e",
+        "date": "2025-06-27",
+        "message": "Refactored module 6",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "e32a385c",
+        "date": "2025-05-29",
+        "message": "Refactored module 7",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "740b3cf2",
+        "date": "2025-06-16",
+        "message": "Refactored module 8",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "f74293d6",
+        "date": "2025-05-22",
+        "message": "Refactored module 9",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "controllers/file_1.py",
+        "to": "helpers/file_2.py",
+        "type": "calls"
+      },
+      {
+        "from": "helpers/file_2.py",
+        "to": "services/file_3.py",
+        "type": "imports"
+      },
+      {
+        "from": "services/file_3.py",
+        "to": "utils/file_4.py",
+        "type": "extends"
+      },
+      {
+        "from": "utils/file_4.py",
+        "to": "models/file_5.py",
+        "type": "imports"
+      },
+      {
+        "from": "models/file_5.py",
+        "to": "models/file_6.py",
+        "type": "extends"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "controllers/file_1.py",
+          "models/file_6.py",
+          "services/file_3.py"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "services/file_3.py",
+          "models/file_6.py",
+          "models/file_5.py"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "services/file_3.py",
+          "helpers/file_2.py",
+          "utils/file_4.py"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "controllers/file_7.py",
+          "services/file_3.py"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "services/file_3.py",
+          "controllers/file_1.py",
+          "models/file_6.py"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "controllers/file_7.py",
+          "utils/file_4.py",
+          "helpers/file_2.py",
+          "models/file_6.py"
+        ],
+        "depth": 3
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "medium",
+    "renamed_entities": {
+      "function_0": "tqbrzyde",
+      "function_1": "qwjbufdk",
+      "function_2": "wugnxuoy",
+      "function_3": "acasfpyy"
+    },
+    "moved_files": 5,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "incorrect_operator in main processing logic",
+    "fix_type": "logic_correction",
+    "must_find_files": [
+      "controllers/file_1.py",
+      "helpers/file_2.py",
+      "models/file_6.py",
+      "controllers/file_7.py"
+    ],
+    "should_find_files": [],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.5612786096858122
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_logic_errors_1.python",
+      "test_code": "import unittest\n\nclass TestLogic_Errors(unittest.TestCase):\n    def test_scenario_1(self):\n        # Test for logic_errors\n        result = function_under_test(test_data)\n        self.assertEqual(result, expected_result)\n",
+      "test_type": "e2e"
+    },
+    {
+      "file_name": "test_logic_errors_2.python",
+      "test_code": "import unittest\n\nclass TestLogic_Errors(unittest.TestCase):\n    def test_scenario_2(self):\n        # Test for logic_errors\n        result = function_under_test(test_data)\n        self.assertEqual(result, expected_result)\n",
+      "test_type": "unit"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "logic_errors",
+      "error_message": "AssertionError: Expected 5 but got 4",
+      "stack_trace": "Traceback (most recent call last):\n  File \"main.py\", line 42, in <module>\n    result = process_data(input_data)\n  File \"processor.py\", line 15, in process_data\n    return transform(validate(data))\n  File \"validator.py\", line 8, in validate\n    raise ValueError(\"Invalid data\")\nValueError: Invalid data",
+      "timestamp": "2025-08-07T02:22:50.034648"
+    },
+    {
+      "error_type": "logic_errors",
+      "error_message": "AssertionError: Expected 5 but got 4",
+      "stack_trace": "Traceback (most recent call last):\n  File \"main.py\", line 42, in <module>\n    result = process_data(input_data)\n  File \"processor.py\", line 15, in process_data\n    return transform(validate(data))\n  File \"validator.py\", line 8, in validate\n    raise ValueError(\"Invalid data\")\nValueError: Invalid data",
+      "timestamp": "2025-08-07T02:22:50.034650"
+    }
+  ],
+  "symptoms": [
+    "Incorrect output produced",
+    "Test cases failing",
+    "Unexpected behavior"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 155,
+    "function": "process_function",
+    "module": "utils"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "controllers/file_1.py",
+      "helpers/file_2.py",
+      "controllers/file_7.py"
+    ],
+    "should_find_files": [
+      "models/file_6.py"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

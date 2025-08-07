@@ -1,0 +1,339 @@
+{
+  "bug_id": "MRR-API_MISUSE-202508-0567",
+  "category": "api_misuse",
+  "subcategory": "incorrect_params",
+  "language": "java",
+  "description": "API misuse: incorrect_params violating API contract",
+  "complexity": {
+    "spatial_distribution": 9,
+    "temporal_spread_months": 5,
+    "abstraction_layers": 3,
+    "obfuscation_level": "high",
+    "cross_module_dependencies": 7,
+    "artifact_types": 4
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for api_misuse/incorrect_params in java",
+    "fixed_code": "// Fixed code for api_misuse/incorrect_params in java"
+  },
+  "scattered_context": [
+    {
+      "file_path": "core/file_1.java",
+      "content": "// Context code for api_misuse in java",
+      "relevance": "low",
+      "relationship": "calls",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        77
+      ]
+    },
+    {
+      "file_path": "services/file_2.java",
+      "content": "// Context code for api_misuse in java",
+      "relevance": "high",
+      "relationship": "imports",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        45,
+        92,
+        145,
+        125
+      ]
+    },
+    {
+      "file_path": "core/file_3.java",
+      "content": "// Context code for api_misuse in java",
+      "relevance": "low",
+      "relationship": "imports",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        192,
+        114,
+        38
+      ]
+    },
+    {
+      "file_path": "core/file_4.java",
+      "content": "// Context code for api_misuse in java",
+      "relevance": "medium",
+      "relationship": "implements",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        61,
+        42,
+        68
+      ]
+    },
+    {
+      "file_path": "controllers/file_5.java",
+      "content": "// Context code for api_misuse in java",
+      "relevance": "medium",
+      "relationship": "calls",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        85,
+        17,
+        191
+      ]
+    },
+    {
+      "file_path": "core/file_6.java",
+      "content": "// Context code for api_misuse in java",
+      "relevance": "medium",
+      "relationship": "imports",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        43
+      ]
+    },
+    {
+      "file_path": "models/file_7.java",
+      "content": "// Context code for api_misuse in java",
+      "relevance": "critical",
+      "relationship": "calls",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        105,
+        42,
+        45,
+        85,
+        12
+      ]
+    },
+    {
+      "file_path": "models/file_8.java",
+      "content": "// Context code for api_misuse in java",
+      "relevance": "critical",
+      "relationship": "imports",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        184,
+        151
+      ]
+    },
+    {
+      "file_path": "utils/file_9.java",
+      "content": "// Context code for api_misuse in java",
+      "relevance": "medium",
+      "relationship": "uses",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        144,
+        152,
+        30
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-03-10",
+    "temporal_spread_days": 150,
+    "refactoring_events": 1,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-05-09",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-05-24",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-05-23",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-05-24",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "core/file_1.java",
+        "to": "services/file_2.java",
+        "type": "extends"
+      },
+      {
+        "from": "services/file_2.java",
+        "to": "core/file_3.java",
+        "type": "imports"
+      },
+      {
+        "from": "core/file_3.java",
+        "to": "core/file_4.java",
+        "type": "imports"
+      },
+      {
+        "from": "core/file_4.java",
+        "to": "controllers/file_5.java",
+        "type": "extends"
+      },
+      {
+        "from": "controllers/file_5.java",
+        "to": "core/file_6.java",
+        "type": "imports"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "models/file_8.java",
+          "controllers/file_5.java",
+          "core/file_4.java"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "utils/file_9.java",
+          "core/file_6.java",
+          "models/file_8.java"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "models/file_7.java",
+          "core/file_4.java",
+          "controllers/file_5.java"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "controllers/file_5.java",
+          "core/file_6.java"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "core/file_6.java",
+          "core/file_4.java",
+          "models/file_8.java"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "controllers/file_5.java",
+          "models/file_8.java",
+          "models/file_7.java",
+          "utils/file_9.java"
+        ],
+        "depth": 3
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "high",
+    "renamed_entities": {
+      "entity_0": "lRgvtqhYNn",
+      "entity_1": "NBZgkXumXO",
+      "entity_2": "hrwdimJXdC",
+      "entity_3": "ipsNhfiuyE",
+      "entity_4": "zuygdyKyih",
+      "entity_5": "rfftQYhGuk",
+      "entity_6": "TbwfoATaOk",
+      "entity_7": "jGzJgjeLeZ",
+      "entity_8": "xjvvAKTSCZ",
+      "entity_9": "ULIhQNfdCp",
+      "entity_10": "ypayoKqWdN",
+      "entity_11": "uPoWUCshlr",
+      "entity_12": "wRknwKWrsM"
+    },
+    "moved_files": 1,
+    "refactored_modules": 2
+  },
+  "ground_truth": {
+    "root_cause": "incorrect_params in main processing logic",
+    "fix_type": "api_correction",
+    "must_find_files": [
+      "services/file_2.java",
+      "models/file_7.java",
+      "models/file_8.java"
+    ],
+    "should_find_files": [
+      "core/file_4.java",
+      "controllers/file_5.java",
+      "core/file_6.java"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.9667451110872762
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_api_misuse_1.java",
+      "test_code": "// Test for api_misuse in java",
+      "test_type": "unit"
+    },
+    {
+      "file_name": "test_api_misuse_2.java",
+      "test_code": "// Test for api_misuse in java",
+      "test_type": "unit"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "api_misuse",
+      "error_message": "TypeError: Invalid argument type for API call",
+      "stack_trace": "Stack trace for java",
+      "timestamp": "2025-08-07T02:22:50.419753"
+    },
+    {
+      "error_type": "api_misuse",
+      "error_message": "TypeError: Invalid argument type for API call",
+      "stack_trace": "Stack trace for java",
+      "timestamp": "2025-08-07T02:22:50.419754"
+    }
+  ],
+  "symptoms": [
+    "Generic symptom"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 141,
+    "function": "process_function",
+    "module": "utils"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "models/file_7.java",
+      "models/file_8.java"
+    ],
+    "should_find_files": [
+      "services/file_2.java"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

@@ -1,0 +1,159 @@
+version: '3.8'
+
+services:
+  # Main Chronos Service
+  chronos:
+    build:
+      context: ..
+      dockerfile: deployment/Dockerfile
+    image: kodezi/chronos:2025
+    container_name: chronos-main
+    ports:
+      - "5000:5000"  # API port
+      - "9090:9090"  # Metrics port
+    environment:
+      - CHRONOS_ENV=production
+      - CHRONOS_CONFIG=/app/config/chronos_config.yaml
+      - DATABASE_URL=postgresql://chronos:${DB_PASSWORD}@postgres:5432/chronos
+      - REDIS_URL=redis://redis:6379
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock  # For sandbox
+      - chronos-memory:/var/chronos
+      - repositories:/var/repositories
+      - models:/models
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - chronos-network
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 8G
+        reservations:
+          cpus: '2'
+          memory: 4G
+
+  # PostgreSQL for PDM
+  postgres:
+    image: postgres:15-alpine
+    container_name: chronos-postgres
+    environment:
+      - POSTGRES_DB=chronos
+      - POSTGRES_USER=chronos
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - chronos-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U chronos"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis for caching
+  redis:
+    image: redis:7-alpine
+    container_name: chronos-redis
+    command: redis-server --appendonly yes --maxmemory 2gb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis-data:/data
+    networks:
+      - chronos-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Sandbox containers orchestrator
+  sandbox-orchestrator:
+    image: kodezi/chronos-sandbox:2025
+    container_name: chronos-sandbox
+    privileged: true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - sandbox-cache:/cache
+    networks:
+      - chronos-network
+    deploy:
+      replicas: 3
+
+  # Monitoring stack
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: chronos-prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    ports:
+      - "9091:9090"
+    networks:
+      - chronos-network
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: chronos-grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./grafana-dashboards:/etc/grafana/provisioning/dashboards
+    ports:
+      - "3000:3000"
+    networks:
+      - chronos-network
+    depends_on:
+      - prometheus
+
+  # Tracing
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: chronos-jaeger
+    environment:
+      - COLLECTOR_ZIPKIN_HOST_PORT=:9411
+    ports:
+      - "5775:5775/udp"
+      - "6831:6831/udp"
+      - "6832:6832/udp"
+      - "5778:5778"
+      - "16686:16686"  # UI
+      - "14268:14268"
+      - "14250:14250"
+      - "9411:9411"
+    networks:
+      - chronos-network
+
+  # Load balancer
+  nginx:
+    image: nginx:alpine
+    container_name: chronos-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/nginx/ssl
+    depends_on:
+      - chronos
+    networks:
+      - chronos-network
+
+volumes:
+  chronos-memory:
+  repositories:
+  models:
+  postgres-data:
+  redis-data:
+  sandbox-cache:
+  prometheus-data:
+  grafana-data:
+
+networks:
+  chronos-network:
+    driver: bridge

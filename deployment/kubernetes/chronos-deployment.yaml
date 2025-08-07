@@ -1,0 +1,288 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: chronos
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: chronos-config
+  namespace: chronos
+data:
+  chronos_config.yaml: |
+    core:
+      repository_path: "/repositories"
+      max_iterations: 10
+      confidence_threshold: 0.75
+      enable_caching: true
+      log_level: "INFO"
+    sandbox:
+      use_docker: true
+      timeout_seconds: 300
+      memory_limit_mb: 2048
+    memory:
+      db_path: "/data/chronos.db"
+      max_sessions: 1000000
+    retrieval:
+      confidence_threshold: 0.92
+      cache_size_mb: 1024
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: chronos-secrets
+  namespace: chronos
+type: Opaque
+stringData:
+  database-url: "postgresql://chronos:password@postgres:5432/chronos"
+  redis-url: "redis://redis:6379"
+  jwt-secret: "your-jwt-secret"
+  github-webhook-secret: "your-github-webhook-secret"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chronos-api
+  namespace: chronos
+  labels:
+    app: chronos-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: chronos-api
+  template:
+    metadata:
+      labels:
+        app: chronos-api
+    spec:
+      containers:
+      - name: chronos
+        image: kodezi/chronos:2025
+        ports:
+        - containerPort: 5000
+          name: api
+        - containerPort: 9090
+          name: metrics
+        env:
+        - name: CHRONOS_ENV
+          value: "production"
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: chronos-secrets
+              key: database-url
+        - name: REDIS_URL
+          valueFrom:
+            secretKeyRef:
+              name: chronos-secrets
+              key: redis-url
+        volumeMounts:
+        - name: config
+          mountPath: /app/config
+        - name: data
+          mountPath: /data
+        - name: docker-socket
+          mountPath: /var/run/docker.sock
+        resources:
+          requests:
+            memory: "4Gi"
+            cpu: "2"
+          limits:
+            memory: "8Gi"
+            cpu: "4"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 10
+          periodSeconds: 5
+      volumes:
+      - name: config
+        configMap:
+          name: chronos-config
+      - name: data
+        persistentVolumeClaim:
+          claimName: chronos-data-pvc
+      - name: docker-socket
+        hostPath:
+          path: /var/run/docker.sock
+          type: Socket
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: chronos-api
+  namespace: chronos
+  labels:
+    app: chronos-api
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 5000
+    name: api
+  - port: 9090
+    targetPort: 9090
+    name: metrics
+  selector:
+    app: chronos-api
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: chronos-data-pvc
+  namespace: chronos
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Gi
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres
+  namespace: chronos
+spec:
+  serviceName: postgres
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:15-alpine
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_DB
+          value: chronos
+        - name: POSTGRES_USER
+          value: chronos
+        - name: POSTGRES_PASSWORD
+          value: password
+        volumeMounts:
+        - name: postgres-storage
+          mountPath: /var/lib/postgresql/data
+  volumeClaimTemplates:
+  - metadata:
+      name: postgres-storage
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 50Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres
+  namespace: chronos
+spec:
+  ports:
+  - port: 5432
+  selector:
+    app: postgres
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  namespace: chronos
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+      - name: redis
+        image: redis:7-alpine
+        ports:
+        - containerPort: 6379
+        command: ["redis-server", "--appendonly", "yes"]
+        volumeMounts:
+        - name: redis-data
+          mountPath: /data
+      volumes:
+      - name: redis-data
+        emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+  namespace: chronos
+spec:
+  ports:
+  - port: 6379
+  selector:
+    app: redis
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: chronos-api-hpa
+  namespace: chronos
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: chronos-api
+  minReplicas: 3
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: chronos-ingress
+  namespace: chronos
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  tls:
+  - hosts:
+    - api.kodezi.com
+    secretName: chronos-tls
+  rules:
+  - host: api.kodezi.com
+    http:
+      paths:
+      - path: /chronos
+        pathType: Prefix
+        backend:
+          service:
+            name: chronos-api
+            port:
+              number: 80

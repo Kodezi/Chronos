@@ -1,0 +1,272 @@
+{
+  "bug_id": "MRR-SYNTAX_ERRORS-202508-0359",
+  "category": "syntax_errors",
+  "subcategory": "indentation_error",
+  "language": "javascript",
+  "description": "Syntax error: indentation_error causing compilation failure",
+  "complexity": {
+    "spatial_distribution": 4,
+    "temporal_spread_months": 1,
+    "abstraction_layers": 1,
+    "obfuscation_level": "low",
+    "cross_module_dependencies": 2,
+    "artifact_types": 2
+  },
+  "code_snippets": {
+    "buggy_code": "function buggyFunction_indentation_error(data) {\n    // Bug: indentation_error\n    let result = [];\n    data.forEach(item => {\n        // Buggy logic here\n        if (item > 0) {\n            result.push(item);\n        }\n    });\n    return result;\n}",
+    "fixed_code": "function fixedFunction_indentation_error(data) {\n    // Fixed: indentation_error\n    let result = [];\n    data.forEach(item => {\n        // Fixed logic here\n        if (item >= 0) {\n            result.push(item);\n        }\n    });\n    return result;\n}"
+  },
+  "scattered_context": [
+    {
+      "file_path": "helpers/file_1.js",
+      "content": "// Context code for syntax_errors in javascript",
+      "relevance": "low",
+      "relationship": "extends",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        134,
+        192
+      ]
+    },
+    {
+      "file_path": "core/file_2.js",
+      "content": "// Context code for syntax_errors in javascript",
+      "relevance": "medium",
+      "relationship": "extends",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        137
+      ]
+    },
+    {
+      "file_path": "controllers/file_3.js",
+      "content": "// Context code for syntax_errors in javascript",
+      "relevance": "low",
+      "relationship": "implements",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        39
+      ]
+    },
+    {
+      "file_path": "utils/file_4.js",
+      "content": "// Context code for syntax_errors in javascript",
+      "relevance": "critical",
+      "relationship": "calls",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        157,
+        102,
+        153
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-07-08",
+    "temporal_spread_days": 30,
+    "refactoring_events": 2,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-07-31",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-08-03",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-07-20",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-07-22",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "8416941f",
+        "date": "2025-07-10",
+        "message": "Refactored module 4",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      },
+      {
+        "hash": "edd0a651",
+        "date": "2025-07-10",
+        "message": "Refactored module 5",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "a67f5b4e",
+        "date": "2025-07-27",
+        "message": "Refactored module 6",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "e32a385c",
+        "date": "2025-07-22",
+        "message": "Refactored module 7",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "helpers/file_1.js",
+        "to": "core/file_2.js",
+        "type": "extends"
+      },
+      {
+        "from": "core/file_2.js",
+        "to": "controllers/file_3.js",
+        "type": "imports"
+      },
+      {
+        "from": "controllers/file_3.js",
+        "to": "utils/file_4.js",
+        "type": "calls"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "core/file_2.js",
+          "helpers/file_1.js",
+          "utils/file_4.js"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "helpers/file_1.js",
+          "utils/file_4.js",
+          "core/file_2.js"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "helpers/file_1.js",
+          "core/file_2.js"
+        ],
+        "depth": 1
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "low",
+    "renamed_entities": {
+      "variable_0": "var_0"
+    },
+    "moved_files": 0,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "indentation_error in main processing logic",
+    "fix_type": "syntax_correction",
+    "must_find_files": [
+      "utils/file_4.js"
+    ],
+    "should_find_files": [
+      "core/file_2.js"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 0.6768596352417391
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_syntax_errors_1.javascript",
+      "test_code": "// Test for syntax_errors in javascript",
+      "test_type": "integration"
+    },
+    {
+      "file_name": "test_syntax_errors_2.javascript",
+      "test_code": "// Test for syntax_errors in javascript",
+      "test_type": "e2e"
+    },
+    {
+      "file_name": "test_syntax_errors_3.javascript",
+      "test_code": "// Test for syntax_errors in javascript",
+      "test_type": "e2e"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "syntax_errors",
+      "error_message": "SyntaxError: invalid syntax at line 67",
+      "stack_trace": "Stack trace for javascript",
+      "timestamp": "2025-08-07T02:22:49.571554"
+    },
+    {
+      "error_type": "syntax_errors",
+      "error_message": "SyntaxError: invalid syntax at line 63",
+      "stack_trace": "Stack trace for javascript",
+      "timestamp": "2025-08-07T02:22:49.571556"
+    }
+  ],
+  "symptoms": [
+    "Code fails to compile/run",
+    "Syntax error message displayed",
+    "IDE highlights error"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 80,
+    "function": "process_function",
+    "module": "utils"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "utils/file_4.js"
+    ],
+    "should_find_files": [],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

@@ -1,0 +1,282 @@
+{
+  "bug_id": "MRR-LOGIC_ERRORS-202508-1079",
+  "category": "logic_errors",
+  "subcategory": "incorrect_operator",
+  "language": "java",
+  "description": "Logic bug: incorrect_operator producing incorrect results",
+  "complexity": {
+    "spatial_distribution": 6,
+    "temporal_spread_months": 5,
+    "abstraction_layers": 3,
+    "obfuscation_level": "medium",
+    "cross_module_dependencies": 4,
+    "artifact_types": 2
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for logic_errors/incorrect_operator in java",
+    "fixed_code": "// Fixed code for logic_errors/incorrect_operator in java"
+  },
+  "scattered_context": [
+    {
+      "file_path": "services/file_1.java",
+      "content": "// Context code for logic_errors in java",
+      "relevance": "medium",
+      "relationship": "calls",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        121,
+        13,
+        193,
+        195,
+        118
+      ]
+    },
+    {
+      "file_path": "helpers/file_2.java",
+      "content": "// Context code for logic_errors in java",
+      "relevance": "high",
+      "relationship": "implements",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        32
+      ]
+    },
+    {
+      "file_path": "models/file_3.java",
+      "content": "// Context code for logic_errors in java",
+      "relevance": "low",
+      "relationship": "extends",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        187
+      ]
+    },
+    {
+      "file_path": "helpers/file_4.java",
+      "content": "// Context code for logic_errors in java",
+      "relevance": "high",
+      "relationship": "implements",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        173,
+        169
+      ]
+    },
+    {
+      "file_path": "utils/file_5.java",
+      "content": "// Context code for logic_errors in java",
+      "relevance": "critical",
+      "relationship": "extends",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        97,
+        74,
+        147,
+        86,
+        84
+      ]
+    },
+    {
+      "file_path": "utils/file_6.java",
+      "content": "// Context code for logic_errors in java",
+      "relevance": "high",
+      "relationship": "imports",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        137
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-03-10",
+    "temporal_spread_days": 150,
+    "refactoring_events": 4,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-08-03",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-08-03",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-06-25",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "services/file_1.java",
+        "to": "helpers/file_2.java",
+        "type": "extends"
+      },
+      {
+        "from": "helpers/file_2.java",
+        "to": "models/file_3.java",
+        "type": "imports"
+      },
+      {
+        "from": "models/file_3.java",
+        "to": "helpers/file_4.java",
+        "type": "calls"
+      },
+      {
+        "from": "helpers/file_4.java",
+        "to": "utils/file_5.java",
+        "type": "extends"
+      },
+      {
+        "from": "utils/file_5.java",
+        "to": "utils/file_6.java",
+        "type": "extends"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "services/file_1.java",
+          "helpers/file_2.java",
+          "utils/file_6.java"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "models/file_3.java",
+          "services/file_1.java",
+          "utils/file_6.java"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "helpers/file_2.java",
+          "utils/file_5.java",
+          "utils/file_6.java"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "utils/file_5.java",
+          "utils/file_6.java"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "utils/file_6.java",
+          "helpers/file_2.java",
+          "services/file_1.java"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "helpers/file_4.java",
+          "models/file_3.java",
+          "utils/file_6.java",
+          "services/file_1.java"
+        ],
+        "depth": 3
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "medium",
+    "renamed_entities": {
+      "function_0": "fnkoxixv",
+      "function_1": "walifqyn",
+      "function_2": "dxmgjffh",
+      "function_3": "hrjpeapr",
+      "function_4": "mflehaue"
+    },
+    "moved_files": 1,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "incorrect_operator in main processing logic",
+    "fix_type": "logic_correction",
+    "must_find_files": [
+      "helpers/file_2.java",
+      "helpers/file_4.java",
+      "utils/file_5.java",
+      "utils/file_6.java"
+    ],
+    "should_find_files": [
+      "services/file_1.java"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.0046290064473453
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_logic_errors_1.java",
+      "test_code": "// Test for logic_errors in java",
+      "test_type": "unit"
+    },
+    {
+      "file_name": "test_logic_errors_2.java",
+      "test_code": "// Test for logic_errors in java",
+      "test_type": "e2e"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "logic_errors",
+      "error_message": "AssertionError: Expected 5 but got 4",
+      "stack_trace": "Stack trace for java",
+      "timestamp": "2025-08-07T02:22:50.097338"
+    }
+  ],
+  "symptoms": [
+    "Incorrect output produced",
+    "Test cases failing",
+    "Unexpected behavior"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 83,
+    "function": "process_function",
+    "module": "utils"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "utils/file_5.java"
+    ],
+    "should_find_files": [
+      "helpers/file_2.java",
+      "helpers/file_4.java"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

@@ -1,0 +1,1 @@
+// Code snippet for src/core/service_1.js

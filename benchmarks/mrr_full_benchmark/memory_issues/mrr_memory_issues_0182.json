@@ -1,0 +1,348 @@
+{
+  "bug_id": "MRR-MEMORY_ISSUES-202508-0182",
+  "category": "memory_issues",
+  "subcategory": "heap_corruption",
+  "language": "cpp",
+  "description": "Memory issue: heap_corruption causing memory problems",
+  "complexity": {
+    "spatial_distribution": 10,
+    "temporal_spread_months": 6,
+    "abstraction_layers": 4,
+    "obfuscation_level": "high",
+    "cross_module_dependencies": 7,
+    "artifact_types": 5
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for memory_issues/heap_corruption in cpp",
+    "fixed_code": "// Fixed code for memory_issues/heap_corruption in cpp"
+  },
+  "scattered_context": [
+    {
+      "file_path": "models/file_1.cpp",
+      "content": "// Context code for memory_issues in cpp",
+      "relevance": "critical",
+      "relationship": "implements",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        56,
+        46,
+        42,
+        175,
+        36
+      ]
+    },
+    {
+      "file_path": "utils/file_2.cpp",
+      "content": "// Context code for memory_issues in cpp",
+      "relevance": "medium",
+      "relationship": "calls",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        117
+      ]
+    },
+    {
+      "file_path": "models/file_3.cpp",
+      "content": "// Context code for memory_issues in cpp",
+      "relevance": "high",
+      "relationship": "tests",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        153,
+        27
+      ]
+    },
+    {
+      "file_path": "services/file_4.cpp",
+      "content": "// Context code for memory_issues in cpp",
+      "relevance": "high",
+      "relationship": "uses",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        155,
+        133,
+        125,
+        52
+      ]
+    },
+    {
+      "file_path": "controllers/file_5.cpp",
+      "content": "// Context code for memory_issues in cpp",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        121,
+        128,
+        76,
+        104,
+        141
+      ]
+    },
+    {
+      "file_path": "controllers/file_6.cpp",
+      "content": "// Context code for memory_issues in cpp",
+      "relevance": "low",
+      "relationship": "uses",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        132,
+        58,
+        169,
+        144
+      ]
+    },
+    {
+      "file_path": "core/file_7.cpp",
+      "content": "// Context code for memory_issues in cpp",
+      "relevance": "low",
+      "relationship": "implements",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        34,
+        165
+      ]
+    },
+    {
+      "file_path": "services/file_8.cpp",
+      "content": "// Context code for memory_issues in cpp",
+      "relevance": "critical",
+      "relationship": "imports",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        46
+      ]
+    },
+    {
+      "file_path": "services/file_9.cpp",
+      "content": "// Context code for memory_issues in cpp",
+      "relevance": "low",
+      "relationship": "extends",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        174,
+        43
+      ]
+    },
+    {
+      "file_path": "utils/file_10.cpp",
+      "content": "// Context code for memory_issues in cpp",
+      "relevance": "low",
+      "relationship": "implements",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        182,
+        53,
+        97,
+        11,
+        106
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-02-08",
+    "temporal_spread_days": 180,
+    "refactoring_events": 2,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-06-16",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-06-16",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-05-16",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "models/file_1.cpp",
+        "to": "utils/file_2.cpp",
+        "type": "extends"
+      },
+      {
+        "from": "utils/file_2.cpp",
+        "to": "models/file_3.cpp",
+        "type": "imports"
+      },
+      {
+        "from": "models/file_3.cpp",
+        "to": "services/file_4.cpp",
+        "type": "extends"
+      },
+      {
+        "from": "services/file_4.cpp",
+        "to": "controllers/file_5.cpp",
+        "type": "extends"
+      },
+      {
+        "from": "controllers/file_5.cpp",
+        "to": "controllers/file_6.cpp",
+        "type": "imports"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "utils/file_2.cpp",
+          "services/file_9.cpp",
+          "services/file_4.cpp"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "services/file_8.cpp",
+          "models/file_1.cpp",
+          "models/file_3.cpp"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "core/file_7.cpp",
+          "services/file_9.cpp",
+          "models/file_3.cpp"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "services/file_4.cpp",
+          "controllers/file_6.cpp"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "controllers/file_5.cpp",
+          "services/file_9.cpp",
+          "services/file_4.cpp"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "services/file_8.cpp",
+          "services/file_9.cpp",
+          "controllers/file_5.cpp",
+          "services/file_4.cpp"
+        ],
+        "depth": 3
+      },
+      {
+        "path": [
+          "utils/file_10.cpp",
+          "controllers/file_6.cpp",
+          "models/file_3.cpp",
+          "services/file_9.cpp",
+          "models/file_1.cpp"
+        ],
+        "depth": 4
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "high",
+    "renamed_entities": {
+      "entity_0": "OADyOpSPcu",
+      "entity_1": "dlpexEGEfE",
+      "entity_2": "ejiRGDWyRy",
+      "entity_3": "wSRBArCsRu",
+      "entity_4": "uhsStjsFTl",
+      "entity_5": "VVAclVpzjc",
+      "entity_6": "yrDTiKiWrB",
+      "entity_7": "VBGCrIlNHv",
+      "entity_8": "mUVjfcZTCo"
+    },
+    "moved_files": 4,
+    "refactored_modules": 1
+  },
+  "ground_truth": {
+    "root_cause": "heap_corruption in main processing logic",
+    "fix_type": "memory_management",
+    "must_find_files": [
+      "models/file_1.cpp",
+      "models/file_3.cpp",
+      "services/file_4.cpp",
+      "controllers/file_5.cpp",
+      "services/file_8.cpp"
+    ],
+    "should_find_files": [
+      "utils/file_2.cpp"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 0.5916289438488385
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_memory_issues_1.cpp",
+      "test_code": "// Test for memory_issues in cpp",
+      "test_type": "integration"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "memory_issues",
+      "error_message": "MemoryError: Out of memory",
+      "stack_trace": "Stack trace for cpp",
+      "timestamp": "2025-08-07T02:22:50.675746"
+    },
+    {
+      "error_type": "memory_issues",
+      "error_message": "MemoryError: Out of memory",
+      "stack_trace": "Stack trace for cpp",
+      "timestamp": "2025-08-07T02:22:50.675748"
+    }
+  ],
+  "symptoms": [
+    "Generic symptom"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 92,
+    "function": "process_function",
+    "module": "utils"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "models/file_1.cpp",
+      "controllers/file_5.cpp",
+      "services/file_8.cpp"
+    ],
+    "should_find_files": [
+      "models/file_3.cpp",
+      "services/file_4.cpp"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

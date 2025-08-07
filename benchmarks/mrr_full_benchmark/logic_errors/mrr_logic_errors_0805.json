@@ -1,0 +1,354 @@
+{
+  "bug_id": "MRR-LOGIC_ERRORS-202508-0805",
+  "category": "logic_errors",
+  "subcategory": "boundary_condition",
+  "language": "python",
+  "description": "Logic bug: boundary_condition producing incorrect results",
+  "complexity": {
+    "spatial_distribution": 10,
+    "temporal_spread_months": 4,
+    "abstraction_layers": 3,
+    "obfuscation_level": "medium",
+    "cross_module_dependencies": 1,
+    "artifact_types": 5
+  },
+  "code_snippets": {
+    "buggy_code": "def buggy_function_boundary_condition(data):\n    # Bug: boundary_condition\n    result = []\n    for item in data:\n        # Buggy logic here\n        if item > 0:\n            result.append(item)\n    return result",
+    "fixed_code": "def fixed_function_boundary_condition(data):\n    # Fixed: boundary_condition\n    result = []\n    for item in data:\n        # Fixed logic here\n        if item >= 0:\n            result.append(item)\n    return result"
+  },
+  "scattered_context": [
+    {
+      "file_path": "helpers/file_1.py",
+      "content": "# Helper code for logic_errors\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "tests",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        106,
+        130,
+        153,
+        124
+      ]
+    },
+    {
+      "file_path": "utils/file_2.py",
+      "content": "def important_function(param):\n    # Important logic for logic_errors\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "uses",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        193,
+        176,
+        109,
+        118
+      ]
+    },
+    {
+      "file_path": "controllers/file_3.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to logic_errors\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "implements",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        163,
+        190,
+        110,
+        162
+      ]
+    },
+    {
+      "file_path": "helpers/file_4.py",
+      "content": "# Helper code for logic_errors\ndef helper(): pass",
+      "relevance": "medium",
+      "relationship": "extends",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        128
+      ]
+    },
+    {
+      "file_path": "core/file_5.py",
+      "content": "# Helper code for logic_errors\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "implements",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        155
+      ]
+    },
+    {
+      "file_path": "helpers/file_6.py",
+      "content": "def important_function(param):\n    # Important logic for logic_errors\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "extends",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        174,
+        27,
+        144
+      ]
+    },
+    {
+      "file_path": "services/file_7.py",
+      "content": "# Helper code for logic_errors\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "imports",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        67,
+        175,
+        120,
+        109,
+        172
+      ]
+    },
+    {
+      "file_path": "services/file_8.py",
+      "content": "# Helper code for logic_errors\ndef helper(): pass",
+      "relevance": "medium",
+      "relationship": "uses",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        166
+      ]
+    },
+    {
+      "file_path": "utils/file_9.py",
+      "content": "# Helper code for logic_errors\ndef helper(): pass",
+      "relevance": "medium",
+      "relationship": "tests",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        160,
+        166,
+        89,
+        118
+      ]
+    },
+    {
+      "file_path": "models/file_10.py",
+      "content": "# Helper code for logic_errors\ndef helper(): pass",
+      "relevance": "medium",
+      "relationship": "uses",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        192,
+        162,
+        110,
+        181,
+        184
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-04-09",
+    "temporal_spread_days": 120,
+    "refactoring_events": 0,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-05-08",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-04-19",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-05-28",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-07-03",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "8416941f",
+        "date": "2025-05-22",
+        "message": "Refactored module 4",
+        "files": [
+          "file_0.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "helpers/file_1.py",
+        "to": "utils/file_2.py",
+        "type": "imports"
+      },
+      {
+        "from": "utils/file_2.py",
+        "to": "controllers/file_3.py",
+        "type": "imports"
+      },
+      {
+        "from": "controllers/file_3.py",
+        "to": "helpers/file_4.py",
+        "type": "imports"
+      },
+      {
+        "from": "helpers/file_4.py",
+        "to": "core/file_5.py",
+        "type": "imports"
+      },
+      {
+        "from": "core/file_5.py",
+        "to": "helpers/file_6.py",
+        "type": "imports"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "models/file_10.py",
+          "helpers/file_1.py",
+          "core/file_5.py"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "core/file_5.py",
+          "models/file_10.py",
+          "helpers/file_4.py"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "services/file_8.py",
+          "utils/file_2.py",
+          "helpers/file_1.py"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "services/file_7.py",
+          "controllers/file_3.py"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "utils/file_2.py",
+          "services/file_8.py",
+          "helpers/file_4.py"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "helpers/file_6.py",
+          "models/file_10.py",
+          "helpers/file_1.py",
+          "controllers/file_3.py"
+        ],
+        "depth": 3
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "medium",
+    "renamed_entities": {
+      "function_0": "zlhxikgq",
+      "function_1": "fxrvzhwr",
+      "function_2": "ghcjlbkf",
+      "function_3": "epyukoqx",
+      "function_4": "crzajmwc",
+      "function_5": "okfubnzs",
+      "function_6": "xllknlcq"
+    },
+    "moved_files": 3,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "boundary_condition in main processing logic",
+    "fix_type": "logic_correction",
+    "must_find_files": [
+      "utils/file_2.py",
+      "controllers/file_3.py",
+      "helpers/file_6.py"
+    ],
+    "should_find_files": [
+      "helpers/file_4.py",
+      "services/file_8.py",
+      "utils/file_9.py"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 0.8777648850810154
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_logic_errors_1.python",
+      "test_code": "import unittest\n\nclass TestLogic_Errors(unittest.TestCase):\n    def test_scenario_1(self):\n        # Test for logic_errors\n        result = function_under_test(test_data)\n        self.assertEqual(result, expected_result)\n",
+      "test_type": "integration"
+    },
+    {
+      "file_name": "test_logic_errors_2.python",
+      "test_code": "import unittest\n\nclass TestLogic_Errors(unittest.TestCase):\n    def test_scenario_2(self):\n        # Test for logic_errors\n        result = function_under_test(test_data)\n        self.assertEqual(result, expected_result)\n",
+      "test_type": "e2e"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "logic_errors",
+      "error_message": "AssertionError: Expected 5 but got 4",
+      "stack_trace": "Traceback (most recent call last):\n  File \"main.py\", line 42, in <module>\n    result = process_data(input_data)\n  File \"processor.py\", line 15, in process_data\n    return transform(validate(data))\n  File \"validator.py\", line 8, in validate\n    raise ValueError(\"Invalid data\")\nValueError: Invalid data",
+      "timestamp": "2025-08-07T02:22:49.971480"
+    }
+  ],
+  "symptoms": [
+    "Incorrect output produced",
+    "Test cases failing",
+    "Unexpected behavior"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 61,
+    "function": "process_function",
+    "module": "core"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "controllers/file_3.py"
+    ],
+    "should_find_files": [
+      "utils/file_2.py",
+      "helpers/file_6.py"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

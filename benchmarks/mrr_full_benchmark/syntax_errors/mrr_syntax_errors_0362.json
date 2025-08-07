@@ -1,0 +1,257 @@
+{
+  "bug_id": "MRR-SYNTAX_ERRORS-202508-0362",
+  "category": "syntax_errors",
+  "subcategory": "unclosed_string",
+  "language": "python",
+  "description": "Syntax error: unclosed_string causing compilation failure",
+  "complexity": {
+    "spatial_distribution": 5,
+    "temporal_spread_months": 2,
+    "abstraction_layers": 2,
+    "obfuscation_level": "medium",
+    "cross_module_dependencies": 1,
+    "artifact_types": 5
+  },
+  "code_snippets": {
+    "buggy_code": "def buggy_function_unclosed_string(data):\n    # Bug: unclosed_string\n    result = []\n    for item in data:\n        # Buggy logic here\n        if item > 0:\n            result.append(item)\n    return result",
+    "fixed_code": "def fixed_function_unclosed_string(data):\n    # Fixed: unclosed_string\n    result = []\n    for item in data:\n        # Fixed logic here\n        if item >= 0:\n            result.append(item)\n    return result"
+  },
+  "scattered_context": [
+    {
+      "file_path": "utils/file_1.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to syntax_errors\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "extends",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        140,
+        172,
+        99
+      ]
+    },
+    {
+      "file_path": "services/file_2.py",
+      "content": "# Helper code for syntax_errors\ndef helper(): pass",
+      "relevance": "medium",
+      "relationship": "imports",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        164,
+        184,
+        12,
+        184
+      ]
+    },
+    {
+      "file_path": "helpers/file_3.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to syntax_errors\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "calls",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        160
+      ]
+    },
+    {
+      "file_path": "helpers/file_4.py",
+      "content": "# Helper code for syntax_errors\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "extends",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        93,
+        166
+      ]
+    },
+    {
+      "file_path": "core/file_5.py",
+      "content": "# Helper code for syntax_errors\ndef helper(): pass",
+      "relevance": "medium",
+      "relationship": "implements",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        108,
+        108,
+        144
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-06-08",
+    "temporal_spread_days": 60,
+    "refactoring_events": 5,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-06-10",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-06-17",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-06-21",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "utils/file_1.py",
+        "to": "services/file_2.py",
+        "type": "extends"
+      },
+      {
+        "from": "services/file_2.py",
+        "to": "helpers/file_3.py",
+        "type": "extends"
+      },
+      {
+        "from": "helpers/file_3.py",
+        "to": "helpers/file_4.py",
+        "type": "extends"
+      },
+      {
+        "from": "helpers/file_4.py",
+        "to": "core/file_5.py",
+        "type": "calls"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "services/file_2.py",
+          "utils/file_1.py",
+          "core/file_5.py"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "helpers/file_4.py",
+          "helpers/file_3.py",
+          "utils/file_1.py"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "helpers/file_4.py",
+          "utils/file_1.py"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "services/file_2.py",
+          "utils/file_1.py",
+          "helpers/file_3.py"
+        ],
+        "depth": 2
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "medium",
+    "renamed_entities": {
+      "function_0": "igetunwm",
+      "function_1": "btjxxupa",
+      "function_2": "arnsmret",
+      "function_3": "wpwpxjpl",
+      "function_4": "nhsjuqdf",
+      "function_5": "qmwjapef"
+    },
+    "moved_files": 2,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "unclosed_string in main processing logic",
+    "fix_type": "syntax_correction",
+    "must_find_files": [
+      "utils/file_1.py",
+      "helpers/file_3.py"
+    ],
+    "should_find_files": [
+      "services/file_2.py",
+      "core/file_5.py"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 0.9093331740906743
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_syntax_errors_1.python",
+      "test_code": "import unittest\n\nclass TestSyntax_Errors(unittest.TestCase):\n    def test_scenario_1(self):\n        # Test for syntax_errors\n        result = function_under_test(test_data)\n        self.assertEqual(result, expected_result)\n",
+      "test_type": "e2e"
+    },
+    {
+      "file_name": "test_syntax_errors_2.python",
+      "test_code": "import unittest\n\nclass TestSyntax_Errors(unittest.TestCase):\n    def test_scenario_2(self):\n        # Test for syntax_errors\n        result = function_under_test(test_data)\n        self.assertEqual(result, expected_result)\n",
+      "test_type": "integration"
+    },
+    {
+      "file_name": "test_syntax_errors_3.python",
+      "test_code": "import unittest\n\nclass TestSyntax_Errors(unittest.TestCase):\n    def test_scenario_3(self):\n        # Test for syntax_errors\n        result = function_under_test(test_data)\n        self.assertEqual(result, expected_result)\n",
+      "test_type": "integration"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "syntax_errors",
+      "error_message": "SyntaxError: invalid syntax at line 42",
+      "stack_trace": "Traceback (most recent call last):\n  File \"main.py\", line 42, in <module>\n    result = process_data(input_data)\n  File \"processor.py\", line 15, in process_data\n    return transform(validate(data))\n  File \"validator.py\", line 8, in validate\n    raise ValueError(\"Invalid data\")\nValueError: Invalid data",
+      "timestamp": "2025-08-07T02:22:49.572287"
+    },
+    {
+      "error_type": "syntax_errors",
+      "error_message": "SyntaxError: invalid syntax at line 25",
+      "stack_trace": "Traceback (most recent call last):\n  File \"main.py\", line 42, in <module>\n    result = process_data(input_data)\n  File \"processor.py\", line 15, in process_data\n    return transform(validate(data))\n  File \"validator.py\", line 8, in validate\n    raise ValueError(\"Invalid data\")\nValueError: Invalid data",
+      "timestamp": "2025-08-07T02:22:49.572289"
+    }
+  ],
+  "symptoms": [
+    "Code fails to compile/run",
+    "Syntax error message displayed",
+    "IDE highlights error"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 157,
+    "function": "process_function",
+    "module": "core"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "utils/file_1.py",
+      "helpers/file_3.py"
+    ],
+    "should_find_files": [],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

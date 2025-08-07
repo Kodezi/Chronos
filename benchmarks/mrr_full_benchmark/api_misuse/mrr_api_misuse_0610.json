@@ -1,0 +1,422 @@
+{
+  "bug_id": "MRR-API_MISUSE-202508-0610",
+  "category": "api_misuse",
+  "subcategory": "api_contract_violation",
+  "language": "python",
+  "description": "API misuse: api_contract_violation violating API contract",
+  "complexity": {
+    "spatial_distribution": 12,
+    "temporal_spread_months": 6,
+    "abstraction_layers": 2,
+    "obfuscation_level": "high",
+    "cross_module_dependencies": 4,
+    "artifact_types": 4
+  },
+  "code_snippets": {
+    "buggy_code": "def buggy_function_api_contract_violation(data):\n    # Bug: api_contract_violation\n    result = []\n    for item in data:\n        # Buggy logic here\n        if item > 0:\n            result.append(item)\n    return result",
+    "fixed_code": "def fixed_function_api_contract_violation(data):\n    # Fixed: api_contract_violation\n    result = []\n    for item in data:\n        # Fixed logic here\n        if item >= 0:\n            result.append(item)\n    return result"
+  },
+  "scattered_context": [
+    {
+      "file_path": "utils/file_1.py",
+      "content": "# Helper code for api_misuse\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "calls",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        48,
+        176
+      ]
+    },
+    {
+      "file_path": "controllers/file_2.py",
+      "content": "# Helper code for api_misuse\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "extends",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        187
+      ]
+    },
+    {
+      "file_path": "services/file_3.py",
+      "content": "# Helper code for api_misuse\ndef helper(): pass",
+      "relevance": "medium",
+      "relationship": "tests",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        119
+      ]
+    },
+    {
+      "file_path": "models/file_4.py",
+      "content": "def important_function(param):\n    # Important logic for api_misuse\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "implements",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        128,
+        156
+      ]
+    },
+    {
+      "file_path": "helpers/file_5.py",
+      "content": "def important_function(param):\n    # Important logic for api_misuse\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "tests",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        130
+      ]
+    },
+    {
+      "file_path": "helpers/file_6.py",
+      "content": "# Helper code for api_misuse\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "imports",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        22,
+        109,
+        87,
+        76
+      ]
+    },
+    {
+      "file_path": "utils/file_7.py",
+      "content": "# Helper code for api_misuse\ndef helper(): pass",
+      "relevance": "medium",
+      "relationship": "calls",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        24,
+        96,
+        194,
+        176,
+        71
+      ]
+    },
+    {
+      "file_path": "core/file_8.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to api_misuse\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        19,
+        43,
+        135
+      ]
+    },
+    {
+      "file_path": "models/file_9.py",
+      "content": "def important_function(param):\n    # Important logic for api_misuse\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "imports",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        176,
+        140
+      ]
+    },
+    {
+      "file_path": "models/file_10.py",
+      "content": "# Helper code for api_misuse\ndef helper(): pass",
+      "relevance": "medium",
+      "relationship": "imports",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        130,
+        178,
+        45,
+        192
+      ]
+    },
+    {
+      "file_path": "utils/file_11.py",
+      "content": "# Helper code for api_misuse\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "extends",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        66,
+        109,
+        190,
+        67,
+        112
+      ]
+    },
+    {
+      "file_path": "services/file_12.py",
+      "content": "# Helper code for api_misuse\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "tests",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        104,
+        137,
+        160,
+        134,
+        88
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-02-08",
+    "temporal_spread_days": 180,
+    "refactoring_events": 0,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-04-09",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-06-12",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-07-12",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-07-13",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "8416941f",
+        "date": "2025-07-12",
+        "message": "Refactored module 4",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "edd0a651",
+        "date": "2025-07-06",
+        "message": "Refactored module 5",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "a67f5b4e",
+        "date": "2025-05-08",
+        "message": "Refactored module 6",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "e32a385c",
+        "date": "2025-06-23",
+        "message": "Refactored module 7",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "740b3cf2",
+        "date": "2025-04-25",
+        "message": "Refactored module 8",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "f74293d6",
+        "date": "2025-03-19",
+        "message": "Refactored module 9",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "utils/file_1.py",
+        "to": "controllers/file_2.py",
+        "type": "calls"
+      },
+      {
+        "from": "controllers/file_2.py",
+        "to": "services/file_3.py",
+        "type": "extends"
+      },
+      {
+        "from": "services/file_3.py",
+        "to": "models/file_4.py",
+        "type": "calls"
+      },
+      {
+        "from": "models/file_4.py",
+        "to": "helpers/file_5.py",
+        "type": "calls"
+      },
+      {
+        "from": "helpers/file_5.py",
+        "to": "helpers/file_6.py",
+        "type": "extends"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "models/file_4.py",
+          "services/file_3.py",
+          "models/file_9.py"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "utils/file_11.py",
+          "models/file_4.py",
+          "models/file_9.py"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "helpers/file_5.py",
+          "helpers/file_6.py",
+          "models/file_9.py"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "core/file_8.py",
+          "models/file_9.py"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "services/file_12.py",
+          "helpers/file_5.py",
+          "models/file_4.py"
+        ],
+        "depth": 2
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "high",
+    "renamed_entities": {
+      "entity_0": "rslVhuFlUo",
+      "entity_1": "bwAVFZvMYo",
+      "entity_2": "mXDkCCPMVZ",
+      "entity_3": "UTpCEPsLUi",
+      "entity_4": "ZwzevfxZQd",
+      "entity_5": "ocjGRtiuCW",
+      "entity_6": "XvxEaCnrHi",
+      "entity_7": "xFpNKxAesF"
+    },
+    "moved_files": 5,
+    "refactored_modules": 1
+  },
+  "ground_truth": {
+    "root_cause": "api_contract_violation in main processing logic",
+    "fix_type": "api_correction",
+    "must_find_files": [
+      "models/file_4.py",
+      "helpers/file_5.py",
+      "core/file_8.py",
+      "models/file_9.py"
+    ],
+    "should_find_files": [
+      "services/file_3.py",
+      "utils/file_7.py",
+      "models/file_10.py"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.1352144779675264
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_api_misuse_1.python",
+      "test_code": "import unittest\n\nclass TestApi_Misuse(unittest.TestCase):\n    def test_scenario_1(self):\n        # Test for api_misuse\n        result = function_under_test(test_data)\n        self.assertEqual(result, expected_result)\n",
+      "test_type": "e2e"
+    },
+    {
+      "file_name": "test_api_misuse_2.python",
+      "test_code": "import unittest\n\nclass TestApi_Misuse(unittest.TestCase):\n    def test_scenario_2(self):\n        # Test for api_misuse\n        result = function_under_test(test_data)\n        self.assertEqual(result, expected_result)\n",
+      "test_type": "unit"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "api_misuse",
+      "error_message": "TypeError: Invalid argument type for API call",
+      "stack_trace": "Traceback (most recent call last):\n  File \"main.py\", line 42, in <module>\n    result = process_data(input_data)\n  File \"processor.py\", line 15, in process_data\n    return transform(validate(data))\n  File \"validator.py\", line 8, in validate\n    raise ValueError(\"Invalid data\")\nValueError: Invalid data",
+      "timestamp": "2025-08-07T02:22:50.438174"
+    },
+    {
+      "error_type": "api_misuse",
+      "error_message": "TypeError: Invalid argument type for API call",
+      "stack_trace": "Traceback (most recent call last):\n  File \"main.py\", line 42, in <module>\n    result = process_data(input_data)\n  File \"processor.py\", line 15, in process_data\n    return transform(validate(data))\n  File \"validator.py\", line 8, in validate\n    raise ValueError(\"Invalid data\")\nValueError: Invalid data",
+      "timestamp": "2025-08-07T02:22:50.438176"
+    }
+  ],
+  "symptoms": [
+    "Generic symptom"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 117,
+    "function": "process_function",
+    "module": "core"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "core/file_8.py"
+    ],
+    "should_find_files": [
+      "models/file_4.py",
+      "helpers/file_5.py"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

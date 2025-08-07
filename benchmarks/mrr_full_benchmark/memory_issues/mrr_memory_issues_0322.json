@@ -1,0 +1,338 @@
+{
+  "bug_id": "MRR-MEMORY_ISSUES-202508-0322",
+  "category": "memory_issues",
+  "subcategory": "heap_corruption",
+  "language": "go",
+  "description": "Memory issue: heap_corruption causing memory problems",
+  "complexity": {
+    "spatial_distribution": 10,
+    "temporal_spread_months": 9,
+    "abstraction_layers": 3,
+    "obfuscation_level": "high",
+    "cross_module_dependencies": 3,
+    "artifact_types": 5
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for memory_issues/heap_corruption in go",
+    "fixed_code": "// Fixed code for memory_issues/heap_corruption in go"
+  },
+  "scattered_context": [
+    {
+      "file_path": "utils/file_1.go",
+      "content": "// Context code for memory_issues in go",
+      "relevance": "critical",
+      "relationship": "extends",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        36,
+        196,
+        128,
+        131
+      ]
+    },
+    {
+      "file_path": "helpers/file_2.go",
+      "content": "// Context code for memory_issues in go",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        10,
+        170,
+        53,
+        39,
+        135
+      ]
+    },
+    {
+      "file_path": "controllers/file_3.go",
+      "content": "// Context code for memory_issues in go",
+      "relevance": "medium",
+      "relationship": "uses",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        18,
+        177,
+        115,
+        188
+      ]
+    },
+    {
+      "file_path": "core/file_4.go",
+      "content": "// Context code for memory_issues in go",
+      "relevance": "critical",
+      "relationship": "extends",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        124,
+        66,
+        58
+      ]
+    },
+    {
+      "file_path": "utils/file_5.go",
+      "content": "// Context code for memory_issues in go",
+      "relevance": "high",
+      "relationship": "implements",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        141,
+        100,
+        20
+      ]
+    },
+    {
+      "file_path": "controllers/file_6.go",
+      "content": "// Context code for memory_issues in go",
+      "relevance": "low",
+      "relationship": "calls",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        120,
+        54
+      ]
+    },
+    {
+      "file_path": "models/file_7.go",
+      "content": "// Context code for memory_issues in go",
+      "relevance": "high",
+      "relationship": "extends",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        199,
+        156,
+        200,
+        117,
+        200
+      ]
+    },
+    {
+      "file_path": "core/file_8.go",
+      "content": "// Context code for memory_issues in go",
+      "relevance": "critical",
+      "relationship": "imports",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        160,
+        108
+      ]
+    },
+    {
+      "file_path": "core/file_9.go",
+      "content": "// Context code for memory_issues in go",
+      "relevance": "medium",
+      "relationship": "imports",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        176
+      ]
+    },
+    {
+      "file_path": "models/file_10.go",
+      "content": "// Context code for memory_issues in go",
+      "relevance": "critical",
+      "relationship": "uses",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        96,
+        95,
+        151,
+        73,
+        80
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2024-11-10",
+    "temporal_spread_days": 270,
+    "refactoring_events": 5,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-06-19",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-02-24",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-01-03",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "utils/file_1.go",
+        "to": "helpers/file_2.go",
+        "type": "extends"
+      },
+      {
+        "from": "helpers/file_2.go",
+        "to": "controllers/file_3.go",
+        "type": "calls"
+      },
+      {
+        "from": "controllers/file_3.go",
+        "to": "core/file_4.go",
+        "type": "extends"
+      },
+      {
+        "from": "core/file_4.go",
+        "to": "utils/file_5.go",
+        "type": "calls"
+      },
+      {
+        "from": "utils/file_5.go",
+        "to": "controllers/file_6.go",
+        "type": "extends"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "models/file_10.go",
+          "core/file_8.go",
+          "helpers/file_2.go"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "models/file_7.go",
+          "utils/file_1.go",
+          "helpers/file_2.go"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "models/file_7.go",
+          "core/file_9.go",
+          "utils/file_1.go"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "helpers/file_2.go",
+          "controllers/file_6.go"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "controllers/file_6.go",
+          "helpers/file_2.go",
+          "core/file_4.go"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "controllers/file_3.go",
+          "utils/file_5.go",
+          "core/file_9.go",
+          "core/file_4.go"
+        ],
+        "depth": 3
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "high",
+    "renamed_entities": {
+      "entity_0": "ncMupZmbCQ",
+      "entity_1": "eiLGJryaZp",
+      "entity_2": "MNkSUQajVZ",
+      "entity_3": "ZjZtQbyNaW",
+      "entity_4": "SfKYnSQDEv",
+      "entity_5": "XfVealElZo",
+      "entity_6": "BPPkPREYfI",
+      "entity_7": "xOwxZWZbhH",
+      "entity_8": "VXYTboaxnd",
+      "entity_9": "maJFxAlQcZ",
+      "entity_10": "MJAijgdCVn",
+      "entity_11": "mvENngeqvC"
+    },
+    "moved_files": 2,
+    "refactored_modules": 2
+  },
+  "ground_truth": {
+    "root_cause": "heap_corruption in main processing logic",
+    "fix_type": "memory_management",
+    "must_find_files": [
+      "utils/file_1.go",
+      "helpers/file_2.go",
+      "core/file_4.go",
+      "utils/file_5.go",
+      "models/file_7.go"
+    ],
+    "should_find_files": [
+      "controllers/file_3.go",
+      "core/file_9.go"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.119129553008478
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_memory_issues_1.go",
+      "test_code": "// Test for memory_issues in go",
+      "test_type": "integration"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "memory_issues",
+      "error_message": "MemoryError: Out of memory",
+      "stack_trace": "Stack trace for go",
+      "timestamp": "2025-08-07T02:22:50.756114"
+    }
+  ],
+  "symptoms": [
+    "Generic symptom"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 172,
+    "function": "process_function",
+    "module": "core"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "utils/file_1.go",
+      "helpers/file_2.go",
+      "core/file_4.go"
+    ],
+    "should_find_files": [
+      "utils/file_5.go",
+      "models/file_7.go"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

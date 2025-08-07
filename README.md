@@ -10,12 +10,12 @@
 [![Research](https://img.shields.io/badge/Research-Paper-orange.svg?style=for-the-badge)](paper/chronos-research.md)
 [![Benchmark](https://img.shields.io/badge/Benchmark-MRR-purple.svg?style=for-the-badge)](benchmarks/multi-random-retrieval/)
 
-<img src="https://img.shields.io/badge/Debug%20Success-65.3%25-brightgreen?style=for-the-badge" alt="Debug Success Rate">
-<img src="https://img.shields.io/badge/Root%20Cause%20Accuracy-78.4%25-blue?style=for-the-badge" alt="Root Cause Accuracy">
-<img src="https://img.shields.io/badge/Improvement-6--7x-yellow?style=for-the-badge" alt="Improvement over GPT-4">
-<img src="https://img.shields.io/badge/Cost%20Efficiency-4.5x-orange?style=for-the-badge" alt="Cost Efficiency">
+<img src="https://img.shields.io/badge/Debug%20Success-67.3%25-brightgreen?style=for-the-badge" alt="Debug Success Rate">
+<img src="https://img.shields.io/badge/Human%20Preference-89%25-blue?style=for-the-badge" alt="Human Preference">
+<img src="https://img.shields.io/badge/Improvement-4--5x-yellow?style=for-the-badge" alt="Improvement over GPT-4.1">
+<img src="https://img.shields.io/badge/Time%20Reduction-40%25-orange?style=for-the-badge" alt="Time Reduction">
 
-<h3>🎯 65.3% Autonomous Debugging Success • 🔍 78.4% Root Cause Accuracy • ⚡ 2.2 Average Fix Cycles • 💰 $1.36 per Bug Fix</h3>
+<h3>🎯 67.3% Autonomous Debugging Success • 🔍 89% Human Preference • ⚡ 7.8 Average Fix Iterations • 💰 40% Time Reduction</h3>
 
 <p align="center">
   <img src="results/figures/architecture_overview.svg" alt="Chronos Architecture" width="800">
@@ -58,13 +58,13 @@ This repository contains research findings, benchmarks, and evaluation framework
 
 ### Overall Benchmark Results (5,000+ Real-World Debugging Scenarios)
 
-| Metric | **Kodezi Chronos** | **GPT-4** | **Claude-3-Opus** | **Gemini-1.5-Pro** | **Improvement** |
+| Metric | **Kodezi Chronos** | **GPT-4.1** | **Claude-4-Opus** | **Gemini-2.0-Pro** | **Improvement** |
 |:------:|:------------------:|:---------:|:-----------------:|:------------------:|:---------------:|
-| **Debug Success Rate** | **65.3%±1.4%*** | 8.5%±2.1% | 7.8%±2.3% | 11.2%±1.7% | **5.8-8.4x** |
-| **Root Cause Accuracy** | **78.4%±1.2%*** | 12.3%±1.8% | 11.7%±2.0% | 15.8%±1.5% | **5.0-6.7x** |
-| **Average Fix Cycles** | **2.2** | 6.5 | 6.8 | 5.1 | **2.3-3.1x faster** |
-| **Retrieval Precision** | **91%±0.8%*** | 68%±2.3% | 67%±2.4% | 74%±1.8% | **1.2-1.4x** |
-| **Cost per Success** | **$1.36** | $5.53 | $6.67 | $6.07 | **4.1-4.9x cheaper** |
+| **Debug Success Rate** | **67.3%±2.1%*** | 13.8%±1.2% | 14.2%±1.3% | <15% | **4.7-6.0x** |
+| **Root Cause Accuracy** | **89%*** | 12.3%±1.8% | 11.7%±2.0% | 15.8%±1.5% | **5.6-7.6x** |
+| **Average Fix Iterations** | **7.8** | 1-2 | 1-2 | 1-2 | **More thorough** |
+| **Retrieval Precision** | **92%*** | 68%±2.3% | 67%±2.4% | 74%±1.8% | **1.2-1.4x** |
+| **Time Reduction** | **40%** | - | - | - | **40% faster** |
 
 ***p < 0.001 compared to best baseline (two-tailed t-test, n=5,000)**
 

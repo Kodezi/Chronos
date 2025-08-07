@@ -1,0 +1,165 @@
+{
+  "bug_id": "MRR-SYNTAX_ERRORS-202508-0376",
+  "category": "syntax_errors",
+  "subcategory": "missing_semicolon",
+  "language": "javascript",
+  "description": "Syntax error: missing_semicolon causing compilation failure",
+  "complexity": {
+    "spatial_distribution": 1,
+    "temporal_spread_months": 1,
+    "abstraction_layers": 2,
+    "obfuscation_level": "medium",
+    "cross_module_dependencies": 0,
+    "artifact_types": 4
+  },
+  "code_snippets": {
+    "buggy_code": "function processData(items) {\n    let result = []\n    items.forEach(item => {\n        result.push(item * 2)\n    })\n    return result\n}",
+    "fixed_code": "function processData(items) {\n    let result = [];\n    items.forEach(item => {\n        result.push(item * 2);\n    });\n    return result;\n}"
+  },
+  "scattered_context": [
+    {
+      "file_path": "controllers/file_1.js",
+      "content": "// Context code for syntax_errors in javascript",
+      "relevance": "low",
+      "relationship": "uses",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        12
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-07-08",
+    "temporal_spread_days": 30,
+    "refactoring_events": 5,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-07-19",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-07-29",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-08-06",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-07-10",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [],
+    "implicit": [],
+    "compositional": [
+      {
+        "path": [
+          "controllers/file_1.js"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "controllers/file_1.js"
+        ],
+        "depth": 2
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "medium",
+    "renamed_entities": {
+      "function_0": "wevacigg",
+      "function_1": "cjehgnhv",
+      "function_2": "bershkls",
+      "function_3": "hpolfuvq",
+      "function_4": "xrunvrro",
+      "function_5": "jghqxitb"
+    },
+    "moved_files": 3,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "missing_semicolon in main processing logic",
+    "fix_type": "syntax_correction",
+    "must_find_files": [],
+    "should_find_files": [],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.5147485839175308
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_syntax_errors_1.javascript",
+      "test_code": "// Test for syntax_errors in javascript",
+      "test_type": "e2e"
+    },
+    {
+      "file_name": "test_syntax_errors_2.javascript",
+      "test_code": "// Test for syntax_errors in javascript",
+      "test_type": "e2e"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "syntax_errors",
+      "error_message": "SyntaxError: invalid syntax at line 98",
+      "stack_trace": "Stack trace for javascript",
+      "timestamp": "2025-08-07T02:22:49.577764"
+    },
+    {
+      "error_type": "syntax_errors",
+      "error_message": "SyntaxError: invalid syntax at line 90",
+      "stack_trace": "Stack trace for javascript",
+      "timestamp": "2025-08-07T02:22:49.577766"
+    }
+  ],
+  "symptoms": [
+    "Code fails to compile/run",
+    "Syntax error message displayed",
+    "IDE highlights error"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 134,
+    "function": "process_function",
+    "module": "core"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [],
+    "should_find_files": [],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

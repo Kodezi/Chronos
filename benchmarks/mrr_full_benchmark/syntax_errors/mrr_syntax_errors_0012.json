@@ -1,0 +1,202 @@
+{
+  "bug_id": "MRR-SYNTAX_ERRORS-202508-0012",
+  "category": "syntax_errors",
+  "subcategory": "missing_bracket",
+  "language": "java",
+  "description": "Syntax error: missing_bracket causing compilation failure",
+  "complexity": {
+    "spatial_distribution": 2,
+    "temporal_spread_months": 2,
+    "abstraction_layers": 1,
+    "obfuscation_level": "low",
+    "cross_module_dependencies": 0,
+    "artifact_types": 5
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for syntax_errors/missing_bracket in java",
+    "fixed_code": "// Fixed code for syntax_errors/missing_bracket in java"
+  },
+  "scattered_context": [
+    {
+      "file_path": "helpers/file_1.java",
+      "content": "// Context code for syntax_errors in java",
+      "relevance": "medium",
+      "relationship": "tests",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        77,
+        60,
+        172,
+        150,
+        65
+      ]
+    },
+    {
+      "file_path": "utils/file_2.java",
+      "content": "// Context code for syntax_errors in java",
+      "relevance": "high",
+      "relationship": "extends",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        200,
+        91,
+        176
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-06-08",
+    "temporal_spread_days": 60,
+    "refactoring_events": 5,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-07-05",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-07-31",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-08-07",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-06-28",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "8416941f",
+        "date": "2025-06-19",
+        "message": "Refactored module 4",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "helpers/file_1.java",
+        "to": "utils/file_2.java",
+        "type": "imports"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "utils/file_2.java",
+          "helpers/file_1.java"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "utils/file_2.java",
+          "helpers/file_1.java"
+        ],
+        "depth": 1
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "low",
+    "renamed_entities": {
+      "variable_0": "var_0"
+    },
+    "moved_files": 0,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "missing_bracket in main processing logic",
+    "fix_type": "syntax_correction",
+    "must_find_files": [
+      "utils/file_2.java"
+    ],
+    "should_find_files": [
+      "helpers/file_1.java"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.221141865648805
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_syntax_errors_1.java",
+      "test_code": "// Test for syntax_errors in java",
+      "test_type": "e2e"
+    },
+    {
+      "file_name": "test_syntax_errors_2.java",
+      "test_code": "// Test for syntax_errors in java",
+      "test_type": "e2e"
+    },
+    {
+      "file_name": "test_syntax_errors_3.java",
+      "test_code": "// Test for syntax_errors in java",
+      "test_type": "integration"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "syntax_errors",
+      "error_message": "SyntaxError: invalid syntax at line 30",
+      "stack_trace": "Stack trace for java",
+      "timestamp": "2025-08-07T02:22:49.456274"
+    }
+  ],
+  "symptoms": [
+    "Code fails to compile/run",
+    "Syntax error message displayed",
+    "IDE highlights error"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 71,
+    "function": "process_function",
+    "module": "services"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [],
+    "should_find_files": [
+      "utils/file_2.java"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

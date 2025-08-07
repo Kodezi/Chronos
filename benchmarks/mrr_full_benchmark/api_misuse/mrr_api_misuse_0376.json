@@ -1,0 +1,301 @@
+{
+  "bug_id": "MRR-API_MISUSE-202508-0376",
+  "category": "api_misuse",
+  "subcategory": "incorrect_api_sequence",
+  "language": "javascript",
+  "description": "API misuse: incorrect_api_sequence violating API contract",
+  "complexity": {
+    "spatial_distribution": 8,
+    "temporal_spread_months": 5,
+    "abstraction_layers": 2,
+    "obfuscation_level": "high",
+    "cross_module_dependencies": 3,
+    "artifact_types": 3
+  },
+  "code_snippets": {
+    "buggy_code": "function buggyFunction_incorrect_api_sequence(data) {\n    // Bug: incorrect_api_sequence\n    let result = [];\n    data.forEach(item => {\n        // Buggy logic here\n        if (item > 0) {\n            result.push(item);\n        }\n    });\n    return result;\n}",
+    "fixed_code": "function fixedFunction_incorrect_api_sequence(data) {\n    // Fixed: incorrect_api_sequence\n    let result = [];\n    data.forEach(item => {\n        // Fixed logic here\n        if (item >= 0) {\n            result.push(item);\n        }\n    });\n    return result;\n}"
+  },
+  "scattered_context": [
+    {
+      "file_path": "helpers/file_1.js",
+      "content": "// Context code for api_misuse in javascript",
+      "relevance": "critical",
+      "relationship": "calls",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        163,
+        102
+      ]
+    },
+    {
+      "file_path": "services/file_2.js",
+      "content": "// Context code for api_misuse in javascript",
+      "relevance": "high",
+      "relationship": "extends",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        65,
+        10,
+        160,
+        113
+      ]
+    },
+    {
+      "file_path": "utils/file_3.js",
+      "content": "// Context code for api_misuse in javascript",
+      "relevance": "low",
+      "relationship": "imports",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        197,
+        183,
+        136,
+        100
+      ]
+    },
+    {
+      "file_path": "models/file_4.js",
+      "content": "// Context code for api_misuse in javascript",
+      "relevance": "critical",
+      "relationship": "extends",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        185,
+        166,
+        188,
+        174
+      ]
+    },
+    {
+      "file_path": "utils/file_5.js",
+      "content": "// Context code for api_misuse in javascript",
+      "relevance": "high",
+      "relationship": "tests",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        85,
+        69,
+        10,
+        70
+      ]
+    },
+    {
+      "file_path": "helpers/file_6.js",
+      "content": "// Context code for api_misuse in javascript",
+      "relevance": "critical",
+      "relationship": "implements",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        105
+      ]
+    },
+    {
+      "file_path": "controllers/file_7.js",
+      "content": "// Context code for api_misuse in javascript",
+      "relevance": "high",
+      "relationship": "uses",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        151
+      ]
+    },
+    {
+      "file_path": "helpers/file_8.js",
+      "content": "// Context code for api_misuse in javascript",
+      "relevance": "high",
+      "relationship": "extends",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        153,
+        162,
+        98,
+        121,
+        106
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-03-10",
+    "temporal_spread_days": 150,
+    "refactoring_events": 3,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-03-24",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-04-06",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-03-28",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "helpers/file_1.js",
+        "to": "services/file_2.js",
+        "type": "imports"
+      },
+      {
+        "from": "services/file_2.js",
+        "to": "utils/file_3.js",
+        "type": "imports"
+      },
+      {
+        "from": "utils/file_3.js",
+        "to": "models/file_4.js",
+        "type": "extends"
+      },
+      {
+        "from": "models/file_4.js",
+        "to": "utils/file_5.js",
+        "type": "extends"
+      },
+      {
+        "from": "utils/file_5.js",
+        "to": "helpers/file_6.js",
+        "type": "calls"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "controllers/file_7.js",
+          "services/file_2.js",
+          "helpers/file_6.js"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "services/file_2.js",
+          "helpers/file_8.js",
+          "models/file_4.js"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "controllers/file_7.js",
+          "utils/file_3.js",
+          "services/file_2.js"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "helpers/file_8.js",
+          "utils/file_3.js"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "helpers/file_6.js",
+          "services/file_2.js",
+          "utils/file_3.js"
+        ],
+        "depth": 2
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "high",
+    "renamed_entities": {
+      "entity_0": "OVnnfhIMTX",
+      "entity_1": "dIhaXuHdTC",
+      "entity_2": "ksDFLQHCdX",
+      "entity_3": "nsWGYdaedV",
+      "entity_4": "uHlQDAVJJm",
+      "entity_5": "LxlInnRImO",
+      "entity_6": "ThVwpCFfBW",
+      "entity_7": "UOslHGbQLw",
+      "entity_8": "IXhVwyVAuF",
+      "entity_9": "AsRsBeQviw",
+      "entity_10": "LKmGqqYKhW",
+      "entity_11": "GtOrDjZeim",
+      "entity_12": "dgTONFIWgj",
+      "entity_13": "yLGAjtZBdj"
+    },
+    "moved_files": 0,
+    "refactored_modules": 3
+  },
+  "ground_truth": {
+    "root_cause": "incorrect_api_sequence in main processing logic",
+    "fix_type": "api_correction",
+    "must_find_files": [
+      "helpers/file_1.js",
+      "services/file_2.js",
+      "models/file_4.js",
+      "utils/file_5.js",
+      "helpers/file_6.js"
+    ],
+    "should_find_files": [],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.51883555997995
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_api_misuse_1.javascript",
+      "test_code": "// Test for api_misuse in javascript",
+      "test_type": "e2e"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "api_misuse",
+      "error_message": "TypeError: Invalid argument type for API call",
+      "stack_trace": "Stack trace for javascript",
+      "timestamp": "2025-08-07T02:22:50.331026"
+    }
+  ],
+  "symptoms": [
+    "Generic symptom"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 122,
+    "function": "process_function",
+    "module": "services"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "helpers/file_1.js",
+      "models/file_4.js",
+      "helpers/file_6.js"
+    ],
+    "should_find_files": [
+      "services/file_2.js",
+      "utils/file_5.js"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

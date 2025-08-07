@@ -1,0 +1,569 @@
+{
+  "bug_id": "MRR-MEMORY_ISSUES-202508-0222",
+  "category": "memory_issues",
+  "subcategory": "buffer_overflow",
+  "language": "javascript",
+  "description": "Memory issue: buffer_overflow causing memory problems",
+  "complexity": {
+    "spatial_distribution": 28,
+    "temporal_spread_months": 9,
+    "abstraction_layers": 4,
+    "obfuscation_level": "medium",
+    "cross_module_dependencies": 3,
+    "artifact_types": 3
+  },
+  "code_snippets": {
+    "buggy_code": "function buggyFunction_buffer_overflow(data) {\n    // Bug: buffer_overflow\n    let result = [];\n    data.forEach(item => {\n        // Buggy logic here\n        if (item > 0) {\n            result.push(item);\n        }\n    });\n    return result;\n}",
+    "fixed_code": "function fixedFunction_buffer_overflow(data) {\n    // Fixed: buffer_overflow\n    let result = [];\n    data.forEach(item => {\n        // Fixed logic here\n        if (item >= 0) {\n            result.push(item);\n        }\n    });\n    return result;\n}"
+  },
+  "scattered_context": [
+    {
+      "file_path": "core/file_1.js",
+      "content": "// Context code for memory_issues in javascript",
+      "relevance": "critical",
+      "relationship": "extends",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        25,
+        199,
+        162,
+        27,
+        120
+      ]
+    },
+    {
+      "file_path": "services/file_2.js",
+      "content": "// Context code for memory_issues in javascript",
+      "relevance": "critical",
+      "relationship": "implements",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        165,
+        173,
+        25,
+        102
+      ]
+    },
+    {
+      "file_path": "controllers/file_3.js",
+      "content": "// Context code for memory_issues in javascript",
+      "relevance": "medium",
+      "relationship": "imports",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        30,
+        104,
+        49,
+        155
+      ]
+    },
+    {
+      "file_path": "utils/file_4.js",
+      "content": "// Context code for memory_issues in javascript",
+      "relevance": "low",
+      "relationship": "implements",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        92,
+        48,
+        156,
+        124,
+        104
+      ]
+    },
+    {
+      "file_path": "controllers/file_5.js",
+      "content": "// Context code for memory_issues in javascript",
+      "relevance": "critical",
+      "relationship": "implements",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        97,
+        78,
+        88
+      ]
+    },
+    {
+      "file_path": "models/file_6.js",
+      "content": "// Context code for memory_issues in javascript",
+      "relevance": "medium",
+      "relationship": "uses",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        89
+      ]
+    },
+    {
+      "file_path": "helpers/file_7.js",
+      "content": "// Context code for memory_issues in javascript",
+      "relevance": "low",
+      "relationship": "extends",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        190,
+        97,
+        20,
+        83
+      ]
+    },
+    {
+      "file_path": "utils/file_8.js",
+      "content": "// Context code for memory_issues in javascript",
+      "relevance": "critical",
+      "relationship": "imports",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        53
+      ]
+    },
+    {
+      "file_path": "core/file_9.js",
+      "content": "// Context code for memory_issues in javascript",
+      "relevance": "low",
+      "relationship": "calls",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        55,
+        72,
+        47,
+        48
+      ]
+    },
+    {
+      "file_path": "services/file_10.js",
+      "content": "// Context code for memory_issues in javascript",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        82,
+        119
+      ]
+    },
+    {
+      "file_path": "helpers/file_11.js",
+      "content": "// Context code for memory_issues in javascript",
+      "relevance": "medium",
+      "relationship": "extends",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        79,
+        99,
+        76,
+        125,
+        96
+      ]
+    },
+    {
+      "file_path": "helpers/file_12.js",
+      "content": "// Context code for memory_issues in javascript",
+      "relevance": "high",
+      "relationship": "extends",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        12,
+        193,
+        97,
+        122,
+        88
+      ]
+    },
+    {
+      "file_path": "utils/file_13.js",
+      "content": "// Context code for memory_issues in javascript",
+      "relevance": "critical",
+      "relationship": "implements",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        176,
+        19,
+        141,
+        45,
+        158
+      ]
+    },
+    {
+      "file_path": "core/file_14.js",
+      "content": "// Context code for memory_issues in javascript",
+      "relevance": "high",
+      "relationship": "imports",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        121,
+        23,
+        68,
+        99
+      ]
+    },
+    {
+      "file_path": "models/file_15.js",
+      "content": "// Context code for memory_issues in javascript",
+      "relevance": "low",
+      "relationship": "tests",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        171,
+        180,
+        21,
+        39
+      ]
+    },
+    {
+      "file_path": "core/file_16.js",
+      "content": "// Context code for memory_issues in javascript",
+      "relevance": "medium",
+      "relationship": "calls",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        50,
+        94,
+        200
+      ]
+    },
+    {
+      "file_path": "helpers/file_17.js",
+      "content": "// Context code for memory_issues in javascript",
+      "relevance": "medium",
+      "relationship": "extends",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        188,
+        199,
+        140,
+        132,
+        152
+      ]
+    },
+    {
+      "file_path": "models/file_18.js",
+      "content": "// Context code for memory_issues in javascript",
+      "relevance": "high",
+      "relationship": "calls",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        86,
+        97
+      ]
+    },
+    {
+      "file_path": "utils/file_19.js",
+      "content": "// Context code for memory_issues in javascript",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        82
+      ]
+    },
+    {
+      "file_path": "helpers/file_20.js",
+      "content": "// Context code for memory_issues in javascript",
+      "relevance": "high",
+      "relationship": "implements",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        27,
+        58,
+        72,
+        19
+      ]
+    },
+    {
+      "file_path": "controllers/file_21.js",
+      "content": "// Context code for memory_issues in javascript",
+      "relevance": "critical",
+      "relationship": "extends",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        100,
+        143,
+        119
+      ]
+    },
+    {
+      "file_path": "helpers/file_22.js",
+      "content": "// Context code for memory_issues in javascript",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        171,
+        184
+      ]
+    },
+    {
+      "file_path": "services/file_23.js",
+      "content": "// Context code for memory_issues in javascript",
+      "relevance": "high",
+      "relationship": "extends",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        71,
+        118,
+        172,
+        37,
+        40
+      ]
+    },
+    {
+      "file_path": "helpers/file_24.js",
+      "content": "// Context code for memory_issues in javascript",
+      "relevance": "critical",
+      "relationship": "imports",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        105,
+        78,
+        32,
+        135,
+        79
+      ]
+    },
+    {
+      "file_path": "services/file_25.js",
+      "content": "// Context code for memory_issues in javascript",
+      "relevance": "medium",
+      "relationship": "extends",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        84,
+        69,
+        195,
+        152
+      ]
+    },
+    {
+      "file_path": "services/file_26.js",
+      "content": "// Context code for memory_issues in javascript",
+      "relevance": "low",
+      "relationship": "uses",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        52,
+        62,
+        73
+      ]
+    },
+    {
+      "file_path": "helpers/file_27.js",
+      "content": "// Context code for memory_issues in javascript",
+      "relevance": "low",
+      "relationship": "extends",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        195,
+        85
+      ]
+    },
+    {
+      "file_path": "utils/file_28.js",
+      "content": "// Context code for memory_issues in javascript",
+      "relevance": "medium",
+      "relationship": "uses",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        162
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2024-11-10",
+    "temporal_spread_days": 270,
+    "refactoring_events": 2,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2024-12-30",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-02-02",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-05-05",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "core/file_1.js",
+        "to": "services/file_2.js",
+        "type": "extends"
+      },
+      {
+        "from": "services/file_2.js",
+        "to": "controllers/file_3.js",
+        "type": "imports"
+      },
+      {
+        "from": "controllers/file_3.js",
+        "to": "utils/file_4.js",
+        "type": "extends"
+      },
+      {
+        "from": "utils/file_4.js",
+        "to": "controllers/file_5.js",
+        "type": "imports"
+      },
+      {
+        "from": "controllers/file_5.js",
+        "to": "models/file_6.js",
+        "type": "imports"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "utils/file_8.js",
+          "services/file_25.js",
+          "utils/file_28.js"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "controllers/file_5.js",
+          "helpers/file_24.js",
+          "helpers/file_7.js"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "helpers/file_24.js",
+          "services/file_2.js",
+          "core/file_9.js"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "models/file_18.js",
+          "services/file_25.js"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "models/file_6.js",
+          "helpers/file_27.js",
+          "models/file_15.js"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "utils/file_13.js",
+          "controllers/file_5.js",
+          "helpers/file_20.js",
+          "services/file_25.js"
+        ],
+        "depth": 3
+      },
+      {
+        "path": [
+          "models/file_15.js",
+          "core/file_14.js",
+          "utils/file_28.js",
+          "services/file_23.js",
+          "helpers/file_24.js"
+        ],
+        "depth": 4
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "medium",
+    "renamed_entities": {
+      "function_0": "arqekwik",
+      "function_1": "pvbvjyai",
+      "function_2": "nsymxjew",
+      "function_3": "fbcnlryx"
+    },
+    "moved_files": 1,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "buffer_overflow in main processing logic",
+    "fix_type": "memory_management",
+    "must_find_files": [
+      "core/file_1.js",
+      "services/file_2.js",
+      "controllers/file_5.js",
+      "utils/file_8.js",
+      "services/file_10.js"
+    ],
+    "should_find_files": [
+      "controllers/file_3.js",
+      "models/file_6.js",
+      "helpers/file_11.js"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.0046536916115751
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_memory_issues_1.javascript",
+      "test_code": "// Test for memory_issues in javascript",
+      "test_type": "unit"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "memory_issues",
+      "error_message": "MemoryError: Out of memory",
+      "stack_trace": "Stack trace for javascript",
+      "timestamp": "2025-08-07T02:22:50.698518"
+    },
+    {
+      "error_type": "memory_issues",
+      "error_message": "MemoryError: Out of memory",
+      "stack_trace": "Stack trace for javascript",
+      "timestamp": "2025-08-07T02:22:50.698520"
+    }
+  ],
+  "symptoms": [
+    "Generic symptom"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 196,
+    "function": "process_function",
+    "module": "core"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "core/file_1.js",
+      "services/file_2.js",
+      "controllers/file_5.js"
+    ],
+    "should_find_files": [
+      "helpers/file_12.js",
+      "core/file_14.js"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

@@ -1,0 +1,232 @@
+{
+  "bug_id": "MRR-SYNTAX_ERRORS-202508-0266",
+  "category": "syntax_errors",
+  "subcategory": "invalid_token",
+  "language": "cpp",
+  "description": "Syntax error: invalid_token causing compilation failure",
+  "complexity": {
+    "spatial_distribution": 2,
+    "temporal_spread_months": 2,
+    "abstraction_layers": 2,
+    "obfuscation_level": "low",
+    "cross_module_dependencies": 1,
+    "artifact_types": 2
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for syntax_errors/invalid_token in cpp",
+    "fixed_code": "// Fixed code for syntax_errors/invalid_token in cpp"
+  },
+  "scattered_context": [
+    {
+      "file_path": "services/file_1.cpp",
+      "content": "// Context code for syntax_errors in cpp",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        186,
+        64,
+        108
+      ]
+    },
+    {
+      "file_path": "models/file_2.cpp",
+      "content": "// Context code for syntax_errors in cpp",
+      "relevance": "critical",
+      "relationship": "calls",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        139
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-06-08",
+    "temporal_spread_days": 60,
+    "refactoring_events": 5,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-07-26",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-07-14",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-07-28",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-07-20",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "8416941f",
+        "date": "2025-06-10",
+        "message": "Refactored module 4",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "edd0a651",
+        "date": "2025-07-25",
+        "message": "Refactored module 5",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "a67f5b4e",
+        "date": "2025-06-21",
+        "message": "Refactored module 6",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "e32a385c",
+        "date": "2025-06-28",
+        "message": "Refactored module 7",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "services/file_1.cpp",
+        "to": "models/file_2.cpp",
+        "type": "calls"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "services/file_1.cpp",
+          "models/file_2.cpp"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "services/file_1.cpp",
+          "models/file_2.cpp"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "models/file_2.cpp",
+          "services/file_1.cpp"
+        ],
+        "depth": 2
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "low",
+    "renamed_entities": {
+      "variable_0": "var_0",
+      "variable_1": "var_1",
+      "variable_2": "var_2"
+    },
+    "moved_files": 0,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "invalid_token in main processing logic",
+    "fix_type": "syntax_correction",
+    "must_find_files": [
+      "services/file_1.cpp",
+      "models/file_2.cpp"
+    ],
+    "should_find_files": [],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.8431834184448337
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_syntax_errors_1.cpp",
+      "test_code": "// Test for syntax_errors in cpp",
+      "test_type": "e2e"
+    },
+    {
+      "file_name": "test_syntax_errors_2.cpp",
+      "test_code": "// Test for syntax_errors in cpp",
+      "test_type": "e2e"
+    },
+    {
+      "file_name": "test_syntax_errors_3.cpp",
+      "test_code": "// Test for syntax_errors in cpp",
+      "test_type": "e2e"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "syntax_errors",
+      "error_message": "SyntaxError: invalid syntax at line 36",
+      "stack_trace": "Stack trace for cpp",
+      "timestamp": "2025-08-07T02:22:49.541043"
+    }
+  ],
+  "symptoms": [
+    "Code fails to compile/run",
+    "Syntax error message displayed",
+    "IDE highlights error"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 105,
+    "function": "process_function",
+    "module": "services"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "services/file_1.cpp",
+      "models/file_2.cpp"
+    ],
+    "should_find_files": [],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

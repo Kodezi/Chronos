@@ -1,0 +1,197 @@
+{
+  "bug_id": "MRR-SYNTAX_ERRORS-202508-0009",
+  "category": "syntax_errors",
+  "subcategory": "missing_bracket",
+  "language": "python",
+  "description": "Syntax error: missing_bracket causing compilation failure",
+  "complexity": {
+    "spatial_distribution": 3,
+    "temporal_spread_months": 2,
+    "abstraction_layers": 1,
+    "obfuscation_level": "medium",
+    "cross_module_dependencies": 0,
+    "artifact_types": 5
+  },
+  "code_snippets": {
+    "buggy_code": "def calculate(a, b):\n    return (a + b * 2",
+    "fixed_code": "def calculate(a, b):\n    return (a + b) * 2"
+  },
+  "scattered_context": [
+    {
+      "file_path": "services/file_1.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to syntax_errors\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "uses",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        152,
+        91,
+        45
+      ]
+    },
+    {
+      "file_path": "controllers/file_2.py",
+      "content": "class CriticalComponent:\n    def process(self, data):\n        # Critical logic related to syntax_errors\n        if not self.validate(data):\n            raise ValueError(\"Invalid data\")\n        return self.transform(data)\n    \n    def validate(self, data):\n        # Validation logic\n        return data is not None",
+      "relevance": "critical",
+      "relationship": "calls",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        109,
+        162,
+        60
+      ]
+    },
+    {
+      "file_path": "helpers/file_3.py",
+      "content": "# Helper code for syntax_errors\ndef helper(): pass",
+      "relevance": "low",
+      "relationship": "extends",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        134
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-06-08",
+    "temporal_spread_days": 60,
+    "refactoring_events": 5,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-06-12",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-07-25",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-07-03",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-06-19",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "services/file_1.py",
+        "to": "controllers/file_2.py",
+        "type": "extends"
+      },
+      {
+        "from": "controllers/file_2.py",
+        "to": "helpers/file_3.py",
+        "type": "calls"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "services/file_1.py",
+          "controllers/file_2.py",
+          "helpers/file_3.py"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "services/file_1.py",
+          "helpers/file_3.py"
+        ],
+        "depth": 1
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "medium",
+    "renamed_entities": {
+      "function_0": "lfybxoqw",
+      "function_1": "ikjrjswe",
+      "function_2": "guuachxl",
+      "function_3": "atmlefxw",
+      "function_4": "qdjgfaxb",
+      "function_5": "mxirzjtq",
+      "function_6": "lidfbfop"
+    },
+    "moved_files": 3,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "missing_bracket in main processing logic",
+    "fix_type": "syntax_correction",
+    "must_find_files": [
+      "services/file_1.py",
+      "controllers/file_2.py"
+    ],
+    "should_find_files": [],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.7207340304527503
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_syntax_errors_1.python",
+      "test_code": "import unittest\n\nclass TestSyntax_Errors(unittest.TestCase):\n    def test_scenario_1(self):\n        # Test for syntax_errors\n        result = function_under_test(test_data)\n        self.assertEqual(result, expected_result)\n",
+      "test_type": "e2e"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "syntax_errors",
+      "error_message": "SyntaxError: invalid syntax at line 92",
+      "stack_trace": "Traceback (most recent call last):\n  File \"main.py\", line 42, in <module>\n    result = process_data(input_data)\n  File \"processor.py\", line 15, in process_data\n    return transform(validate(data))\n  File \"validator.py\", line 8, in validate\n    raise ValueError(\"Invalid data\")\nValueError: Invalid data",
+      "timestamp": "2025-08-07T02:22:49.455071"
+    }
+  ],
+  "symptoms": [
+    "Code fails to compile/run",
+    "Syntax error message displayed",
+    "IDE highlights error"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 20,
+    "function": "process_function",
+    "module": "services"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "services/file_1.py",
+      "controllers/file_2.py"
+    ],
+    "should_find_files": [],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

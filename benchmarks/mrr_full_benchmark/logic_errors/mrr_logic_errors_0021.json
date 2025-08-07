@@ -1,0 +1,252 @@
+{
+  "bug_id": "MRR-LOGIC_ERRORS-202508-0021",
+  "category": "logic_errors",
+  "subcategory": "incorrect_operator",
+  "language": "cpp",
+  "description": "Logic bug: incorrect_operator producing incorrect results",
+  "complexity": {
+    "spatial_distribution": 3,
+    "temporal_spread_months": 5,
+    "abstraction_layers": 4,
+    "obfuscation_level": "medium",
+    "cross_module_dependencies": 3,
+    "artifact_types": 5
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for logic_errors/incorrect_operator in cpp",
+    "fixed_code": "// Fixed code for logic_errors/incorrect_operator in cpp"
+  },
+  "scattered_context": [
+    {
+      "file_path": "core/file_1.cpp",
+      "content": "// Context code for logic_errors in cpp",
+      "relevance": "medium",
+      "relationship": "implements",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        36,
+        95,
+        27,
+        61
+      ]
+    },
+    {
+      "file_path": "helpers/file_2.cpp",
+      "content": "// Context code for logic_errors in cpp",
+      "relevance": "low",
+      "relationship": "calls",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        16,
+        119,
+        14,
+        30
+      ]
+    },
+    {
+      "file_path": "utils/file_3.cpp",
+      "content": "// Context code for logic_errors in cpp",
+      "relevance": "medium",
+      "relationship": "uses",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        71,
+        126,
+        69,
+        16
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-03-10",
+    "temporal_spread_days": 150,
+    "refactoring_events": 3,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-04-09",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-03-28",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-04-21",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-06-14",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "8416941f",
+        "date": "2025-06-09",
+        "message": "Refactored module 4",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "edd0a651",
+        "date": "2025-06-09",
+        "message": "Refactored module 5",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "a67f5b4e",
+        "date": "2025-06-22",
+        "message": "Refactored module 6",
+        "files": [
+          "file_0.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "core/file_1.cpp",
+        "to": "helpers/file_2.cpp",
+        "type": "calls"
+      },
+      {
+        "from": "helpers/file_2.cpp",
+        "to": "utils/file_3.cpp",
+        "type": "calls"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "helpers/file_2.cpp",
+          "utils/file_3.cpp",
+          "core/file_1.cpp"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "helpers/file_2.cpp",
+          "core/file_1.cpp"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "core/file_1.cpp",
+          "utils/file_3.cpp",
+          "helpers/file_2.cpp"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "core/file_1.cpp",
+          "utils/file_3.cpp",
+          "helpers/file_2.cpp"
+        ],
+        "depth": 3
+      },
+      {
+        "path": [
+          "core/file_1.cpp",
+          "helpers/file_2.cpp",
+          "utils/file_3.cpp"
+        ],
+        "depth": 4
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "medium",
+    "renamed_entities": {
+      "function_0": "ejbntxxs",
+      "function_1": "hklubscv",
+      "function_2": "syxfxrus",
+      "function_3": "agmaxdts",
+      "function_4": "eroxqyny"
+    },
+    "moved_files": 4,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "incorrect_operator in main processing logic",
+    "fix_type": "logic_correction",
+    "must_find_files": [],
+    "should_find_files": [
+      "core/file_1.cpp",
+      "utils/file_3.cpp"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.2746075326090347
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_logic_errors_1.cpp",
+      "test_code": "// Test for logic_errors in cpp",
+      "test_type": "e2e"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "logic_errors",
+      "error_message": "AssertionError: Expected 5 but got 4",
+      "stack_trace": "Stack trace for cpp",
+      "timestamp": "2025-08-07T02:22:49.631306"
+    },
+    {
+      "error_type": "logic_errors",
+      "error_message": "AssertionError: Expected 5 but got 4",
+      "stack_trace": "Stack trace for cpp",
+      "timestamp": "2025-08-07T02:22:49.631308"
+    }
+  ],
+  "symptoms": [
+    "Incorrect output produced",
+    "Test cases failing",
+    "Unexpected behavior"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 36,
+    "function": "process_function",
+    "module": "utils"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [],
+    "should_find_files": [],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

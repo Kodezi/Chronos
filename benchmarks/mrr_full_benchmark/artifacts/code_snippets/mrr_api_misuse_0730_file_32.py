@@ -1,0 +1,1 @@
+// Code snippet for src/api/resource_23.java

@@ -1,0 +1,356 @@
+{
+  "bug_id": "MRR-PERFORMANCE_BUGS-202508-0240",
+  "category": "performance_bugs",
+  "subcategory": "cache_misuse",
+  "language": "java",
+  "description": "Performance issue: cache_misuse causing slowdown",
+  "complexity": {
+    "spatial_distribution": 11,
+    "temporal_spread_months": 2,
+    "abstraction_layers": 4,
+    "obfuscation_level": "high",
+    "cross_module_dependencies": 6,
+    "artifact_types": 3
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for performance_bugs/cache_misuse in java",
+    "fixed_code": "// Fixed code for performance_bugs/cache_misuse in java"
+  },
+  "scattered_context": [
+    {
+      "file_path": "core/file_1.java",
+      "content": "// Context code for performance_bugs in java",
+      "relevance": "medium",
+      "relationship": "calls",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        123,
+        58,
+        87
+      ]
+    },
+    {
+      "file_path": "core/file_2.java",
+      "content": "// Context code for performance_bugs in java",
+      "relevance": "medium",
+      "relationship": "calls",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        69
+      ]
+    },
+    {
+      "file_path": "utils/file_3.java",
+      "content": "// Context code for performance_bugs in java",
+      "relevance": "high",
+      "relationship": "tests",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        116,
+        18,
+        176,
+        49
+      ]
+    },
+    {
+      "file_path": "helpers/file_4.java",
+      "content": "// Context code for performance_bugs in java",
+      "relevance": "medium",
+      "relationship": "imports",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        77,
+        162,
+        55
+      ]
+    },
+    {
+      "file_path": "services/file_5.java",
+      "content": "// Context code for performance_bugs in java",
+      "relevance": "low",
+      "relationship": "implements",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        117
+      ]
+    },
+    {
+      "file_path": "utils/file_6.java",
+      "content": "// Context code for performance_bugs in java",
+      "relevance": "low",
+      "relationship": "extends",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        196,
+        71,
+        157,
+        75,
+        156
+      ]
+    },
+    {
+      "file_path": "services/file_7.java",
+      "content": "// Context code for performance_bugs in java",
+      "relevance": "low",
+      "relationship": "extends",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        38,
+        52,
+        50,
+        40
+      ]
+    },
+    {
+      "file_path": "core/file_8.java",
+      "content": "// Context code for performance_bugs in java",
+      "relevance": "low",
+      "relationship": "implements",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        168,
+        159
+      ]
+    },
+    {
+      "file_path": "helpers/file_9.java",
+      "content": "// Context code for performance_bugs in java",
+      "relevance": "critical",
+      "relationship": "calls",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        81,
+        107,
+        10,
+        47,
+        16
+      ]
+    },
+    {
+      "file_path": "services/file_10.java",
+      "content": "// Context code for performance_bugs in java",
+      "relevance": "medium",
+      "relationship": "extends",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        129
+      ]
+    },
+    {
+      "file_path": "core/file_11.java",
+      "content": "// Context code for performance_bugs in java",
+      "relevance": "high",
+      "relationship": "implements",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        54,
+        44,
+        129,
+        160,
+        123
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-06-08",
+    "temporal_spread_days": 60,
+    "refactoring_events": 1,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-07-09",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-07-04",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-07-16",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "core/file_1.java",
+        "to": "core/file_2.java",
+        "type": "imports"
+      },
+      {
+        "from": "core/file_2.java",
+        "to": "utils/file_3.java",
+        "type": "extends"
+      },
+      {
+        "from": "utils/file_3.java",
+        "to": "helpers/file_4.java",
+        "type": "imports"
+      },
+      {
+        "from": "helpers/file_4.java",
+        "to": "services/file_5.java",
+        "type": "imports"
+      },
+      {
+        "from": "services/file_5.java",
+        "to": "utils/file_6.java",
+        "type": "calls"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "utils/file_6.java",
+          "services/file_5.java",
+          "core/file_8.java"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "services/file_10.java",
+          "utils/file_6.java",
+          "services/file_7.java"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "helpers/file_4.java",
+          "utils/file_3.java",
+          "services/file_10.java"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "core/file_1.java",
+          "core/file_8.java"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "utils/file_3.java",
+          "utils/file_6.java",
+          "helpers/file_9.java"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "helpers/file_4.java",
+          "core/file_11.java",
+          "utils/file_6.java",
+          "utils/file_3.java"
+        ],
+        "depth": 3
+      },
+      {
+        "path": [
+          "helpers/file_4.java",
+          "services/file_7.java",
+          "core/file_1.java",
+          "core/file_2.java",
+          "services/file_10.java"
+        ],
+        "depth": 4
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "high",
+    "renamed_entities": {
+      "entity_0": "fiwlYxHmuE",
+      "entity_1": "hszaANPbia",
+      "entity_2": "vvaUrRKTlj",
+      "entity_3": "jPHGCgtdmV",
+      "entity_4": "DGqvMfQLAv",
+      "entity_5": "YvnSjNwLaU"
+    },
+    "moved_files": 1,
+    "refactored_modules": 1
+  },
+  "ground_truth": {
+    "root_cause": "cache_misuse in main processing logic",
+    "fix_type": "optimization",
+    "must_find_files": [
+      "utils/file_3.java",
+      "helpers/file_9.java",
+      "core/file_11.java"
+    ],
+    "should_find_files": [
+      "core/file_1.java",
+      "core/file_2.java",
+      "helpers/file_4.java"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.5746350075709006
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_performance_bugs_1.java",
+      "test_code": "// Test for performance_bugs in java",
+      "test_type": "e2e"
+    },
+    {
+      "file_name": "test_performance_bugs_2.java",
+      "test_code": "// Test for performance_bugs in java",
+      "test_type": "integration"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "performance_bugs",
+      "error_message": "TimeoutError: Operation timed out after 30s",
+      "stack_trace": "Stack trace for java",
+      "timestamp": "2025-08-07T02:22:51.500655"
+    }
+  ],
+  "symptoms": [
+    "Generic symptom"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 176,
+    "function": "process_function",
+    "module": "core"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "helpers/file_9.java"
+    ],
+    "should_find_files": [
+      "utils/file_3.java",
+      "core/file_11.java"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

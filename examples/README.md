@@ -79,15 +79,16 @@ Examples cover multiple languages:
 
 ## Performance Comparison
 
-Typical success rates for bug categories:
+Typical success rates for bug categories (2025 benchmarks):
 
-| Bug Type | Traditional LLM | Chronos | Improvement |
-|----------|----------------|---------|-------------|
-| Null Pointer | 12% | 89% | 7.4x |
-| Race Condition | 3% | 71% | 23.7x |
-| Memory Leak | 5% | 68% | 13.6x |
-| API Breaking | 18% | 92% | 5.1x |
-| Performance | 8% | 76% | 9.5x |
+| Bug Type | Claude 4 Opus | Chronos | Improvement |
+|----------|---------------|---------|-------------|
+| Syntax Errors | 85.6% | 94.2% | 1.1x |
+| Logic Bugs | 12.1% | 72.8% | 6.0x |
+| Concurrency | 3.2% | 58.3% | 18.2x |
+| Memory Issues | 5.7% | 61.7% | 10.8x |
+| API Misuse | 18.8% | 79.1% | 4.2x |
+| Performance | 7.4% | 65.4% | 8.8x |
 
 ## Running the Examples
 

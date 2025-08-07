@@ -1,0 +1,1 @@
+// Code snippet for src/data/repository_71.java

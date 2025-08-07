@@ -1,0 +1,216 @@
+{
+  "bug_id": "MRR-LOGIC_ERRORS-202508-0271",
+  "category": "logic_errors",
+  "subcategory": "boundary_condition",
+  "language": "go",
+  "description": "Logic bug: boundary_condition producing incorrect results",
+  "complexity": {
+    "spatial_distribution": 3,
+    "temporal_spread_months": 4,
+    "abstraction_layers": 4,
+    "obfuscation_level": "medium",
+    "cross_module_dependencies": 3,
+    "artifact_types": 2
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for logic_errors/boundary_condition in go",
+    "fixed_code": "// Fixed code for logic_errors/boundary_condition in go"
+  },
+  "scattered_context": [
+    {
+      "file_path": "models/file_1.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "low",
+      "relationship": "calls",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        132
+      ]
+    },
+    {
+      "file_path": "helpers/file_2.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "medium",
+      "relationship": "tests",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        198,
+        147,
+        128,
+        31
+      ]
+    },
+    {
+      "file_path": "utils/file_3.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "low",
+      "relationship": "implements",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        99,
+        49
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-04-09",
+    "temporal_spread_days": 120,
+    "refactoring_events": 0,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-05-05",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-05-29",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-04-19",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "models/file_1.go",
+        "to": "helpers/file_2.go",
+        "type": "calls"
+      },
+      {
+        "from": "helpers/file_2.go",
+        "to": "utils/file_3.go",
+        "type": "imports"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "utils/file_3.go",
+          "models/file_1.go",
+          "helpers/file_2.go"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "models/file_1.go",
+          "helpers/file_2.go"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "models/file_1.go",
+          "utils/file_3.go",
+          "helpers/file_2.go"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "utils/file_3.go",
+          "models/file_1.go",
+          "helpers/file_2.go"
+        ],
+        "depth": 3
+      },
+      {
+        "path": [
+          "models/file_1.go",
+          "helpers/file_2.go",
+          "utils/file_3.go"
+        ],
+        "depth": 4
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "medium",
+    "renamed_entities": {
+      "function_0": "muhxryxw",
+      "function_1": "dpoqzwss",
+      "function_2": "pwriwlao",
+      "function_3": "sgtcaznr",
+      "function_4": "qxdhbnsp",
+      "function_5": "iywmuptg"
+    },
+    "moved_files": 3,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "boundary_condition in main processing logic",
+    "fix_type": "logic_correction",
+    "must_find_files": [],
+    "should_find_files": [
+      "helpers/file_2.go"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.2559821474781339
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_logic_errors_1.go",
+      "test_code": "// Test for logic_errors in go",
+      "test_type": "e2e"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "logic_errors",
+      "error_message": "AssertionError: Expected 5 but got 4",
+      "stack_trace": "Stack trace for go",
+      "timestamp": "2025-08-07T02:22:49.739244"
+    },
+    {
+      "error_type": "logic_errors",
+      "error_message": "AssertionError: Expected 5 but got 4",
+      "stack_trace": "Stack trace for go",
+      "timestamp": "2025-08-07T02:22:49.739246"
+    }
+  ],
+  "symptoms": [
+    "Incorrect output produced",
+    "Test cases failing",
+    "Unexpected behavior"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 182,
+    "function": "process_function",
+    "module": "core"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [],
+    "should_find_files": [],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

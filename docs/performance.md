@@ -20,7 +20,7 @@ This document provides comprehensive performance data for Kodezi Chronos, demons
 Kodezi Chronos achieves breakthrough performance in autonomous debugging:
 
 **Key Achievements:**
-- **65.3% debugging success rate** (6-7x better than GPT-4/Gemini)
+- **67.3% debugging success rate** (4.87x better than Claude 4 Opus)
 - **78.4% root cause accuracy** (5x better than baselines)
 - **2.2 average fix cycles** (2.3x faster than competitors)
 - **$1.36 cost per success** (4.5x more cost-effective)
@@ -68,19 +68,20 @@ Our novel benchmark better reflects real-world debugging complexity:
 
 | Model | Success Rate | Relative Performance |
 |-------|--------------|---------------------|
-| **Kodezi Chronos** | **65.3%** | **Baseline** |
-| Claude 3.5 Sonnet | 10.8% | 6.0x worse |
-| GPT-4 | 8.9% | 7.3x worse |
-| Gemini 1.5 Pro | 11.2% | 5.8x worse |
-| DeepSeek-V3 | 9.7% | 6.7x worse |
-| Amazon Q | 7.5% | 8.7x worse |
+| **Kodezi Chronos** | **67.3%** | **Baseline** |
+| Claude 4 Opus | 14.2% | 4.74x worse |
+| GPT-4.1 | 13.8% | 4.88x worse |
+| DeepSeek V3 | 12.0% | 5.61x worse |
+| Gemini 2.0 Pro | 14.0% | 4.81x worse |
+| GPT-4 | 8.5% | 7.92x worse |
 
 ### Statistical Validation
 
 **Confidence Intervals (95%):**
-- Chronos: 65.3% ± 1.2%
-- Best baseline: 11.2% ± 0.8%
+- Chronos: 67.3% ± 1.2%
+- Best baseline: 14.2% ± 0.8%
 - **p-value**: < 0.001 (highly significant)
+- **Cohen's d**: 3.87 (very large effect size)
 
 ### Performance Over Time
 
@@ -90,6 +91,7 @@ Our novel benchmark better reflects real-world debugging complexity:
 | 11-100 | 58.7% | +12.7% |
 | 101-1000 | 64.2% | +23.2% |
 | 1000+ | 73.4% | +40.9% |
+| 10000+ | 79.2% | +52.0% |
 
 Memory-driven learning significantly improves performance with usage.
 
@@ -224,23 +226,23 @@ Memory-driven learning significantly improves performance with usage.
 
 ### Head-to-Head Comparison
 
-| Metric | Chronos | Claude 3.5 | GPT-4 | Gemini 1.5 |
-|--------|---------|------------|-------|------------|
-| Success Rate | 65.3% | 10.8% | 8.9% | 11.2% |
-| Root Cause Accuracy | 78.4% | 14.2% | 12.7% | 15.8% |
-| Avg Fix Cycles | 2.2 | 4.8 | 5.7 | 5.1 |
-| Token Efficiency | 187K | 893K | 1,124K | 782K |
-| Cost per Success | $1.36 | $5.53 | $6.67 | $6.07 |
+| Metric | Chronos | Claude 4 Opus | GPT-4.1 | Gemini 2.0 Pro |
+|--------|---------|---------------|---------|----------------|
+| Success Rate | 67.3% | 14.2% | 13.8% | 14.0% |
+| Root Cause Accuracy | 78.4% | 18.7% | 17.2% | 18.1% |
+| Avg Fix Cycles | 2.2 | 4.8 | 5.1 | 4.9 |
+| Token Efficiency | 187K | 793K | 824K | 782K |
+| Cost per Success | $1.36 | $4.83 | $5.17 | $5.07 |
 
 ### Ablation Study Results
 
 | Configuration | Success Rate | Delta |
 |---------------|--------------|--------|
-| **Full Chronos** | **65.3%** | **Baseline** |
-| Without Memory | 48.7% | -25.4% |
-| Without AGR | 42.1% | -35.5% |
-| Without Debug-tuning | 38.9% | -40.4% |
-| Without Iterations | 31.2% | -52.2% |
+| **Full Chronos** | **67.3%** | **Baseline** |
+| Without PDM | 48.7% | -27.6% |
+| Without AGR | 42.1% | -37.4% |
+| Without Debug-tuning | 38.9% | -42.2% |
+| Without Iterations | 31.2% | -53.6% |
 
 Each component contributes significantly to overall performance.
 
@@ -344,10 +346,13 @@ chronos export --format csv --output metrics.csv
 
 | Metric | Current | Target | Improvement |
 |--------|---------|--------|-------------|
-| Success Rate | 65.3% | 75% | +14.9% |
+| Success Rate | 67.3% | 75% | +11.4% |
 | Large Repo (>10M) | 45.2% | 60% | +32.7% |
 | Fix Cycles | 2.2 | 1.8 | -18.2% |
 | Cost per Success | $1.36 | $0.95 | -30.1% |
+| Hardware Bugs | 23.4% | 35% | +49.6% |
+| Dynamic Languages | 41.2% | 55% | +33.5% |
+| Distributed Systems | 30.0% | 45% | +50.0% |
 
 ### Research Directions
 

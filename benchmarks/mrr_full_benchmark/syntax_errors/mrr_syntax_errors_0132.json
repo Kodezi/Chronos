@@ -1,0 +1,243 @@
+{
+  "bug_id": "MRR-SYNTAX_ERRORS-202508-0132",
+  "category": "syntax_errors",
+  "subcategory": "unclosed_string",
+  "language": "java",
+  "description": "Syntax error: unclosed_string causing compilation failure",
+  "complexity": {
+    "spatial_distribution": 5,
+    "temporal_spread_months": 2,
+    "abstraction_layers": 2,
+    "obfuscation_level": "low",
+    "cross_module_dependencies": 0,
+    "artifact_types": 4
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for syntax_errors/unclosed_string in java",
+    "fixed_code": "// Fixed code for syntax_errors/unclosed_string in java"
+  },
+  "scattered_context": [
+    {
+      "file_path": "helpers/file_1.java",
+      "content": "// Context code for syntax_errors in java",
+      "relevance": "high",
+      "relationship": "extends",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        108,
+        107,
+        47,
+        44
+      ]
+    },
+    {
+      "file_path": "helpers/file_2.java",
+      "content": "// Context code for syntax_errors in java",
+      "relevance": "low",
+      "relationship": "uses",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        148,
+        119,
+        60,
+        20,
+        130
+      ]
+    },
+    {
+      "file_path": "core/file_3.java",
+      "content": "// Context code for syntax_errors in java",
+      "relevance": "medium",
+      "relationship": "extends",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        129,
+        12,
+        86,
+        77,
+        23
+      ]
+    },
+    {
+      "file_path": "models/file_4.java",
+      "content": "// Context code for syntax_errors in java",
+      "relevance": "high",
+      "relationship": "imports",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        45,
+        157
+      ]
+    },
+    {
+      "file_path": "helpers/file_5.java",
+      "content": "// Context code for syntax_errors in java",
+      "relevance": "critical",
+      "relationship": "implements",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        124
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-06-08",
+    "temporal_spread_days": 60,
+    "refactoring_events": 2,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-07-08",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-07-27",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-07-08",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "helpers/file_1.java",
+        "to": "helpers/file_2.java",
+        "type": "extends"
+      },
+      {
+        "from": "helpers/file_2.java",
+        "to": "core/file_3.java",
+        "type": "calls"
+      },
+      {
+        "from": "core/file_3.java",
+        "to": "models/file_4.java",
+        "type": "calls"
+      },
+      {
+        "from": "models/file_4.java",
+        "to": "helpers/file_5.java",
+        "type": "extends"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "helpers/file_1.java",
+          "core/file_3.java",
+          "models/file_4.java"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "core/file_3.java",
+          "helpers/file_5.java",
+          "models/file_4.java"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "helpers/file_5.java",
+          "core/file_3.java"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "core/file_3.java",
+          "models/file_4.java",
+          "helpers/file_5.java"
+        ],
+        "depth": 2
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "low",
+    "renamed_entities": {
+      "variable_0": "var_0"
+    },
+    "moved_files": 0,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "unclosed_string in main processing logic",
+    "fix_type": "syntax_correction",
+    "must_find_files": [
+      "helpers/file_1.java",
+      "models/file_4.java",
+      "helpers/file_5.java"
+    ],
+    "should_find_files": [
+      "core/file_3.java"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.8235049281860782
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_syntax_errors_1.java",
+      "test_code": "// Test for syntax_errors in java",
+      "test_type": "integration"
+    },
+    {
+      "file_name": "test_syntax_errors_2.java",
+      "test_code": "// Test for syntax_errors in java",
+      "test_type": "e2e"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "syntax_errors",
+      "error_message": "SyntaxError: invalid syntax at line 37",
+      "stack_trace": "Stack trace for java",
+      "timestamp": "2025-08-07T02:22:49.500130"
+    }
+  ],
+  "symptoms": [
+    "Code fails to compile/run",
+    "Syntax error message displayed",
+    "IDE highlights error"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 50,
+    "function": "process_function",
+    "module": "core"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "helpers/file_5.java"
+    ],
+    "should_find_files": [
+      "helpers/file_1.java",
+      "models/file_4.java"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

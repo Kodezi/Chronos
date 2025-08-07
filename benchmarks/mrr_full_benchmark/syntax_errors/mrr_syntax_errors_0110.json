@@ -1,0 +1,248 @@
+{
+  "bug_id": "MRR-SYNTAX_ERRORS-202508-0110",
+  "category": "syntax_errors",
+  "subcategory": "missing_bracket",
+  "language": "go",
+  "description": "Syntax error: missing_bracket causing compilation failure",
+  "complexity": {
+    "spatial_distribution": 4,
+    "temporal_spread_months": 1,
+    "abstraction_layers": 2,
+    "obfuscation_level": "low",
+    "cross_module_dependencies": 1,
+    "artifact_types": 4
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for syntax_errors/missing_bracket in go",
+    "fixed_code": "// Fixed code for syntax_errors/missing_bracket in go"
+  },
+  "scattered_context": [
+    {
+      "file_path": "controllers/file_1.go",
+      "content": "// Context code for syntax_errors in go",
+      "relevance": "medium",
+      "relationship": "extends",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        161
+      ]
+    },
+    {
+      "file_path": "controllers/file_2.go",
+      "content": "// Context code for syntax_errors in go",
+      "relevance": "medium",
+      "relationship": "extends",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        75,
+        98,
+        125,
+        26
+      ]
+    },
+    {
+      "file_path": "controllers/file_3.go",
+      "content": "// Context code for syntax_errors in go",
+      "relevance": "medium",
+      "relationship": "extends",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        27
+      ]
+    },
+    {
+      "file_path": "models/file_4.go",
+      "content": "// Context code for syntax_errors in go",
+      "relevance": "medium",
+      "relationship": "extends",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        114,
+        84,
+        127,
+        87,
+        36
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-07-08",
+    "temporal_spread_days": 30,
+    "refactoring_events": 1,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-07-27",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-07-17",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-07-30",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-07-12",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "8416941f",
+        "date": "2025-07-25",
+        "message": "Refactored module 4",
+        "files": [
+          "file_0.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "controllers/file_1.go",
+        "to": "controllers/file_2.go",
+        "type": "extends"
+      },
+      {
+        "from": "controllers/file_2.go",
+        "to": "controllers/file_3.go",
+        "type": "extends"
+      },
+      {
+        "from": "controllers/file_3.go",
+        "to": "models/file_4.go",
+        "type": "imports"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "controllers/file_1.go",
+          "controllers/file_2.go",
+          "models/file_4.go"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "models/file_4.go",
+          "controllers/file_3.go",
+          "controllers/file_2.go"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "models/file_4.go",
+          "controllers/file_3.go"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "controllers/file_2.go",
+          "controllers/file_1.go",
+          "models/file_4.go"
+        ],
+        "depth": 2
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "low",
+    "renamed_entities": {
+      "variable_0": "var_0",
+      "variable_1": "var_1"
+    },
+    "moved_files": 0,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "missing_bracket in main processing logic",
+    "fix_type": "syntax_correction",
+    "must_find_files": [],
+    "should_find_files": [
+      "controllers/file_1.go",
+      "controllers/file_2.go",
+      "controllers/file_3.go"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 0.7589335016385904
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_syntax_errors_1.go",
+      "test_code": "// Test for syntax_errors in go",
+      "test_type": "unit"
+    },
+    {
+      "file_name": "test_syntax_errors_2.go",
+      "test_code": "// Test for syntax_errors in go",
+      "test_type": "integration"
+    },
+    {
+      "file_name": "test_syntax_errors_3.go",
+      "test_code": "// Test for syntax_errors in go",
+      "test_type": "e2e"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "syntax_errors",
+      "error_message": "SyntaxError: invalid syntax at line 12",
+      "stack_trace": "Stack trace for go",
+      "timestamp": "2025-08-07T02:22:49.493147"
+    },
+    {
+      "error_type": "syntax_errors",
+      "error_message": "SyntaxError: invalid syntax at line 49",
+      "stack_trace": "Stack trace for go",
+      "timestamp": "2025-08-07T02:22:49.493149"
+    }
+  ],
+  "symptoms": [
+    "Code fails to compile/run",
+    "Syntax error message displayed",
+    "IDE highlights error"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 150,
+    "function": "process_function",
+    "module": "core"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [],
+    "should_find_files": [],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

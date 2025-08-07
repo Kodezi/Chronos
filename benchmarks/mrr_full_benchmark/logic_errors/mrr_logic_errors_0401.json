@@ -1,0 +1,277 @@
+{
+  "bug_id": "MRR-LOGIC_ERRORS-202508-0401",
+  "category": "logic_errors",
+  "subcategory": "wrong_condition",
+  "language": "go",
+  "description": "Logic bug: wrong_condition producing incorrect results",
+  "complexity": {
+    "spatial_distribution": 4,
+    "temporal_spread_months": 4,
+    "abstraction_layers": 2,
+    "obfuscation_level": "medium",
+    "cross_module_dependencies": 4,
+    "artifact_types": 4
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for logic_errors/wrong_condition in go",
+    "fixed_code": "// Fixed code for logic_errors/wrong_condition in go"
+  },
+  "scattered_context": [
+    {
+      "file_path": "controllers/file_1.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "high",
+      "relationship": "extends",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        136,
+        97,
+        71,
+        62
+      ]
+    },
+    {
+      "file_path": "services/file_2.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "critical",
+      "relationship": "imports",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        151
+      ]
+    },
+    {
+      "file_path": "core/file_3.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "high",
+      "relationship": "imports",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        26,
+        137,
+        108,
+        37
+      ]
+    },
+    {
+      "file_path": "helpers/file_4.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "high",
+      "relationship": "extends",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        172,
+        15,
+        183,
+        190
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-04-09",
+    "temporal_spread_days": 120,
+    "refactoring_events": 1,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-04-17",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-06-06",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-04-19",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-05-02",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "8416941f",
+        "date": "2025-08-01",
+        "message": "Refactored module 4",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "edd0a651",
+        "date": "2025-05-24",
+        "message": "Refactored module 5",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "a67f5b4e",
+        "date": "2025-04-15",
+        "message": "Refactored module 6",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "e32a385c",
+        "date": "2025-06-08",
+        "message": "Refactored module 7",
+        "files": [
+          "file_0.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "controllers/file_1.go",
+        "to": "services/file_2.go",
+        "type": "imports"
+      },
+      {
+        "from": "services/file_2.go",
+        "to": "core/file_3.go",
+        "type": "imports"
+      },
+      {
+        "from": "core/file_3.go",
+        "to": "helpers/file_4.go",
+        "type": "extends"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "controllers/file_1.go",
+          "helpers/file_4.go",
+          "services/file_2.go"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "services/file_2.go",
+          "controllers/file_1.go",
+          "helpers/file_4.go"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "services/file_2.go",
+          "helpers/file_4.go"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "services/file_2.go",
+          "controllers/file_1.go",
+          "core/file_3.go"
+        ],
+        "depth": 2
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "medium",
+    "renamed_entities": {
+      "function_0": "mvdfwtic",
+      "function_1": "pplnxvgd",
+      "function_2": "eodfafac",
+      "function_3": "aqnboomd",
+      "function_4": "ietfbaxx",
+      "function_5": "jpuzasqe"
+    },
+    "moved_files": 1,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "wrong_condition in main processing logic",
+    "fix_type": "logic_correction",
+    "must_find_files": [
+      "controllers/file_1.go",
+      "services/file_2.go",
+      "core/file_3.go",
+      "helpers/file_4.go"
+    ],
+    "should_find_files": [],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.4819450909314142
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_logic_errors_1.go",
+      "test_code": "// Test for logic_errors in go",
+      "test_type": "e2e"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "logic_errors",
+      "error_message": "AssertionError: Expected 5 but got 4",
+      "stack_trace": "Stack trace for go",
+      "timestamp": "2025-08-07T02:22:49.796894"
+    },
+    {
+      "error_type": "logic_errors",
+      "error_message": "AssertionError: Expected 5 but got 4",
+      "stack_trace": "Stack trace for go",
+      "timestamp": "2025-08-07T02:22:49.796895"
+    }
+  ],
+  "symptoms": [
+    "Incorrect output produced",
+    "Test cases failing",
+    "Unexpected behavior"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 174,
+    "function": "process_function",
+    "module": "services"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "services/file_2.go"
+    ],
+    "should_find_files": [
+      "controllers/file_1.go",
+      "core/file_3.go"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

@@ -1,0 +1,281 @@
+{
+  "bug_id": "MRR-LOGIC_ERRORS-202508-1194",
+  "category": "logic_errors",
+  "subcategory": "boundary_condition",
+  "language": "java",
+  "description": "Logic bug: boundary_condition producing incorrect results",
+  "complexity": {
+    "spatial_distribution": 5,
+    "temporal_spread_months": 1,
+    "abstraction_layers": 4,
+    "obfuscation_level": "medium",
+    "cross_module_dependencies": 3,
+    "artifact_types": 3
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for logic_errors/boundary_condition in java",
+    "fixed_code": "// Fixed code for logic_errors/boundary_condition in java"
+  },
+  "scattered_context": [
+    {
+      "file_path": "services/file_1.java",
+      "content": "// Context code for logic_errors in java",
+      "relevance": "low",
+      "relationship": "imports",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        59,
+        67,
+        62,
+        104
+      ]
+    },
+    {
+      "file_path": "controllers/file_2.java",
+      "content": "// Context code for logic_errors in java",
+      "relevance": "low",
+      "relationship": "tests",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        98,
+        80,
+        65
+      ]
+    },
+    {
+      "file_path": "utils/file_3.java",
+      "content": "// Context code for logic_errors in java",
+      "relevance": "high",
+      "relationship": "extends",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        57,
+        200,
+        89,
+        196,
+        83
+      ]
+    },
+    {
+      "file_path": "helpers/file_4.java",
+      "content": "// Context code for logic_errors in java",
+      "relevance": "medium",
+      "relationship": "calls",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        146,
+        69,
+        70
+      ]
+    },
+    {
+      "file_path": "core/file_5.java",
+      "content": "// Context code for logic_errors in java",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        198
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-07-08",
+    "temporal_spread_days": 30,
+    "refactoring_events": 1,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-08-02",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-07-27",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-07-23",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-07-11",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "services/file_1.java",
+        "to": "controllers/file_2.java",
+        "type": "extends"
+      },
+      {
+        "from": "controllers/file_2.java",
+        "to": "utils/file_3.java",
+        "type": "imports"
+      },
+      {
+        "from": "utils/file_3.java",
+        "to": "helpers/file_4.java",
+        "type": "calls"
+      },
+      {
+        "from": "helpers/file_4.java",
+        "to": "core/file_5.java",
+        "type": "imports"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "utils/file_3.java",
+          "services/file_1.java",
+          "core/file_5.java"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "utils/file_3.java",
+          "core/file_5.java",
+          "helpers/file_4.java"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "utils/file_3.java",
+          "helpers/file_4.java"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "services/file_1.java",
+          "core/file_5.java",
+          "helpers/file_4.java"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "services/file_1.java",
+          "core/file_5.java",
+          "utils/file_3.java",
+          "controllers/file_2.java"
+        ],
+        "depth": 3
+      },
+      {
+        "path": [
+          "helpers/file_4.java",
+          "utils/file_3.java",
+          "core/file_5.java",
+          "services/file_1.java",
+          "controllers/file_2.java"
+        ],
+        "depth": 4
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "medium",
+    "renamed_entities": {
+      "function_0": "pexfkkoa",
+      "function_1": "rwlyzapf",
+      "function_2": "vpaipmfv",
+      "function_3": "lfmwrowa",
+      "function_4": "wfqeyvcb"
+    },
+    "moved_files": 3,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "boundary_condition in main processing logic",
+    "fix_type": "logic_correction",
+    "must_find_files": [
+      "utils/file_3.java",
+      "core/file_5.java"
+    ],
+    "should_find_files": [
+      "helpers/file_4.java"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 0.7670810708067001
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_logic_errors_1.java",
+      "test_code": "// Test for logic_errors in java",
+      "test_type": "unit"
+    },
+    {
+      "file_name": "test_logic_errors_2.java",
+      "test_code": "// Test for logic_errors in java",
+      "test_type": "unit"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "logic_errors",
+      "error_message": "AssertionError: Expected 5 but got 4",
+      "stack_trace": "Stack trace for java",
+      "timestamp": "2025-08-07T02:22:50.146985"
+    },
+    {
+      "error_type": "logic_errors",
+      "error_message": "AssertionError: Expected 5 but got 4",
+      "stack_trace": "Stack trace for java",
+      "timestamp": "2025-08-07T02:22:50.146987"
+    }
+  ],
+  "symptoms": [
+    "Incorrect output produced",
+    "Test cases failing",
+    "Unexpected behavior"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 94,
+    "function": "process_function",
+    "module": "utils"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "core/file_5.java"
+    ],
+    "should_find_files": [
+      "utils/file_3.java"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

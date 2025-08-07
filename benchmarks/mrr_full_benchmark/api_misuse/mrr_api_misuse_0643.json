@@ -1,0 +1,250 @@
+{
+  "bug_id": "MRR-API_MISUSE-202508-0643",
+  "category": "api_misuse",
+  "subcategory": "api_contract_violation",
+  "language": "java",
+  "description": "API misuse: api_contract_violation violating API contract",
+  "complexity": {
+    "spatial_distribution": 5,
+    "temporal_spread_months": 6,
+    "abstraction_layers": 3,
+    "obfuscation_level": "medium",
+    "cross_module_dependencies": 4,
+    "artifact_types": 5
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for api_misuse/api_contract_violation in java",
+    "fixed_code": "// Fixed code for api_misuse/api_contract_violation in java"
+  },
+  "scattered_context": [
+    {
+      "file_path": "core/file_1.java",
+      "content": "// Context code for api_misuse in java",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        123,
+        75,
+        157,
+        61,
+        149
+      ]
+    },
+    {
+      "file_path": "models/file_2.java",
+      "content": "// Context code for api_misuse in java",
+      "relevance": "high",
+      "relationship": "extends",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        89
+      ]
+    },
+    {
+      "file_path": "controllers/file_3.java",
+      "content": "// Context code for api_misuse in java",
+      "relevance": "medium",
+      "relationship": "extends",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        63,
+        63,
+        45,
+        151,
+        135
+      ]
+    },
+    {
+      "file_path": "models/file_4.java",
+      "content": "// Context code for api_misuse in java",
+      "relevance": "high",
+      "relationship": "implements",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        129
+      ]
+    },
+    {
+      "file_path": "services/file_5.java",
+      "content": "// Context code for api_misuse in java",
+      "relevance": "low",
+      "relationship": "calls",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        188,
+        23,
+        12
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-02-08",
+    "temporal_spread_days": 180,
+    "refactoring_events": 4,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-07-21",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-06-27",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-07-15",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "core/file_1.java",
+        "to": "models/file_2.java",
+        "type": "extends"
+      },
+      {
+        "from": "models/file_2.java",
+        "to": "controllers/file_3.java",
+        "type": "calls"
+      },
+      {
+        "from": "controllers/file_3.java",
+        "to": "models/file_4.java",
+        "type": "calls"
+      },
+      {
+        "from": "models/file_4.java",
+        "to": "services/file_5.java",
+        "type": "calls"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "models/file_2.java",
+          "controllers/file_3.java",
+          "core/file_1.java"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "core/file_1.java",
+          "models/file_2.java",
+          "services/file_5.java"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "services/file_5.java",
+          "core/file_1.java"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "controllers/file_3.java",
+          "core/file_1.java",
+          "models/file_2.java"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "models/file_4.java",
+          "models/file_2.java",
+          "services/file_5.java",
+          "core/file_1.java"
+        ],
+        "depth": 3
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "medium",
+    "renamed_entities": {
+      "function_0": "iikhhvct",
+      "function_1": "mdbwdpvn",
+      "function_2": "xwxtgjen",
+      "function_3": "ftjpcgpw",
+      "function_4": "hacwukve"
+    },
+    "moved_files": 1,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "api_contract_violation in main processing logic",
+    "fix_type": "api_correction",
+    "must_find_files": [
+      "core/file_1.java",
+      "models/file_2.java",
+      "models/file_4.java"
+    ],
+    "should_find_files": [
+      "controllers/file_3.java"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 0.5011799067390638
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_api_misuse_1.java",
+      "test_code": "// Test for api_misuse in java",
+      "test_type": "e2e"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "api_misuse",
+      "error_message": "TypeError: Invalid argument type for API call",
+      "stack_trace": "Stack trace for java",
+      "timestamp": "2025-08-07T02:22:50.452750"
+    }
+  ],
+  "symptoms": [
+    "Generic symptom"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 175,
+    "function": "process_function",
+    "module": "core"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "core/file_1.java"
+    ],
+    "should_find_files": [
+      "models/file_2.java",
+      "models/file_4.java"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

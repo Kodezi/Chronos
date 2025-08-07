@@ -1,0 +1,1 @@
+// Code snippet for src/core/manager_79.js

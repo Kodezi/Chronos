@@ -1,0 +1,351 @@
+{
+  "bug_id": "MRR-PERFORMANCE_BUGS-202508-0319",
+  "category": "performance_bugs",
+  "subcategory": "n_plus_one",
+  "language": "go",
+  "description": "Performance issue: n_plus_one causing slowdown",
+  "complexity": {
+    "spatial_distribution": 11,
+    "temporal_spread_months": 2,
+    "abstraction_layers": 4,
+    "obfuscation_level": "medium",
+    "cross_module_dependencies": 2,
+    "artifact_types": 2
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for performance_bugs/n_plus_one in go",
+    "fixed_code": "// Fixed code for performance_bugs/n_plus_one in go"
+  },
+  "scattered_context": [
+    {
+      "file_path": "models/file_1.go",
+      "content": "// Context code for performance_bugs in go",
+      "relevance": "critical",
+      "relationship": "imports",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        130
+      ]
+    },
+    {
+      "file_path": "models/file_2.go",
+      "content": "// Context code for performance_bugs in go",
+      "relevance": "medium",
+      "relationship": "extends",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        196,
+        159,
+        137
+      ]
+    },
+    {
+      "file_path": "services/file_3.go",
+      "content": "// Context code for performance_bugs in go",
+      "relevance": "critical",
+      "relationship": "calls",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        136,
+        127,
+        156,
+        20,
+        41
+      ]
+    },
+    {
+      "file_path": "utils/file_4.go",
+      "content": "// Context code for performance_bugs in go",
+      "relevance": "medium",
+      "relationship": "tests",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        124
+      ]
+    },
+    {
+      "file_path": "core/file_5.go",
+      "content": "// Context code for performance_bugs in go",
+      "relevance": "critical",
+      "relationship": "calls",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        86,
+        180,
+        96
+      ]
+    },
+    {
+      "file_path": "utils/file_6.go",
+      "content": "// Context code for performance_bugs in go",
+      "relevance": "high",
+      "relationship": "tests",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        95
+      ]
+    },
+    {
+      "file_path": "models/file_7.go",
+      "content": "// Context code for performance_bugs in go",
+      "relevance": "medium",
+      "relationship": "imports",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        98
+      ]
+    },
+    {
+      "file_path": "helpers/file_8.go",
+      "content": "// Context code for performance_bugs in go",
+      "relevance": "medium",
+      "relationship": "imports",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        192,
+        23,
+        51,
+        59
+      ]
+    },
+    {
+      "file_path": "controllers/file_9.go",
+      "content": "// Context code for performance_bugs in go",
+      "relevance": "medium",
+      "relationship": "extends",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        43,
+        198,
+        120
+      ]
+    },
+    {
+      "file_path": "controllers/file_10.go",
+      "content": "// Context code for performance_bugs in go",
+      "relevance": "low",
+      "relationship": "implements",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        196,
+        12
+      ]
+    },
+    {
+      "file_path": "services/file_11.go",
+      "content": "// Context code for performance_bugs in go",
+      "relevance": "high",
+      "relationship": "calls",
+      "specific_issue": "Related to performance_bugs issue",
+      "line_numbers": [
+        28,
+        167,
+        114,
+        16
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-06-08",
+    "temporal_spread_days": 60,
+    "refactoring_events": 4,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-08-06",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-06-13",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-06-21",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-07-21",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "models/file_1.go",
+        "to": "models/file_2.go",
+        "type": "calls"
+      },
+      {
+        "from": "models/file_2.go",
+        "to": "services/file_3.go",
+        "type": "calls"
+      },
+      {
+        "from": "services/file_3.go",
+        "to": "utils/file_4.go",
+        "type": "calls"
+      },
+      {
+        "from": "utils/file_4.go",
+        "to": "core/file_5.go",
+        "type": "calls"
+      },
+      {
+        "from": "core/file_5.go",
+        "to": "utils/file_6.go",
+        "type": "imports"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "utils/file_6.go",
+          "models/file_1.go",
+          "models/file_2.go"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "models/file_7.go",
+          "controllers/file_9.go",
+          "core/file_5.go"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "core/file_5.go",
+          "services/file_11.go",
+          "controllers/file_9.go"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "utils/file_6.go",
+          "controllers/file_9.go"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "controllers/file_9.go",
+          "models/file_7.go",
+          "controllers/file_10.go"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "utils/file_4.go",
+          "models/file_2.go",
+          "models/file_7.go",
+          "services/file_3.go"
+        ],
+        "depth": 3
+      },
+      {
+        "path": [
+          "utils/file_4.go",
+          "controllers/file_9.go",
+          "services/file_11.go",
+          "utils/file_6.go",
+          "services/file_3.go"
+        ],
+        "depth": 4
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "medium",
+    "renamed_entities": {
+      "function_0": "qixwclgx",
+      "function_1": "duzpcqif",
+      "function_2": "hillrtbf"
+    },
+    "moved_files": 0,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "n_plus_one in main processing logic",
+    "fix_type": "optimization",
+    "must_find_files": [
+      "models/file_1.go",
+      "services/file_3.go",
+      "core/file_5.go",
+      "utils/file_6.go",
+      "services/file_11.go"
+    ],
+    "should_find_files": [
+      "models/file_2.go",
+      "utils/file_4.go",
+      "models/file_7.go"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 0.760307867363087
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_performance_bugs_1.go",
+      "test_code": "// Test for performance_bugs in go",
+      "test_type": "integration"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "performance_bugs",
+      "error_message": "TimeoutError: Operation timed out after 30s",
+      "stack_trace": "Stack trace for go",
+      "timestamp": "2025-08-07T02:22:51.539647"
+    }
+  ],
+  "symptoms": [
+    "Generic symptom"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 127,
+    "function": "process_function",
+    "module": "services"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "models/file_1.go",
+      "services/file_3.go",
+      "core/file_5.go"
+    ],
+    "should_find_files": [
+      "utils/file_6.go",
+      "services/file_11.go"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

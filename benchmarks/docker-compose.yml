@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  # Main benchmark runner
+  mrr-benchmark:
+    build: .
+    container_name: mrr_benchmark_runner
+    environment:
+      - BENCHMARK_MODEL=${BENCHMARK_MODEL:-claude_4_opus}
+      - BENCHMARK_SEED=${BENCHMARK_SEED:-42}
+      - BENCHMARK_SCENARIOS=${BENCHMARK_SCENARIOS:-5000}
+    volumes:
+      - ./results:/benchmark/results
+      - ./mrr_full_benchmark:/benchmark/mrr_full_benchmark:ro
+    networks:
+      - benchmark-net
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+          cpus: '4'
+
+  # Validation service
+  mrr-validator:
+    build: .
+    container_name: mrr_benchmark_validator
+    command: ["python", "validate_mrr_benchmark.py"]
+    volumes:
+      - ./results:/benchmark/results
+      - ./mrr_full_benchmark:/benchmark/mrr_full_benchmark:ro
+    networks:
+      - benchmark-net
+    depends_on:
+      - mrr-benchmark
+
+  # Results analyzer
+  mrr-analyzer:
+    build: .
+    container_name: mrr_results_analyzer
+    command: ["python", "analyze_results.py"]
+    volumes:
+      - ./results:/benchmark/results:ro
+    networks:
+      - benchmark-net
+    depends_on:
+      - mrr-benchmark
+
+networks:
+  benchmark-net:
+    driver: bridge

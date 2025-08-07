@@ -1,0 +1,179 @@
+{
+  "bug_id": "MRR-SYNTAX_ERRORS-202508-0177",
+  "category": "syntax_errors",
+  "subcategory": "unclosed_string",
+  "language": "python",
+  "description": "Syntax error: unclosed_string causing compilation failure",
+  "complexity": {
+    "spatial_distribution": 1,
+    "temporal_spread_months": 0,
+    "abstraction_layers": 2,
+    "obfuscation_level": "medium",
+    "cross_module_dependencies": 0,
+    "artifact_types": 3
+  },
+  "code_snippets": {
+    "buggy_code": "def buggy_function_unclosed_string(data):\n    # Bug: unclosed_string\n    result = []\n    for item in data:\n        # Buggy logic here\n        if item > 0:\n            result.append(item)\n    return result",
+    "fixed_code": "def fixed_function_unclosed_string(data):\n    # Fixed: unclosed_string\n    result = []\n    for item in data:\n        # Fixed logic here\n        if item >= 0:\n            result.append(item)\n    return result"
+  },
+  "scattered_context": [
+    {
+      "file_path": "services/file_1.py",
+      "content": "def important_function(param):\n    # Important logic for syntax_errors\n    result = []\n    for item in param:\n        result.append(process_item(item))\n    return result",
+      "relevance": "high",
+      "relationship": "tests",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        62,
+        190,
+        96,
+        195,
+        103
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-08-07",
+    "temporal_spread_days": 0,
+    "refactoring_events": 5,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-08-07",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-08-07",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-08-07",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-08-07",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "8416941f",
+        "date": "2025-08-07",
+        "message": "Refactored module 4",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [],
+    "implicit": [],
+    "compositional": [
+      {
+        "path": [
+          "services/file_1.py"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "services/file_1.py"
+        ],
+        "depth": 2
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "medium",
+    "renamed_entities": {
+      "function_0": "zqkqlxpi",
+      "function_1": "trakexjy",
+      "function_2": "lkvjccna",
+      "function_3": "irawmoxn",
+      "function_4": "hfiksczx",
+      "function_5": "lifrasah"
+    },
+    "moved_files": 2,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "unclosed_string in main processing logic",
+    "fix_type": "syntax_correction",
+    "must_find_files": [
+      "services/file_1.py"
+    ],
+    "should_find_files": [],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 0.7607260984015429
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_syntax_errors_1.python",
+      "test_code": "import unittest\n\nclass TestSyntax_Errors(unittest.TestCase):\n    def test_scenario_1(self):\n        # Test for syntax_errors\n        result = function_under_test(test_data)\n        self.assertEqual(result, expected_result)\n",
+      "test_type": "integration"
+    },
+    {
+      "file_name": "test_syntax_errors_2.python",
+      "test_code": "import unittest\n\nclass TestSyntax_Errors(unittest.TestCase):\n    def test_scenario_2(self):\n        # Test for syntax_errors\n        result = function_under_test(test_data)\n        self.assertEqual(result, expected_result)\n",
+      "test_type": "unit"
+    },
+    {
+      "file_name": "test_syntax_errors_3.python",
+      "test_code": "import unittest\n\nclass TestSyntax_Errors(unittest.TestCase):\n    def test_scenario_3(self):\n        # Test for syntax_errors\n        result = function_under_test(test_data)\n        self.assertEqual(result, expected_result)\n",
+      "test_type": "e2e"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "syntax_errors",
+      "error_message": "SyntaxError: invalid syntax at line 35",
+      "stack_trace": "Traceback (most recent call last):\n  File \"main.py\", line 42, in <module>\n    result = process_data(input_data)\n  File \"processor.py\", line 15, in process_data\n    return transform(validate(data))\n  File \"validator.py\", line 8, in validate\n    raise ValueError(\"Invalid data\")\nValueError: Invalid data",
+      "timestamp": "2025-08-07T02:22:49.513870"
+    }
+  ],
+  "symptoms": [
+    "Code fails to compile/run",
+    "Syntax error message displayed",
+    "IDE highlights error"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 167,
+    "function": "process_function",
+    "module": "core"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [],
+    "should_find_files": [
+      "services/file_1.py"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

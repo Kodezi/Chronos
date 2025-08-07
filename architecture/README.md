@@ -48,34 +48,50 @@ Unlike traditional LLMs that optimize for large input contexts, Chronos recogniz
 - Stack traces: 200-500 tokens
 - Relevant code: 1K-4K tokens
 - Logs/tests: 500-2K tokens
-- Total: ~3-10K tokens
+- Prior fix attempts: 500-1K tokens
+- Total: Often < 10K tokens
 
 **Output (Dense)**:
 - Multi-file fixes: 500-1,500 tokens
-- Explanations: 300-600 tokens
+- Root cause explanations: 300-600 tokens
 - Updated tests: 400-800 tokens
-- Documentation: 200-400 tokens
-- Total: ~2-4K tokens
+- Documentation/PR summaries: 350-700 tokens
+- Total: 2,000-4,000 tokens
 
-This insight drives architectural decisions throughout the system.
+This insight drives architectural decisions throughout the system. Chronos achieves 67.3% debugging success despite competitors having 10-100x larger context windows, validating that output quality matters more than input capacity.
 
 #### Adaptive Graph-Guided Retrieval (AGR)
 
 AGR dynamically expands retrieval depth based on:
 - Query complexity scoring
-- Confidence thresholds
+- Confidence thresholds  
 - Diminishing returns detection
 - Edge type priorities
+- O(k log d) retrieval complexity with convergence guarantees
+- 92% precision at 85% recall on debugging queries
+
+Key improvements from 2025 research:
+- Adaptive k-hop expansion based on query complexity
+- Multi-graph fusion with weighted edges
+- Confidence-based termination criteria
+- Semantic node similarity integration
 
 This enables unlimited effective context without the computational burden of massive context windows.
 
-#### Persistent Debug Memory
+#### Persistent Debug Memory (PDM)
 
 The memory system maintains:
 - Repository-specific bug patterns
 - Team coding conventions
 - Historical fix effectiveness
 - Module vulnerability profiles
+- Cross-session learning patterns
+
+Key achievements from 2025 research:
+- 15M+ debugging sessions stored
+- 87% cache hit rate for similar bugs
+- Temporal pattern learning over project lifecycles
+- Automatic pattern extraction and generalization
 
 This enables continuous improvement and rapid adaptation to new debugging scenarios.
 
@@ -125,14 +141,16 @@ CI/CD Logs    ──►  (Embedding + Graph)  ──►  Association
 ### Scalability
 
 - **Repository Size**: Maintains >60% success rate even on 1M+ LOC repos
-- **Retrieval Speed**: Sub-linear complexity through hierarchical indexing
+- **Retrieval Speed**: Sub-linear O(k log d) complexity through AGR
 - **Memory Efficiency**: Compressed representations with lazy loading
+- **Cross-Language**: Supports 25+ programming languages
 
 ### Reliability
 
 - **Validation Rate**: 100% of fixes tested before suggestion
-- **Regression Prevention**: Historical pattern matching
+- **Regression Prevention**: Historical pattern matching with PDM
 - **Rollback Capability**: Full undo for failed attempts
+- **Success Rate**: 67.3% on MRR benchmark (4.87x improvement)
 
 ## Integration Points
 
@@ -163,19 +181,23 @@ Chronos integrates with development workflows through:
 
 | Aspect | Traditional LLMs | Kodezi Chronos |
 |--------|------------------|----------------|
-| Context Handling | Fixed windows | Dynamic retrieval |
-| Memory | Session-based | Persistent |
+| Context Handling | Fixed windows | Dynamic AGR retrieval |
+| Memory | Session-based | Persistent (15M+ sessions) |
 | Validation | Post-hoc | Built-in loop |
 | Specialization | General purpose | Debugging-focused |
 | Output Focus | Token prediction | Structured fixes |
+| Success Rate | 13.8-14.2% | 67.3% |
+| Complexity | O(n) context | O(k log d) retrieval |
 
 ## Future Architecture Evolution
 
 Planned enhancements include:
 - Federated learning across organizations
 - Visual debugging for UI issues
-- Hardware-specific debugging modules
+- Hardware-specific debugging modules (current: 23.4% success)
 - Real-time collaborative debugging
+- Improved dynamic language support (current: 41.2% success)
+- Enhanced distributed systems debugging (current: 30% success)
 
 ## Learn More
 

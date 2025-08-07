@@ -1,0 +1,1 @@
+// Code snippet for src/test/fixture_74.java

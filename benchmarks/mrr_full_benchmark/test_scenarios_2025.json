@@ -1,0 +1,199 @@
+{
+  "benchmark_metadata": {
+    "version": "2.0.0",
+    "date": "2025-07-29",
+    "total_scenarios": 5000,
+    "total_bugs": 12500,
+    "categories": {
+      "syntax_errors": 500,
+      "logic_bugs": 1200,
+      "concurrency_issues": 800,
+      "memory_problems": 600,
+      "api_misuse": 900,
+      "performance_bugs": 400
+    }
+  },
+  "example_scenarios": [
+    {
+      "bug_id": "apache-commons-math-1234",
+      "category": "logic_bugs",
+      "description": "Linear regression fails with specific input matrix",
+      "repo_snapshot": "git://github.com/apache/commons-math@abc123",
+      "failing_tests": ["TestLinearRegression.testFit"],
+      "scattered_files": [
+        "src/main/java/org/apache/commons/math3/stat/regression/AbstractRegression.java",
+        "src/main/java/org/apache/commons/math3/linear/MatrixUtils.java",
+        "src/main/java/org/apache/commons/math3/linear/RealMatrix.java",
+        "src/main/java/org/apache/commons/math3/stat/descriptive/moment/Variance.java",
+        "src/test/java/org/apache/commons/math3/stat/regression/OLSMultipleLinearRegressionTest.java"
+      ],
+      "temporal_range": "2023-01-15 to 2023-04-22",
+      "obfuscation": {
+        "refactored_names": {
+          "calculateBeta": "computeCoefficients",
+          "designMatrix": "predictorMatrix"
+        },
+        "moved_files": 2
+      },
+      "ground_truth": {
+        "root_cause": "Matrix singularity check missing in calculateBeta",
+        "fix_location": "AbstractRegression.java:142",
+        "fix_type": "add_condition",
+        "related_commits": ["commit-xyz", "commit-abc"]
+      },
+      "evaluation": {
+        "fix_validator": "docker run chronos-eval:fix-validator",
+        "context_scorer": "weighted_jaccard",
+        "regression_tests": ["TestSuite.class"],
+        "required_precision": 0.85
+      }
+    },
+    {
+      "bug_id": "react-hydration-5678",
+      "category": "api_misuse",
+      "description": "Hydration mismatch between server and client rendering",
+      "repo_snapshot": "git://github.com/facebook/react@def456",
+      "failing_tests": ["HydrationTest.testServerClientMismatch"],
+      "scattered_files": [
+        "packages/react-dom/src/server/ReactDOMServerFormatConfig.js",
+        "packages/react-dom/src/client/ReactDOMComponent.js",
+        "packages/react-reconciler/src/ReactFiberHydrationContext.js",
+        "packages/shared/ReactFeatureFlags.js",
+        "fixtures/ssr/src/components/Page.js"
+      ],
+      "temporal_range": "2024-06-01 to 2024-12-15",
+      "multi_modal_artifacts": {
+        "error_logs": ["console: Warning: Text content did not match"],
+        "stack_traces": ["at hydrateTextInstance (ReactDOMComponent.js:745)"],
+        "documentation": ["docs/hydration.md", "troubleshooting/ssr.md"],
+        "related_issues": ["#18234", "#19456"]
+      },
+      "ground_truth": {
+        "root_cause": "Date.now() called during render causing timestamp mismatch",
+        "fix_location": "Page.js:23",
+        "fix_type": "use_stable_value",
+        "pattern": "hydration_time_mismatch"
+      }
+    },
+    {
+      "bug_id": "golang-race-9012",
+      "category": "concurrency_issues",
+      "description": "Data race in cache implementation under high load",
+      "repo_snapshot": "git://github.com/company/backend@ghi789",
+      "failing_tests": ["TestCacheConcurrency"],
+      "scattered_files": [
+        "internal/cache/memory.go",
+        "internal/cache/interface.go",
+        "pkg/metrics/collector.go",
+        "cmd/server/main.go",
+        "internal/middleware/ratelimit.go",
+        "test/stress/cache_test.go"
+      ],
+      "temporal_range": "2024-09-01 to 2025-01-20",
+      "concurrency_artifacts": {
+        "race_detector_output": "WARNING: DATA RACE\nWrite at 0x00c000190010",
+        "goroutine_dumps": ["goroutine 42 [running]:", "goroutine 89 [runnable]:"],
+        "performance_profile": "cpu_profile.pprof"
+      },
+      "ground_truth": {
+        "root_cause": "Unprotected map write in Set() method",
+        "fix_location": "memory.go:67",
+        "fix_type": "add_mutex",
+        "verification": "go test -race ./..."
+      }
+    },
+    {
+      "bug_id": "python-memory-3456",
+      "category": "memory_problems",
+      "description": "Memory leak in async task processing pipeline",
+      "repo_snapshot": "git://github.com/startup/ml-pipeline@jkl012",
+      "failing_tests": ["test_memory_usage.py::test_pipeline_memory"],
+      "scattered_files": [
+        "pipeline/processors/base.py",
+        "pipeline/processors/image.py",
+        "pipeline/queue/manager.py",
+        "utils/monitoring.py",
+        "config/celery.py",
+        "tests/fixtures/large_dataset.py"
+      ],
+      "temporal_range": "2024-11-01 to 2025-02-28",
+      "memory_artifacts": {
+        "heap_dumps": ["heap_before.hprof", "heap_after.hprof"],
+        "gc_logs": ["gc.log:12453: Full GC 8192M->7680M"],
+        "monitoring_graphs": ["memory_usage_24h.png"]
+      },
+      "ground_truth": {
+        "root_cause": "Circular reference preventing garbage collection",
+        "fix_location": "image.py:234",
+        "fix_type": "break_circular_ref",
+        "memory_saved": "512MB per hour"
+      }
+    },
+    {
+      "bug_id": "nodejs-perf-7890",
+      "category": "performance_bugs",
+      "description": "API response time degraded 10x after dependency update",
+      "repo_snapshot": "git://github.com/ecommerce/api@mno345",
+      "failing_tests": ["PerformanceTest.testResponseTime"],
+      "scattered_files": [
+        "src/controllers/product.controller.js",
+        "src/services/database.service.js",
+        "src/models/product.model.js",
+        "package.json",
+        "package-lock.json",
+        "config/database.js",
+        "monitoring/apm.js"
+      ],
+      "temporal_range": "2025-01-10 to 2025-03-15",
+      "performance_artifacts": {
+        "flame_graphs": ["before_update.svg", "after_update.svg"],
+        "query_logs": ["slow_query.log"],
+        "dependency_diff": "mongoose: 6.0.0 -> 7.0.0"
+      },
+      "ground_truth": {
+        "root_cause": "New mongoose version changes default index behavior",
+        "fix_location": "product.model.js:45",
+        "fix_type": "add_index",
+        "performance_gain": "95% reduction in response time"
+      }
+    }
+  ],
+  "evaluation_metrics": {
+    "retrieval": {
+      "precision_at_k": [1, 3, 5, 10, 20, 50],
+      "recall_at_k": [1, 3, 5, 10, 20, 50],
+      "mrr_score": "mean_reciprocal_rank",
+      "context_efficiency": "used_tokens / retrieved_tokens"
+    },
+    "debugging": {
+      "fix_accuracy": "tests_pass && no_regression",
+      "root_cause_precision": "identified_cause == ground_truth",
+      "debug_cycles": "number_of_iterations",
+      "time_to_fix": "total_minutes",
+      "cross_file_success": "all_dependencies_found"
+    }
+  },
+  "model_results_summary": {
+    "chronos_2.0": {
+      "fix_accuracy": 0.673,
+      "precision_at_10": 0.892,
+      "recall_at_10": 0.847,
+      "avg_debug_cycles": 7.8,
+      "avg_time_minutes": 42.3
+    },
+    "claude_4_opus": {
+      "fix_accuracy": 0.142,
+      "precision_at_10": 0.621,
+      "recall_at_10": 0.487,
+      "avg_debug_cycles": 2.3,
+      "avg_time_minutes": 15.2
+    },
+    "gpt_4_1": {
+      "fix_accuracy": 0.138,
+      "precision_at_10": 0.552,
+      "recall_at_10": 0.423,
+      "avg_debug_cycles": 1.8,
+      "avg_time_minutes": 12.3
+    }
+  }
+}

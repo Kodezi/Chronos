@@ -1,0 +1,316 @@
+{
+  "bug_id": "MRR-LOGIC_ERRORS-202508-1158",
+  "category": "logic_errors",
+  "subcategory": "incorrect_calculation",
+  "language": "go",
+  "description": "Logic bug: incorrect_calculation producing incorrect results",
+  "complexity": {
+    "spatial_distribution": 10,
+    "temporal_spread_months": 2,
+    "abstraction_layers": 2,
+    "obfuscation_level": "medium",
+    "cross_module_dependencies": 1,
+    "artifact_types": 5
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for logic_errors/incorrect_calculation in go",
+    "fixed_code": "// Fixed code for logic_errors/incorrect_calculation in go"
+  },
+  "scattered_context": [
+    {
+      "file_path": "core/file_1.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "low",
+      "relationship": "imports",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        35
+      ]
+    },
+    {
+      "file_path": "core/file_2.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "low",
+      "relationship": "imports",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        83
+      ]
+    },
+    {
+      "file_path": "utils/file_3.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "low",
+      "relationship": "implements",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        195,
+        113
+      ]
+    },
+    {
+      "file_path": "core/file_4.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "critical",
+      "relationship": "uses",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        50
+      ]
+    },
+    {
+      "file_path": "controllers/file_5.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "critical",
+      "relationship": "imports",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        48,
+        77,
+        88
+      ]
+    },
+    {
+      "file_path": "helpers/file_6.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "high",
+      "relationship": "implements",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        142
+      ]
+    },
+    {
+      "file_path": "utils/file_7.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "low",
+      "relationship": "tests",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        87,
+        68,
+        148,
+        142,
+        91
+      ]
+    },
+    {
+      "file_path": "utils/file_8.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "low",
+      "relationship": "calls",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        136,
+        90,
+        177
+      ]
+    },
+    {
+      "file_path": "core/file_9.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "high",
+      "relationship": "imports",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        170,
+        113,
+        136,
+        145
+      ]
+    },
+    {
+      "file_path": "helpers/file_10.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "low",
+      "relationship": "tests",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        80,
+        179,
+        167,
+        58
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-06-08",
+    "temporal_spread_days": 60,
+    "refactoring_events": 4,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-06-10",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-06-24",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-07-16",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "core/file_1.go",
+        "to": "core/file_2.go",
+        "type": "extends"
+      },
+      {
+        "from": "core/file_2.go",
+        "to": "utils/file_3.go",
+        "type": "calls"
+      },
+      {
+        "from": "utils/file_3.go",
+        "to": "core/file_4.go",
+        "type": "extends"
+      },
+      {
+        "from": "core/file_4.go",
+        "to": "controllers/file_5.go",
+        "type": "imports"
+      },
+      {
+        "from": "controllers/file_5.go",
+        "to": "helpers/file_6.go",
+        "type": "imports"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "core/file_2.go",
+          "utils/file_3.go",
+          "core/file_1.go"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "utils/file_3.go",
+          "core/file_9.go",
+          "core/file_2.go"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "utils/file_7.go",
+          "utils/file_8.go",
+          "helpers/file_6.go"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "core/file_4.go",
+          "utils/file_8.go"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "core/file_9.go",
+          "helpers/file_10.go",
+          "helpers/file_6.go"
+        ],
+        "depth": 2
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "medium",
+    "renamed_entities": {
+      "function_0": "tflnpuov",
+      "function_1": "extzkikw",
+      "function_2": "cncyraib"
+    },
+    "moved_files": 4,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "incorrect_calculation in main processing logic",
+    "fix_type": "logic_correction",
+    "must_find_files": [
+      "core/file_4.go",
+      "controllers/file_5.go",
+      "helpers/file_6.go",
+      "core/file_9.go"
+    ],
+    "should_find_files": [],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.350600595551743
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_logic_errors_1.go",
+      "test_code": "// Test for logic_errors in go",
+      "test_type": "integration"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "logic_errors",
+      "error_message": "AssertionError: Expected 5 but got 4",
+      "stack_trace": "Stack trace for go",
+      "timestamp": "2025-08-07T02:22:50.131990"
+    },
+    {
+      "error_type": "logic_errors",
+      "error_message": "AssertionError: Expected 5 but got 4",
+      "stack_trace": "Stack trace for go",
+      "timestamp": "2025-08-07T02:22:50.131991"
+    }
+  ],
+  "symptoms": [
+    "Incorrect output produced",
+    "Test cases failing",
+    "Unexpected behavior"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 69,
+    "function": "process_function",
+    "module": "services"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "core/file_4.go",
+      "controllers/file_5.go"
+    ],
+    "should_find_files": [
+      "helpers/file_6.go",
+      "core/file_9.go"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

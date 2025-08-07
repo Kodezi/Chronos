@@ -1,0 +1,94 @@
+{
+  "ablation_study": {
+    "full_chronos": {
+      "components": ["AGR", "PDM", "Multi-Code-Association", "Orchestration-Loop", "Explainability"],
+      "success_rate": 65.3,
+      "precision": 92.0,
+      "recall": 85.0,
+      "avg_iterations": 7.8,
+      "reference": true
+    },
+    "no_multi_code_association": {
+      "removed": "Multi-Code-Association",
+      "success_rate": 35.8,
+      "precision": 78.2,
+      "recall": 61.3,
+      "avg_iterations": 14.7,
+      "impact": -45.2,
+      "significance": "p<0.001"
+    },
+    "static_memory_only": {
+      "removed": "PDM-Learning",
+      "success_rate": 40.1,
+      "precision": 81.4,
+      "recall": 68.7,
+      "avg_iterations": 12.3,
+      "impact": -38.6,
+      "significance": "p<0.001"
+    },
+    "no_orchestration_loop": {
+      "removed": "Orchestration-Loop",
+      "success_rate": 42.5,
+      "precision": 83.7,
+      "recall": 71.2,
+      "avg_iterations": 11.8,
+      "impact": -34.9,
+      "significance": "p<0.001"
+    },
+    "no_agr_flat_retrieval": {
+      "removed": "AGR",
+      "success_rate": 28.7,
+      "precision": 62.3,
+      "recall": 48.9,
+      "avg_iterations": 19.2,
+      "impact": -56.1,
+      "significance": "p<0.001"
+    },
+    "no_explainability": {
+      "removed": "Explainability-Layer",
+      "success_rate": 58.9,
+      "precision": 89.7,
+      "recall": 82.1,
+      "avg_iterations": 9.1,
+      "impact": -9.8,
+      "significance": "p<0.01"
+    }
+  },
+  "component_contributions": {
+    "AGR": {
+      "contribution_percent": 36.6,
+      "critical": true,
+      "description": "Graph-guided retrieval provides majority of context finding capability"
+    },
+    "Multi_Code_Association": {
+      "contribution_percent": 29.4,
+      "critical": true,
+      "description": "Cross-file reasoning essential for complex bugs"
+    },
+    "PDM": {
+      "contribution_percent": 25.1,
+      "critical": true,
+      "description": "Learning from past sessions significantly improves accuracy"
+    },
+    "Orchestration_Loop": {
+      "contribution_percent": 22.7,
+      "critical": false,
+      "description": "Iterative refinement reduces debugging cycles"
+    },
+    "Explainability": {
+      "contribution_percent": 6.4,
+      "critical": false,
+      "description": "Improves trust and debugging transparency"
+    }
+  },
+  "interaction_effects": {
+    "AGR_PDM": {
+      "synergy": 1.42,
+      "description": "AGR and PDM together perform 42% better than sum of parts"
+    },
+    "MCA_Orchestration": {
+      "synergy": 1.28,
+      "description": "Multi-code with orchestration shows 28% synergy"
+    }
+  }
+}

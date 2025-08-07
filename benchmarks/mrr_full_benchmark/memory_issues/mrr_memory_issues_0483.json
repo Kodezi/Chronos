@@ -1,0 +1,357 @@
+{
+  "bug_id": "MRR-MEMORY_ISSUES-202508-0483",
+  "category": "memory_issues",
+  "subcategory": "double_free",
+  "language": "cpp",
+  "description": "Memory issue: double_free causing memory problems",
+  "complexity": {
+    "spatial_distribution": 11,
+    "temporal_spread_months": 8,
+    "abstraction_layers": 4,
+    "obfuscation_level": "high",
+    "cross_module_dependencies": 7,
+    "artifact_types": 2
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for memory_issues/double_free in cpp",
+    "fixed_code": "// Fixed code for memory_issues/double_free in cpp"
+  },
+  "scattered_context": [
+    {
+      "file_path": "models/file_1.cpp",
+      "content": "// Context code for memory_issues in cpp",
+      "relevance": "medium",
+      "relationship": "extends",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        192
+      ]
+    },
+    {
+      "file_path": "models/file_2.cpp",
+      "content": "// Context code for memory_issues in cpp",
+      "relevance": "medium",
+      "relationship": "tests",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        142,
+        95,
+        119
+      ]
+    },
+    {
+      "file_path": "helpers/file_3.cpp",
+      "content": "// Context code for memory_issues in cpp",
+      "relevance": "medium",
+      "relationship": "tests",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        167,
+        29,
+        72
+      ]
+    },
+    {
+      "file_path": "controllers/file_4.cpp",
+      "content": "// Context code for memory_issues in cpp",
+      "relevance": "high",
+      "relationship": "imports",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        131,
+        142,
+        68
+      ]
+    },
+    {
+      "file_path": "models/file_5.cpp",
+      "content": "// Context code for memory_issues in cpp",
+      "relevance": "high",
+      "relationship": "implements",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        68,
+        178,
+        190
+      ]
+    },
+    {
+      "file_path": "controllers/file_6.cpp",
+      "content": "// Context code for memory_issues in cpp",
+      "relevance": "low",
+      "relationship": "implements",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        69,
+        38,
+        189
+      ]
+    },
+    {
+      "file_path": "services/file_7.cpp",
+      "content": "// Context code for memory_issues in cpp",
+      "relevance": "high",
+      "relationship": "implements",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        41,
+        121
+      ]
+    },
+    {
+      "file_path": "services/file_8.cpp",
+      "content": "// Context code for memory_issues in cpp",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        110
+      ]
+    },
+    {
+      "file_path": "controllers/file_9.cpp",
+      "content": "// Context code for memory_issues in cpp",
+      "relevance": "medium",
+      "relationship": "extends",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        102,
+        137,
+        56,
+        22,
+        161
+      ]
+    },
+    {
+      "file_path": "core/file_10.cpp",
+      "content": "// Context code for memory_issues in cpp",
+      "relevance": "critical",
+      "relationship": "calls",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        126
+      ]
+    },
+    {
+      "file_path": "services/file_11.cpp",
+      "content": "// Context code for memory_issues in cpp",
+      "relevance": "low",
+      "relationship": "calls",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        118,
+        187
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2024-12-10",
+    "temporal_spread_days": 240,
+    "refactoring_events": 4,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-01-21",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-05-20",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-08-06",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "models/file_1.cpp",
+        "to": "models/file_2.cpp",
+        "type": "extends"
+      },
+      {
+        "from": "models/file_2.cpp",
+        "to": "helpers/file_3.cpp",
+        "type": "extends"
+      },
+      {
+        "from": "helpers/file_3.cpp",
+        "to": "controllers/file_4.cpp",
+        "type": "imports"
+      },
+      {
+        "from": "controllers/file_4.cpp",
+        "to": "models/file_5.cpp",
+        "type": "calls"
+      },
+      {
+        "from": "models/file_5.cpp",
+        "to": "controllers/file_6.cpp",
+        "type": "calls"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "models/file_2.cpp",
+          "services/file_8.cpp",
+          "controllers/file_4.cpp"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "core/file_10.cpp",
+          "controllers/file_4.cpp",
+          "models/file_5.cpp"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "controllers/file_9.cpp",
+          "services/file_11.cpp",
+          "controllers/file_6.cpp"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "core/file_10.cpp",
+          "controllers/file_4.cpp"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "models/file_1.cpp",
+          "controllers/file_6.cpp",
+          "models/file_2.cpp"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "services/file_8.cpp",
+          "controllers/file_6.cpp",
+          "core/file_10.cpp",
+          "controllers/file_9.cpp"
+        ],
+        "depth": 3
+      },
+      {
+        "path": [
+          "controllers/file_6.cpp",
+          "models/file_2.cpp",
+          "controllers/file_4.cpp",
+          "services/file_7.cpp",
+          "services/file_8.cpp"
+        ],
+        "depth": 4
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "high",
+    "renamed_entities": {
+      "entity_0": "LYfAAbehDM",
+      "entity_1": "CUfiVTylTF",
+      "entity_2": "mGYopYYtNi",
+      "entity_3": "ZtCmlHVfLg",
+      "entity_4": "GdNDqCBCRp",
+      "entity_5": "qYlHoEKlLk",
+      "entity_6": "VauoaksScp",
+      "entity_7": "pfKEiHErGK",
+      "entity_8": "lyjkGZrekb",
+      "entity_9": "ASNPPluaiA",
+      "entity_10": "NZDfMXlKuI",
+      "entity_11": "COgmLmAOQG"
+    },
+    "moved_files": 1,
+    "refactored_modules": 2
+  },
+  "ground_truth": {
+    "root_cause": "double_free in main processing logic",
+    "fix_type": "memory_management",
+    "must_find_files": [
+      "controllers/file_4.cpp",
+      "models/file_5.cpp",
+      "services/file_7.cpp",
+      "services/file_8.cpp",
+      "core/file_10.cpp"
+    ],
+    "should_find_files": [
+      "models/file_1.cpp",
+      "models/file_2.cpp",
+      "helpers/file_3.cpp"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.4908986426983621
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_memory_issues_1.cpp",
+      "test_code": "// Test for memory_issues in cpp",
+      "test_type": "integration"
+    },
+    {
+      "file_name": "test_memory_issues_2.cpp",
+      "test_code": "// Test for memory_issues in cpp",
+      "test_type": "e2e"
+    },
+    {
+      "file_name": "test_memory_issues_3.cpp",
+      "test_code": "// Test for memory_issues in cpp",
+      "test_type": "integration"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "memory_issues",
+      "error_message": "MemoryError: Out of memory",
+      "stack_trace": "Stack trace for cpp",
+      "timestamp": "2025-08-07T02:22:50.853092"
+    }
+  ],
+  "symptoms": [
+    "Generic symptom"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 119,
+    "function": "process_function",
+    "module": "core"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "services/file_8.cpp",
+      "core/file_10.cpp"
+    ],
+    "should_find_files": [
+      "controllers/file_4.cpp",
+      "models/file_5.cpp"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

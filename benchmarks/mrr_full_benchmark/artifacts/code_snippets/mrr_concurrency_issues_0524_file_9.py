@@ -1,0 +1,1 @@
+// Code snippet for src/test/mock_10.py

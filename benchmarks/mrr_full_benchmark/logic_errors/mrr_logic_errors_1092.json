@@ -1,0 +1,215 @@
+{
+  "bug_id": "MRR-LOGIC_ERRORS-202508-1092",
+  "category": "logic_errors",
+  "subcategory": "infinite_loop",
+  "language": "cpp",
+  "description": "Logic bug: infinite_loop producing incorrect results",
+  "complexity": {
+    "spatial_distribution": 3,
+    "temporal_spread_months": 2,
+    "abstraction_layers": 2,
+    "obfuscation_level": "medium",
+    "cross_module_dependencies": 5,
+    "artifact_types": 4
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for logic_errors/infinite_loop in cpp",
+    "fixed_code": "// Fixed code for logic_errors/infinite_loop in cpp"
+  },
+  "scattered_context": [
+    {
+      "file_path": "services/file_1.cpp",
+      "content": "// Context code for logic_errors in cpp",
+      "relevance": "low",
+      "relationship": "tests",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        75,
+        132,
+        37,
+        99
+      ]
+    },
+    {
+      "file_path": "utils/file_2.cpp",
+      "content": "// Context code for logic_errors in cpp",
+      "relevance": "medium",
+      "relationship": "imports",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        183,
+        132,
+        152,
+        183,
+        26
+      ]
+    },
+    {
+      "file_path": "services/file_3.cpp",
+      "content": "// Context code for logic_errors in cpp",
+      "relevance": "low",
+      "relationship": "uses",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        148,
+        167,
+        41
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-06-08",
+    "temporal_spread_days": 60,
+    "refactoring_events": 3,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-06-29",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-08-06",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-07-18",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-07-17",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "services/file_1.cpp",
+        "to": "utils/file_2.cpp",
+        "type": "imports"
+      },
+      {
+        "from": "utils/file_2.cpp",
+        "to": "services/file_3.cpp",
+        "type": "extends"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "services/file_3.cpp",
+          "services/file_1.cpp",
+          "utils/file_2.cpp"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "services/file_1.cpp",
+          "utils/file_2.cpp"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "services/file_3.cpp",
+          "services/file_1.cpp",
+          "utils/file_2.cpp"
+        ],
+        "depth": 2
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "medium",
+    "renamed_entities": {
+      "function_0": "cpfwpmjo",
+      "function_1": "fslcfuox",
+      "function_2": "ijlivztz",
+      "function_3": "ndwsivlt",
+      "function_4": "bbgnjepw"
+    },
+    "moved_files": 4,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "infinite_loop in main processing logic",
+    "fix_type": "logic_correction",
+    "must_find_files": [],
+    "should_find_files": [
+      "utils/file_2.cpp"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.8795963342438056
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_logic_errors_1.cpp",
+      "test_code": "// Test for logic_errors in cpp",
+      "test_type": "integration"
+    },
+    {
+      "file_name": "test_logic_errors_2.cpp",
+      "test_code": "// Test for logic_errors in cpp",
+      "test_type": "unit"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "logic_errors",
+      "error_message": "AssertionError: Expected 5 but got 4",
+      "stack_trace": "Stack trace for cpp",
+      "timestamp": "2025-08-07T02:22:50.103163"
+    },
+    {
+      "error_type": "logic_errors",
+      "error_message": "AssertionError: Expected 5 but got 4",
+      "stack_trace": "Stack trace for cpp",
+      "timestamp": "2025-08-07T02:22:50.103165"
+    }
+  ],
+  "symptoms": [
+    "Incorrect output produced",
+    "Test cases failing",
+    "Unexpected behavior"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 100,
+    "function": "process_function",
+    "module": "services"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [],
+    "should_find_files": [],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

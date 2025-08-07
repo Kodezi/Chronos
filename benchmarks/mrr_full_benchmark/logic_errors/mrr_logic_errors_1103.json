@@ -1,0 +1,225 @@
+{
+  "bug_id": "MRR-LOGIC_ERRORS-202508-1103",
+  "category": "logic_errors",
+  "subcategory": "infinite_loop",
+  "language": "go",
+  "description": "Logic bug: infinite_loop producing incorrect results",
+  "complexity": {
+    "spatial_distribution": 3,
+    "temporal_spread_months": 4,
+    "abstraction_layers": 4,
+    "obfuscation_level": "medium",
+    "cross_module_dependencies": 1,
+    "artifact_types": 4
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for logic_errors/infinite_loop in go",
+    "fixed_code": "// Fixed code for logic_errors/infinite_loop in go"
+  },
+  "scattered_context": [
+    {
+      "file_path": "utils/file_1.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "critical",
+      "relationship": "imports",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        11,
+        19,
+        63
+      ]
+    },
+    {
+      "file_path": "core/file_2.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "low",
+      "relationship": "imports",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        45,
+        196,
+        65
+      ]
+    },
+    {
+      "file_path": "helpers/file_3.go",
+      "content": "// Context code for logic_errors in go",
+      "relevance": "low",
+      "relationship": "tests",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        61,
+        41,
+        113,
+        20,
+        121
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-04-09",
+    "temporal_spread_days": 120,
+    "refactoring_events": 2,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-06-11",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-06-15",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-04-18",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "utils/file_1.go",
+        "to": "core/file_2.go",
+        "type": "imports"
+      },
+      {
+        "from": "core/file_2.go",
+        "to": "helpers/file_3.go",
+        "type": "extends"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "core/file_2.go",
+          "helpers/file_3.go",
+          "utils/file_1.go"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "core/file_2.go",
+          "utils/file_1.go"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "core/file_2.go",
+          "helpers/file_3.go",
+          "utils/file_1.go"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "utils/file_1.go",
+          "helpers/file_3.go",
+          "core/file_2.go"
+        ],
+        "depth": 3
+      },
+      {
+        "path": [
+          "utils/file_1.go",
+          "helpers/file_3.go",
+          "core/file_2.go"
+        ],
+        "depth": 4
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "medium",
+    "renamed_entities": {
+      "function_0": "squqnvpk",
+      "function_1": "tovwoqsy",
+      "function_2": "qctyrllx",
+      "function_3": "jmknuqlm",
+      "function_4": "hjubmeou"
+    },
+    "moved_files": 2,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "infinite_loop in main processing logic",
+    "fix_type": "logic_correction",
+    "must_find_files": [
+      "utils/file_1.go"
+    ],
+    "should_find_files": [],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.1922120451060771
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_logic_errors_1.go",
+      "test_code": "// Test for logic_errors in go",
+      "test_type": "unit"
+    },
+    {
+      "file_name": "test_logic_errors_2.go",
+      "test_code": "// Test for logic_errors in go",
+      "test_type": "integration"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "logic_errors",
+      "error_message": "AssertionError: Expected 5 but got 4",
+      "stack_trace": "Stack trace for go",
+      "timestamp": "2025-08-07T02:22:50.107524"
+    },
+    {
+      "error_type": "logic_errors",
+      "error_message": "AssertionError: Expected 5 but got 4",
+      "stack_trace": "Stack trace for go",
+      "timestamp": "2025-08-07T02:22:50.107525"
+    }
+  ],
+  "symptoms": [
+    "Incorrect output produced",
+    "Test cases failing",
+    "Unexpected behavior"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 10,
+    "function": "process_function",
+    "module": "services"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "utils/file_1.go"
+    ],
+    "should_find_files": [],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

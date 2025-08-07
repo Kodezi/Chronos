@@ -1,0 +1,226 @@
+{
+  "bug_id": "MRR-SYNTAX_ERRORS-202508-0307",
+  "category": "syntax_errors",
+  "subcategory": "incorrect_syntax",
+  "language": "cpp",
+  "description": "Syntax error: incorrect_syntax causing compilation failure",
+  "complexity": {
+    "spatial_distribution": 4,
+    "temporal_spread_months": 3,
+    "abstraction_layers": 1,
+    "obfuscation_level": "low",
+    "cross_module_dependencies": 2,
+    "artifact_types": 2
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for syntax_errors/incorrect_syntax in cpp",
+    "fixed_code": "// Fixed code for syntax_errors/incorrect_syntax in cpp"
+  },
+  "scattered_context": [
+    {
+      "file_path": "controllers/file_1.cpp",
+      "content": "// Context code for syntax_errors in cpp",
+      "relevance": "high",
+      "relationship": "extends",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        65
+      ]
+    },
+    {
+      "file_path": "services/file_2.cpp",
+      "content": "// Context code for syntax_errors in cpp",
+      "relevance": "high",
+      "relationship": "calls",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        137,
+        121,
+        190,
+        66,
+        49
+      ]
+    },
+    {
+      "file_path": "core/file_3.cpp",
+      "content": "// Context code for syntax_errors in cpp",
+      "relevance": "high",
+      "relationship": "calls",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        104,
+        179,
+        188,
+        117
+      ]
+    },
+    {
+      "file_path": "helpers/file_4.cpp",
+      "content": "// Context code for syntax_errors in cpp",
+      "relevance": "critical",
+      "relationship": "calls",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        91,
+        102
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-05-09",
+    "temporal_spread_days": 90,
+    "refactoring_events": 5,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-05-15",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-08-03",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-06-22",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "controllers/file_1.cpp",
+        "to": "services/file_2.cpp",
+        "type": "imports"
+      },
+      {
+        "from": "services/file_2.cpp",
+        "to": "core/file_3.cpp",
+        "type": "extends"
+      },
+      {
+        "from": "core/file_3.cpp",
+        "to": "helpers/file_4.cpp",
+        "type": "calls"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "controllers/file_1.cpp",
+          "services/file_2.cpp",
+          "core/file_3.cpp"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "core/file_3.cpp",
+          "services/file_2.cpp",
+          "helpers/file_4.cpp"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "controllers/file_1.cpp",
+          "helpers/file_4.cpp"
+        ],
+        "depth": 1
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "low",
+    "renamed_entities": {
+      "variable_0": "var_0",
+      "variable_1": "var_1",
+      "variable_2": "var_2"
+    },
+    "moved_files": 0,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "incorrect_syntax in main processing logic",
+    "fix_type": "syntax_correction",
+    "must_find_files": [
+      "controllers/file_1.cpp",
+      "services/file_2.cpp",
+      "core/file_3.cpp",
+      "helpers/file_4.cpp"
+    ],
+    "should_find_files": [],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.7800676742450572
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_syntax_errors_1.cpp",
+      "test_code": "// Test for syntax_errors in cpp",
+      "test_type": "integration"
+    },
+    {
+      "file_name": "test_syntax_errors_2.cpp",
+      "test_code": "// Test for syntax_errors in cpp",
+      "test_type": "unit"
+    },
+    {
+      "file_name": "test_syntax_errors_3.cpp",
+      "test_code": "// Test for syntax_errors in cpp",
+      "test_type": "integration"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "syntax_errors",
+      "error_message": "SyntaxError: invalid syntax at line 71",
+      "stack_trace": "Stack trace for cpp",
+      "timestamp": "2025-08-07T02:22:49.553931"
+    },
+    {
+      "error_type": "syntax_errors",
+      "error_message": "SyntaxError: invalid syntax at line 10",
+      "stack_trace": "Stack trace for cpp",
+      "timestamp": "2025-08-07T02:22:49.553933"
+    }
+  ],
+  "symptoms": [
+    "Code fails to compile/run",
+    "Syntax error message displayed",
+    "IDE highlights error"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 23,
+    "function": "process_function",
+    "module": "utils"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "helpers/file_4.cpp"
+    ],
+    "should_find_files": [
+      "controllers/file_1.cpp",
+      "services/file_2.cpp"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

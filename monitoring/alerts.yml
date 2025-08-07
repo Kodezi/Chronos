@@ -1,0 +1,119 @@
+groups:
+  - name: chronos_alerts
+    interval: 30s
+    rules:
+      # Success Rate Alerts
+      - alert: LowDebugSuccessRate
+        expr: chronos_debug_success_rate < 0.6
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Low debug success rate ({{ $value | humanizePercentage }})"
+          description: "Debug success rate is below 60% for 5 minutes"
+      
+      - alert: CriticalDebugSuccessRate
+        expr: chronos_debug_success_rate < 0.5
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Critical debug success rate ({{ $value | humanizePercentage }})"
+          description: "Debug success rate is below 50% - immediate attention required"
+      
+      # Performance Alerts
+      - alert: HighDebugLatency
+        expr: histogram_quantile(0.99, chronos_debug_duration_seconds) > 30
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High debug latency (p99: {{ $value }}s)"
+          description: "99th percentile debug latency exceeds 30 seconds"
+      
+      - alert: HighIterationCount
+        expr: chronos_debug_iterations_avg > 12
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High average iteration count ({{ $value }})"
+          description: "Average debug iterations exceed 12 - may indicate difficult bugs"
+      
+      # Resource Alerts
+      - alert: HighMemoryUsage
+        expr: (node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) / node_memory_MemTotal_bytes > 0.9
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High memory usage ({{ $value | humanizePercentage }})"
+          description: "Memory usage is above 90%"
+      
+      - alert: SandboxTimeout
+        expr: rate(chronos_sandbox_timeouts_total[5m]) > 0.1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High sandbox timeout rate"
+          description: "Sandbox timeouts occurring frequently"
+      
+      # Cache Performance
+      - alert: LowCacheHitRate
+        expr: chronos_cache_hit_rate < 0.7
+        for: 10m
+        labels:
+          severity: info
+        annotations:
+          summary: "Low cache hit rate ({{ $value | humanizePercentage }})"
+          description: "Cache hit rate below 70% - consider cache optimization"
+      
+      # Error Rate Alerts
+      - alert: HighErrorRate
+        expr: rate(chronos_errors_total[5m]) > 0.05
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High error rate"
+          description: "Error rate exceeds 5% of requests"
+      
+      # Availability Alerts
+      - alert: ChronosAPIDown
+        expr: up{job="chronos-api"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Chronos API is down"
+          description: "Chronos API has been down for 1 minute"
+      
+      - alert: DatabaseDown
+        expr: up{job="postgres"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "PostgreSQL is down"
+          description: "PostgreSQL database has been down for 1 minute"
+      
+      # Queue Alerts
+      - alert: HighQueueDepth
+        expr: chronos_queue_depth > 1000
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High queue depth ({{ $value }})"
+          description: "Debug request queue depth exceeds 1000"
+      
+      # Model Performance
+      - alert: LowModelConfidence
+        expr: chronos_model_confidence_avg < 0.7
+        for: 10m
+        labels:
+          severity: info
+        annotations:
+          summary: "Low average model confidence ({{ $value }})"
+          description: "Model confidence below 70% - may need retraining"

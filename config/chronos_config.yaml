@@ -1,0 +1,133 @@
+# Kodezi Chronos Configuration File
+# Default settings for production deployment
+
+# Core Settings
+core:
+  repository_path: "/var/repositories/main"
+  max_iterations: 10  # Based on 7.8 average from paper
+  confidence_threshold: 0.75
+  enable_caching: true
+  log_level: "INFO"
+
+# Sandbox Settings
+sandbox:
+  use_docker: true
+  timeout_seconds: 300
+  memory_limit_mb: 2048
+  cpu_limit: 2.0
+  allowed_languages:
+    - python
+    - javascript
+    - java
+    - go
+    - rust
+
+# Memory Settings (PDM)
+memory:
+  db_path: "/var/chronos/memory.db"
+  max_sessions: 1000000  # Store up to 1M sessions
+  similarity_threshold: 0.85
+  cache_ttl_hours: 168  # 1 week
+  cleanup_interval_hours: 24
+
+# Retrieval Settings (AGR)
+retrieval:
+  initial_k: 10
+  max_k: 50
+  confidence_threshold: 0.92  # From paper
+  expansion_rate: 1.5
+  cache_size_mb: 1024
+  graph_update_interval: 3600  # 1 hour
+
+# LLM Settings
+llm:
+  model_path: "/models/chronos-debug-llm"
+  temperature: 0.3  # Lower for deterministic debugging
+  max_tokens: 2048
+  batch_size: 4
+  use_gpu: true
+  quantization: "int8"  # For efficiency
+
+# Performance Settings
+performance:
+  thread_pool_size: 8
+  async_workers: 16
+  request_timeout: 600  # 10 minutes
+  queue_size: 1000
+  rate_limit:
+    requests_per_minute: 100
+    burst_size: 20
+
+# Monitoring Settings
+monitoring:
+  enable_metrics: true
+  metrics_port: 9090
+  enable_tracing: true
+  tracing_endpoint: "http://jaeger:14268/api/traces"
+  log_format: "json"
+  alert_thresholds:
+    success_rate_min: 0.6  # Alert if below 60%
+    avg_iterations_max: 12  # Alert if above 12
+    response_time_p99: 30  # Alert if p99 > 30s
+
+# Security Settings
+security:
+  enable_code_scanning: true
+  forbidden_operations:
+    - eval
+    - exec
+    - __import__
+    - compile
+    - subprocess
+    - os.system
+  max_file_size_mb: 10
+  allowed_file_extensions:
+    - .py
+    - .js
+    - .java
+    - .go
+    - .rs
+    - .cpp
+    - .c
+    - .h
+    - .hpp
+
+# Integration Settings
+integrations:
+  github:
+    enabled: true
+    webhook_secret: "${GITHUB_WEBHOOK_SECRET}"
+    app_id: "${GITHUB_APP_ID}"
+    private_key_path: "/secrets/github_private_key.pem"
+  
+  slack:
+    enabled: false
+    webhook_url: "${SLACK_WEBHOOK_URL}"
+    channel: "#debugging"
+  
+  jira:
+    enabled: false
+    url: "${JIRA_URL}"
+    username: "${JIRA_USERNAME}"
+    api_token: "${JIRA_API_TOKEN}"
+
+# Deployment Environments
+environments:
+  development:
+    core:
+      max_iterations: 5
+      confidence_threshold: 0.6
+    sandbox:
+      use_docker: false
+      timeout_seconds: 60
+    
+  staging:
+    core:
+      max_iterations: 8
+      confidence_threshold: 0.7
+    sandbox:
+      use_docker: true
+      timeout_seconds: 180
+    
+  production:
+    # Uses default settings above

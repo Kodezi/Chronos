@@ -1,0 +1,241 @@
+# MRR Benchmark Architecture Configuration
+# This file defines the technical specifications and requirements for the Multi-Random Retrieval benchmark
+
+benchmark_metadata:
+  name: "MRR (Multi-Random Retrieval) Benchmark"
+  version: "1.0.0"
+  description: "Comprehensive debugging benchmark with scattered context and temporal dispersion"
+  total_bugs: 5000
+  created_date: "2025-07-27"
+
+chronos_requirements:
+  training_data:
+    total_examples: 42_500_000
+    categories:
+      github_issues: 15_000_000
+      stack_traces: 8_000_000
+      cicd_logs: 3_000_000
+      production_sessions: 2_500_000
+      bug_databases: 14_000_000
+  
+  performance_metrics:
+    root_cause_accuracy: 0.784  # 78.4%
+    fix_success_rate: 0.653     # 65.3%
+    multi_file_support: true
+    avg_files_per_fix: 3.4
+    
+  architecture:
+    retrieval: "Adaptive Graph-Guided (AGR)"
+    memory: "Persistent Graph Structure"
+    output_focus: "Generation-Heavy"
+    training_approach: "Chain-of-Cause"
+
+bug_categories:
+  syntax_errors:
+    count: 500
+    description: "Syntax and parsing errors"
+    subcategories: ["missing_semicolon", "invalid_token", "unclosed_bracket", "type_mismatch"]
+    avg_scattered_files: 17
+    
+  logic_errors:
+    count: 1200
+    description: "Incorrect program logic and algorithms"
+    subcategories: ["off_by_one", "incorrect_condition", "wrong_algorithm", "edge_case"]
+    avg_scattered_files: 23
+    
+  concurrency_issues:
+    count: 800
+    description: "Race conditions, deadlocks, synchronization"
+    subcategories: ["race_condition", "deadlock", "atomicity_violation", "order_violation"]
+    avg_scattered_files: 31
+    
+  memory_issues:
+    count: 600
+    description: "Memory leaks, buffer overflows, dangling pointers"
+    subcategories: ["memory_leak", "buffer_overflow", "use_after_free", "null_dereference"]
+    avg_scattered_files: 19
+    
+  api_misuse:
+    count: 900
+    description: "Incorrect API usage, version mismatches"
+    subcategories: ["wrong_parameters", "deprecated_api", "missing_initialization", "incorrect_sequence"]
+    avg_scattered_files: 21
+    
+  performance_bugs:
+    count: 400
+    description: "Performance degradation, inefficient algorithms"
+    subcategories: ["n_plus_one", "inefficient_query", "excessive_memory", "blocking_io"]
+    avg_scattered_files: 18
+    
+  cross_category:
+    count: 600
+    description: "Bugs spanning multiple categories"
+    subcategories: ["mixed"]
+    avg_scattered_files: 28
+
+evaluation_metrics:
+  standard_metrics:
+    - precision_at_k: [1, 5, 10, 20, 50]
+    - recall_at_k: [1, 5, 10, 20, 50]
+    - mean_reciprocal_rank: true
+    
+  enhanced_metrics:
+    - context_efficiency:
+        description: "Ratio of used vs retrieved tokens"
+        optimal_range: [0.7, 0.9]
+    - compositional_success_rate:
+        description: "Success following implicit code paths"
+        threshold: 0.6
+    - obfuscation_resistance:
+        description: "Success despite refactorings"
+        levels: ["low", "medium", "high"]
+    - multi_modal_integration:
+        description: "Effective use of logs, docs, tests"
+        artifact_types: ["logs", "traces", "docs", "tests", "commits"]
+    - retrieval_path_accuracy:
+        description: "Following correct code relationships"
+        path_types: ["explicit", "implicit", "compositional"]
+
+artifacts:
+  logs:
+    count: 10_000
+    format: "log"
+    contains: ["timestamps", "error_messages", "stack_traces", "context"]
+    
+  traces:
+    count: 5_000
+    format: "txt"
+    contains: ["full_stack_trace", "exception_type", "call_sequence"]
+    
+  documentation:
+    count: 16_576
+    format: "md"
+    types: ["api_docs", "readme", "migration_guides", "architecture"]
+    
+  test_outputs:
+    count: 14_578
+    format: "json"
+    contains: ["test_results", "coverage", "failure_details"]
+    
+  commits:
+    count: 32_013
+    format: "json"
+    contains: ["hash", "message", "diff", "author", "timestamp"]
+    
+  code_snippets:
+    count: 141_702
+    formats: ["js", "py", "java"]
+    distribution:
+      javascript: 0.345
+      python: 0.321
+      java: 0.334
+
+temporal_characteristics:
+  bug_introduction_spread:
+    min_days: 90    # 3 months
+    max_days: 365   # 12 months
+    avg_days: 195   # ~6.5 months
+    
+  refactoring_events:
+    avg_per_bug: 3.2
+    types: ["rename", "move", "extract", "inline"]
+    
+  commit_history_depth:
+    min_commits: 5
+    max_commits: 50
+    avg_commits: 18
+
+obfuscation_parameters:
+  variable_refactoring:
+    probability: 0.65
+    patterns: ["camelCase_to_snake", "abbreviation", "semantic_change"]
+    
+  function_refactoring:
+    probability: 0.45
+    patterns: ["extract_method", "inline_method", "rename"]
+    
+  namespace_changes:
+    probability: 0.30
+    avg_affected_files: 12
+    
+  file_moves:
+    probability: 0.25
+    cross_directory: true
+
+retrieval_requirements:
+  scattered_context:
+    min_files: 10
+    max_files: 50
+    avg_files: 24
+    
+  retrieval_paths:
+    explicit:
+      types: ["imports", "inheritance", "calls"]
+      avg_per_bug: 4.3
+    implicit:
+      types: ["shared_state", "side_effects", "error_propagation"]
+      avg_per_bug: 2.7
+    compositional:
+      min_depth: 2
+      max_depth: 7
+      avg_depth: 3.8
+
+performance_baselines:
+  traditional_llms:
+    success_rate: 0.121  # 12.1%
+    root_cause_accuracy: 0.15
+    multi_file_capability: "limited"
+    
+  rag_enhanced:
+    success_rate: 0.221  # 22.1%
+    root_cause_accuracy: 0.284
+    multi_file_capability: "moderate"
+    
+  graph_enhanced:
+    success_rate: 0.357  # 35.7%
+    root_cause_accuracy: 0.413
+    multi_file_capability: "good"
+    
+  chronos_target:
+    success_rate: 0.653  # 65.3%
+    root_cause_accuracy: 0.784
+    multi_file_capability: "excellent"
+
+resource_requirements:
+  disk_space:
+    minimum_gb: 50
+    recommended_gb: 100
+    
+  memory:
+    minimum_gb: 16
+    recommended_gb: 32
+    
+  compute:
+    gpu_recommended: true
+    min_gpu_memory_gb: 24
+    
+  evaluation_time:
+    per_bug_seconds: 120
+    total_hours: 167  # ~7 days for full benchmark
+
+validation_criteria:
+  must_pass_tests: true
+  no_regressions: true
+  performance_impact:
+    threshold: 0.05  # Max 5% performance degradation
+  code_quality:
+    linting: true
+    type_checking: true
+    
+output_requirements:
+  fix_components:
+    - code_patches: "Multi-file coordinated changes"
+    - test_updates: "New or modified test cases"
+    - documentation: "Updated docs if needed"
+    - commit_message: "Clear description of fix"
+    
+  quality_metrics:
+    - correctness: "Fix resolves the issue"
+    - completeness: "All affected files updated"
+    - consistency: "Maintains code style"
+    - clarity: "Clear explanation provided"

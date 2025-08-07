@@ -1,0 +1,377 @@
+{
+  "metadata": {
+    "version": "1.0-sample",
+    "total_cases": 50,
+    "description": "Mini sample of Chronos MRR benchmark for quick testing",
+    "full_benchmark_info": "Complete 5000-case benchmark available Q1 2026"
+  },
+  "test_cases": [
+    {
+      "bug_id": "mrr_syntax_001",
+      "category": "syntax",
+      "difficulty": "easy",
+      "language": "python",
+      "repository_size": "small",
+      "description": "Missing closing parenthesis in data processing function",
+      "symptoms": ["SyntaxError: unexpected EOF while parsing"],
+      "scattered_context": {
+        "data_processor.py": {
+          "relevance": "critical",
+          "function": "process_items",
+          "error_line": 45
+        },
+        "test_processor.py": {
+          "relevance": "high",
+          "failing_test": "test_process_positive_items"
+        }
+      },
+      "ground_truth": {
+        "root_cause": "Missing closing parenthesis in list comprehension",
+        "fix_type": "add_syntax",
+        "files_modified": 1,
+        "test_status": "all_pass"
+      }
+    },
+    {
+      "bug_id": "mrr_logic_042",
+      "category": "logic",
+      "difficulty": "medium",
+      "language": "javascript",
+      "repository_size": "medium",
+      "description": "Incorrect boundary check in pagination logic",
+      "symptoms": ["Last page shows duplicate items", "PageCount off by one"],
+      "scattered_context": {
+        "pagination.js": {
+          "relevance": "critical",
+          "function": "calculatePages",
+          "issue": "Wrong inequality operator"
+        },
+        "api/routes.js": {
+          "relevance": "high",
+          "usage": "Calls pagination.calculatePages"
+        },
+        "tests/pagination.test.js": {
+          "relevance": "high",
+          "failing_tests": ["test_last_page", "test_boundary_conditions"]
+        },
+        "commits/abc123": {
+          "relevance": "medium",
+          "date": "2 months ago",
+          "message": "Refactored pagination logic"
+        }
+      },
+      "ground_truth": {
+        "root_cause": "Off-by-one error: should use <= instead of <",
+        "fix_location": "pagination.js:calculatePages:line87",
+        "fix_type": "operator_change",
+        "files_modified": 1
+      }
+    },
+    {
+      "bug_id": "mrr_null_087",
+      "category": "memory",
+      "difficulty": "medium",
+      "language": "java",
+      "repository_size": "large",
+      "description": "NullPointerException in user session management",
+      "symptoms": [
+        "NPE when user logs out and immediately logs back in",
+        "Occurs only in production environment"
+      ],
+      "scattered_context": {
+        "auth/SessionManager.java": {
+          "relevance": "critical",
+          "method": "invalidateSession",
+          "issue": "Doesn't clear cache properly"
+        },
+        "cache/RedisCache.java": {
+          "relevance": "critical",
+          "method": "delete",
+          "issue": "Returns null on cache miss"
+        },
+        "controllers/AuthController.java": {
+          "relevance": "high",
+          "usage": "Calls SessionManager methods"
+        },
+        "config/prod.properties": {
+          "relevance": "medium",
+          "difference": "Cache TTL different from dev"
+        },
+        "logs/production.log": {
+          "relevance": "high",
+          "stacktrace": "Shows NPE origin"
+        }
+      },
+      "ground_truth": {
+        "root_cause": "Session invalidation doesn't wait for cache deletion confirmation",
+        "fix_type": "add_null_check",
+        "files_modified": 2,
+        "requires_sync": true
+      }
+    },
+    {
+      "bug_id": "mrr_race_156",
+      "category": "concurrency",
+      "difficulty": "hard",
+      "language": "python",
+      "repository_size": "medium",
+      "description": "Race condition in distributed task queue causing duplicate processing",
+      "symptoms": [
+        "Same task processed multiple times",
+        "Happens under high load",
+        "Database shows duplicate entries"
+      ],
+      "scattered_context": {
+        "workers/task_processor.py": {
+          "relevance": "critical",
+          "class": "TaskProcessor",
+          "method": "claim_task",
+          "issue": "Not atomic"
+        },
+        "db/models.py": {
+          "relevance": "critical",
+          "model": "Task",
+          "missing": "Unique constraint on processing"
+        },
+        "queue/redis_queue.py": {
+          "relevance": "high",
+          "method": "dequeue",
+          "issue": "No distributed lock"
+        },
+        "tests/load_test.py": {
+          "relevance": "medium",
+          "note": "Doesn't test concurrent workers"
+        },
+        "monitoring/metrics.py": {
+          "relevance": "medium",
+          "shows": "Duplicate processing spike times"
+        }
+      },
+      "ground_truth": {
+        "root_cause": "Task claiming not atomic across distributed workers",
+        "fix_type": "add_distributed_lock",
+        "solution": "Implement Redis-based distributed lock with TTL",
+        "files_modified": 3
+      }
+    },
+    {
+      "bug_id": "mrr_api_203",
+      "category": "api",
+      "difficulty": "medium",
+      "language": "javascript",
+      "repository_size": "small",
+      "description": "Breaking change after upgrading payment SDK from v2 to v3",
+      "symptoms": [
+        "TypeError: stripe.charges.create is not a function",
+        "All payment processing fails"
+      ],
+      "scattered_context": {
+        "payment/processor.js": {
+          "relevance": "critical",
+          "usage": "Old v2 API patterns"
+        },
+        "package.json": {
+          "relevance": "critical",
+          "change": "stripe: ^2.0.0 -> ^3.0.0"
+        },
+        "migrations/stripe_v3.md": {
+          "relevance": "high",
+          "location": "docs/migrations/",
+          "unread": true
+        },
+        "tests/payment.test.js": {
+          "relevance": "high",
+          "status": "All failing"
+        },
+        "config/stripe.js": {
+          "relevance": "medium",
+          "note": "Config format also changed"
+        }
+      },
+      "ground_truth": {
+        "root_cause": "Stripe v3 changed API structure - charges is now paymentIntents",
+        "fix_type": "api_migration",
+        "migration_guide": "docs/migrations/stripe_v3.md",
+        "files_modified": 4
+      }
+    },
+    {
+      "bug_id": "mrr_perf_089",
+      "category": "performance",
+      "difficulty": "hard",
+      "language": "python",
+      "repository_size": "large",
+      "description": "Dashboard load time increased from 2s to 45s after new feature",
+      "symptoms": [
+        "Dashboard timeout errors",
+        "Database CPU at 100%",
+        "Started after commit def456"
+      ],
+      "scattered_context": {
+        "dashboard/views.py": {
+          "relevance": "critical",
+          "function": "get_user_analytics",
+          "new_feature": "Real-time activity feed"
+        },
+        "models/activity.py": {
+          "relevance": "critical",
+          "issue": "Missing database index"
+        },
+        "api/serializers.py": {
+          "relevance": "high",
+          "issue": "N+1 query in activity serializer"
+        },
+        "requirements.txt": {
+          "relevance": "medium",
+          "note": "ORM version upgrade might help"
+        },
+        "monitoring/slow_query.log": {
+          "relevance": "high",
+          "shows": "Repeated full table scans"
+        }
+      },
+      "ground_truth": {
+        "root_cause": "N+1 query problem with missing index on activity.user_id",
+        "fix_type": "add_index_and_prefetch",
+        "performance_gain": "45s -> 1.8s",
+        "files_modified": 3
+      }
+    },
+    {
+      "bug_id": "mrr_logic_108",
+      "category": "logic",
+      "difficulty": "easy",
+      "language": "java",
+      "repository_size": "small",
+      "description": "Discount calculation applies percentage as absolute value",
+      "symptoms": [
+        "50% discount reduces price by $50 instead of 50%",
+        "Customer complaints about overcharging"
+      ],
+      "scattered_context": {
+        "pricing/DiscountCalculator.java": {
+          "relevance": "critical",
+          "method": "applyDiscount",
+          "line": 67
+        },
+        "tests/DiscountTest.java": {
+          "relevance": "high",
+          "note": "Test uses integer prices, bug hidden"
+        }
+      },
+      "ground_truth": {
+        "root_cause": "Missing division by 100 for percentage calculation",
+        "fix_type": "arithmetic_fix",
+        "fix": "price * (1 - discount/100.0)",
+        "files_modified": 1
+      }
+    },
+    {
+      "bug_id": "mrr_memory_234",
+      "category": "memory",
+      "difficulty": "hard",
+      "language": "javascript",
+      "repository_size": "medium",
+      "description": "Memory leak in WebSocket event handlers causing server crashes",
+      "symptoms": [
+        "Server memory usage grows continuously",
+        "Crashes after ~1000 connections",
+        "Heap snapshots show detached DOM references"
+      ],
+      "scattered_context": {
+        "websocket/client.js": {
+          "relevance": "critical",
+          "issue": "Event listeners not removed on disconnect"
+        },
+        "websocket/server.js": {
+          "relevance": "critical",
+          "issue": "Stores all client references"
+        },
+        "utils/events.js": {
+          "relevance": "high",
+          "pattern": "Similar leak pattern"
+        },
+        "monitoring/heap_dumps/": {
+          "relevance": "high",
+          "files": ["dump1.heapsnapshot", "dump2.heapsnapshot"]
+        },
+        "nginx/logs/error.log": {
+          "relevance": "medium",
+          "shows": "Worker process OOM kills"
+        }
+      },
+      "ground_truth": {
+        "root_cause": "WebSocket cleanup doesn't remove all event listeners",
+        "fix_type": "cleanup_handlers",
+        "solution": "Implement proper cleanup in disconnect handler",
+        "files_modified": 2
+      }
+    },
+    {
+      "bug_id": "mrr_syntax_045",
+      "category": "syntax",
+      "difficulty": "easy",
+      "language": "python",
+      "repository_size": "small",
+      "description": "IndentationError in config parser after team member used tabs",
+      "symptoms": ["IndentationError: unexpected indent", "CI/CD pipeline fails"],
+      "scattered_context": {
+        "config/parser.py": {
+          "relevance": "critical",
+          "line_range": [45, 52],
+          "issue": "Mixed tabs and spaces"
+        },
+        ".editorconfig": {
+          "relevance": "medium",
+          "missing": true
+        }
+      },
+      "ground_truth": {
+        "root_cause": "Mixed indentation (tabs vs spaces) in parser.py",
+        "fix_type": "fix_indentation",
+        "files_modified": 1
+      }
+    },
+    {
+      "bug_id": "mrr_concurrency_312",
+      "category": "concurrency",
+      "difficulty": "medium",
+      "language": "java",
+      "repository_size": "large",
+      "description": "Deadlock in payment processing under high load",
+      "symptoms": [
+        "Thread dump shows circular wait",
+        "Happens when >50 concurrent payments",
+        "System hangs, requires restart"
+      ],
+      "scattered_context": {
+        "payment/PaymentService.java": {
+          "relevance": "critical",
+          "methods": ["processPayment", "updateInventory"],
+          "issue": "Lock ordering differs"
+        },
+        "inventory/InventoryService.java": {
+          "relevance": "critical",
+          "methods": ["reserve", "release"],
+          "issue": "Opposite lock order"
+        },
+        "docs/architecture.md": {
+          "relevance": "medium",
+          "section": "Locking Strategy",
+          "outdated": true
+        },
+        "monitoring/thread_dumps/": {
+          "relevance": "high",
+          "files": ["deadlock1.txt", "deadlock2.txt"]
+        }
+      },
+      "ground_truth": {
+        "root_cause": "Inconsistent lock ordering between payment and inventory",
+        "fix_type": "fix_lock_ordering",
+        "solution": "Establish global lock ordering protocol",
+        "files_modified": 2
+      }
+    }
+  ],
+  "additional_cases_reference": "See mrr_sample_dataset.json for 500 test cases"
+}

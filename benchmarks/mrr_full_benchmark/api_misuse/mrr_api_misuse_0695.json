@@ -1,0 +1,239 @@
+{
+  "bug_id": "MRR-API_MISUSE-202508-0695",
+  "category": "api_misuse",
+  "subcategory": "missing_validation",
+  "language": "go",
+  "description": "API misuse: missing_validation violating API contract",
+  "complexity": {
+    "spatial_distribution": 5,
+    "temporal_spread_months": 7,
+    "abstraction_layers": 2,
+    "obfuscation_level": "medium",
+    "cross_module_dependencies": 3,
+    "artifact_types": 2
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for api_misuse/missing_validation in go",
+    "fixed_code": "// Fixed code for api_misuse/missing_validation in go"
+  },
+  "scattered_context": [
+    {
+      "file_path": "controllers/file_1.go",
+      "content": "// Context code for api_misuse in go",
+      "relevance": "high",
+      "relationship": "implements",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        160,
+        154,
+        19
+      ]
+    },
+    {
+      "file_path": "services/file_2.go",
+      "content": "// Context code for api_misuse in go",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        65,
+        163,
+        66,
+        177,
+        43
+      ]
+    },
+    {
+      "file_path": "controllers/file_3.go",
+      "content": "// Context code for api_misuse in go",
+      "relevance": "critical",
+      "relationship": "uses",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        137,
+        159,
+        138,
+        12
+      ]
+    },
+    {
+      "file_path": "services/file_4.go",
+      "content": "// Context code for api_misuse in go",
+      "relevance": "low",
+      "relationship": "calls",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        119,
+        186,
+        21,
+        167
+      ]
+    },
+    {
+      "file_path": "services/file_5.go",
+      "content": "// Context code for api_misuse in go",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        184,
+        121
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-01-09",
+    "temporal_spread_days": 210,
+    "refactoring_events": 0,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-05-28",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-06-13",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-05-21",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "controllers/file_1.go",
+        "to": "services/file_2.go",
+        "type": "extends"
+      },
+      {
+        "from": "services/file_2.go",
+        "to": "controllers/file_3.go",
+        "type": "imports"
+      },
+      {
+        "from": "controllers/file_3.go",
+        "to": "services/file_4.go",
+        "type": "calls"
+      },
+      {
+        "from": "services/file_4.go",
+        "to": "services/file_5.go",
+        "type": "calls"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "services/file_4.go",
+          "services/file_2.go",
+          "controllers/file_3.go"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "controllers/file_3.go",
+          "controllers/file_1.go",
+          "services/file_5.go"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "services/file_4.go",
+          "services/file_2.go"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "controllers/file_1.go",
+          "controllers/file_3.go",
+          "services/file_2.go"
+        ],
+        "depth": 2
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "medium",
+    "renamed_entities": {
+      "function_0": "tiuhmpni",
+      "function_1": "luooqmky",
+      "function_2": "igpnntxw"
+    },
+    "moved_files": 5,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "missing_validation in main processing logic",
+    "fix_type": "api_correction",
+    "must_find_files": [
+      "controllers/file_1.go",
+      "services/file_2.go",
+      "controllers/file_3.go",
+      "services/file_5.go"
+    ],
+    "should_find_files": [],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.6251651481240157
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_api_misuse_1.go",
+      "test_code": "// Test for api_misuse in go",
+      "test_type": "e2e"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "api_misuse",
+      "error_message": "TypeError: Invalid argument type for API call",
+      "stack_trace": "Stack trace for go",
+      "timestamp": "2025-08-07T02:22:50.476155"
+    }
+  ],
+  "symptoms": [
+    "Generic symptom"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 104,
+    "function": "process_function",
+    "module": "utils"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "services/file_2.go",
+      "controllers/file_3.go",
+      "services/file_5.go"
+    ],
+    "should_find_files": [
+      "controllers/file_1.go"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

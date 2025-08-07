@@ -21,39 +21,39 @@ While Kodezi Chronos represents a significant advancement in autonomous debuggin
 
 **Workaround**: Provide detailed hardware specifications and constraints in bug reports.
 
-### 2. Domain-Specific Logic Errors (28.7% success rate)
+### 2. Dynamic Language Issues (41.2% success rate)
 
-**Challenge**: Bugs requiring deep domain expertise in specialized fields.
-
-**Examples**:
-- Medical device regulation compliance
-- Financial calculation accuracy (specific regulations)
-- Scientific computation correctness
-- Legal document processing rules
-
-**Why it struggles**:
-- Domain knowledge not well-represented in training
-- Requires understanding of external specifications
-- Cannot verify domain-specific correctness
-
-**Workaround**: Include domain documentation and specifications in repository.
-
-### 3. UI/Visual Bugs (8.3% success rate)
-
-**Challenge**: Issues related to visual rendering and user interface.
+**Challenge**: Bugs in dynamically typed languages with runtime behavior.
 
 **Examples**:
-- Layout issues across different screens
-- Color contrast problems
-- Animation glitches
-- Responsive design breakpoints
+- Python duck typing errors
+- JavaScript type coercion issues
+- Ruby metaprogramming bugs
+- Runtime-only type errors
 
 **Why it struggles**:
-- Cannot "see" visual output
-- No screenshot analysis capability
-- UI bugs often subjective
+- Type information not available statically
+- Runtime behavior hard to predict
+- Dynamic code generation challenges
 
-**Future solution**: Multi-modal capabilities planned for future versions.
+**Workaround**: Use type hints, comprehensive tests, and runtime type checking.
+
+### 3. Distributed Systems Bugs (30.0% success rate)
+
+**Challenge**: Issues spanning multiple services and network boundaries.
+
+**Examples**:
+- Network partition failures
+- Distributed consensus bugs
+- Clock synchronization issues
+- Cascading failures across services
+
+**Why it struggles**:
+- Cannot simulate full distributed environment
+- Limited observability across services
+- Complex timing and ordering issues
+
+**Workaround**: Provide detailed logs from all services and network traces.
 
 ## Scale Limitations
 
@@ -235,6 +235,13 @@ These limitations guide our research priorities:
 
 ## Conclusion
 
-Despite these limitations, Chronos still achieves 65.3% debugging success - a revolutionary improvement over existing approaches. Understanding these constraints helps set appropriate expectations and use Chronos most effectively.
+Despite these limitations, Chronos still achieves 67.3% debugging success - a revolutionary improvement over existing approaches. Understanding these constraints helps set appropriate expectations and use Chronos most effectively.
+
+Key limitation benchmarks from 2025 research:
+- Hardware-dependent bugs: 23.4% success
+- Dynamic language bugs: 41.2% success  
+- Distributed systems bugs: 30.0% success
+
+These areas represent our primary research focus for future improvements.
 
 For updates on addressing these limitations, follow our [roadmap](future_work.md).

@@ -1,0 +1,1 @@
+// Code snippet for src/data/entity_23.java

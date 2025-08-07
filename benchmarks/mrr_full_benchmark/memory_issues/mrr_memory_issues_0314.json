@@ -1,0 +1,358 @@
+{
+  "bug_id": "MRR-MEMORY_ISSUES-202508-0314",
+  "category": "memory_issues",
+  "subcategory": "heap_corruption",
+  "language": "java",
+  "description": "Memory issue: heap_corruption causing memory problems",
+  "complexity": {
+    "spatial_distribution": 10,
+    "temporal_spread_months": 8,
+    "abstraction_layers": 4,
+    "obfuscation_level": "medium",
+    "cross_module_dependencies": 6,
+    "artifact_types": 4
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for memory_issues/heap_corruption in java",
+    "fixed_code": "// Fixed code for memory_issues/heap_corruption in java"
+  },
+  "scattered_context": [
+    {
+      "file_path": "utils/file_1.java",
+      "content": "// Context code for memory_issues in java",
+      "relevance": "critical",
+      "relationship": "implements",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        59
+      ]
+    },
+    {
+      "file_path": "controllers/file_2.java",
+      "content": "// Context code for memory_issues in java",
+      "relevance": "medium",
+      "relationship": "uses",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        115,
+        187,
+        31,
+        21
+      ]
+    },
+    {
+      "file_path": "utils/file_3.java",
+      "content": "// Context code for memory_issues in java",
+      "relevance": "high",
+      "relationship": "implements",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        198,
+        62,
+        74,
+        81
+      ]
+    },
+    {
+      "file_path": "core/file_4.java",
+      "content": "// Context code for memory_issues in java",
+      "relevance": "high",
+      "relationship": "imports",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        73,
+        195,
+        101,
+        171
+      ]
+    },
+    {
+      "file_path": "helpers/file_5.java",
+      "content": "// Context code for memory_issues in java",
+      "relevance": "low",
+      "relationship": "imports",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        155
+      ]
+    },
+    {
+      "file_path": "helpers/file_6.java",
+      "content": "// Context code for memory_issues in java",
+      "relevance": "high",
+      "relationship": "uses",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        58,
+        149,
+        200
+      ]
+    },
+    {
+      "file_path": "controllers/file_7.java",
+      "content": "// Context code for memory_issues in java",
+      "relevance": "critical",
+      "relationship": "extends",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        145,
+        41,
+        83
+      ]
+    },
+    {
+      "file_path": "helpers/file_8.java",
+      "content": "// Context code for memory_issues in java",
+      "relevance": "medium",
+      "relationship": "calls",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        191,
+        119,
+        39
+      ]
+    },
+    {
+      "file_path": "models/file_9.java",
+      "content": "// Context code for memory_issues in java",
+      "relevance": "critical",
+      "relationship": "extends",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        123,
+        177,
+        128,
+        190,
+        18
+      ]
+    },
+    {
+      "file_path": "core/file_10.java",
+      "content": "// Context code for memory_issues in java",
+      "relevance": "low",
+      "relationship": "uses",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        127,
+        31,
+        71
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2024-12-10",
+    "temporal_spread_days": 240,
+    "refactoring_events": 0,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-06-22",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-04-16",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2024-12-22",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-05-19",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "utils/file_1.java",
+        "to": "controllers/file_2.java",
+        "type": "extends"
+      },
+      {
+        "from": "controllers/file_2.java",
+        "to": "utils/file_3.java",
+        "type": "imports"
+      },
+      {
+        "from": "utils/file_3.java",
+        "to": "core/file_4.java",
+        "type": "imports"
+      },
+      {
+        "from": "core/file_4.java",
+        "to": "helpers/file_5.java",
+        "type": "imports"
+      },
+      {
+        "from": "helpers/file_5.java",
+        "to": "helpers/file_6.java",
+        "type": "imports"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "utils/file_1.java",
+          "utils/file_3.java",
+          "models/file_9.java"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "utils/file_3.java",
+          "core/file_10.java",
+          "helpers/file_8.java"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "core/file_4.java",
+          "utils/file_1.java",
+          "controllers/file_7.java"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "models/file_9.java",
+          "utils/file_1.java"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "helpers/file_6.java",
+          "core/file_4.java",
+          "core/file_10.java"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "core/file_10.java",
+          "models/file_9.java",
+          "utils/file_3.java",
+          "utils/file_1.java"
+        ],
+        "depth": 3
+      },
+      {
+        "path": [
+          "core/file_10.java",
+          "core/file_4.java",
+          "helpers/file_5.java",
+          "utils/file_1.java",
+          "helpers/file_8.java"
+        ],
+        "depth": 4
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "medium",
+    "renamed_entities": {
+      "function_0": "xeeqwyax",
+      "function_1": "pcenwaqk",
+      "function_2": "ihygtzli",
+      "function_3": "tbqpipvf",
+      "function_4": "iuhkpzow",
+      "function_5": "phaviwke"
+    },
+    "moved_files": 3,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "heap_corruption in main processing logic",
+    "fix_type": "memory_management",
+    "must_find_files": [
+      "utils/file_1.java",
+      "utils/file_3.java",
+      "core/file_4.java",
+      "helpers/file_6.java",
+      "controllers/file_7.java"
+    ],
+    "should_find_files": [
+      "controllers/file_2.java",
+      "helpers/file_8.java"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.7122118299580018
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_memory_issues_1.java",
+      "test_code": "// Test for memory_issues in java",
+      "test_type": "e2e"
+    },
+    {
+      "file_name": "test_memory_issues_2.java",
+      "test_code": "// Test for memory_issues in java",
+      "test_type": "integration"
+    },
+    {
+      "file_name": "test_memory_issues_3.java",
+      "test_code": "// Test for memory_issues in java",
+      "test_type": "integration"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "memory_issues",
+      "error_message": "MemoryError: Out of memory",
+      "stack_trace": "Stack trace for java",
+      "timestamp": "2025-08-07T02:22:50.751532"
+    }
+  ],
+  "symptoms": [
+    "Generic symptom"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 143,
+    "function": "process_function",
+    "module": "core"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "utils/file_1.java",
+      "controllers/file_7.java",
+      "models/file_9.java"
+    ],
+    "should_find_files": [
+      "utils/file_3.java",
+      "core/file_4.java"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

@@ -1,0 +1,347 @@
+{
+  "bug_id": "MRR-LOGIC_ERRORS-202508-0719",
+  "category": "logic_errors",
+  "subcategory": "wrong_condition",
+  "language": "cpp",
+  "description": "Logic bug: wrong_condition producing incorrect results",
+  "complexity": {
+    "spatial_distribution": 10,
+    "temporal_spread_months": 3,
+    "abstraction_layers": 3,
+    "obfuscation_level": "medium",
+    "cross_module_dependencies": 1,
+    "artifact_types": 5
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for logic_errors/wrong_condition in cpp",
+    "fixed_code": "// Fixed code for logic_errors/wrong_condition in cpp"
+  },
+  "scattered_context": [
+    {
+      "file_path": "models/file_1.cpp",
+      "content": "// Context code for logic_errors in cpp",
+      "relevance": "high",
+      "relationship": "tests",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        168,
+        34,
+        46
+      ]
+    },
+    {
+      "file_path": "controllers/file_2.cpp",
+      "content": "// Context code for logic_errors in cpp",
+      "relevance": "critical",
+      "relationship": "imports",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        161,
+        185,
+        68,
+        132
+      ]
+    },
+    {
+      "file_path": "utils/file_3.cpp",
+      "content": "// Context code for logic_errors in cpp",
+      "relevance": "medium",
+      "relationship": "uses",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        169,
+        60,
+        163
+      ]
+    },
+    {
+      "file_path": "models/file_4.cpp",
+      "content": "// Context code for logic_errors in cpp",
+      "relevance": "critical",
+      "relationship": "implements",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        58,
+        42,
+        30,
+        50
+      ]
+    },
+    {
+      "file_path": "helpers/file_5.cpp",
+      "content": "// Context code for logic_errors in cpp",
+      "relevance": "medium",
+      "relationship": "imports",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        42,
+        133,
+        41,
+        149,
+        45
+      ]
+    },
+    {
+      "file_path": "helpers/file_6.cpp",
+      "content": "// Context code for logic_errors in cpp",
+      "relevance": "critical",
+      "relationship": "uses",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        121,
+        100
+      ]
+    },
+    {
+      "file_path": "controllers/file_7.cpp",
+      "content": "// Context code for logic_errors in cpp",
+      "relevance": "low",
+      "relationship": "implements",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        150,
+        24
+      ]
+    },
+    {
+      "file_path": "utils/file_8.cpp",
+      "content": "// Context code for logic_errors in cpp",
+      "relevance": "high",
+      "relationship": "implements",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        119,
+        58,
+        34,
+        47
+      ]
+    },
+    {
+      "file_path": "services/file_9.cpp",
+      "content": "// Context code for logic_errors in cpp",
+      "relevance": "low",
+      "relationship": "implements",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        190
+      ]
+    },
+    {
+      "file_path": "helpers/file_10.cpp",
+      "content": "// Context code for logic_errors in cpp",
+      "relevance": "medium",
+      "relationship": "calls",
+      "specific_issue": "Related to logic_errors issue",
+      "line_numbers": [
+        62,
+        125,
+        14
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-05-09",
+    "temporal_spread_days": 90,
+    "refactoring_events": 5,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-05-19",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-05-12",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-05-11",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "models/file_1.cpp",
+        "to": "controllers/file_2.cpp",
+        "type": "extends"
+      },
+      {
+        "from": "controllers/file_2.cpp",
+        "to": "utils/file_3.cpp",
+        "type": "imports"
+      },
+      {
+        "from": "utils/file_3.cpp",
+        "to": "models/file_4.cpp",
+        "type": "extends"
+      },
+      {
+        "from": "models/file_4.cpp",
+        "to": "helpers/file_5.cpp",
+        "type": "extends"
+      },
+      {
+        "from": "helpers/file_5.cpp",
+        "to": "helpers/file_6.cpp",
+        "type": "imports"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "utils/file_8.cpp",
+          "services/file_9.cpp",
+          "models/file_4.cpp"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "helpers/file_10.cpp",
+          "controllers/file_7.cpp",
+          "models/file_1.cpp"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "helpers/file_5.cpp",
+          "controllers/file_2.cpp",
+          "models/file_4.cpp"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "helpers/file_6.cpp",
+          "utils/file_3.cpp"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "models/file_4.cpp",
+          "helpers/file_6.cpp",
+          "controllers/file_2.cpp"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "utils/file_3.cpp",
+          "controllers/file_2.cpp",
+          "utils/file_8.cpp",
+          "helpers/file_10.cpp"
+        ],
+        "depth": 3
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "medium",
+    "renamed_entities": {
+      "function_0": "ftfaftlv",
+      "function_1": "gfspailo",
+      "function_2": "aqrbcwjn",
+      "function_3": "uvnszptq",
+      "function_4": "wasjqijz",
+      "function_5": "yokoteqd",
+      "function_6": "zlpkjukw"
+    },
+    "moved_files": 0,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "wrong_condition in main processing logic",
+    "fix_type": "logic_correction",
+    "must_find_files": [
+      "models/file_1.cpp",
+      "controllers/file_2.cpp",
+      "models/file_4.cpp",
+      "helpers/file_6.cpp",
+      "utils/file_8.cpp"
+    ],
+    "should_find_files": [
+      "utils/file_3.cpp",
+      "helpers/file_5.cpp",
+      "helpers/file_10.cpp"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.3842011725381114
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_logic_errors_1.cpp",
+      "test_code": "// Test for logic_errors in cpp",
+      "test_type": "e2e"
+    },
+    {
+      "file_name": "test_logic_errors_2.cpp",
+      "test_code": "// Test for logic_errors in cpp",
+      "test_type": "unit"
+    },
+    {
+      "file_name": "test_logic_errors_3.cpp",
+      "test_code": "// Test for logic_errors in cpp",
+      "test_type": "integration"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "logic_errors",
+      "error_message": "AssertionError: Expected 5 but got 4",
+      "stack_trace": "Stack trace for cpp",
+      "timestamp": "2025-08-07T02:22:49.934028"
+    }
+  ],
+  "symptoms": [
+    "Incorrect output produced",
+    "Test cases failing",
+    "Unexpected behavior"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 196,
+    "function": "process_function",
+    "module": "core"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "controllers/file_2.cpp",
+      "models/file_4.cpp",
+      "helpers/file_6.cpp"
+    ],
+    "should_find_files": [
+      "models/file_1.cpp",
+      "utils/file_8.cpp"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

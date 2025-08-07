@@ -1,0 +1,1 @@
+// Code snippet for src/core/manager_8.py

@@ -1,0 +1,331 @@
+{
+  "bug_id": "MRR-API_MISUSE-202508-0358",
+  "category": "api_misuse",
+  "subcategory": "missing_error_handling",
+  "language": "cpp",
+  "description": "API misuse: missing_error_handling violating API contract",
+  "complexity": {
+    "spatial_distribution": 5,
+    "temporal_spread_months": 3,
+    "abstraction_layers": 3,
+    "obfuscation_level": "high",
+    "cross_module_dependencies": 6,
+    "artifact_types": 5
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for api_misuse/missing_error_handling in cpp",
+    "fixed_code": "// Fixed code for api_misuse/missing_error_handling in cpp"
+  },
+  "scattered_context": [
+    {
+      "file_path": "core/file_1.cpp",
+      "content": "// Context code for api_misuse in cpp",
+      "relevance": "high",
+      "relationship": "imports",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        183
+      ]
+    },
+    {
+      "file_path": "models/file_2.cpp",
+      "content": "// Context code for api_misuse in cpp",
+      "relevance": "low",
+      "relationship": "implements",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        173,
+        65
+      ]
+    },
+    {
+      "file_path": "core/file_3.cpp",
+      "content": "// Context code for api_misuse in cpp",
+      "relevance": "critical",
+      "relationship": "extends",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        29,
+        143,
+        198
+      ]
+    },
+    {
+      "file_path": "utils/file_4.cpp",
+      "content": "// Context code for api_misuse in cpp",
+      "relevance": "medium",
+      "relationship": "implements",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        25,
+        110,
+        184,
+        17,
+        31
+      ]
+    },
+    {
+      "file_path": "models/file_5.cpp",
+      "content": "// Context code for api_misuse in cpp",
+      "relevance": "low",
+      "relationship": "tests",
+      "specific_issue": "Related to api_misuse issue",
+      "line_numbers": [
+        82,
+        106
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-05-09",
+    "temporal_spread_days": 90,
+    "refactoring_events": 5,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-05-29",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-06-22",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-05-26",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-06-28",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "8416941f",
+        "date": "2025-07-05",
+        "message": "Refactored module 4",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "edd0a651",
+        "date": "2025-05-19",
+        "message": "Refactored module 5",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "a67f5b4e",
+        "date": "2025-06-03",
+        "message": "Refactored module 6",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "e32a385c",
+        "date": "2025-05-16",
+        "message": "Refactored module 7",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "740b3cf2",
+        "date": "2025-07-17",
+        "message": "Refactored module 8",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "core/file_1.cpp",
+        "to": "models/file_2.cpp",
+        "type": "imports"
+      },
+      {
+        "from": "models/file_2.cpp",
+        "to": "core/file_3.cpp",
+        "type": "calls"
+      },
+      {
+        "from": "core/file_3.cpp",
+        "to": "utils/file_4.cpp",
+        "type": "extends"
+      },
+      {
+        "from": "utils/file_4.cpp",
+        "to": "models/file_5.cpp",
+        "type": "imports"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "models/file_5.cpp",
+          "core/file_3.cpp",
+          "models/file_2.cpp"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "utils/file_4.cpp",
+          "core/file_1.cpp",
+          "models/file_2.cpp"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "models/file_2.cpp",
+          "models/file_5.cpp"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "models/file_2.cpp",
+          "utils/file_4.cpp",
+          "core/file_3.cpp"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "utils/file_4.cpp",
+          "core/file_3.cpp",
+          "models/file_5.cpp",
+          "models/file_2.cpp"
+        ],
+        "depth": 3
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "high",
+    "renamed_entities": {
+      "entity_0": "FAmoWtHIiC",
+      "entity_1": "JWqIWqCkWi",
+      "entity_2": "QcGOwUNvbs",
+      "entity_3": "XVVmbHzkUV",
+      "entity_4": "CxMPRBuHLJ",
+      "entity_5": "iwLACZyeWO",
+      "entity_6": "vwTeqPqGsb",
+      "entity_7": "BSHfmmUYSz",
+      "entity_8": "djXWYPwcKO",
+      "entity_9": "NpDssRkRkM",
+      "entity_10": "twbHrevmTI",
+      "entity_11": "OpLhYWvkQP",
+      "entity_12": "MCGhpcwFRS",
+      "entity_13": "qzhCsVCSnN",
+      "entity_14": "wzqmFtWGkv"
+    },
+    "moved_files": 0,
+    "refactored_modules": 1
+  },
+  "ground_truth": {
+    "root_cause": "missing_error_handling in main processing logic",
+    "fix_type": "api_correction",
+    "must_find_files": [
+      "core/file_1.cpp",
+      "core/file_3.cpp"
+    ],
+    "should_find_files": [
+      "utils/file_4.cpp"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 0.9799989729830946
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_api_misuse_1.cpp",
+      "test_code": "// Test for api_misuse in cpp",
+      "test_type": "e2e"
+    },
+    {
+      "file_name": "test_api_misuse_2.cpp",
+      "test_code": "// Test for api_misuse in cpp",
+      "test_type": "e2e"
+    },
+    {
+      "file_name": "test_api_misuse_3.cpp",
+      "test_code": "// Test for api_misuse in cpp",
+      "test_type": "e2e"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "api_misuse",
+      "error_message": "TypeError: Invalid argument type for API call",
+      "stack_trace": "Stack trace for cpp",
+      "timestamp": "2025-08-07T02:22:50.322496"
+    },
+    {
+      "error_type": "api_misuse",
+      "error_message": "TypeError: Invalid argument type for API call",
+      "stack_trace": "Stack trace for cpp",
+      "timestamp": "2025-08-07T02:22:50.322497"
+    }
+  ],
+  "symptoms": [
+    "Generic symptom"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 80,
+    "function": "process_function",
+    "module": "utils"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "core/file_3.cpp"
+    ],
+    "should_find_files": [
+      "core/file_1.cpp"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

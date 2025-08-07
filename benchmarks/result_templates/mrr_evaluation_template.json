@@ -1,0 +1,173 @@
+{
+  "benchmark_metadata": {
+    "name": "Multi Random Retrieval (MRR) Benchmark 2025",
+    "version": "2.0",
+    "total_scenarios": 5000,
+    "total_bugs": 12500,
+    "evaluation_date": "2025-06-30",
+    "paper_reference": "Khan et al., 2025"
+  },
+  "scenario_distribution": {
+    "context_scattering": {
+      "10-20_files": 1500,
+      "21-30_files": 1800,
+      "31-40_files": 1200,
+      "41-50_files": 500
+    },
+    "temporal_dispersion": {
+      "3-6_months": 2000,
+      "7-9_months": 1800,
+      "10-12_months": 1200
+    },
+    "complexity_levels": {
+      "low": 1000,
+      "medium": 2000,
+      "high": 1500,
+      "extreme": 500
+    }
+  },
+  "bug_categories": {
+    "syntax_errors": {
+      "count": 500,
+      "percentage": 10,
+      "subtypes": ["missing_brackets", "typos", "indentation", "unclosed_strings"]
+    },
+    "logic_bugs": {
+      "count": 1200,
+      "percentage": 24,
+      "subtypes": ["off_by_one", "incorrect_conditions", "wrong_operators", "faulty_algorithms"]
+    },
+    "concurrency_issues": {
+      "count": 800,
+      "percentage": 16,
+      "subtypes": ["race_conditions", "deadlocks", "thread_safety", "synchronization"]
+    },
+    "memory_problems": {
+      "count": 600,
+      "percentage": 12,
+      "subtypes": ["leaks", "buffer_overflow", "null_pointer", "use_after_free"]
+    },
+    "api_misuse": {
+      "count": 900,
+      "percentage": 18,
+      "subtypes": ["deprecated_methods", "wrong_parameters", "missing_callbacks", "incorrect_types"]
+    },
+    "performance_bugs": {
+      "count": 400,
+      "percentage": 8,
+      "subtypes": ["inefficient_algorithms", "excessive_io", "cache_misses", "memory_thrashing"]
+    },
+    "configuration_errors": {
+      "count": 150,
+      "percentage": 3,
+      "subtypes": ["wrong_settings", "missing_env_vars", "invalid_paths"]
+    },
+    "security_vulnerabilities": {
+      "count": 150,
+      "percentage": 3,
+      "subtypes": ["sql_injection", "xss", "buffer_overflow", "weak_crypto"]
+    },
+    "type_errors": {
+      "count": 100,
+      "percentage": 2,
+      "subtypes": ["type_mismatch", "null_safety", "casting_errors"]
+    },
+    "async_bugs": {
+      "count": 100,
+      "percentage": 2,
+      "subtypes": ["promise_rejection", "callback_hell", "timing_issues"]
+    },
+    "integration_issues": {
+      "count": 50,
+      "percentage": 1,
+      "subtypes": ["api_version_mismatch", "protocol_errors", "data_format"]
+    },
+    "state_management": {
+      "count": 50,
+      "percentage": 1,
+      "subtypes": ["inconsistent_state", "stale_data", "mutation_bugs"]
+    }
+  },
+  "evaluation_metrics": {
+    "primary_metrics": {
+      "debug_success_rate": {
+        "description": "Percentage of bugs fixed correctly",
+        "formula": "successful_fixes / total_bugs * 100"
+      },
+      "precision_at_k": {
+        "description": "Precision of retrieved context at k files",
+        "k_values": [1, 5, 10, 20, 50]
+      },
+      "recall_at_k": {
+        "description": "Recall of relevant files at k",
+        "k_values": [1, 5, 10, 20, 50]
+      },
+      "mean_reciprocal_rank": {
+        "description": "Average reciprocal rank of first relevant file"
+      }
+    },
+    "secondary_metrics": {
+      "fix_iterations": {
+        "description": "Number of attempts to reach correct fix"
+      },
+      "context_efficiency": {
+        "description": "Ratio of useful to total retrieved context"
+      },
+      "time_to_fix": {
+        "description": "End-to-end debugging time"
+      },
+      "token_usage": {
+        "description": "Total tokens consumed per fix"
+      }
+    }
+  },
+  "model_results_template": {
+    "model_name": "",
+    "overall_performance": {
+      "debug_success_rate": 0.0,
+      "precision_at_10": 0.0,
+      "recall_at_10": 0.0,
+      "mean_reciprocal_rank": 0.0,
+      "avg_fix_iterations": 0.0,
+      "avg_context_efficiency": 0.0,
+      "avg_time_seconds": 0.0,
+      "avg_tokens_used": 0
+    },
+    "category_breakdown": {
+      "syntax_errors": {"success_rate": 0.0, "avg_iterations": 0.0},
+      "logic_bugs": {"success_rate": 0.0, "avg_iterations": 0.0},
+      "concurrency_issues": {"success_rate": 0.0, "avg_iterations": 0.0},
+      "memory_problems": {"success_rate": 0.0, "avg_iterations": 0.0},
+      "api_misuse": {"success_rate": 0.0, "avg_iterations": 0.0},
+      "performance_bugs": {"success_rate": 0.0, "avg_iterations": 0.0}
+    },
+    "retrieval_performance": {
+      "precision_curve": {
+        "k_1": 0.0,
+        "k_5": 0.0,
+        "k_10": 0.0,
+        "k_20": 0.0,
+        "k_50": 0.0
+      },
+      "recall_curve": {
+        "k_1": 0.0,
+        "k_5": 0.0,
+        "k_10": 0.0,
+        "k_20": 0.0,
+        "k_50": 0.0
+      }
+    },
+    "complexity_analysis": {
+      "low_complexity": {"success_rate": 0.0, "avg_time": 0.0},
+      "medium_complexity": {"success_rate": 0.0, "avg_time": 0.0},
+      "high_complexity": {"success_rate": 0.0, "avg_time": 0.0},
+      "extreme_complexity": {"success_rate": 0.0, "avg_time": 0.0}
+    }
+  },
+  "statistical_validation": {
+    "confidence_level": 0.95,
+    "minimum_samples": 100,
+    "statistical_tests": ["t_test", "mann_whitney_u", "cohens_d"],
+    "bootstrap_iterations": 1000
+  }
+}

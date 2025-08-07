@@ -1,0 +1,1 @@
+// Code snippet for src/core/processor_67.java

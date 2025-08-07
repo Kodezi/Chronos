@@ -1,0 +1,732 @@
+{
+  "bug_id": "MRR-CONCURRENCY_ISSUES-202508-0321",
+  "category": "concurrency_issues",
+  "subcategory": "data_race",
+  "language": "java",
+  "description": "Concurrency bug: data_race in multi-threaded code",
+  "complexity": {
+    "spatial_distribution": 39,
+    "temporal_spread_months": 3,
+    "abstraction_layers": 3,
+    "obfuscation_level": "high",
+    "cross_module_dependencies": 6,
+    "artifact_types": 5
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for concurrency_issues/data_race in java",
+    "fixed_code": "// Fixed code for concurrency_issues/data_race in java"
+  },
+  "scattered_context": [
+    {
+      "file_path": "core/file_1.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "low",
+      "relationship": "calls",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        92,
+        157,
+        138,
+        100
+      ]
+    },
+    {
+      "file_path": "core/file_2.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "medium",
+      "relationship": "extends",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        184
+      ]
+    },
+    {
+      "file_path": "utils/file_3.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "low",
+      "relationship": "uses",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        90,
+        167
+      ]
+    },
+    {
+      "file_path": "utils/file_4.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "medium",
+      "relationship": "implements",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        22,
+        126,
+        117
+      ]
+    },
+    {
+      "file_path": "utils/file_5.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "high",
+      "relationship": "uses",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        190,
+        62,
+        17
+      ]
+    },
+    {
+      "file_path": "utils/file_6.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "high",
+      "relationship": "calls",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        143,
+        40,
+        41,
+        82,
+        92
+      ]
+    },
+    {
+      "file_path": "core/file_7.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "medium",
+      "relationship": "extends",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        13,
+        163,
+        157,
+        17
+      ]
+    },
+    {
+      "file_path": "services/file_8.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "critical",
+      "relationship": "imports",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        41,
+        145,
+        76,
+        172
+      ]
+    },
+    {
+      "file_path": "models/file_9.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "medium",
+      "relationship": "uses",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        172,
+        166,
+        19
+      ]
+    },
+    {
+      "file_path": "models/file_10.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "high",
+      "relationship": "imports",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        186,
+        168,
+        144,
+        24,
+        153
+      ]
+    },
+    {
+      "file_path": "utils/file_11.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "high",
+      "relationship": "implements",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        83,
+        85,
+        172
+      ]
+    },
+    {
+      "file_path": "controllers/file_12.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "medium",
+      "relationship": "uses",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        19,
+        163,
+        77,
+        176
+      ]
+    },
+    {
+      "file_path": "controllers/file_13.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "low",
+      "relationship": "uses",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        166,
+        137,
+        68
+      ]
+    },
+    {
+      "file_path": "services/file_14.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "low",
+      "relationship": "tests",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        147
+      ]
+    },
+    {
+      "file_path": "core/file_15.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "critical",
+      "relationship": "imports",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        165,
+        109,
+        33,
+        89
+      ]
+    },
+    {
+      "file_path": "controllers/file_16.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "critical",
+      "relationship": "extends",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        151,
+        58,
+        11,
+        150
+      ]
+    },
+    {
+      "file_path": "models/file_17.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "medium",
+      "relationship": "tests",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        101,
+        97
+      ]
+    },
+    {
+      "file_path": "models/file_18.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "medium",
+      "relationship": "calls",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        176
+      ]
+    },
+    {
+      "file_path": "models/file_19.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "critical",
+      "relationship": "implements",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        52,
+        78,
+        178
+      ]
+    },
+    {
+      "file_path": "utils/file_20.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "medium",
+      "relationship": "implements",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        38,
+        98,
+        35,
+        131,
+        23
+      ]
+    },
+    {
+      "file_path": "utils/file_21.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "critical",
+      "relationship": "imports",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        16,
+        131,
+        24
+      ]
+    },
+    {
+      "file_path": "utils/file_22.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "low",
+      "relationship": "implements",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        115,
+        123,
+        133,
+        175,
+        98
+      ]
+    },
+    {
+      "file_path": "controllers/file_23.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "low",
+      "relationship": "imports",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        189,
+        94,
+        141
+      ]
+    },
+    {
+      "file_path": "controllers/file_24.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        59,
+        165,
+        94,
+        55,
+        124
+      ]
+    },
+    {
+      "file_path": "core/file_25.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "critical",
+      "relationship": "extends",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        59,
+        197,
+        188,
+        42
+      ]
+    },
+    {
+      "file_path": "utils/file_26.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "medium",
+      "relationship": "extends",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        21
+      ]
+    },
+    {
+      "file_path": "models/file_27.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "low",
+      "relationship": "calls",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        82,
+        33,
+        61
+      ]
+    },
+    {
+      "file_path": "utils/file_28.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "high",
+      "relationship": "tests",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        159,
+        69
+      ]
+    },
+    {
+      "file_path": "utils/file_29.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "high",
+      "relationship": "implements",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        31,
+        95,
+        194
+      ]
+    },
+    {
+      "file_path": "utils/file_30.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "high",
+      "relationship": "tests",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        110,
+        108,
+        180,
+        23
+      ]
+    },
+    {
+      "file_path": "helpers/file_31.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "medium",
+      "relationship": "calls",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        185,
+        63
+      ]
+    },
+    {
+      "file_path": "core/file_32.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "low",
+      "relationship": "tests",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        128,
+        157,
+        79,
+        130,
+        163
+      ]
+    },
+    {
+      "file_path": "controllers/file_33.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "high",
+      "relationship": "calls",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        169,
+        102
+      ]
+    },
+    {
+      "file_path": "helpers/file_34.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "high",
+      "relationship": "calls",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        16,
+        41
+      ]
+    },
+    {
+      "file_path": "utils/file_35.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "high",
+      "relationship": "calls",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        177,
+        102,
+        44,
+        133
+      ]
+    },
+    {
+      "file_path": "core/file_36.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "low",
+      "relationship": "imports",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        46,
+        160,
+        123
+      ]
+    },
+    {
+      "file_path": "utils/file_37.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "critical",
+      "relationship": "calls",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        149,
+        77,
+        39
+      ]
+    },
+    {
+      "file_path": "controllers/file_38.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "critical",
+      "relationship": "implements",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        173,
+        187,
+        138,
+        169,
+        15
+      ]
+    },
+    {
+      "file_path": "services/file_39.java",
+      "content": "// Context code for concurrency_issues in java",
+      "relevance": "critical",
+      "relationship": "uses",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        59,
+        194,
+        185,
+        153,
+        66
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-05-09",
+    "temporal_spread_days": 90,
+    "refactoring_events": 0,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-07-17",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-06-26",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-06-14",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-06-25",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "8416941f",
+        "date": "2025-07-18",
+        "message": "Refactored module 4",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "edd0a651",
+        "date": "2025-06-07",
+        "message": "Refactored module 5",
+        "files": [
+          "file_0.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "core/file_1.java",
+        "to": "core/file_2.java",
+        "type": "extends"
+      },
+      {
+        "from": "core/file_2.java",
+        "to": "utils/file_3.java",
+        "type": "extends"
+      },
+      {
+        "from": "utils/file_3.java",
+        "to": "utils/file_4.java",
+        "type": "imports"
+      },
+      {
+        "from": "utils/file_4.java",
+        "to": "utils/file_5.java",
+        "type": "imports"
+      },
+      {
+        "from": "utils/file_5.java",
+        "to": "utils/file_6.java",
+        "type": "imports"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "models/file_19.java",
+          "models/file_10.java",
+          "core/file_1.java"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "models/file_27.java",
+          "utils/file_26.java",
+          "controllers/file_38.java"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "helpers/file_31.java",
+          "models/file_19.java",
+          "utils/file_20.java"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "controllers/file_16.java",
+          "core/file_25.java"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "core/file_32.java",
+          "models/file_10.java",
+          "services/file_8.java"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "utils/file_6.java",
+          "core/file_2.java",
+          "utils/file_20.java",
+          "controllers/file_33.java"
+        ],
+        "depth": 3
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "high",
+    "renamed_entities": {
+      "entity_0": "SeAIJYBQad",
+      "entity_1": "FYsSuNHJDn",
+      "entity_2": "BUCABMonzN",
+      "entity_3": "OVFlkIVakY",
+      "entity_4": "sOYHkFZigc"
+    },
+    "moved_files": 5,
+    "refactored_modules": 3
+  },
+  "ground_truth": {
+    "root_cause": "data_race in main processing logic",
+    "fix_type": "synchronization",
+    "must_find_files": [
+      "utils/file_5.java",
+      "utils/file_6.java",
+      "services/file_8.java",
+      "models/file_10.java",
+      "utils/file_11.java"
+    ],
+    "should_find_files": [
+      "core/file_2.java",
+      "utils/file_4.java",
+      "core/file_7.java"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.7389452096490923
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_concurrency_issues_1.java",
+      "test_code": "// Test for concurrency_issues in java",
+      "test_type": "integration"
+    },
+    {
+      "file_name": "test_concurrency_issues_2.java",
+      "test_code": "// Test for concurrency_issues in java",
+      "test_type": "unit"
+    },
+    {
+      "file_name": "test_concurrency_issues_3.java",
+      "test_code": "// Test for concurrency_issues in java",
+      "test_type": "integration"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "concurrency_issues",
+      "error_message": "DeadlockError: Thread deadlock detected",
+      "stack_trace": "Stack trace for java",
+      "timestamp": "2025-08-07T02:22:51.092238"
+    }
+  ],
+  "symptoms": [
+    "Intermittent failures",
+    "Race condition symptoms",
+    "Deadlock occurs"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 162,
+    "function": "process_function",
+    "module": "services"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "services/file_8.java",
+      "core/file_15.java",
+      "controllers/file_16.java"
+    ],
+    "should_find_files": [
+      "utils/file_5.java",
+      "utils/file_6.java"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

@@ -1,0 +1,346 @@
+{
+  "bug_id": "MRR-MEMORY_ISSUES-202508-0539",
+  "category": "memory_issues",
+  "subcategory": "buffer_overflow",
+  "language": "java",
+  "description": "Memory issue: buffer_overflow causing memory problems",
+  "complexity": {
+    "spatial_distribution": 10,
+    "temporal_spread_months": 12,
+    "abstraction_layers": 3,
+    "obfuscation_level": "high",
+    "cross_module_dependencies": 5,
+    "artifact_types": 4
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for memory_issues/buffer_overflow in java",
+    "fixed_code": "// Fixed code for memory_issues/buffer_overflow in java"
+  },
+  "scattered_context": [
+    {
+      "file_path": "core/file_1.java",
+      "content": "// Context code for memory_issues in java",
+      "relevance": "medium",
+      "relationship": "uses",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        34,
+        137
+      ]
+    },
+    {
+      "file_path": "controllers/file_2.java",
+      "content": "// Context code for memory_issues in java",
+      "relevance": "medium",
+      "relationship": "uses",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        19,
+        127,
+        143
+      ]
+    },
+    {
+      "file_path": "models/file_3.java",
+      "content": "// Context code for memory_issues in java",
+      "relevance": "high",
+      "relationship": "calls",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        36,
+        62,
+        106,
+        19,
+        178
+      ]
+    },
+    {
+      "file_path": "utils/file_4.java",
+      "content": "// Context code for memory_issues in java",
+      "relevance": "high",
+      "relationship": "implements",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        90
+      ]
+    },
+    {
+      "file_path": "services/file_5.java",
+      "content": "// Context code for memory_issues in java",
+      "relevance": "critical",
+      "relationship": "calls",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        146
+      ]
+    },
+    {
+      "file_path": "helpers/file_6.java",
+      "content": "// Context code for memory_issues in java",
+      "relevance": "critical",
+      "relationship": "extends",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        144,
+        47,
+        154
+      ]
+    },
+    {
+      "file_path": "core/file_7.java",
+      "content": "// Context code for memory_issues in java",
+      "relevance": "low",
+      "relationship": "implements",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        29,
+        64,
+        18,
+        158,
+        33
+      ]
+    },
+    {
+      "file_path": "services/file_8.java",
+      "content": "// Context code for memory_issues in java",
+      "relevance": "high",
+      "relationship": "calls",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        48,
+        127
+      ]
+    },
+    {
+      "file_path": "services/file_9.java",
+      "content": "// Context code for memory_issues in java",
+      "relevance": "high",
+      "relationship": "extends",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        109
+      ]
+    },
+    {
+      "file_path": "controllers/file_10.java",
+      "content": "// Context code for memory_issues in java",
+      "relevance": "high",
+      "relationship": "calls",
+      "specific_issue": "Related to memory_issues issue",
+      "line_numbers": [
+        159
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2024-08-12",
+    "temporal_spread_days": 360,
+    "refactoring_events": 3,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2024-09-08",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-07-30",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2024-12-27",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-07-22",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "core/file_1.java",
+        "to": "controllers/file_2.java",
+        "type": "imports"
+      },
+      {
+        "from": "controllers/file_2.java",
+        "to": "models/file_3.java",
+        "type": "extends"
+      },
+      {
+        "from": "models/file_3.java",
+        "to": "utils/file_4.java",
+        "type": "extends"
+      },
+      {
+        "from": "utils/file_4.java",
+        "to": "services/file_5.java",
+        "type": "extends"
+      },
+      {
+        "from": "services/file_5.java",
+        "to": "helpers/file_6.java",
+        "type": "imports"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "utils/file_4.java",
+          "services/file_5.java",
+          "models/file_3.java"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "services/file_5.java",
+          "core/file_7.java",
+          "controllers/file_2.java"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "core/file_1.java",
+          "core/file_7.java",
+          "controllers/file_2.java"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "core/file_7.java",
+          "models/file_3.java"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "core/file_7.java",
+          "services/file_8.java",
+          "controllers/file_2.java"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "services/file_8.java",
+          "services/file_9.java",
+          "core/file_1.java",
+          "services/file_5.java"
+        ],
+        "depth": 3
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "high",
+    "renamed_entities": {
+      "entity_0": "ZOAdTfNYlb",
+      "entity_1": "plXcgJsQEa",
+      "entity_2": "vzYrMOWQYp",
+      "entity_3": "sYcMorFoIG",
+      "entity_4": "YpwtozDBha",
+      "entity_5": "OxOtJdkxgP",
+      "entity_6": "wXIVyxaUHK",
+      "entity_7": "cOGWxWsmVx",
+      "entity_8": "kHaYEuKujY",
+      "entity_9": "McOfcrbMpE",
+      "entity_10": "weZRAzuoSk",
+      "entity_11": "JFPqBVwxlP",
+      "entity_12": "UUuMkbGfVt",
+      "entity_13": "wQXoFMtVYH",
+      "entity_14": "gFCLVmUsom"
+    },
+    "moved_files": 2,
+    "refactored_modules": 2
+  },
+  "ground_truth": {
+    "root_cause": "buffer_overflow in main processing logic",
+    "fix_type": "memory_management",
+    "must_find_files": [
+      "models/file_3.java",
+      "utils/file_4.java",
+      "services/file_5.java",
+      "helpers/file_6.java",
+      "services/file_8.java"
+    ],
+    "should_find_files": [
+      "core/file_1.java",
+      "controllers/file_2.java"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.5905595809553337
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_memory_issues_1.java",
+      "test_code": "// Test for memory_issues in java",
+      "test_type": "e2e"
+    },
+    {
+      "file_name": "test_memory_issues_2.java",
+      "test_code": "// Test for memory_issues in java",
+      "test_type": "e2e"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "memory_issues",
+      "error_message": "MemoryError: Out of memory",
+      "stack_trace": "Stack trace for java",
+      "timestamp": "2025-08-07T02:22:50.881597"
+    }
+  ],
+  "symptoms": [
+    "Generic symptom"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 124,
+    "function": "process_function",
+    "module": "core"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "services/file_5.java",
+      "helpers/file_6.java"
+    ],
+    "should_find_files": [
+      "models/file_3.java",
+      "utils/file_4.java"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

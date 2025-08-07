@@ -1,0 +1,1 @@
+// Code snippet for src/test/fixture_19.java

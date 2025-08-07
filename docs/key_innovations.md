@@ -1,6 +1,6 @@
 # Key Innovations in Kodezi Chronos
 
-Kodezi Chronos represents several breakthrough innovations in AI-powered debugging, each contributing to its revolutionary 65.3% success rate - a 6-7x improvement over state-of-the-art models.
+Kodezi Chronos represents several breakthrough innovations in AI-powered debugging, each contributing to its revolutionary 67.3% success rate - a 4.87x improvement over state-of-the-art models.
 
 ## Table of Contents
 
@@ -22,11 +22,11 @@ Unlike general-purpose language models adapted for coding tasks, Chronos is buil
 
 | Innovation | Impact | Improvement |
 |------------|--------|-------------|
-| AGR Retrieval | Repository-scale context | 5x better than flat retrieval |
-| Debug-Tuned LLM | Specialized for fixes | 6-7x success rate improvement |
-| Persistent Memory | Cross-session learning | 41% improvement after 1K sessions |
+| AGR Retrieval | Repository-scale context | 92% precision at 85% recall |
+| Debug-Tuned LLM | Specialized for fixes | 4.87x success rate improvement |
+| Persistent Memory | Cross-session learning | 87% cache hit rate |
 | Output-First Design | Fix generation focus | 4.2x token efficiency |
-| Iterative Loop | Self-correcting | 2.3x faster resolution |
+| Iterative Loop | Self-correcting | 7.8 avg iterations |
 
 ## Adaptive Graph-Guided Retrieval (AGR)
 
@@ -69,9 +69,10 @@ context = adaptive_k_hop_expansion(relevant_nodes, graph, query_complexity)
 
 | Metric | Traditional RAG | AGR | Improvement |
 |--------|----------------|-----|-------------|
-| Precision @ 3-hop | 42.3% | 84.3% | 2.0x |
-| Recall @ 3-hop | 38.7% | 92.1% | 2.4x |
-| Debug Success | 12.8% | 65.3% | 5.1x |
+| Precision @ 10 | 42.3% | 92.0% | 2.2x |
+| Recall @ 10 | 38.7% | 85.0% | 2.2x |
+| Debug Success | 14.2% | 67.3% | 4.74x |
+| Complexity | O(n) | O(k log d) | Sub-linear |
 
 ## Debug-Tuned Language Model
 
@@ -82,7 +83,7 @@ While general LLMs are trained on vast text corpora, Chronos's core model is spe
 ### Training Methodology
 
 1. **Specialized Pre-training**
-   - 2.5M real debugging sessions
+   - 15M+ real debugging sessions
    - Error-fix pairs with validation results
    - Multi-language debugging patterns
    - Failed attempt analysis
@@ -166,6 +167,7 @@ Session Memory:
 | 100 | 58.7% | +12.7% |
 | 1,000 | 64.2% | +23.2% |
 | 10,000 | 73.4% | +40.9% |
+| 100,000 | 79.2% | +52.0% |
 
 ## Output-First Architecture
 
@@ -249,9 +251,10 @@ def chronos_debug_loop(bug):
 
 ### Performance Metrics
 
-- Average iterations to success: 2.2
-- Success by iteration: 1st (42%), 2nd (31%), 3rd+ (27%)
+- Average iterations to success: 7.8
+- Success by iteration: 1st (12%), 2nd (23%), 3rd+ (65%)
 - Iteration efficiency: 89% avoid repeated errors
+- Confidence-based termination: 92% accuracy
 
 ## Multi-Scale Code Understanding
 
@@ -340,7 +343,7 @@ Instead of generating fixes and hoping they work, Chronos integrates validation 
 - Obfuscated dependencies
 - Realistic error messages
 
-**Impact**: Revealed that existing models achieve only 8-11% success on realistic debugging tasks
+**Impact**: Revealed that existing models achieve only 12-14.2% success on realistic debugging tasks
 
 ### 2. Debugging-First Evaluation
 
@@ -379,7 +382,7 @@ Instead of generating fixes and hoping they work, Chronos integrates validation 
 @article{khan2025chronos,
   title={Kodezi Chronos: A Debugging-First Language Model for 
          Repository-Scale, Memory-Driven Code Understanding},
-  author={Khan, Ishraq and Chowdary, Assad and 
+  author={Khan, Ishraq and Zaii, Yousuf and Chowdary, Assad and 
           Haseeb, Sharoz and Patel, Urvish},
   journal={arXiv preprint arXiv:2507.12482},
   year={2025}

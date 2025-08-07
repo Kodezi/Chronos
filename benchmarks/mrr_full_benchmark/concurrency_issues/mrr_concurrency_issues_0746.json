@@ -1,0 +1,560 @@
+{
+  "bug_id": "MRR-CONCURRENCY_ISSUES-202508-0746",
+  "category": "concurrency_issues",
+  "subcategory": "data_race",
+  "language": "cpp",
+  "description": "Concurrency bug: data_race in multi-threaded code",
+  "complexity": {
+    "spatial_distribution": 25,
+    "temporal_spread_months": 10,
+    "abstraction_layers": 5,
+    "obfuscation_level": "high",
+    "cross_module_dependencies": 9,
+    "artifact_types": 2
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for concurrency_issues/data_race in cpp",
+    "fixed_code": "// Fixed code for concurrency_issues/data_race in cpp"
+  },
+  "scattered_context": [
+    {
+      "file_path": "models/file_1.cpp",
+      "content": "// Context code for concurrency_issues in cpp",
+      "relevance": "medium",
+      "relationship": "calls",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        84,
+        195,
+        176,
+        62
+      ]
+    },
+    {
+      "file_path": "core/file_2.cpp",
+      "content": "// Context code for concurrency_issues in cpp",
+      "relevance": "high",
+      "relationship": "uses",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        67,
+        196,
+        25,
+        44,
+        129
+      ]
+    },
+    {
+      "file_path": "helpers/file_3.cpp",
+      "content": "// Context code for concurrency_issues in cpp",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        90,
+        73,
+        177,
+        160,
+        152
+      ]
+    },
+    {
+      "file_path": "models/file_4.cpp",
+      "content": "// Context code for concurrency_issues in cpp",
+      "relevance": "high",
+      "relationship": "calls",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        86,
+        45,
+        129,
+        72
+      ]
+    },
+    {
+      "file_path": "core/file_5.cpp",
+      "content": "// Context code for concurrency_issues in cpp",
+      "relevance": "low",
+      "relationship": "implements",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        129,
+        77,
+        68,
+        146,
+        197
+      ]
+    },
+    {
+      "file_path": "core/file_6.cpp",
+      "content": "// Context code for concurrency_issues in cpp",
+      "relevance": "critical",
+      "relationship": "calls",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        96,
+        98,
+        97,
+        189,
+        169
+      ]
+    },
+    {
+      "file_path": "helpers/file_7.cpp",
+      "content": "// Context code for concurrency_issues in cpp",
+      "relevance": "high",
+      "relationship": "extends",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        99,
+        162,
+        115,
+        90,
+        117
+      ]
+    },
+    {
+      "file_path": "services/file_8.cpp",
+      "content": "// Context code for concurrency_issues in cpp",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        178,
+        45,
+        171,
+        85,
+        181
+      ]
+    },
+    {
+      "file_path": "helpers/file_9.cpp",
+      "content": "// Context code for concurrency_issues in cpp",
+      "relevance": "medium",
+      "relationship": "uses",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        108
+      ]
+    },
+    {
+      "file_path": "services/file_10.cpp",
+      "content": "// Context code for concurrency_issues in cpp",
+      "relevance": "critical",
+      "relationship": "extends",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        191,
+        27,
+        117,
+        85,
+        105
+      ]
+    },
+    {
+      "file_path": "services/file_11.cpp",
+      "content": "// Context code for concurrency_issues in cpp",
+      "relevance": "high",
+      "relationship": "tests",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        189,
+        86,
+        84,
+        140
+      ]
+    },
+    {
+      "file_path": "models/file_12.cpp",
+      "content": "// Context code for concurrency_issues in cpp",
+      "relevance": "medium",
+      "relationship": "implements",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        135
+      ]
+    },
+    {
+      "file_path": "controllers/file_13.cpp",
+      "content": "// Context code for concurrency_issues in cpp",
+      "relevance": "critical",
+      "relationship": "implements",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        33,
+        64,
+        195
+      ]
+    },
+    {
+      "file_path": "utils/file_14.cpp",
+      "content": "// Context code for concurrency_issues in cpp",
+      "relevance": "critical",
+      "relationship": "extends",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        136
+      ]
+    },
+    {
+      "file_path": "models/file_15.cpp",
+      "content": "// Context code for concurrency_issues in cpp",
+      "relevance": "medium",
+      "relationship": "uses",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        171
+      ]
+    },
+    {
+      "file_path": "services/file_16.cpp",
+      "content": "// Context code for concurrency_issues in cpp",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        52,
+        198,
+        101,
+        129
+      ]
+    },
+    {
+      "file_path": "controllers/file_17.cpp",
+      "content": "// Context code for concurrency_issues in cpp",
+      "relevance": "high",
+      "relationship": "imports",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        83,
+        97,
+        142,
+        162,
+        190
+      ]
+    },
+    {
+      "file_path": "core/file_18.cpp",
+      "content": "// Context code for concurrency_issues in cpp",
+      "relevance": "critical",
+      "relationship": "imports",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        131,
+        119
+      ]
+    },
+    {
+      "file_path": "core/file_19.cpp",
+      "content": "// Context code for concurrency_issues in cpp",
+      "relevance": "high",
+      "relationship": "extends",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        128,
+        15,
+        78,
+        53
+      ]
+    },
+    {
+      "file_path": "models/file_20.cpp",
+      "content": "// Context code for concurrency_issues in cpp",
+      "relevance": "critical",
+      "relationship": "calls",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        53,
+        50,
+        67
+      ]
+    },
+    {
+      "file_path": "models/file_21.cpp",
+      "content": "// Context code for concurrency_issues in cpp",
+      "relevance": "critical",
+      "relationship": "tests",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        150
+      ]
+    },
+    {
+      "file_path": "utils/file_22.cpp",
+      "content": "// Context code for concurrency_issues in cpp",
+      "relevance": "high",
+      "relationship": "extends",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        156,
+        104,
+        122,
+        175
+      ]
+    },
+    {
+      "file_path": "utils/file_23.cpp",
+      "content": "// Context code for concurrency_issues in cpp",
+      "relevance": "medium",
+      "relationship": "implements",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        74,
+        130
+      ]
+    },
+    {
+      "file_path": "services/file_24.cpp",
+      "content": "// Context code for concurrency_issues in cpp",
+      "relevance": "high",
+      "relationship": "extends",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        125
+      ]
+    },
+    {
+      "file_path": "models/file_25.cpp",
+      "content": "// Context code for concurrency_issues in cpp",
+      "relevance": "critical",
+      "relationship": "extends",
+      "specific_issue": "Related to concurrency_issues issue",
+      "line_numbers": [
+        102,
+        48,
+        158
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2024-10-11",
+    "temporal_spread_days": 300,
+    "refactoring_events": 4,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-01-08",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-05-06",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-04-08",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "models/file_1.cpp",
+        "to": "core/file_2.cpp",
+        "type": "imports"
+      },
+      {
+        "from": "core/file_2.cpp",
+        "to": "helpers/file_3.cpp",
+        "type": "calls"
+      },
+      {
+        "from": "helpers/file_3.cpp",
+        "to": "models/file_4.cpp",
+        "type": "extends"
+      },
+      {
+        "from": "models/file_4.cpp",
+        "to": "core/file_5.cpp",
+        "type": "imports"
+      },
+      {
+        "from": "core/file_5.cpp",
+        "to": "core/file_6.cpp",
+        "type": "calls"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "core/file_5.cpp",
+          "services/file_16.cpp",
+          "models/file_15.cpp"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "controllers/file_13.cpp",
+          "utils/file_22.cpp",
+          "models/file_12.cpp"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "utils/file_14.cpp",
+          "controllers/file_17.cpp",
+          "core/file_2.cpp"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "controllers/file_17.cpp",
+          "helpers/file_7.cpp"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "core/file_6.cpp",
+          "helpers/file_7.cpp",
+          "controllers/file_17.cpp"
+        ],
+        "depth": 2
+      },
+      {
+        "path": [
+          "services/file_16.cpp",
+          "models/file_1.cpp",
+          "services/file_24.cpp",
+          "services/file_10.cpp"
+        ],
+        "depth": 3
+      },
+      {
+        "path": [
+          "services/file_10.cpp",
+          "models/file_21.cpp",
+          "helpers/file_3.cpp",
+          "models/file_25.cpp",
+          "utils/file_14.cpp"
+        ],
+        "depth": 4
+      },
+      {
+        "path": [
+          "models/file_21.cpp",
+          "core/file_18.cpp",
+          "models/file_12.cpp",
+          "controllers/file_13.cpp",
+          "helpers/file_7.cpp",
+          "helpers/file_9.cpp"
+        ],
+        "depth": 5
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "high",
+    "renamed_entities": {
+      "entity_0": "zOApuiLNzy",
+      "entity_1": "KiLTsaYXpD",
+      "entity_2": "nCvubHQqCr",
+      "entity_3": "VXVXzuyoOb",
+      "entity_4": "mYaCHaAYwV",
+      "entity_5": "JTjofIsEqo",
+      "entity_6": "rxvFjRRLyB",
+      "entity_7": "YQGwVUJJFU"
+    },
+    "moved_files": 1,
+    "refactored_modules": 1
+  },
+  "ground_truth": {
+    "root_cause": "data_race in main processing logic",
+    "fix_type": "synchronization",
+    "must_find_files": [
+      "core/file_2.cpp",
+      "helpers/file_3.cpp",
+      "models/file_4.cpp",
+      "core/file_6.cpp",
+      "helpers/file_7.cpp"
+    ],
+    "should_find_files": [
+      "models/file_1.cpp",
+      "helpers/file_9.cpp",
+      "models/file_12.cpp"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.5698083833290462
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_concurrency_issues_1.cpp",
+      "test_code": "// Test for concurrency_issues in cpp",
+      "test_type": "unit"
+    },
+    {
+      "file_name": "test_concurrency_issues_2.cpp",
+      "test_code": "// Test for concurrency_issues in cpp",
+      "test_type": "e2e"
+    },
+    {
+      "file_name": "test_concurrency_issues_3.cpp",
+      "test_code": "// Test for concurrency_issues in cpp",
+      "test_type": "unit"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "concurrency_issues",
+      "error_message": "DeadlockError: Thread deadlock detected",
+      "stack_trace": "Stack trace for cpp",
+      "timestamp": "2025-08-07T02:22:51.345868"
+    },
+    {
+      "error_type": "concurrency_issues",
+      "error_message": "DeadlockError: Thread deadlock detected",
+      "stack_trace": "Stack trace for cpp",
+      "timestamp": "2025-08-07T02:22:51.345870"
+    }
+  ],
+  "symptoms": [
+    "Intermittent failures",
+    "Race condition symptoms",
+    "Deadlock occurs"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 42,
+    "function": "process_function",
+    "module": "services"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "helpers/file_3.cpp",
+      "core/file_6.cpp",
+      "services/file_8.cpp"
+    ],
+    "should_find_files": [
+      "core/file_2.cpp",
+      "models/file_4.cpp"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

@@ -1,0 +1,282 @@
+{
+  "bug_id": "MRR-SYNTAX_ERRORS-202508-0435",
+  "category": "syntax_errors",
+  "subcategory": "incorrect_syntax",
+  "language": "java",
+  "description": "Syntax error: incorrect_syntax causing compilation failure",
+  "complexity": {
+    "spatial_distribution": 5,
+    "temporal_spread_months": 0,
+    "abstraction_layers": 2,
+    "obfuscation_level": "low",
+    "cross_module_dependencies": 2,
+    "artifact_types": 5
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for syntax_errors/incorrect_syntax in java",
+    "fixed_code": "// Fixed code for syntax_errors/incorrect_syntax in java"
+  },
+  "scattered_context": [
+    {
+      "file_path": "core/file_1.java",
+      "content": "// Context code for syntax_errors in java",
+      "relevance": "medium",
+      "relationship": "tests",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        32,
+        76
+      ]
+    },
+    {
+      "file_path": "controllers/file_2.java",
+      "content": "// Context code for syntax_errors in java",
+      "relevance": "medium",
+      "relationship": "implements",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        115,
+        200,
+        125,
+        70,
+        44
+      ]
+    },
+    {
+      "file_path": "services/file_3.java",
+      "content": "// Context code for syntax_errors in java",
+      "relevance": "low",
+      "relationship": "implements",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        196,
+        92
+      ]
+    },
+    {
+      "file_path": "core/file_4.java",
+      "content": "// Context code for syntax_errors in java",
+      "relevance": "high",
+      "relationship": "imports",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        150,
+        192,
+        156,
+        121
+      ]
+    },
+    {
+      "file_path": "core/file_5.java",
+      "content": "// Context code for syntax_errors in java",
+      "relevance": "medium",
+      "relationship": "uses",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        76,
+        81
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-08-07",
+    "temporal_spread_days": 0,
+    "refactoring_events": 2,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-08-07",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-08-07",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-08-07",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-08-07",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "8416941f",
+        "date": "2025-08-07",
+        "message": "Refactored module 4",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      },
+      {
+        "hash": "edd0a651",
+        "date": "2025-08-07",
+        "message": "Refactored module 5",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "core/file_1.java",
+        "to": "controllers/file_2.java",
+        "type": "calls"
+      },
+      {
+        "from": "controllers/file_2.java",
+        "to": "services/file_3.java",
+        "type": "imports"
+      },
+      {
+        "from": "services/file_3.java",
+        "to": "core/file_4.java",
+        "type": "calls"
+      },
+      {
+        "from": "core/file_4.java",
+        "to": "core/file_5.java",
+        "type": "calls"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "services/file_3.java",
+          "core/file_1.java",
+          "core/file_4.java"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "core/file_4.java",
+          "core/file_5.java",
+          "services/file_3.java"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "core/file_5.java",
+          "services/file_3.java"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "core/file_5.java",
+          "core/file_1.java",
+          "controllers/file_2.java"
+        ],
+        "depth": 2
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "low",
+    "renamed_entities": {
+      "variable_0": "var_0",
+      "variable_1": "var_1"
+    },
+    "moved_files": 0,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "incorrect_syntax in main processing logic",
+    "fix_type": "syntax_correction",
+    "must_find_files": [
+      "core/file_4.java"
+    ],
+    "should_find_files": [
+      "core/file_1.java",
+      "controllers/file_2.java",
+      "core/file_5.java"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 0.9756703838545444
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_syntax_errors_1.java",
+      "test_code": "// Test for syntax_errors in java",
+      "test_type": "unit"
+    },
+    {
+      "file_name": "test_syntax_errors_2.java",
+      "test_code": "// Test for syntax_errors in java",
+      "test_type": "integration"
+    },
+    {
+      "file_name": "test_syntax_errors_3.java",
+      "test_code": "// Test for syntax_errors in java",
+      "test_type": "integration"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "syntax_errors",
+      "error_message": "SyntaxError: invalid syntax at line 57",
+      "stack_trace": "Stack trace for java",
+      "timestamp": "2025-08-07T02:22:49.598369"
+    }
+  ],
+  "symptoms": [
+    "Code fails to compile/run",
+    "Syntax error message displayed",
+    "IDE highlights error"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 79,
+    "function": "process_function",
+    "module": "core"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [],
+    "should_find_files": [
+      "core/file_4.java"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

@@ -1,0 +1,523 @@
+{
+  "metadata": {
+    "version": "1.0-sample",
+    "total_cases": 500,
+    "description": "Representative sample of Chronos MRR benchmark (10% of full 5000 cases)",
+    "full_benchmark_info": "Complete benchmark available Q1 2026 - contact research@kodezi.com",
+    "categories": {
+      "syntax": 50,
+      "logic": 120,
+      "concurrency": 80,
+      "memory": 60,
+      "api": 90,
+      "performance": 40,
+      "cross_category": 60
+    }
+  },
+  "evaluation_protocol": {
+    "metrics": [
+      "retrieval_precision_at_k",
+      "retrieval_recall_at_k",
+      "fix_accuracy",
+      "root_cause_identification",
+      "iterations_to_fix",
+      "context_efficiency"
+    ],
+    "validation": {
+      "test_execution": "Run provided test suite",
+      "regression_check": "Ensure no new failures",
+      "performance_check": "Verify no performance degradation"
+    }
+  },
+  "test_cases": [
+    {
+      "bug_id": "mrr_sample_001",
+      "category": "cross_category",
+      "subcategories": ["memory", "concurrency"],
+      "difficulty": "hard",
+      "language": "java",
+      "repository": {
+        "size": "large",
+        "files": 1847,
+        "loc": 287000,
+        "age_months": 36
+      },
+      "description": "Memory leak in concurrent connection pool causing OOM after 48 hours",
+      "symptoms": [
+        "OutOfMemoryError after 2 days uptime",
+        "Heap dump shows millions of Connection objects",
+        "Only happens in production with >1000 concurrent users"
+      ],
+      "scattered_context": {
+        "db/ConnectionPool.java": {
+          "relevance": "critical",
+          "methods": ["getConnection", "releaseConnection"],
+          "issue": "Race condition in connection cleanup"
+        },
+        "db/ConnectionFactory.java": {
+          "relevance": "critical",
+          "issue": "Creates connections without cleanup hooks"
+        },
+        "config/database.properties": {
+          "relevance": "high",
+          "diff_prod_dev": "Pool size 500 vs 10"
+        },
+        "monitoring/gc.log": {
+          "relevance": "high",
+          "pattern": "Full GC frequency increasing"
+        },
+        "commits/": {
+          "relevance": "high",
+          "relevant_commits": [
+            {"id": "abc123", "date": "6 months ago", "message": "Optimize connection pooling"},
+            {"id": "def456", "date": "4 months ago", "message": "Increase pool size for production"}
+          ]
+        },
+        "tests/integration/ConnectionPoolTest.java": {
+          "relevance": "medium",
+          "issue": "Doesn't test high concurrency"
+        }
+      },
+      "ground_truth": {
+        "root_cause": "Connection cleanup thread dies silently on ConcurrentModificationException",
+        "contributing_factors": [
+          "No monitoring on cleanup thread",
+          "Exception swallowed in catch block",
+          "Pool size too large for cleanup rate"
+        ],
+        "fix": {
+          "primary": "Use ConcurrentHashMap for connection tracking",
+          "secondary": "Add cleanup thread monitoring",
+          "config": "Reduce pool size or increase cleanup frequency"
+        },
+        "files_modified": 4,
+        "complexity": "high"
+      }
+    },
+    {
+      "bug_id": "mrr_sample_002",
+      "category": "logic",
+      "difficulty": "medium",
+      "language": "python",
+      "repository": {
+        "size": "medium",
+        "files": 423,
+        "loc": 67000
+      },
+      "description": "Timezone conversion error causes incorrect billing dates",
+      "symptoms": [
+        "Customers billed one day early in specific timezones",
+        "Only affects UTC+X timezones",
+        "Started after daylight savings change"
+      ],
+      "scattered_context": {
+        "billing/scheduler.py": {
+          "relevance": "critical",
+          "function": "calculate_next_billing_date",
+          "issue": "Uses local time instead of UTC"
+        },
+        "utils/timezone.py": {
+          "relevance": "critical",
+          "function": "convert_to_utc",
+          "issue": "Doesn't handle DST transitions"
+        },
+        "models/subscription.py": {
+          "relevance": "high",
+          "field": "next_billing_date",
+          "storage": "Stored as local time"
+        },
+        "tests/test_billing.py": {
+          "relevance": "high",
+          "coverage": "No DST edge cases"
+        },
+        "customer_complaints.csv": {
+          "relevance": "medium",
+          "pattern": "All complaints from UTC+1 to UTC+12"
+        }
+      },
+      "ground_truth": {
+        "root_cause": "Billing date calculation doesn't account for DST transitions",
+        "fix_type": "timezone_handling",
+        "solution": "Always calculate in UTC, convert for display only",
+        "files_modified": 3
+      }
+    },
+    {
+      "bug_id": "mrr_sample_003",
+      "category": "api",
+      "difficulty": "easy",
+      "language": "javascript",
+      "repository": {
+        "size": "small",
+        "files": 89,
+        "loc": 12000
+      },
+      "description": "GraphQL API returns null for newly added fields",
+      "symptoms": [
+        "New 'profile.preferences' field always null",
+        "Other profile fields work correctly",
+        "No errors in logs"
+      ],
+      "scattered_context": {
+        "graphql/schema.graphql": {
+          "relevance": "critical",
+          "change": "Added preferences field"
+        },
+        "graphql/resolvers/user.js": {
+          "relevance": "critical",
+          "missing": "Resolver for preferences field"
+        },
+        "models/user.js": {
+          "relevance": "high",
+          "has": "Preferences data exists in model"
+        },
+        "tests/graphql/user.test.js": {
+          "relevance": "medium",
+          "missing": "Test for new field"
+        }
+      },
+      "ground_truth": {
+        "root_cause": "Missing resolver for new GraphQL field",
+        "fix_type": "add_resolver",
+        "files_modified": 2
+      }
+    },
+    {
+      "bug_id": "mrr_sample_004",
+      "category": "performance",
+      "difficulty": "hard",
+      "language": "python",
+      "repository": {
+        "size": "large",
+        "files": 2134,
+        "loc": 450000
+      },
+      "description": "Search API response time degraded from 100ms to 8s",
+      "symptoms": [
+        "Search requests timeout",
+        "Database CPU spikes to 100%",
+        "Started after adding fuzzy search feature"
+      ],
+      "scattered_context": {
+        "search/engine.py": {
+          "relevance": "critical",
+          "function": "fuzzy_search",
+          "issue": "Cartesian product in query"
+        },
+        "db/indexes.py": {
+          "relevance": "critical",
+          "missing": "No index for fuzzy search columns"
+        },
+        "search/query_builder.py": {
+          "relevance": "high",
+          "issue": "Generates inefficient SQL"
+        },
+        "config/search.yaml": {
+          "relevance": "medium",
+          "setting": "fuzzy_threshold too low"
+        },
+        "monitoring/slow_queries.log": {
+          "relevance": "high",
+          "query": "Shows problematic JOIN pattern"
+        },
+        "benchmarks/search_performance.py": {
+          "relevance": "medium",
+          "note": "Only tests with 100 records"
+        }
+      },
+      "ground_truth": {
+        "root_cause": "Fuzzy search performs full table scan with cross join",
+        "fix": {
+          "immediate": "Add trigram index for fuzzy search",
+          "optimal": "Use dedicated search engine (Elasticsearch)",
+          "config": "Increase fuzzy threshold to reduce matches"
+        },
+        "files_modified": 4,
+        "performance_impact": "8s -> 150ms"
+      }
+    },
+    {
+      "bug_id": "mrr_sample_005",
+      "category": "memory",
+      "difficulty": "medium",
+      "language": "javascript",
+      "repository": {
+        "size": "medium",
+        "files": 567,
+        "loc": 89000
+      },
+      "description": "Node.js app memory usage grows indefinitely with image uploads",
+      "symptoms": [
+        "Memory usage increases by ~50MB per image upload",
+        "Memory never released even after processing",
+        "Server crashes after ~100 uploads"
+      ],
+      "scattered_context": {
+        "upload/image_processor.js": {
+          "relevance": "critical",
+          "issue": "Holds buffer references in closure"
+        },
+        "lib/image_utils.js": {
+          "relevance": "critical",
+          "issue": "Creates multiple buffer copies"
+        },
+        "middleware/upload.js": {
+          "relevance": "high",
+          "issue": "Doesn't clean temp files"
+        },
+        "package.json": {
+          "relevance": "medium",
+          "lib": "sharp@0.28.0 has known memory issues"
+        }
+      },
+      "ground_truth": {
+        "root_cause": "Image buffers retained in event handler closures",
+        "fix": {
+          "code": "Explicitly null buffer references after use",
+          "library": "Update sharp to 0.31.0",
+          "pattern": "Process images in worker threads"
+        },
+        "files_modified": 3
+      }
+    },
+    {
+      "bug_id": "mrr_sample_006",
+      "category": "concurrency",
+      "difficulty": "hard",
+      "language": "python",
+      "repository": {
+        "size": "medium",
+        "files": 412,
+        "loc": 78000
+      },
+      "description": "Distributed cache inconsistency causing stale data reads",
+      "symptoms": [
+        "Users see old data after updates",
+        "Inconsistent data across app servers",
+        "Cache invalidation logs show success"
+      ],
+      "scattered_context": {
+        "cache/distributed_cache.py": {
+          "relevance": "critical",
+          "method": "invalidate",
+          "issue": "Fire-and-forget pattern"
+        },
+        "cache/redis_client.py": {
+          "relevance": "critical",
+          "issue": "No invalidation confirmation"
+        },
+        "models/base.py": {
+          "relevance": "high",
+          "decorator": "@cached",
+          "issue": "Doesn't wait for invalidation"
+        },
+        "config/redis_cluster.yaml": {
+          "relevance": "medium",
+          "topology": "3 Redis nodes"
+        },
+        "logs/redis/": {
+          "relevance": "high",
+          "shows": "Network timeouts during invalidation"
+        }
+      },
+      "ground_truth": {
+        "root_cause": "Cache invalidation not synchronous across cluster",
+        "contributing": "Network partitions cause invalidation to fail silently",
+        "fix": {
+          "pattern": "Use cache versioning instead of invalidation",
+          "alternative": "Implement two-phase invalidation with confirmation"
+        },
+        "files_modified": 4
+      }
+    },
+    {
+      "bug_id": "mrr_sample_007",
+      "category": "syntax",
+      "difficulty": "easy",
+      "language": "java",
+      "repository": {
+        "size": "small",
+        "files": 134,
+        "loc": 23000
+      },
+      "description": "Maven build fails with 'illegal character' error",
+      "symptoms": [
+        "Build works on Windows, fails on Linux",
+        "Error: illegal character: '\\ufeff'"
+      ],
+      "scattered_context": {
+        "src/main/java/App.java": {
+          "relevance": "critical",
+          "line": 1,
+          "issue": "BOM character at file start"
+        },
+        "pom.xml": {
+          "relevance": "medium",
+          "encoding": "UTF-8 specified"
+        }
+      },
+      "ground_truth": {
+        "root_cause": "UTF-8 BOM character in source file",
+        "fix_type": "remove_bom",
+        "files_modified": 1
+      }
+    },
+    {
+      "bug_id": "mrr_sample_008",
+      "category": "logic",
+      "difficulty": "medium",
+      "language": "javascript",
+      "repository": {
+        "size": "medium",
+        "files": 890,
+        "loc": 156000
+      },
+      "description": "Shopping cart total incorrect when mixing taxable and non-taxable items",
+      "symptoms": [
+        "Tax applied to non-taxable items",
+        "Only happens with specific item combinations",
+        "Total calculation off by tax amount"
+      ],
+      "scattered_context": {
+        "cart/calculator.js": {
+          "relevance": "critical",
+          "function": "calculateTotal",
+          "issue": "Tax applied after grouping"
+        },
+        "models/product.js": {
+          "relevance": "high",
+          "field": "isTaxable",
+          "type": "boolean"
+        },
+        "tax/rules.js": {
+          "relevance": "high",
+          "logic": "Complex tax rules by category"
+        },
+        "tests/cart_calculation.test.js": {
+          "relevance": "high",
+          "missing": "Mixed taxable/non-taxable test"
+        },
+        "customer_reports/": {
+          "relevance": "medium",
+          "pattern": "All involve food + electronics"
+        }
+      },
+      "ground_truth": {
+        "root_cause": "Tax calculation groups all items before checking taxable flag",
+        "fix": "Separate taxable/non-taxable items before calculation",
+        "edge_case": "Some states tax certain food items",
+        "files_modified": 2
+      }
+    },
+    {
+      "bug_id": "mrr_sample_009",
+      "category": "api",
+      "difficulty": "hard",
+      "language": "python",
+      "repository": {
+        "size": "large",
+        "files": 3456,
+        "loc": 567000
+      },
+      "description": "Webhook delivery fails silently after OAuth token refresh",
+      "symptoms": [
+        "Webhooks stop being delivered",
+        "No errors in webhook logs",
+        "Happens exactly 1 hour after setup"
+      ],
+      "scattered_context": {
+        "webhooks/delivery.py": {
+          "relevance": "critical",
+          "class": "WebhookDeliverer",
+          "issue": "Caches auth headers"
+        },
+        "auth/oauth_client.py": {
+          "relevance": "critical",
+          "method": "refresh_token",
+          "note": "Token expires in 3600s"
+        },
+        "webhooks/retry_logic.py": {
+          "relevance": "high",
+          "issue": "Doesn't retry 401 errors"
+        },
+        "integrations/base.py": {
+          "relevance": "high",
+          "pattern": "Other integrations handle refresh"
+        },
+        "monitoring/webhook_metrics.py": {
+          "relevance": "medium",
+          "missing": "No auth failure metrics"
+        },
+        "docs/webhooks.md": {
+          "relevance": "low",
+          "mentions": "Automatic token refresh"
+        }
+      },
+      "ground_truth": {
+        "root_cause": "Webhook delivery caches OAuth headers, doesn't refresh on 401",
+        "fix": {
+          "immediate": "Check token expiry before each delivery",
+          "better": "Implement token refresh on 401 response",
+          "best": "Use webhook service with automatic refresh"
+        },
+        "files_modified": 3
+      }
+    },
+    {
+      "bug_id": "mrr_sample_010",
+      "category": "performance",
+      "difficulty": "medium",
+      "language": "java",
+      "repository": {
+        "size": "large",
+        "files": 2345,
+        "loc": 890000
+      },
+      "description": "Report generation causes CPU spike and blocks other requests",
+      "symptoms": [
+        "API response time increases 10x during report generation",
+        "Single report generation uses 100% CPU",
+        "Other requests queue up"
+      ],
+      "scattered_context": {
+        "reports/generator.java": {
+          "relevance": "critical",
+          "method": "generateReport",
+          "issue": "Synchronous, CPU-intensive"
+        },
+        "reports/excel_builder.java": {
+          "relevance": "critical",
+          "issue": "Builds entire report in memory"
+        },
+        "api/controllers/ReportController.java": {
+          "relevance": "high",
+          "pattern": "Blocks request thread"
+        },
+        "config/thread_pool.xml": {
+          "relevance": "medium",
+          "size": "Fixed at 10 threads"
+        },
+        "infrastructure/deployment.yaml": {
+          "relevance": "medium",
+          "note": "Single instance, no queue"
+        }
+      },
+      "ground_truth": {
+        "root_cause": "Synchronous report generation blocks request thread",
+        "contributing": "Report built entirely in memory, no streaming",
+        "fix": {
+          "immediate": "Move to async processing with job queue",
+          "optimization": "Stream report generation to reduce memory",
+          "architecture": "Separate report service with own resources"
+        },
+        "files_modified": 5
+      }
+    }
+  ],
+  "additional_test_cases": "Full dataset contains 490 more test cases across all categories",
+  "usage_notes": {
+    "repository_snapshots": "Contact research@kodezi.com for access to test repositories",
+    "evaluation_harness": "See benchmarks/evaluation/ for testing framework",
+    "baseline_results": "Chronos achieves 65.3% success rate on full benchmark"
+  }
+}

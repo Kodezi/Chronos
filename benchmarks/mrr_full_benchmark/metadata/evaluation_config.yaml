@@ -1,0 +1,170 @@
+# MRR Benchmark Evaluation Configuration
+
+evaluation_settings:
+  name: "MRR Benchmark Evaluation"
+  version: "1.0.0"
+  description: "Configuration for running MRR benchmark evaluations"
+
+runtime_parameters:
+  max_time_per_bug: 300  # 5 minutes
+  max_retries: 3
+  parallel_processes: 4
+  gpu_required: false
+  memory_limit_gb: 16
+
+model_requirements:
+  min_context_window: 50000
+  supports_multi_file: true
+  supports_function_calling: false
+  supports_code_execution: false
+
+evaluation_modes:
+  full:
+    description: "Complete benchmark evaluation"
+    bug_count: 5000
+    categories: ["all"]
+    metrics: ["all"]
+    
+  quick:
+    description: "Quick evaluation for testing"
+    bug_count: 100
+    categories: ["syntax_errors", "logic_errors"]
+    metrics: ["precision", "recall", "success_rate"]
+    
+  category_specific:
+    description: "Evaluate specific bug categories"
+    bug_count: "all_in_category"
+    categories: ["user_specified"]
+    metrics: ["all"]
+
+metrics_configuration:
+  standard_metrics:
+    precision_at_k:
+      k_values: [1, 5, 10, 20, 50]
+      primary_k: 10
+      
+    recall_at_k:
+      k_values: [1, 5, 10, 20, 50]
+      primary_k: 50
+      
+    mean_reciprocal_rank:
+      enabled: true
+      
+  enhanced_metrics:
+    context_efficiency:
+      enabled: true
+      calculation: "tokens_used / tokens_retrieved"
+      optimal_range: [0.7, 0.9]
+      
+    compositional_success:
+      enabled: true
+      min_path_depth: 2
+      track_path_types: true
+      
+    obfuscation_resistance:
+      enabled: true
+      levels: ["low", "medium", "high"]
+      track_by_type: true
+      
+    multi_modal_integration:
+      enabled: true
+      artifact_types: ["logs", "traces", "docs", "tests", "commits"]
+      min_usage_threshold: 0.3
+      
+    regression_risk:
+      enabled: true
+      run_tests: true
+      check_performance: true
+
+output_configuration:
+  results_directory: "evaluation_results"
+  
+  report_formats:
+    - json
+    - markdown
+    - csv
+    
+  include_in_report:
+    - summary_statistics
+    - per_category_breakdown
+    - per_bug_details
+    - error_analysis
+    - performance_metrics
+    
+  visualization:
+    generate_charts: true
+    chart_types:
+      - success_rate_by_category
+      - time_distribution
+      - context_efficiency
+      - retrieval_paths
+      
+validation_rules:
+  fix_validation:
+    must_compile: true
+    must_pass_existing_tests: true
+    must_pass_new_tests: true
+    no_performance_regression: true
+    max_performance_impact: 0.05  # 5%
+    
+  code_quality:
+    check_linting: true
+    check_formatting: false
+    check_type_safety: true
+    
+  completeness:
+    all_files_modified: true
+    tests_updated: true
+    documentation_updated: false
+
+scoring_weights:
+  correctness: 0.4
+  completeness: 0.3
+  efficiency: 0.2
+  quality: 0.1
+
+baseline_comparisons:
+  include_baselines: true
+  
+  baseline_models:
+    - name: "Random Retrieval"
+      type: "baseline"
+      
+    - name: "BM25 Search"
+      type: "traditional"
+      
+    - name: "Vector Search"
+      type: "embedding"
+      
+    - name: "Graph-Enhanced"
+      type: "advanced"
+
+resource_monitoring:
+  track_memory: true
+  track_time: true
+  track_api_calls: true
+  track_token_usage: true
+  
+  limits:
+    max_memory_gb: 32
+    max_time_hours: 168  # 7 days
+    max_tokens_per_bug: 500000
+
+error_handling:
+  on_timeout: "skip_and_continue"
+  on_memory_error: "retry_with_reduced_context"
+  on_api_error: "retry_with_backoff"
+  max_consecutive_failures: 10
+  
+logging:
+  level: "INFO"
+  log_to_file: true
+  log_file_path: "logs/evaluation.log"
+  include_timestamps: true
+  include_memory_usage: true
+  
+checkpointing:
+  enabled: true
+  checkpoint_interval: 100  # bugs
+  checkpoint_directory: "checkpoints"
+  resume_from_checkpoint: true

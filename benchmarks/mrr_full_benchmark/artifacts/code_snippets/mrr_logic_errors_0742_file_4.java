@@ -1,0 +1,1 @@
+// Code snippet for src/config/settings_6.js

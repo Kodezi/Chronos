@@ -1,0 +1,287 @@
+{
+  "bug_id": "MRR-SYNTAX_ERRORS-202508-0160",
+  "category": "syntax_errors",
+  "subcategory": "missing_semicolon",
+  "language": "cpp",
+  "description": "Syntax error: missing_semicolon causing compilation failure",
+  "complexity": {
+    "spatial_distribution": 5,
+    "temporal_spread_months": 1,
+    "abstraction_layers": 1,
+    "obfuscation_level": "medium",
+    "cross_module_dependencies": 1,
+    "artifact_types": 3
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for syntax_errors/missing_semicolon in cpp",
+    "fixed_code": "// Fixed code for syntax_errors/missing_semicolon in cpp"
+  },
+  "scattered_context": [
+    {
+      "file_path": "models/file_1.cpp",
+      "content": "// Context code for syntax_errors in cpp",
+      "relevance": "critical",
+      "relationship": "implements",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        48,
+        136,
+        90,
+        163,
+        139
+      ]
+    },
+    {
+      "file_path": "core/file_2.cpp",
+      "content": "// Context code for syntax_errors in cpp",
+      "relevance": "low",
+      "relationship": "implements",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        82
+      ]
+    },
+    {
+      "file_path": "models/file_3.cpp",
+      "content": "// Context code for syntax_errors in cpp",
+      "relevance": "medium",
+      "relationship": "extends",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        152
+      ]
+    },
+    {
+      "file_path": "controllers/file_4.cpp",
+      "content": "// Context code for syntax_errors in cpp",
+      "relevance": "critical",
+      "relationship": "uses",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        44,
+        27,
+        53
+      ]
+    },
+    {
+      "file_path": "services/file_5.cpp",
+      "content": "// Context code for syntax_errors in cpp",
+      "relevance": "high",
+      "relationship": "tests",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        14,
+        43,
+        118
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-07-08",
+    "temporal_spread_days": 30,
+    "refactoring_events": 4,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-08-04",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-08-06",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-08-03",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-07-14",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "8416941f",
+        "date": "2025-08-06",
+        "message": "Refactored module 4",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "edd0a651",
+        "date": "2025-08-06",
+        "message": "Refactored module 5",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "a67f5b4e",
+        "date": "2025-07-23",
+        "message": "Refactored module 6",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py",
+          "file_4.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "models/file_1.cpp",
+        "to": "core/file_2.cpp",
+        "type": "calls"
+      },
+      {
+        "from": "core/file_2.cpp",
+        "to": "models/file_3.cpp",
+        "type": "extends"
+      },
+      {
+        "from": "models/file_3.cpp",
+        "to": "controllers/file_4.cpp",
+        "type": "imports"
+      },
+      {
+        "from": "controllers/file_4.cpp",
+        "to": "services/file_5.cpp",
+        "type": "calls"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "controllers/file_4.cpp",
+          "models/file_1.cpp",
+          "services/file_5.cpp"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "models/file_1.cpp",
+          "models/file_3.cpp",
+          "core/file_2.cpp"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "models/file_3.cpp",
+          "core/file_2.cpp"
+        ],
+        "depth": 1
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "medium",
+    "renamed_entities": {
+      "function_0": "ksgbddyy",
+      "function_1": "nrshejvv",
+      "function_2": "fcbydmos",
+      "function_3": "ppomrxyr"
+    },
+    "moved_files": 3,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "missing_semicolon in main processing logic",
+    "fix_type": "syntax_correction",
+    "must_find_files": [
+      "models/file_1.cpp",
+      "controllers/file_4.cpp",
+      "services/file_5.cpp"
+    ],
+    "should_find_files": [
+      "models/file_3.cpp"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.889638208468881
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_syntax_errors_1.cpp",
+      "test_code": "// Test for syntax_errors in cpp",
+      "test_type": "e2e"
+    },
+    {
+      "file_name": "test_syntax_errors_2.cpp",
+      "test_code": "// Test for syntax_errors in cpp",
+      "test_type": "e2e"
+    },
+    {
+      "file_name": "test_syntax_errors_3.cpp",
+      "test_code": "// Test for syntax_errors in cpp",
+      "test_type": "e2e"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "syntax_errors",
+      "error_message": "SyntaxError: invalid syntax at line 61",
+      "stack_trace": "Stack trace for cpp",
+      "timestamp": "2025-08-07T02:22:49.508503"
+    },
+    {
+      "error_type": "syntax_errors",
+      "error_message": "SyntaxError: invalid syntax at line 56",
+      "stack_trace": "Stack trace for cpp",
+      "timestamp": "2025-08-07T02:22:49.508505"
+    }
+  ],
+  "symptoms": [
+    "Code fails to compile/run",
+    "Syntax error message displayed",
+    "IDE highlights error"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 36,
+    "function": "process_function",
+    "module": "utils"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "models/file_1.cpp",
+      "controllers/file_4.cpp"
+    ],
+    "should_find_files": [
+      "services/file_5.cpp"
+    ],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

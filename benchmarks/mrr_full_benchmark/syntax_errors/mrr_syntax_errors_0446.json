@@ -1,0 +1,185 @@
+{
+  "bug_id": "MRR-SYNTAX_ERRORS-202508-0446",
+  "category": "syntax_errors",
+  "subcategory": "invalid_token",
+  "language": "go",
+  "description": "Syntax error: invalid_token causing compilation failure",
+  "complexity": {
+    "spatial_distribution": 2,
+    "temporal_spread_months": 3,
+    "abstraction_layers": 2,
+    "obfuscation_level": "low",
+    "cross_module_dependencies": 0,
+    "artifact_types": 4
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for syntax_errors/invalid_token in go",
+    "fixed_code": "// Fixed code for syntax_errors/invalid_token in go"
+  },
+  "scattered_context": [
+    {
+      "file_path": "controllers/file_1.go",
+      "content": "// Context code for syntax_errors in go",
+      "relevance": "critical",
+      "relationship": "implements",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        75
+      ]
+    },
+    {
+      "file_path": "controllers/file_2.go",
+      "content": "// Context code for syntax_errors in go",
+      "relevance": "medium",
+      "relationship": "extends",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        13
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-05-09",
+    "temporal_spread_days": 90,
+    "refactoring_events": 0,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-06-22",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-07-25",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-07-13",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py",
+          "file_1.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "controllers/file_1.go",
+        "to": "controllers/file_2.go",
+        "type": "extends"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "controllers/file_1.go",
+          "controllers/file_2.go"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "controllers/file_1.go",
+          "controllers/file_2.go"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "controllers/file_1.go",
+          "controllers/file_2.go"
+        ],
+        "depth": 2
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "low",
+    "renamed_entities": {
+      "variable_0": "var_0",
+      "variable_1": "var_1",
+      "variable_2": "var_2"
+    },
+    "moved_files": 0,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "invalid_token in main processing logic",
+    "fix_type": "syntax_correction",
+    "must_find_files": [
+      "controllers/file_1.go"
+    ],
+    "should_find_files": [
+      "controllers/file_2.go"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 1.9222242569325525
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_syntax_errors_1.go",
+      "test_code": "// Test for syntax_errors in go",
+      "test_type": "e2e"
+    },
+    {
+      "file_name": "test_syntax_errors_2.go",
+      "test_code": "// Test for syntax_errors in go",
+      "test_type": "integration"
+    },
+    {
+      "file_name": "test_syntax_errors_3.go",
+      "test_code": "// Test for syntax_errors in go",
+      "test_type": "e2e"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "syntax_errors",
+      "error_message": "SyntaxError: invalid syntax at line 53",
+      "stack_trace": "Stack trace for go",
+      "timestamp": "2025-08-07T02:22:49.602170"
+    },
+    {
+      "error_type": "syntax_errors",
+      "error_message": "SyntaxError: invalid syntax at line 36",
+      "stack_trace": "Stack trace for go",
+      "timestamp": "2025-08-07T02:22:49.602172"
+    }
+  ],
+  "symptoms": [
+    "Code fails to compile/run",
+    "Syntax error message displayed",
+    "IDE highlights error"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 90,
+    "function": "process_function",
+    "module": "utils"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "controllers/file_1.go"
+    ],
+    "should_find_files": [],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}

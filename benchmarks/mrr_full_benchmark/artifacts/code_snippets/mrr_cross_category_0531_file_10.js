@@ -1,0 +1,1 @@
+// Code snippet for src/core/processor_22.java

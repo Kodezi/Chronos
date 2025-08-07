@@ -1,0 +1,1 @@
+// Code snippet for src/core/service_3.java

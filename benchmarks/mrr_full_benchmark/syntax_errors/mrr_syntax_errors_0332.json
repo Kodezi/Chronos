@@ -1,0 +1,227 @@
+{
+  "bug_id": "MRR-SYNTAX_ERRORS-202508-0332",
+  "category": "syntax_errors",
+  "subcategory": "missing_bracket",
+  "language": "java",
+  "description": "Syntax error: missing_bracket causing compilation failure",
+  "complexity": {
+    "spatial_distribution": 4,
+    "temporal_spread_months": 0,
+    "abstraction_layers": 2,
+    "obfuscation_level": "low",
+    "cross_module_dependencies": 2,
+    "artifact_types": 5
+  },
+  "code_snippets": {
+    "buggy_code": "// Buggy code for syntax_errors/missing_bracket in java",
+    "fixed_code": "// Fixed code for syntax_errors/missing_bracket in java"
+  },
+  "scattered_context": [
+    {
+      "file_path": "services/file_1.java",
+      "content": "// Context code for syntax_errors in java",
+      "relevance": "low",
+      "relationship": "implements",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        164,
+        69,
+        127,
+        93,
+        82
+      ]
+    },
+    {
+      "file_path": "core/file_2.java",
+      "content": "// Context code for syntax_errors in java",
+      "relevance": "critical",
+      "relationship": "imports",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        60,
+        193
+      ]
+    },
+    {
+      "file_path": "helpers/file_3.java",
+      "content": "// Context code for syntax_errors in java",
+      "relevance": "medium",
+      "relationship": "implements",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        188,
+        18,
+        195,
+        19
+      ]
+    },
+    {
+      "file_path": "utils/file_4.java",
+      "content": "// Context code for syntax_errors in java",
+      "relevance": "medium",
+      "relationship": "tests",
+      "specific_issue": "Related to syntax_errors issue",
+      "line_numbers": [
+        196
+      ]
+    }
+  ],
+  "temporal_info": {
+    "bug_introduced": "2025-08-07",
+    "temporal_spread_days": 0,
+    "refactoring_events": 0,
+    "related_commits": [
+      {
+        "hash": "5fd67fb9",
+        "date": "2025-08-07",
+        "message": "Refactored module 0",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "94d3bf18",
+        "date": "2025-08-07",
+        "message": "Refactored module 1",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py",
+          "file_3.py"
+        ]
+      },
+      {
+        "hash": "b9169d7a",
+        "date": "2025-08-07",
+        "message": "Refactored module 2",
+        "files": [
+          "file_0.py"
+        ]
+      },
+      {
+        "hash": "d7263f20",
+        "date": "2025-08-07",
+        "message": "Refactored module 3",
+        "files": [
+          "file_0.py",
+          "file_1.py",
+          "file_2.py"
+        ]
+      }
+    ]
+  },
+  "retrieval_paths": {
+    "explicit": [
+      {
+        "from": "services/file_1.java",
+        "to": "core/file_2.java",
+        "type": "extends"
+      },
+      {
+        "from": "core/file_2.java",
+        "to": "helpers/file_3.java",
+        "type": "calls"
+      },
+      {
+        "from": "helpers/file_3.java",
+        "to": "utils/file_4.java",
+        "type": "extends"
+      }
+    ],
+    "implicit": [
+      {
+        "files": [
+          "core/file_2.java",
+          "helpers/file_3.java",
+          "utils/file_4.java"
+        ],
+        "pattern": "shared_dependency"
+      },
+      {
+        "files": [
+          "helpers/file_3.java",
+          "services/file_1.java",
+          "core/file_2.java"
+        ],
+        "pattern": "shared_dependency"
+      }
+    ],
+    "compositional": [
+      {
+        "path": [
+          "core/file_2.java",
+          "utils/file_4.java"
+        ],
+        "depth": 1
+      },
+      {
+        "path": [
+          "services/file_1.java",
+          "core/file_2.java",
+          "utils/file_4.java"
+        ],
+        "depth": 2
+      }
+    ]
+  },
+  "obfuscation": {
+    "obfuscation_level": "low",
+    "renamed_entities": {
+      "variable_0": "var_0",
+      "variable_1": "var_1",
+      "variable_2": "var_2"
+    },
+    "moved_files": 0,
+    "refactored_modules": 0
+  },
+  "ground_truth": {
+    "root_cause": "missing_bracket in main processing logic",
+    "fix_type": "syntax_correction",
+    "must_find_files": [
+      "core/file_2.java"
+    ],
+    "should_find_files": [
+      "helpers/file_3.java",
+      "utils/file_4.java"
+    ],
+    "expected_behavior": {
+      "should_not_error": true,
+      "expected_output": "Correct processing result",
+      "performance_threshold": 0.6886297624782611
+    }
+  },
+  "test_artifacts": [
+    {
+      "file_name": "test_syntax_errors_1.java",
+      "test_code": "// Test for syntax_errors in java",
+      "test_type": "e2e"
+    }
+  ],
+  "error_artifacts": [
+    {
+      "error_type": "syntax_errors",
+      "error_message": "SyntaxError: invalid syntax at line 39",
+      "stack_trace": "Stack trace for java",
+      "timestamp": "2025-08-07T02:22:49.562617"
+    }
+  ],
+  "symptoms": [
+    "Code fails to compile/run",
+    "Syntax error message displayed",
+    "IDE highlights error"
+  ],
+  "error_location": {
+    "file": "main.py",
+    "line": 21,
+    "function": "process_function",
+    "module": "utils"
+  },
+  "evaluation_criteria": {
+    "must_find_files": [
+      "core/file_2.java"
+    ],
+    "should_find_files": [],
+    "retrieval_threshold": 0.75,
+    "fix_validation": "must_pass_tests"
+  }
+}
